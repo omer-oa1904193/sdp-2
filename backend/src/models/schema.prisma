@@ -3,17 +3,22 @@ datasource db {
   url      = env("DATABASE_URL")
 }
 
+generator client {
+  provider = "prisma-client-js"
+}
+
 model User {
-  id       Int      @id @default(autoincrement())
-  email    String   @unique
-  password String
-  type     UserType
+  id         Int         @id @default(autoincrement())
+  email      String      @unique
+  password   String
+  type       UserType
+  studyPlans StudyPlan[]
 
   // student fields
   quid             String?
   name             String?
-  enrollmentSeason Season
-  enrollmentYear   Int
+  enrollmentSeason Season?
+  enrollmentYear   Int?
 }
 
 enum UserType {
@@ -24,7 +29,160 @@ enum UserType {
 
 enum Season {
   FALL
-  SUMMER
-  SPRING
   WINTER
+  SPRING
+  SUMMER
+}
+
+model College {
+  id         Int          @id @default(autoincrement())
+  name       String
+  Department Department[]
+  programs   Program[]
+}
+
+model Department {
+  id        Int      @id @default(autoincrement())
+  name      String
+  college   College  @relation(fields: [collegeId], references: [id])
+  collegeId Int
+  Course    Course[]
+}
+
+model Course {
+  id                          Int                 @id @default(autoincrement())
+  title                       String
+  code                        String
+  creditHours                 Int
+  description                 String
+  cost                        Float
+  department                  Department          @relation(fields: [departmentId], references: [id])
+  departmentId                Int
+  prerequisites               PrerequisiteGroup[] @relation(name: "CoursePrerequisites")
+  postrequisiteGroups         PrerequisiteGroup[] @relation(name: "CoursePostrequisites")
+  sections                    Section[]
+  programsAppearingIn         MapCourseProgram[]
+  electivePackagesAppearingIn Package[]
+}
+
+model PrerequisiteGroup {
+  id               Int      @id @default(autoincrement())
+  groupCourses     Course[] @relation(name: "CoursePrerequisites")
+  dependantCourses Course[] @relation(name: "CoursePostrequisites")
+}
+
+model Section {
+  id           Int               @id @default(autoincrement())
+  Course       Course            @relation(fields: [courseId], references: [id])
+  courseId     Int
+  type         SectionType
+  season       Season
+  year         Int
+  schedule     SectionTimeSlot[]
+  instructor   Instructor        @relation(fields: [instructorId], references: [id])
+  instructorId Int
+}
+
+enum SectionType {
+  LECTURE
+  LAB
+}
+
+model SectionTimeSlot {
+  id        Int       @id @default(autoincrement())
+  dayOfWeek DayOfWeek
+  startTime Time
+  endTime   Time
+  section   Section   @relation(fields: [sectionId], references: [id])
+  sectionId Int
+}
+
+enum DayOfWeek {
+  SUNDAY
+  MONDAY
+  TUESDAY
+  WEDNESDAY
+  THURSDAY
+  FRIDAY
+  SATURDAY
+}
+
+model ElectivePackage {
+  id      Int      @id @default(autoincrement())
+  title   String
+  courses Course[]
+}
+
+model Instructor {
+  id       Int       @id @default(autoincrement())
+  name     String
+  sections Section[]
+}
+
+model Program {
+  id                Int                @id @default(autoincrement())
+  name              String
+  college           College            @relation(fields: [collegeId], references: [id])
+  collegeId         Int
+  yearCreated       Int
+  courses           MapCourseProgram[]
+  studentStudyPlans StudyPlan[]
+}
+
+model MapCourseProgram {
+  id        Int     @id @default(autoincrement())
+  course    Course  @relation(fields: [courseId], references: [id])
+  courseId  Int
+  program   Program @relation(fields: [programId], references: [id])
+  programId Int
+  season    Season
+  yearOrder Int
+}
+
+model MapElectivePackageProgram {
+  id                Int             @id @default(autoincrement())
+  id                Int             @id @default(autoincrement())
+  electivePackage   ElectivePackage @relation(fields: [electivePackageId], references: [id])
+  electivePackageId Int
+  program           Program         @relation(fields: [programId], references: [id])
+  programId         Int
+  season            Season
+  yearOrder         Int
+}
+
+model StudyPlan {
+  id        Int     @id @default(autoincrement())
+  name      String
+  program   Program @relation(fields: [programId], references: [id])
+  programId Int
+  author    User    @relation(fields: [authorId], references: [id])
+  authorId  Int
+}
+
+model MapCourseStudyPlan {
+  id          Int       @id @default(autoincrement())
+  course      Course    @relation(fields: [courseId], references: [id])
+  courseId    Int
+  studyPlan   StudyPlan @relation(fields: [studyPlanId], references: [id])
+  studyPlanId Int
+  season      Season
+  yearOrder   Int
+}
+
+model MapElectivePackageStudyPlan {
+  id                Int             @id @default(autoincrement())
+  id                Int             @id @default(autoincrement())
+  electivePackage   ElectivePackage @relation(fields: [electivePackageId], references: [id])
+  electivePackageId Int
+  studyPlan         StudyPlan       @relation(fields: [studyPlanId], references: [id])
+  studyPlanId       Int
+  season            Season
+  yearOrder         Int
+}
+
+model Comment {
+  text        String
+  timePosted  DateTime  @default(now())
+  studyPlan   StudyPlan @relation(fields: [studyPlanId], references: [id])
+  studyPlanId Int
 }
