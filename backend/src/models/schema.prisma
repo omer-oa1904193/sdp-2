@@ -185,4 +185,6 @@ model Comment {
   timePosted  DateTime  @default(now())
   studyPlan   StudyPlan @relation(fields: [studyPlanId], references: [id])
   studyPlanId Int
+  author      User      @relation(fields: [authorId], references: [id])
+  authorId    Int
 }
