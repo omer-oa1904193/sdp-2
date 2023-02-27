@@ -1,5 +1,5 @@
 class UserRepo {
-    async findUser(email) {
+    async findUser(email: string) {
     }
 
 }
