@@ -19,6 +19,7 @@ model User {
   name             String?
   enrollmentSeason Season?
   enrollmentYear   Int?
+  Comment          Comment[]
 }
 
 enum UserType {
@@ -50,19 +51,20 @@ model Department {
 }
 
 model Course {
-  id                          Int                 @id @default(autoincrement())
+  id                          Int                  @id @default(autoincrement())
   title                       String
   code                        String
   creditHours                 Int
   description                 String
   cost                        Float
-  department                  Department          @relation(fields: [departmentId], references: [id])
+  department                  Department           @relation(fields: [departmentId], references: [id])
   departmentId                Int
-  prerequisites               PrerequisiteGroup[] @relation(name: "CoursePrerequisites")
-  postrequisiteGroups         PrerequisiteGroup[] @relation(name: "CoursePostrequisites")
+  prerequisites               PrerequisiteGroup[]  @relation(name: "CoursePrerequisites")
+  postrequisiteGroups         PrerequisiteGroup[]  @relation(name: "CoursePostrequisites")
   sections                    Section[]
   programsAppearingIn         MapCourseProgram[]
-  electivePackagesAppearingIn Package[]
+  electivePackagesAppearingIn ElectivePackage[]
+  MapCourseStudyPlan          MapCourseStudyPlan[]
 }
 
 model PrerequisiteGroup {
@@ -91,8 +93,8 @@ enum SectionType {
 model SectionTimeSlot {
   id        Int       @id @default(autoincrement())
   dayOfWeek DayOfWeek
-  startTime Time
-  endTime   Time
+  startTime DateTime  @db.Time
+  endTime   DateTime  @db.Time
   section   Section   @relation(fields: [sectionId], references: [id])
   sectionId Int
 }
@@ -108,9 +110,11 @@ enum DayOfWeek {
 }
 
 model ElectivePackage {
-  id      Int      @id @default(autoincrement())
-  title   String
-  courses Course[]
+  id                          Int                           @id @default(autoincrement())
+  title                       String
+  courses                     Course[]
+  MapElectivePackageProgram   MapElectivePackageProgram[]
+  MapElectivePackageStudyPlan MapElectivePackageStudyPlan[]
 }
 
 model Instructor {
@@ -120,13 +124,14 @@ model Instructor {
 }
 
 model Program {
-  id                Int                @id @default(autoincrement())
-  name              String
-  college           College            @relation(fields: [collegeId], references: [id])
-  collegeId         Int
-  yearCreated       Int
-  courses           MapCourseProgram[]
-  studentStudyPlans StudyPlan[]
+  id                        Int                         @id @default(autoincrement())
+  name                      String
+  college                   College                     @relation(fields: [collegeId], references: [id])
+  collegeId                 Int
+  yearCreated               Int
+  courses                   MapCourseProgram[]
+  studentStudyPlans         StudyPlan[]
+  MapElectivePackageProgram MapElectivePackageProgram[]
 }
 
 model MapCourseProgram {
@@ -141,7 +146,6 @@ model MapCourseProgram {
 
 model MapElectivePackageProgram {
   id                Int             @id @default(autoincrement())
-  id                Int             @id @default(autoincrement())
   electivePackage   ElectivePackage @relation(fields: [electivePackageId], references: [id])
   electivePackageId Int
   program           Program         @relation(fields: [programId], references: [id])
@@ -151,12 +155,15 @@ model MapElectivePackageProgram {
 }
 
 model StudyPlan {
-  id        Int     @id @default(autoincrement())
-  name      String
-  program   Program @relation(fields: [programId], references: [id])
-  programId Int
-  author    User    @relation(fields: [authorId], references: [id])
-  authorId  Int
+  id                          Int                           @id @default(autoincrement())
+  name                        String
+  program                     Program                       @relation(fields: [programId], references: [id])
+  programId                   Int
+  author                      User                          @relation(fields: [authorId], references: [id])
+  authorId                    Int
+  MapCourseStudyPlan          MapCourseStudyPlan[]
+  MapElectivePackageStudyPlan MapElectivePackageStudyPlan[]
+  Comment                     Comment[]
 }
 
 model MapCourseStudyPlan {
@@ -171,7 +178,6 @@ model MapCourseStudyPlan {
 
 model MapElectivePackageStudyPlan {
   id                Int             @id @default(autoincrement())
-  id                Int             @id @default(autoincrement())
   electivePackage   ElectivePackage @relation(fields: [electivePackageId], references: [id])
   electivePackageId Int
   studyPlan         StudyPlan       @relation(fields: [studyPlanId], references: [id])
@@ -181,6 +187,7 @@ model MapElectivePackageStudyPlan {
 }
 
 model Comment {
+  id          Int       @id @default(autoincrement())
   text        String
   timePosted  DateTime  @default(now())
   studyPlan   StudyPlan @relation(fields: [studyPlanId], references: [id])
