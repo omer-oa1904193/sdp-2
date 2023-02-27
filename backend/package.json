@@ -18,7 +18,7 @@
     "prisma": "^4.10.1"
   },
   "prisma": {
-    "schema": "src/models/schema.prisma"
+    "schema": "src/data/entities/schema.prisma"
   },
   "devDependencies": {
     "nodemon": "^2.0.20"
