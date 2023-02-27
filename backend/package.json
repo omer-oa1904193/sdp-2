@@ -1,19 +1,26 @@
 {
   "name": "massar",
+  "type": "module",
   "version": "1.0.0",
   "description": "Course Schedule Planner​",
-  "main": "main.js",
+  "main": "src/main.js",
   "scripts": {
+    "dev": "nodemon",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "",
   "license": "ISC",
   "dependencies": {
     "@prisma/client": "^4.10.1",
+    "dotenv": "^16.0.3",
     "express": "^4.18.2",
+    "morgan": "^1.10.0",
     "prisma": "^4.10.1"
   },
   "prisma": {
     "schema": "src/models/schema.prisma"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.20"
   }
 }
