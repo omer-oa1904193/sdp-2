@@ -59,19 +59,13 @@ model Course {
   cost                        Float
   department                  Department           @relation(fields: [departmentId], references: [id])
   departmentId                Int
-  prerequisites               PrerequisiteGroup[]  @relation(name: "CoursePrerequisites")
-  postrequisiteGroups         PrerequisiteGroup[]  @relation(name: "CoursePostrequisites")
+  prerequisites               Json
   sections                    Section[]
   programsAppearingIn         MapCourseProgram[]
   electivePackagesAppearingIn ElectivePackage[]
   MapCourseStudyPlan          MapCourseStudyPlan[]
 }
 
-model PrerequisiteGroup {
-  id               Int      @id @default(autoincrement())
-  groupCourses     Course[] @relation(name: "CoursePrerequisites")
-  dependantCourses Course[] @relation(name: "CoursePostrequisites")
-}
 
 model Section {
   id           Int               @id @default(autoincrement())

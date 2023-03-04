@@ -1,0 +1,103 @@
+.auth-navbar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    display: flex;
+    justify-content: space-between;
+    background: var(--header-gradient);
+    padding: 0 1rem;
+    height: 4rem;
+}
+
+.auth-navbar .nav-links {
+    display: flex;
+    flex-grow: 1;
+    flex-direction: row;
+    column-gap: 1.5rem;
+}
+
+.auth-navbar .home-button {
+    color: white;
+    padding: 0.5rem 0.75rem;
+}
+
+.auth-navbar .home-button:hover {
+}
+
+.auth-navbar .home-button svg {
+    width: 30px;
+    height: 30px;
+}
+
+.auth-navbar nav > ul {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: center;
+    column-gap: 1rem;
+    height: 100%;
+}
+
+.auth-navbar nav a {
+    color: white;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+.auth-navbar a.current-tab {
+    padding-bottom: 0.25rem;
+    border-bottom: 3px solid white;
+}
+
+
+.auth-navbar .nav-user {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    column-gap: 0.75rem;
+    padding: 1rem 0;
+}
+
+.auth-navbar .nav-icon-button {
+    padding: 0;
+    color: white;
+}
+
+.auth-navbar .nav-icon-button svg {
+    width: 20px;
+    height: 20px;
+    padding: 0.5rem;
+}
+
+
+.auth-navbar .user-profile {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    column-gap: 0.75rem;
+    padding: 1rem 0;
+}
+
+.auth-navbar .user-profile svg {
+    color: white;
+    width: 30px;
+    height: 30px;
+}
+
+.auth-navbar .user-text {
+    display: flex;
+    flex-direction: column;
+    row-gap: 0.1rem;
+    color: white;
+    font-weight: bold;
+}
+
+.auth-navbar .user-text h3 {
+    font-size: 1rem;
+}
+
+.auth-navbar .user-text p {
+    font-size: 0.75rem;
+}

@@ -2,7 +2,7 @@
   "name": "massar",
   "type": "module",
   "version": "1.0.0",
-  "description": "Course Schedule Planner​",
+  "description": "Course Schedule Planner",
   "main": "src/main.ts",
   "scripts": {
     "dev": "nodemon --exec ts-node-esm ./src/main.ts",
