@@ -3,6 +3,7 @@ import {useRouter} from "next/router.js";
 import {API_URL} from "@/constants";
 import {UserContext} from "@/contexts/UserContext";
 import {SpinnerOverlay} from "@/components/common/ui/SpinnerOverlay/SpinnerOverlay";
+import styles from "@/styles/LoginPage.module.css";
 
 export default function LoginPage() {
     const [state, setState] = useState({
@@ -11,7 +12,7 @@ export default function LoginPage() {
         loading: false,
         error: "",
     });
-    const router = useRouter()
+    const router = useRouter();
     const userContext = useContext(UserContext);
 
     useEffect(() => {
@@ -43,16 +44,16 @@ export default function LoginPage() {
         }
     }
 
-    return <div className="login-page">
+    return <div className={styles.loginPage}>
         {state.loading && <SpinnerOverlay></SpinnerOverlay>}
-        <div className="intro-pane">
-            <div className="title-div">
+        <div className={styles.introPane}>
+            <div className={styles.titleDiv}>
                 <h1>Welcome to Massar</h1>
                 <p>Plan your semesters ahead of time and keep track of your graduation date.</p>
             </div>
-            <img src={"logo.svg"} alt="App Logo" className="logo"/>
+            <img src="/logo.svg" alt="App Logo" className="logo"/>
         </div>
-        <div className="form-pane">
+        <div className={styles.formPane}>
             <form onSubmit={(event) => login(event)}>
                 <h2>Login</h2>
                 <div className="input-label-div">
@@ -67,7 +68,7 @@ export default function LoginPage() {
                            autoComplete={"current-password"} required
                            onChange={(e) => setState({...state, password: e.target.value})}/>
                 </div>
-                <div className="button-div">
+                <div className={styles.buttonDiv}>
                     <p className="error">{state.error}</p>
                     <button type="submit" className="main-button">Login</button>
                 </div>
