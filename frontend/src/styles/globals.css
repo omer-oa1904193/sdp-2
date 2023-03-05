@@ -38,17 +38,10 @@ form input, form select {
     border: 1px solid gray;
 }
 
-<<<<<<< HEAD
-@media (prefers-color-scheme: light) {
-  html {
-    color-scheme: light;
-  }
-=======
 .input-label-div {
     display: flex;
     flex-direction: column;
     row-gap: 0.5rem;
->>>>>>> eed041988f76539bb5db16e63ccf65dfb9fb2793
 }
 
 .main-button {
