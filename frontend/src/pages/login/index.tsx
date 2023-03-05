@@ -3,7 +3,7 @@ import {useRouter} from "next/router.js";
 import {API_URL} from "@/constants";
 import {UserContext} from "@/contexts/UserContext";
 import {SpinnerOverlay} from "@/components/common/ui/SpinnerOverlay/SpinnerOverlay";
-import styles from "@/styles/LoginPage.module.css";
+import styles from "@/pages/login/LoginPage.module.css";
 
 export default function LoginPage() {
     const [state, setState] = useState({
