@@ -1,0 +1,42 @@
+[
+  {
+    "id": 1,
+    "email": "erradi@qu.edu.qa",
+    "password": "$2b$12$lrWlpyt2UOaU2B8zGVZAoeZbnZpB/TvMFsOJkIY0982HZDDKNqUcu",
+    "firstName": "Abdelkarim",
+    "lastName": "Erradi",
+    "role": "Program Coordinator"
+  },
+  {
+    "id": 2,
+    "email": "rand@qu.edu.qa",
+    "password": "$2b$12$wqobyqe/PSbTVmrNQjAebOdInxcmG6wzUYwi1Qroiwpdaf8NNWtr2",
+    "firstName": "Rand",
+    "lastName": "elshorafa",
+    "role": "Academic Advisor"
+  },
+  {
+    "id": 3,
+    "email": "oa1904193@qu.edu.qa",
+    "password": "$2b$12$bhEYyDMqHEyiFvn3y2IjHeq7RwvPRb4p1urUi2QxaJRDSe/9Pqyhy",
+    "firstName": "Omer",
+    "lastName": "Ahmed",
+    "role": "Student",
+    "quId": "201904193",
+    "enrollmentTerm": "Fall",
+    "enrollmentYear": 2019,
+    "advisor": 2
+  },
+  {
+    "id": 4,
+    "email": "th1904453@qu.edu.qa",
+    "password": "$2b$12$bhEYyDMqHEyiFvn3y2IjHeq7RwvPRb4p1urUi2QxaJRDSe/9Pqyhy",
+    "firstName": "Taimoor",
+    "lastName": "Hussain",
+    "role": "Student",
+    "quId": "201904453",
+    "enrollmentTerm": "Fall",
+    "enrollmentYear": 2019,
+    "advisor": 2
+  }
+]
