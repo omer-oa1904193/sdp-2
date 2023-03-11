@@ -1,7 +1,7 @@
 import {useRef} from "react";
 import "./Dialogue.css"
 
-export function Dialogue({children, isOpen, setOpen, title}) {
+export function Dialogue({children, isOpen, setOpen, title}: {children: React.ReactNode, isOpen: boolean, setOpen: (isOpen: boolean) => void, title: String}) {
     const dialog = useRef(null)
     if (!isOpen)
         return;
