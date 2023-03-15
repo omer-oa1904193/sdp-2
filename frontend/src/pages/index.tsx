@@ -1,4 +1,4 @@
-import DashBoard from "./DashBoard/DashBoardPage";
+import DashBoard from "./dashboard";
 
 export default function HomePage() {
     return (
