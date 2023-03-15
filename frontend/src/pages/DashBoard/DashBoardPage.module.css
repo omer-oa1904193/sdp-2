@@ -12,6 +12,12 @@
     font-weight: 600;
 }
 
+.dashboard-page h2 {
+    font-size: 1.5rem;
+    color: #888888;
+    font-weight: 600;
+}
+
 .dashboard-page .add-study-plan-button {
     padding: 0.7rem 0.75rem;
     font-size: 1rem;

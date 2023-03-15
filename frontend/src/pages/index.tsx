@@ -1,8 +1,9 @@
+import DashBoard from "./DashBoard/DashBoardPage";
 
 export default function HomePage() {
     return (
         <>
-            <p>Home page</p>
+           <DashBoard></DashBoard>
         </>
     )
 }
