@@ -39,15 +39,15 @@ model College {
   id         Int          @id @default(autoincrement())
   name       String
   Department Department[]
-  programs   Program[]
 }
 
 model Department {
-  id        Int      @id @default(autoincrement())
+  id        Int       @id @default(autoincrement())
   name      String
-  college   College  @relation(fields: [collegeId], references: [id])
+  college   College   @relation(fields: [collegeId], references: [id])
   collegeId Int
   Course    Course[]
+  programs  Program[]
 }
 
 model Course {
@@ -63,9 +63,8 @@ model Course {
   sections                    Section[]
   programsAppearingIn         MapCourseProgram[]
   electivePackagesAppearingIn ElectivePackage[]
-  MapCourseStudyPlan          MapCourseStudyPlan[]
+  studyPlansAppearingIn       MapCourseStudyPlan[]
 }
-
 
 model Section {
   id           Int               @id @default(autoincrement())
@@ -120,8 +119,8 @@ model Instructor {
 model Program {
   id                        Int                         @id @default(autoincrement())
   name                      String
-  college                   College                     @relation(fields: [collegeId], references: [id])
-  collegeId                 Int
+  department                Department                  @relation(fields: [departmentId], references: [id])
+  departmentId              Int
   yearCreated               Int
   courses                   MapCourseProgram[]
   studentStudyPlans         StudyPlan[]

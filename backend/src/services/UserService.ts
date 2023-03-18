@@ -1,6 +1,6 @@
 import bcrypt from "bcrypt";
 import jwt from "jsonwebtoken";
-import {userRepo} from "../data/repositories/UserRepo.js";
+import {userRepo} from "../models/repositories/UserRepo.js";
 import {Request, Response} from "express";
 
 class UserService {

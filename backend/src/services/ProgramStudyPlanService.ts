@@ -1,4 +1,4 @@
-import {programStudyPlanRepo} from "../data/repositories/ProgramStudyPlanRepo.js";
+import {programStudyPlanRepo} from "../models/repositories/ProgramStudyPlanRepo.js";
 import {Request, Response} from "express";
 
 class ProgramStudyPlanService {
