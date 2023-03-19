@@ -22,6 +22,7 @@ export default function NavBarPrivate() {
 
             <div className={styles["auth-navbar"]}>
                 <div className={styles["nav-links"]}>
+                
                     <button className={styles["home-button"] + " " + styles["inv-button"] + " " + styles["link-button"]}>
                         <a href="/dashboard">
                             <FontAwesomeIcon icon={faHouse} />
