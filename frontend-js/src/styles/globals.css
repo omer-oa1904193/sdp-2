@@ -1,107 +1,143 @@
+/*Fonts*/
+/*Inter*/
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;800;900&display=swap');
+
+body {
+    font-family: 'Inter', sans-serif;
+}
+
 :root {
-  --max-width: 1100px;
-  --border-radius: 12px;
-  --font-mono: ui-monospace, Menlo, Monaco, 'Cascadia Mono', 'Segoe UI Mono',
-    'Roboto Mono', 'Oxygen Mono', 'Ubuntu Monospace', 'Source Code Pro',
-    'Fira Mono', 'Droid Sans Mono', 'Courier New', monospace;
-
-  --foreground-rgb: 0, 0, 0;
-  --background-start-rgb: 214, 219, 220;
-  --background-end-rgb: 255, 255, 255;
-
-  --primary-glow: conic-gradient(
-    from 180deg at 50% 50%,
-    #16abff33 0deg,
-    #0885ff33 55deg,
-    #54d6ff33 120deg,
-    #0071ff33 160deg,
-    transparent 360deg
-  );
-  --secondary-glow: radial-gradient(
-    rgba(255, 255, 255, 1),
-    rgba(255, 255, 255, 0)
-  );
-
-  --tile-start-rgb: 239, 245, 249;
-  --tile-end-rgb: 228, 232, 233;
-  --tile-border: conic-gradient(
-    #00000080,
-    #00000040,
-    #00000030,
-    #00000020,
-    #00000010,
-    #00000010,
-    #00000080
-  );
-
-  --callout-rgb: 238, 240, 241;
-  --callout-border-rgb: 172, 175, 176;
-  --card-rgb: 180, 185, 188;
-  --card-border-rgb: 131, 134, 135;
+    --primary-color: #267BAA;
+    --on-primary-color: white;
+    --secondary-color: #FFDD9B;
+    --on-secondary-color: white;
+    --page-gradient: linear-gradient(120deg, var(--primary-color) 0%, var(--secondary-color) 100%);
+    --header-gradient: linear-gradient(90deg, var(--primary-color) 0%, #D7CB9E 100%);
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --foreground-rgb: 255, 255, 255;
-    --background-start-rgb: 0, 0, 0;
-    --background-end-rgb: 0, 0, 0;
-
-    --primary-glow: radial-gradient(rgba(1, 65, 255, 0.4), rgba(1, 65, 255, 0));
-    --secondary-glow: linear-gradient(
-      to bottom right,
-      rgba(1, 65, 255, 0),
-      rgba(1, 65, 255, 0),
-      rgba(1, 65, 255, 0.3)
-    );
-
-    --tile-start-rgb: 2, 13, 46;
-    --tile-end-rgb: 2, 5, 19;
-    --tile-border: conic-gradient(
-      #ffffff80,
-      #ffffff40,
-      #ffffff30,
-      #ffffff20,
-      #ffffff10,
-      #ffffff10,
-      #ffffff80
-    );
-
-    --callout-rgb: 20, 20, 20;
-    --callout-border-rgb: 108, 108, 108;
-    --card-rgb: 100, 100, 100;
-    --card-border-rgb: 200, 200, 200;
-  }
+.inv-button {
+    background: none;
+    border: none;
 }
 
-* {
-  box-sizing: border-box;
-  padding: 0;
-  margin: 0;
+.inv-button:hover {
+    cursor: pointer;
 }
 
-html,
-body {
-  max-width: 100vw;
-  overflow-x: hidden;
+.link-button a {
+    color: inherit;
 }
 
-body {
-  color: rgb(var(--foreground-rgb));
-  background: linear-gradient(
-      to bottom,
-      transparent,
-      rgb(var(--background-end-rgb))
-    )
-    rgb(var(--background-start-rgb));
+.link-button :hover {
+    text-decoration: none;
 }
 
-a {
-  color: inherit;
-  text-decoration: none;
+form input, form select {
+    padding: 1rem 0.8rem;
+    border-radius: 8px;
+    border: 1px solid gray;
 }
 
-@media (prefers-color-scheme: dark) {
-  html {
-    color-scheme: dark;
-  }
+.input-label-div {
+    display: flex;
+    flex-direction: column;
+    row-gap: 0.5rem;
+}
+
+.main-button {
+    padding: 1.25rem 1rem;
+    background-color: var(--primary-color);
+    border-radius: 8px;
+    border: none;
+    color: var(--on-primary-color);
+    font-size: 1.5rem;
+    font-weight: bold;
+}
+
+.main-button:hover {
+    cursor: pointer;
+}
+
+.overlay {
+    position: fixed;
+    display: flex;
+    justify-content: center;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(0, 0, 0, 0.05);
+    z-index: 2;
+}
+
+.divider {
+    border: 1px solid white;
+
+}
+
+.completed-course {
+    background-color: #61C975;
+}
+
+.major-course {
+    background-color: #62B4FA;
+}
+
+.major-supporting {
+    background-color: #C16DB9;
+}
+
+
+.major-elective {
+    background-color: #FFA245;
+}
+
+.ccp-course {
+    background-color: #DAAE6B;
+}
+
+.college-requirement {
+    background-color: #C96161;
+}
+
+.page-with-header {
+    margin-top: 4rem;
+}
+
+.styled-scrollbars {
+    /* Foreground, Background */
+    /*noinspection CssUnknownProperty*/
+    scrollbar-color: darkgray whitesmoke;
+}
+
+.styled-scrollbars::-webkit-scrollbar {
+    width: 10px; /* Mostly for vertical scrollbars */
+    height: 10px; /* Mostly for horizontal scrollbars */
+}
+
+.styled-scrollbars::-webkit-scrollbar-thumb { /* Foreground */
+    background: lightgray;
+    border-radius: 5px;
+}
+
+.styled-scrollbars::-webkit-scrollbar-thumb:active { /* Foreground */
+    background: darkgray;
+}
+
+.styled-scrollbars::-webkit-scrollbar-track { /* Background */
+    background: whitesmoke;
+    border-radius: 5px;
+}
+
+@keyframes flash-red {
+    to {
+        background-color: #cc0000;
+    }
+}
+
+.inv-link {
+    text-decoration: none;
+    color: black;
 }
