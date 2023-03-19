@@ -10,7 +10,7 @@ export default function DashBoard() {
       <section>
         <h1>Welcome</h1>
       </section>
-
+  
 
       <section className="study-plans">
         <button onClick={() => (true)} className="main-button add-study-plan-button">

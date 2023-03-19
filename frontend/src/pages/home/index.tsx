@@ -1,6 +1,6 @@
 import { useRouter } from "next/router";
 import { useEffect, useContext } from "react";
-import { UserContext } from "../contexts/UserContext";
+import { UserContext } from "../../contexts/UserContext";
 
 const HomePage: React.FC = () => {
   const router = useRouter();
