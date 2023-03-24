@@ -6,7 +6,9 @@
   "main": "src/main.ts",
   "scripts": {
     "dev": "nodemon --exec ts-node-esm ./src/main.ts",
-    "test": "echo \"Error: n test specified\" && exit 1"
+    "test": "echo \"Error: n test specified\" && exit 1",
+    "make-migrations": " node  --experimental-specifier-resolution=node --loader ts-node/esm ./node_modules/.bin/mikro-orm migration:create",
+    "migrate": " node  --experimental-specifier-resolution=node --loader ts-node/esm ./node_modules/.bin/mikro-orm migration:up"
   },
   "author": "",
   "license": "ISC",
@@ -23,6 +25,9 @@
     "zod": "^3.19.1"
   },
   "devDependencies": {
+    "@mikro-orm/cli": "^5.6.15",
+    "@mikro-orm/migrations": "^5.6.15",
+    "@mikro-orm/seeder": "^5.6.15",
     "@swc/core": "^1.3.36",
     "@swc/helpers": "^0.4.14",
     "@types/bcrypt": "^5.0.0",
@@ -37,6 +42,9 @@
     "typescript": "^4.9.5"
   },
   "mikro-orm": {
-    "useTsNode": true
+    "useTsNode": true,
+    "configPaths": [
+      "./src/models/mikro-orm.config.ts"
+    ]
   }
 }
