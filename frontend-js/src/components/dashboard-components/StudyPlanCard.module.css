@@ -1,0 +1,35 @@
+.study-plan-card {
+    display: flex;
+    flex-direction: column;
+    box-shadow: rgba(111, 111, 111, 0.267) 0 5px 5px;
+    padding: 1.5rem 1rem;
+    border-radius: 7px;
+    row-gap: 0.2rem;
+    transition: all 0.1s ease-in-out;
+  }
+  
+  .study-plan-card:hover {
+    transform: scale(1.02);
+    box-shadow: rgba(111, 111, 111, 0.5) 0 8px 10px;
+  }
+
+.study-plan-card img {
+    width: 350px;
+    text-decoration: none;
+
+}
+
+.study-plan-card h3 {
+    color: #B1B1B1;
+    font-weight: 600;
+}
+
+.study-plan-card h4 {
+    color: #B1B1B1;
+}
+
+.study-plan-card .image-wrapper {
+    background-color: #EFEFEF;
+    border-radius: 7px;
+    padding: 1rem;
+}

@@ -3,13 +3,12 @@ import Box from '@mui/material/Box';
 import Paper from '@mui/material/Paper';
 import NavBarAuth from '../../components/nav-bars/nav-bar-auth'
 import styles from "./DashboardPage.module.css";
+import StudyPlanCard from "../../components/dashboard-components/studyPlanCard"
 
 const Dashboard = () => {
     return (
         <>
-               {/* <div className={styles["dashboard-page"]}></div> */}
-       
-               <Box sx={{ position: 'relative', backgroundColor: '#EFEFEF' }}>
+            <Box sx={{ position: 'relative', backgroundColor: '#EFEFEF' }}>
                 <NavBarAuth />
                 <Box
                     sx={{
@@ -19,28 +18,65 @@ const Dashboard = () => {
                         height: 'calc(100vh - 64px)',
                         top: '64px'
                     }}>
+{/* ///////////////////////// */}
                     <Box
                         sx={{
                             display: 'flex',
-                            flexWrap: 'wrap',
+                            flexDirection: 'column', 
                             width: '75%',
-                            height: '100%',
-                            flexDirection: 'column',
-                            '& > :not(style)': {
-                                mt: 3,
-                                mr: 0,
-                                mb: 1,
-                                ml: 3,
-                                flex: '1 1 auto',
-                                minWidth: 0
-                            }
-                        }}
-                    >
-                         <Paper elevation={0}  sx={{ borderRadius: '10px' }}>
+                        }}>
+                        <Box
+                            sx={{
+                                display: 'flex',
+                                flexWrap: 'wrap',
+                                width: '100%',
+                                height: '100%',
+                                flexDirection: 'column',
+                                '& > :not(style)': {
+                                    mt: 3,
+                                    mr: 0,
+                                    mb: 1,
+                                    ml: 3,
+                                    flex: '1 1 auto',
+                                    minWidth: 0
+                                }
+                            }}
+                        >
+                            <Paper elevation={0} sx={{ borderRadius: '10px' }}></Paper>
+                        </Box>
+                        <Box
+                            sx={{
+                                display: 'flex',
+                                flexWrap: 'wrap',
+                                width: '100%',
+                                height: '100%',
+                                flexDirection: 'column',
+                                '& > :not(style)': {
+                                    mt: 3,
+                                    mr: 0,
+                                    mb: 1,
+                                    ml: 3,
+                                    flex: '1 1 auto',
+                                    minWidth: 0
+                                }
+                            }}
+                        >
+                            <Paper elevation={0} sx={{ borderRadius: '10px' }}>
+                                <Box sx={{
+                                    display: 'flex',
+                                    flexDirection: 'row',
+                                    justifycontent: 'stretch',
+                                    columnGap: '1rem'
 
-                         </Paper>
-                         <Paper elevation={0}  sx={{ borderRadius: '10px' }} />
+                                }}>
+                                    <StudyPlanCard></StudyPlanCard>
+                                    <StudyPlanCard></StudyPlanCard>
+                                    <StudyPlanCard></StudyPlanCard>
+                                </Box>
+                            </Paper>
+                        </Box>
                     </Box>
+{/* ///////////////////////// */}
                     <Box
                         sx={{
                             display: 'flex',
@@ -63,7 +99,7 @@ const Dashboard = () => {
                     </Box>
                 </Box>
             </Box>
-            
+
         </>
     );
 }
