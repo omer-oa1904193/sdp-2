@@ -1,4 +1,4 @@
-class StudentStudyPlanRepo {
+class StudyPlanRepo {
     async getStudentStudyPlans(studentId) {
 
     }
@@ -15,4 +15,4 @@ class StudentStudyPlanRepo {
     }
 }
 
-export const studentStudyPlanRepo = new StudentStudyPlanRepo();
+export const studentStudyPlanRepo = new StudyPlanRepo();

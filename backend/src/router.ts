@@ -3,6 +3,7 @@ import {authMiddleware} from "./middleware/authMiddleware.js";
 import UserService from "./services/UserService.js";
 import {adminService} from "./services/AdminService.js";
 
+
 export const router = express.Router();
 
 router.post("/sessions/", UserService.login);

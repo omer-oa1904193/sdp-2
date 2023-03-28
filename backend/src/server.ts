@@ -3,10 +3,11 @@ import morgan from "morgan";
 import {router} from "./router.js";
 import {MikroORM} from "@mikro-orm/core";
 import {mikroOrmConfig} from "./models/mikro-orm.config.js";
+import {attachOrmEntityManagerMiddleware} from "./middleware/attachOrmEntityManagerMiddleware.js";
 
 export const server = express();
 server.use(morgan("tiny"));
-server.use("/api", router);
+server.use("/api", attachOrmEntityManagerMiddleware, router);
 
-const orm = await MikroORM.init(mikroOrmConfig);
+export const orm = await MikroORM.init(mikroOrmConfig);
 

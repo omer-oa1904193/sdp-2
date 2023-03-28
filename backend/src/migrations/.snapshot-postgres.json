@@ -812,8 +812,8 @@
           "nullable": false,
           "mappedType": "integer"
         },
-        "username": {
-          "name": "username",
+        "email": {
+          "name": "email",
           "type": "varchar(255)",
           "unsigned": false,
           "autoincrement": false,
@@ -830,8 +830,8 @@
           "nullable": false,
           "mappedType": "string"
         },
-        "type": {
-          "name": "type",
+        "role": {
+          "name": "role",
           "type": "text",
           "unsigned": false,
           "autoincrement": false,
@@ -844,8 +844,8 @@
           ],
           "mappedType": "enum"
         },
-        "university_id": {
-          "name": "university_id",
+        "name": {
+          "name": "name",
           "type": "varchar(255)",
           "unsigned": false,
           "autoincrement": false,
@@ -853,8 +853,8 @@
           "nullable": true,
           "mappedType": "string"
         },
-        "name": {
-          "name": "name",
+        "university_id": {
+          "name": "university_id",
           "type": "varchar(255)",
           "unsigned": false,
           "autoincrement": false,
@@ -892,10 +892,10 @@
       "indexes": [
         {
           "columnNames": [
-            "username"
+            "email"
           ],
           "composite": false,
-          "keyName": "user_username_unique",
+          "keyName": "user_email_unique",
           "primary": false,
           "unique": true
         },

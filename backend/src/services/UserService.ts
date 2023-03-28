@@ -1,7 +1,7 @@
 import bcrypt from "bcrypt";
 import jwt from "jsonwebtoken";
-import {userRepo} from "../models/repositories/UserRepo.js";
 import {Request, Response} from "express";
+import {UserRepo} from "../models/repositories/UserRepo.js";
 
 class UserService {
     async login(req: Request, res: Response) {
@@ -11,7 +11,7 @@ class UserService {
             res.status(400).send({details: "Authentication credentials were not provided"});
             return;
         }
-
+        const userRepo = new UserRepo(req.em);
         const user = await userRepo.findUser(body.email);
 
         if (user && await bcrypt.compare(body.password, user.password)) {

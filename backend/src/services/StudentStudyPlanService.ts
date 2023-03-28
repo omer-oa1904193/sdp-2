@@ -1,4 +1,4 @@
-import {studentStudyPlanRepo} from "../models/repositories/StudentStudyPlanRepo.js";
+import {studentStudyPlanRepo} from "../models/repositories/StudyPlanRepo.js";
 import {Request, Response} from "express";
 import fs from "fs-extra";
 
