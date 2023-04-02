@@ -1,0 +1,16 @@
+[
+  {
+    "id": 1,
+    "name": "Computer Science",
+    "department": 21,
+    "college": "College of Engineering",
+    "yearCreated": 2021
+  },
+  {
+    "id": 2,
+    "name": "Computer Engineering",
+    "department": 21,
+    "college": "College of Engineering",
+    "yearCreated": 2021
+  }
+]
