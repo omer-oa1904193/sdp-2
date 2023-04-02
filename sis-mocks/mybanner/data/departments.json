@@ -1,0 +1,199 @@
+[
+  {
+    "id": 1,
+    "name": "Arabic for Non Speakers",
+    "college": 1,
+    "code": "ARNS"
+  },
+  {
+    "id": 2,
+    "name": "Arabic",
+    "college": 1,
+    "code": "ARAB"
+  },
+  {
+    "id": 3,
+    "name": "Biological and Environmental Sciences",
+    "college": 1,
+    "code": "BIOS"
+  },
+  {
+    "id": 4,
+    "name": "Chemistry and Earth Sciences",
+    "college": 1,
+    "code": "CHME"
+  },
+  {
+    "id": 5,
+    "name": "English Literature and Linguistics",
+    "college": 1,
+    "code": "FRLN"
+  },
+  {
+    "id": 6,
+    "name": "History",
+    "college": 1,
+    "code": "HIST"
+  },
+  {
+    "id": 7,
+    "name": "Humanities",
+    "college": 1,
+    "code": "HUMN"
+  },
+  {
+    "id": 8,
+    "name": "International Affairs",
+    "college": 1,
+    "code": "INTA"
+  },
+  {
+    "id": 9,
+    "name": "Mass Communication and Information Science",
+    "college": 1,
+    "code": "MCIS"
+  },
+  {
+    "id": 10,
+    "name": "Mathematics, Statistics and Physics",
+    "college": 1,
+    "code": "MAPH"
+  },
+  {
+    "id": 11,
+    "name": "Social Sciences",
+    "college": 1,
+    "code": "SOCS"
+  },
+  {
+    "id": 12,
+    "name": "Accounting and Information Systems",
+    "college": 2,
+    "code": "ACCT"
+  },
+  {
+    "id": 13,
+    "name": "Finance and Economics",
+    "college": 2,
+    "code": "FINE"
+  },
+  {
+    "id": 14,
+    "name": "Management and Marketing",
+    "college": 2,
+    "code": "MGMT"
+  },
+  {
+    "id": 15,
+    "name": "Psychological Sciences",
+    "college": 3,
+    "code": "PSYS"
+  },
+  {
+    "id": 16,
+    "name": "General Education",
+    "college": 3,
+    "code": "GEDU"
+  },
+  {
+    "id": 17,
+    "name": "Art Education",
+    "college": 3,
+    "code": "ART"
+  },
+  {
+    "id": 18,
+    "name": "General Engineering",
+    "college": 4,
+    "code": "GENG"
+  },
+  {
+    "id": 19,
+    "name": "Chemical Engineering",
+    "college": 4,
+    "code": "CHE"
+  },
+  {
+    "id": 20,
+    "name": "Civil and Architectural Engineering",
+    "college": 4,
+    "code": "CVE"
+  },
+  {
+    "id": 21,
+    "name": "Computer Science and Engineering",
+    "college": 4,
+    "code": "CSE"
+  },
+  {
+    "id": 22,
+    "name": "Electrical Engineering",
+    "college": 4,
+    "code": "EE"
+  },
+  {
+    "id": 23,
+    "name": "Mechanical and Industrial Engineering",
+    "college": 4,
+    "code": "ME"
+  },
+  {
+    "id": 24,
+    "name": "Law",
+    "college": 5,
+    "code": "LAW"
+  },
+  {
+    "id": 25,
+    "name": "Medicine",
+    "college": 6,
+    "code": "MEDC"
+  },
+  {
+    "id": 26,
+    "name": "Public Health",
+    "college": 7
+  },
+  {
+    "id": 27,
+    "name": "Dawa and Islamic Culture",
+    "college": 8,
+    "code": "DIC"
+  },
+  {
+    "id": 28,
+    "name": "Foundation of Islam",
+    "college": 8,
+    "code": "FOI"
+  },
+  {
+    "id": 29,
+    "name": "Islamic Jurisprudence",
+    "college": 8,
+    "code": "ISJ"
+  },
+  {
+    "id": 30,
+    "name": "Islamic Studies",
+    "college": 8,
+    "code": "ISST"
+  },
+  {
+    "id": 31,
+    "name": "English For Foundation",
+    "college": 9,
+    "code": "ENGF"
+  },
+  {
+    "id": 32,
+    "name": "Core Curriculum Program",
+    "college": null,
+    "code": "CCP"
+  },
+  {
+    "id": 33,
+    "name": "Honors Program",
+    "college": null,
+    "code": "HONS"
+  }
+]

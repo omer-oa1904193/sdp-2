@@ -1,0 +1,1143 @@
+[
+  {
+    "id": 1,
+    "code": "CMPS 151",
+    "title": "Programming Concepts",
+    "description": "Problem solving techniques such as pseudo-code of flowcharts, algorithmic thinking. Basic prigramming concepts including: variables, arithmetic and logical operations, input/ output, conditional statements, loops, arrays, functions, and file processing. The laboratory provides a practical programming experience.",
+    "creditHours": 3,
+    "cost": 3000,
+    "category": "Major Course",
+    "department": 21
+  },
+  {
+    "id": 2,
+    "code": "ENGL 202",
+    "title": "English Language I",
+    "description": "This course is designed to help students improve their academic writing ability, and to ensure that they are prepared for the more advanced writing and research skills introduced in English 2. Emphasis is placed on understanding information from authentic texts. Academic vocabulary is taught through inference and context. A collaborative community environment is encouraged, whereby students learn to provide and accept relevant, focused feedback to and from their peers. Throughout the semester, students create and develop an e-portfolio.",
+    "creditHours": 3,
+    "cost": 2700,
+    "category": "CCP Course",
+    "department": 5
+  },
+  {
+    "id": 3,
+    "code": "ECON 112",
+    "title": "Principles of Macroeconomics",
+    "description": "This course focuses on basic macroeconomic concepts such as the production possibility set, the circular flow of income, the national accounts, the components of aggregate spending, a simple model of income determination and international linkages.",
+    "creditHours": 3,
+    "cost": 2700,
+    "department": 13
+  },
+  {
+    "id": 4,
+    "code": "CHEM 101",
+    "title": "General Chemistry I",
+    "description": "Chemistry and Measurement and significant figures. Atoms, molecules and ions. Formulas and names. Stoichiometry and chemical calculations. Chemical reactions. Thermochemistry and enthalpy changes. Quantum theory of the atom and electron configuration. Chemical bonding and molecular geometry.",
+    "creditHours": 3,
+    "cost": 2700,
+    "category": "College Requirement",
+    "department": 4
+  },
+  {
+    "id": 5,
+    "code": "CHEM 103",
+    "title": "Experimental General Chemistry I",
+    "description": "Safety in the Lab. Measurement of mass, volume and density. Identification of an unknown compound. Qualitative analysis of anions. Empirical formula of a compound. Thermal decomposition of hydrates. Stoichiometric determination. Acid-base and redox titrations. Enthalpy of reactions.",
+    "creditHours": 1,
+    "cost": 900,
+    "category": "College Requirement",
+    "department": 4
+  },
+  {
+    "id": 6,
+    "code": "MATH 101",
+    "title": "Calculus I",
+    "description": "Limits and continuity. Differentiation. Applications of derivatives. Integration. Inverse functions. Transcendental functions.",
+    "creditHours": 3,
+    "cost": 2700,
+    "category": "CCP Course",
+    "department": 10
+  },
+  {
+    "id": 7,
+    "code": "CMPS 251",
+    "title": "Objec-Oriented Programming",
+    "description": "Fundamentals of object-oriented programming, object-oriented design, apply object oriented concepts such as abstraction, encapsulation, composition, inheritance, polymorphism, and interfaces. Graphical user interface and event-driven programming; exception handling; additional object-oriented features. The laboratory provides practical object-oriented programming experience.",
+    "creditHours": 4,
+    "cost": 4000,
+    "category": "Major Course",
+    "department": 21
+  },
+  {
+    "id": 8,
+    "code": "ENGL 203",
+    "title": "English Language II Post Foundation",
+    "description": "English 203 is an advanced academic writing course which provides an opportunity for students to learn and practice the skills needed for a guided university-level academic paper related to their field of study. The course emphasizes the development of academic writing skills as well as the ability to read and think critically. Students will learn to use the library and appropriate online resources to find and evaluate sources to inform, develop and support their ideas in term paper writing.",
+    "creditHours": 3,
+    "cost": 2700,
+    "category": "CCP Course",
+    "department": 5
+  },
+  {
+    "id": 9,
+    "code": "PHYS 191",
+    "title": "General Physics For Engineering I",
+    "description": "•Physics and Measurements: Units and Physical Quantities- Vectors- Motion in One Dimension- Motion in Tow Dimension- Horizontal Motion- Vertical Motion- Projectile Motion- Kinematic Equations. •The Laws of Motion: Newton’s First Law- Newton’s Second Law- Some Applications of Newton’s Laws- Circular Motion and its Application. •Work and Energy: Kinetic Energy- Work Done by Constant Force- Work Energy Theorem- Potential Energy- Conservation of Energy- Quantization of Energy. •Linear Momentum and Collision: Linear Momentum- Impulse of Momentum- Collisions- Elastic and Inelastic Collision- The Center of Mass- Motion of a System of Particles. •Rotational Motion: Angular Position, Velocity and Acceleration- Rotational Kinematic Motion Equations- Angular and Linear Quantities- Rotational Kinetic Energy- Calculations of Moments of Inertia- Torque- Work, Power and Energy in Rotational Motion- Rolling Motion of a Rigid Objects. •Angular Momentum: Angular Moment- Angular Moment of a Rotational Objects – Conservation of Angular Moment- The Motion of Gyroscopes and Tops. •Elasticity: Elastic Properties of Solids- Type of Elasticity- The Center of Gravity and Static Equilibrium. •Universal Gravitation: Newton’s Law of Gravitation, Measuring the Gravitational Constant – Free-Fall Acceleration and the Gravitational Force- Kepler’s Law and Motion of Planets- Energy Considerations in Planetary and Satellite. •Waves: Definitions of Waves, Pulse on a Rope, Transverse Wave, Longitudinal Wave, Complex Waves, Earthquake Waves, Amplitude of Waves, Wavelength of Waves, Frequency of Waves. •Temperature: Definition of Temperature, Thermal Equilibrium, Zeroth Law of Thermodynamics, Celsius Scale, Kelvin Scale, Fahrenheit Scale, Thermal Expansion, The Mole, The Ideal Gas Law. •Heat: Definition of Heat, Heat Capacity, Specific Heat, Calorimetry, Phase Change, Energy Transfer Mechanism, First Law of Thermodynamics, Thermal Processes.",
+    "creditHours": 3,
+    "cost": 2700,
+    "category": "College Requirement",
+    "department": 10
+  },
+  {
+    "id": 10,
+    "code": "PHYS 192",
+    "title": "Experimental General Physics For Engineering I",
+    "description": "This is the Lab-based course covering the subject matter of PHYS 191.The course presents an introduction to the methods of experimental physics Emphasis is on developing student’s skills in experimental techniques, data analysis, and scientific reporting of lab work. During the course students execute a series of experiments on Kinematics of motion, kinetic and potential energy, Oscillatory motion, Thermal properties of matter, and Viscosity. The course includes computer based experiments Classical Mechanics.",
+    "creditHours": 1,
+    "cost": 900,
+    "category": "College Requirement",
+    "department": 10
+  },
+  {
+    "id": 11,
+    "code": "MATH 231",
+    "title": "Linear Algebra",
+    "description": "This course introduces the basic concepts of linear algebra, including elementary matrices, solutions of linear systems, vector spaces and subspaces, determinants, eigenvalues and eigenvectors, linear transformations.",
+    "creditHours": 3,
+    "cost": 2700,
+    "category": "College Requirement",
+    "department": 10
+  },
+  {
+    "id": 12,
+    "code": "MATH 102",
+    "title": "Calculus II",
+    "description": "Applications of the integral. Techniques of integration. Sequences and infinite series. Power series. Taylor series. Parametric equations and polar coordinates.",
+    "creditHours": 3,
+    "cost": 2700,
+    "category": "CCP Course",
+    "department": 10
+  },
+  {
+    "id": 13,
+    "code": "CMPS 303",
+    "title": "Data Structures",
+    "description": "Fundamental data structures and algorithms and their efficient implementation and application to problem solving. Linked lists, stacks, queues, hash tables, trees and graphs. Develop and analyze iterative and recursive algorithms such as searching and storing algorithms. The laboratory provides practical experience with data structures and algorithms.",
+    "creditHours": 4,
+    "cost": 4000,
+    "category": "Major Course",
+    "department": 21
+  },
+  {
+    "id": 14,
+    "code": "CMPS 205",
+    "title": "Discrete Structures for Computing",
+    "description": "Introduction to the elements of mathematics applicable to the computing field. Logic and methods of proof; logic gates; Boolean algebra and minimization; set theory; relations and functions; sequences and sums; induction; numbering systems and combinatorics.",
+    "creditHours": 3,
+    "cost": 3000,
+    "category": "Major Course",
+    "department": 21
+  },
+  {
+    "id": 15,
+    "code": "CMPS 200",
+    "title": "Computer Ethics",
+    "description": "Overview of computing ethics and practice. Philosophical ethical theory and morality; codes ethics and professional practice; cyber and computer crimes; whistle blowing; privacy and freedom of expression; legal and ethical issues; intellectual property and rights; safety-critical program development; ethics and the market place.",
+    "creditHours": 1,
+    "cost": 1000,
+    "category": "Major Course",
+    "department": 21
+  },
+  {
+    "id": 16,
+    "code": "PHYS 194",
+    "title": "Experimental General Physics for Engineering II",
+    "description": "This is the Lab course covering the subject matter of PHYS 193. The course presents an introduction to the methods of experimental physics. Emphasis is on experimental, data analysis, and written presentation skills of lab work. During the course students execute a series of experiments on electrostatic fields, Magnetic fields, Induction, DC circuits, and AC circuits.",
+    "creditHours": 1,
+    "cost": 900,
+    "category": "College Requirement",
+    "department": 10
+  },
+  {
+    "id": 17,
+    "code": "PHYS 193",
+    "title": "General Physics For Engineering II",
+    "description": "Electrostatics: Electric charges, atomic structure, charging and induction, Coulomb’s law, the electric field and lines of force, Gauss’s law, potential and potential energy, capacitors, stored energy in capacitors. The Electric Current: Resistors, electromotive force. Magnetic Properties of Matter: Magnetic material, molecular theory of magnetism, magnetization and magnetic intensity, ferromagnetic, hysteresis. Magnetic Fields and Magnetic Forces: Magnetism and magnetic fields, magnetic flux, motion of charged particles in magnetic fields, force on a conductor, torques on current loops, Biot-Savart law, force between parallel conductors, Ampere’s law, motional electromotive force, Faraday’s law, Lenz’s law, self and mutual inductance, energy associated with inductors. Light: Nature of light, sources of light, light waves and their speed, the laws of reflection and refraction of light, absorption and illumination. Wave Phenomena: Interference, diffraction, polarization of light.",
+    "creditHours": 3,
+    "cost": 2700,
+    "category": "College Requirement",
+    "department": 10
+  },
+  {
+    "id": 18,
+    "code": "ARAB 100",
+    "title": "Arabic Language I",
+    "description": "The course aims to provide students the important skills to communicate in Arabic; listening, speaking and reading, with attention to writing skills in relation to each. This is done through content that includes a variety of topics related to Contemporary Arabic, through deep analysis of linguistics and literary texts. The course has been introduced in an interactive learning environment based on: 1) student activities, 2) Developing student skills, 3) learning and collaborative methods, 4) Communication skills for self-expression and ideas in different ways, 5) Solving problems through critical thinking skills and creativity, and 6) The absorption of ideas in different contexts. The assessment process uses a variety of tools to measure the attainment of student learning outcomes.",
+    "creditHours": 3,
+    "cost": 2400,
+    "category": "CCP Course",
+    "department": 2
+  },
+  {
+    "id": 19,
+    "code": "CMPS 323",
+    "title": "Design and Analysis of Algorithms",
+    "description": "Analysis, design, and efficiency of algorithms illustrated by a comprehensive exposure to fundamental algorithms and various adopted techniques to solve different types of problems. Analysis of sorting, searching, and other algorithms; designing algorithms using techniques for problem-solving such as greedy methods, divide-and-conquer, backtracking, dynamic programming, and branch-and-bound techniques; complexity of algorithms.",
+    "creditHours": 3,
+    "cost": 3000,
+    "category": "Major Course",
+    "department": 21
+  },
+  {
+    "id": 20,
+    "code": "CMPS 351",
+    "title": "Fundamentals of Database Systems",
+    "description": "Analysis, design, and efficiency of algorithms illustrated by a comprehensive exposure to fundamental algorithms and various adopted techniques to solve different types of problems. Analysis of sorting, searching, and other algorithms; designing algorithms using techniques for problem-solving such as greedy methods, divide-and-conquer, backtracking, dynamic programming, and branch-and-bound techniques; complexity of algorithms.",
+    "creditHours": 4,
+    "cost": 4000,
+    "category": "Major Course",
+    "department": 21
+  },
+  {
+    "id": 21,
+    "code": "CMPE 263",
+    "title": "Computer Architecture and Organization I",
+    "description": "Higher-level concepts in computer architecture. Data representation; classic components of a computer; performance measures for computers; CPU types, design, organization, instruction-level description; processor programming, register transfer languages, addressing modes, assembly language; main and cache memory, caching techniques.",
+    "creditHours": 3,
+    "cost": 3000,
+    "category": "Major Course",
+    "department": 21
+  },
+  {
+    "id": 22,
+    "code": "ARAB 200",
+    "title": "Arabic Language II",
+    "description": "The course aims at enabling the student to master the skill of the Arabic writing, and scientific and professional communication. These aims will be realized by the course content, which combines the basics of the language and linguistic rules to regulate the methods of writing, and experience on the skills of the Arabic writing in the following forms: 1) Functionally and creatively, 2) Traditionally and contemporary, and 3) Descriptively and analytically. Furthermore, the course aims at handling written problems by self-learning and collaborative environments that develop creative skill, dialogue, discussion, and critical thinking. It will also promote methods of written expression toward both the self and career, including help in the acquisition of knowledge, and building cultural awareness and good citizenship. The performance of the student will be evaluated through the various assessment tools that focus on the students’ writing skills, in order to achieve the desired learning outcomes.",
+    "creditHours": 3,
+    "cost": 2400,
+    "category": "CCP Course",
+    "department": 2
+  },
+  {
+    "id": 23,
+    "code": "GENG 200",
+    "title": "Probability and Statistics for Engineers",
+    "description": "Classification of Data. Graphical representation. Arithmetical description. Probability theory, probability of an event and composite events. Addition rule and multiplication rule, independent events. Counting techniques. Random variables and probability distributions. Expected values. Continuous and discrete random variables. Normal distribution. Binomial distribution. Poisson distribution. Joint and marginal probability distributions. Independence of random variables. Covariance and correlation. Random sampling. Unbiased estimates. Statistical intervals and test of hypothesis for a single sample.",
+    "creditHours": 3,
+    "cost": 3000,
+    "category": "College Requirement",
+    "department": 18
+  },
+  {
+    "id": 24,
+    "code": "CMPS 310",
+    "title": "Software Engineering",
+    "description": "Fundamental concepts, principles and techniques for cost-effective engineering of quality software. Software process models, requirements specification, domain analysis, software design and modeling of structural and behavioral aspects of a software system using a common modeling language, implementation, testing and software project management. The laboratory provides practical experience with software engineering and supporting tools.",
+    "creditHours": 4,
+    "cost": 4000,
+    "category": "Major Course",
+    "department": 21
+  },
+  {
+    "id": 25,
+    "code": "CMPE 355",
+    "title": "Data Communi & Comp.Network I",
+    "description": "Concepts and principles underlying data communication networks including TCP/IP protocol suite and OSI model, digital and analog conversions, multiplexing and spread spectrum. Transmission impairments, Ethernet, network layer protocols, IP addressing and submitting, UDP and TCP transport protocols, and application layer protocols. The laboratory provides hands-on experience in designing, simulating, configuring, and troubleshooting small-to-medium size networks",
+    "creditHours": 4,
+    "cost": 4000,
+    "category": "Major Course",
+    "department": 21
+  },
+  {
+    "id": 26,
+    "code": "HIST 121",
+    "title": "History of Qatar",
+    "description": "This course aims at familiarizing students with the history of Qatar through different historical eras, with particular emphasis on the emergence and development of Qatar Emirate during the Ottoman-British rivalry in the Gulf. The course also deals with social, economic and political life during the pre and post oil and Gas era. It examines the socio-political and economic developments that took place in the country covering the period of his Highness, Sheikh Hamad Ben Khalifa Al Thani.",
+    "creditHours": 3,
+    "cost": 2400,
+    "category": "CCP Course",
+    "department": 6
+  },
+  {
+    "id": 27,
+    "code": "DAWA 111",
+    "title": "Islamic Culture",
+    "description": "This course seeks to strengthen the unifying identity to which all students subscribe, regardless of their academic specialties. The Course adopts a particular educational philosophy that suits its particular nature. All topics are arranged in a unifying, integrative structure that begins with defining key concepts related to culture, science and civilization. Following these preliminary clarifications, an intensive analytical material on issues related to the message of Islam, creation of man, role of the Islamic ummah, and the relationship with the other, will be presented. يسهم مقرر الثقافة الإسلامية في بناء الهوية الجامعة والسمات المشتركة لكل طلبة الجامعة على اختلاف تخصصاتهم ويستجيب لحاجة الطالب إلى تعزيز شخصيته المتوازنة والمتسمة بقدر عال من الفاعلية والإيجابية والثقة بالنفس بما يؤهله لأن يكون عنصرا مصلحا في مجتمعه ومستجيبا بوعي لمختلف التحديات التي تواجهه داخلية أو خارجية وبما يمكنه من الانفتاح البصير والتعامل الواعي مع الآخر. يعتمد المقرر على فلسفة خاصة تتناسب مع خصوصية المقرر وطبيعته وتنتظم مفرداته في وحدة بنائية تكاملية ومتسلسلة تبدأ بتحرير مفاهيم مفتاحية متصلة بالثقافة للتعاطي التحليلي المركز مع قضايا الإنسان ومقاصد خلقه ورسالة الإسلام والأمة الإسلامية والعلاقة مع الأخر",
+    "creditHours": 3,
+    "cost": 2400,
+    "category": "CCP Course",
+    "department": 27
+  },
+  {
+    "id": 28,
+    "code": "GENG 300",
+    "title": "Numerical Methods",
+    "description": "The numerical methods course involves solving engineering problems drawn from all fields of engineering. The numerical methods include: error analysis, roots of nonlinear algebraic equations, solution of linear and transcendental simultaneous equations, matrix and vector manipulation, curve fitting and interpolation, numerical integration and differentiation, solution of ordinary and partial differential equations.",
+    "creditHours": 3,
+    "cost": 3000,
+    "category": "College Requirement",
+    "department": 18
+  },
+  {
+    "id": 29,
+    "code": "CMPS 405",
+    "title": "Operating Systems",
+    "description": "Fundamental concepts of operating system design and implementation. Operating system components, concurrency, process management and inter-process communication, process synchronization, deadlock, scheduling algorithms, memory management, input/output and file systems, protection and security. The laboratory provides practical experience on major operating system concepts.",
+    "creditHours": 4,
+    "cost": 4000,
+    "category": "Major Course",
+    "department": 21
+  },
+  {
+    "id": 30,
+    "code": "CMPS 385",
+    "title": "computer Security",
+    "description": "Fundamentals of information security. Risks and vulnerabilities, controls and protection methods, cryptography, authentication, host-based and network-based security issues, privacy, legal and ethical implications.",
+    "creditHours": 3,
+    "cost": 3000,
+    "category": "Major Course",
+    "department": 21
+  },
+  {
+    "id": 31,
+    "code": "CMPS 350",
+    "title": "Web development Fundamentals",
+    "description": "Concepts, protocols and enabling technologies related to the development of modern web applications. Fundamentals of designing and developing dynamic and interactive web applications using HTML and related standards, scripting languages, client-side and server-side programming. Hands-on Lab to design and develop Web applications.",
+    "creditHours": 3,
+    "cost": 3000,
+    "category": "Major Course",
+    "department": 21
+  },
+  {
+    "id": 32,
+    "code": "CMPS 460",
+    "title": "Machine Learning",
+    "description": "Fundamental principles of machine learning, supervised learning, unsupervised learning, instance-based learning, decision tree induction, Bayesian inference, support vector machines, multi-layer neural networks, and performance evaluation of machine learning algorithms. Hands-on experience with implementing machine learning applications.",
+    "creditHours": 3,
+    "cost": 3000,
+    "department": 21
+  },
+  {
+    "id": 33,
+    "code": "CMPE 480",
+    "title": "Computer Vision",
+    "description": "Introduction to the basic concepts and techniques of computer vision focusing on reconstruction of 3D models from 2D still images and video. Image formation, segmentation; camera calibration, motion and object recognition; use of image processing tools.",
+    "creditHours": 3,
+    "cost": 3000,
+    "department": 21
+  },
+  {
+    "id": 34,
+    "code": "GEOL 101",
+    "title": "Principles of General Geology",
+    "description": "Introduction to geology and earth sciences, evaluation of the geologic thinking and the contribution of Arab & Muslim scientists, position of the Earth in the universe and its relation to other planets, and origin and evolution of Earth. Earth’s layers and their main characteristics, components of the Earth’s crust; crystal minerals and rocks, and geologic structures. Internal and external processes and plate tectonics theory, introduction to historical geology, and synopsis on the geology of Qatar and its natural resources.",
+    "creditHours": 3,
+    "cost": 2700,
+    "department": 4
+  },
+  {
+    "id": 35,
+    "code": "CMPS 399",
+    "title": "Practical Training",
+    "description": "Supervised eight week training period at an institution (Business, industrial, government), intended to provide students with hands-on experience at the workplace. Evaluation is based on: Daily performance, supervisor’s input, student’s report, and a short presentation.",
+    "creditHours": 3,
+    "cost": 3000,
+    "department": 21
+  },
+  {
+    "id": 36,
+    "code": "CMPS 493",
+    "title": "Senior Project I",
+    "description": "The first phase of the computer science capstone project that involves number of students tackling different aspects of applied-research and/or development project requiring significant effort for planning and completion. Team members experience different roles and gain range of diverse technical skills in all phases of the project development. This first part focuses on problem definition, requirements gathering and analysis, defining a high level architecture of the proposed solution, preparation of a project plan for implementing and completing the project, compiling all in a well-formulated interim report and orally presenting it to the examining committee.",
+    "creditHours": 3,
+    "cost": 3000,
+    "category": "Major Course",
+    "department": 21
+  },
+  {
+    "id": 37,
+    "code": "CMPS 307",
+    "title": "Intro. to Proj. Manag. & Entr.",
+    "description": "Introduction to entrepreneurship, and elements of business management with emphasis on managing software and information and communication technologies projects. Concepts of project management; project plan development, progress tracking, staffing, leadership, conflict resolution; organization, costs, risks, control; entrepreneurship, basics of owning and operating a business, business plan development for starting and financing a small business.",
+    "creditHours": 2,
+    "cost": 2000,
+    "category": "Major Supporting",
+    "department": 21
+  },
+  {
+    "id": 38,
+    "code": "CMPS 312",
+    "title": "Mobile Application Development",
+    "description": "Concepts, principles, design strategies, tools and frameworks to design and develop mobile applications on modern mobile platforms that make use of key mobile sensors and system services and connect to online data sources and Web services. Hands on experience in designing and constructing mobile apps using a mainstream development platform and framework such as Android or iOS.",
+    "creditHours": 3,
+    "cost": 3000,
+    "department": 21
+  },
+  {
+    "id": 39,
+    "code": "CMPS 356",
+    "title": "Web Applications Design and Development",
+    "description": "This course focuses on the principles, architectures, and technologies for designing and developing modern web applications using client-side and server-side frameworks, web access to data sources and cloud services, development and integration of web services. It also includes Hands-on lab using latest web development frameworks and tools to design, implement, test, deploy, scale, and secure web applications.",
+    "creditHours": 3,
+    "cost": 3000,
+    "department": 21
+  },
+  {
+    "id": 40,
+    "code": "MATH 211",
+    "title": "Calculus III",
+    "description": "The course include the main frame of mathematical treatment needed for the advanced physics courses of the level of 3rd and 4th years. It also includes ordinary differential equations as well as partial differential equations. It discuss the following special equations Legendre, Bessel, and Legendre polynomialsas well as the special functions of Bessel, Laplace, Poisson, and wave equation.",
+    "creditHours": 3,
+    "cost": 2700,
+    "department": 10
+  },
+  {
+    "id": 41,
+    "code": "CMPS 499",
+    "title": "Senior Project II",
+    "description": "Continuation of the capstone senior project started in CMPS 493 course. It includes detailed design, implementation and testing following a systematic development process while incorporating appropriate design and development principles and standards. This culminates in producing a working solution and a formal final report, and presenting the project achievements including a demo.",
+    "creditHours": 3,
+    "cost": 3000,
+    "category": "Major Course",
+    "department": 21
+  },
+  {
+    "id": 42,
+    "code": "MAGT 101",
+    "title": "Principles of Management",
+    "description": "This course focuses on the fundamental concepts of management including its characteristics, evolution and importance. Topics include the functions performed by managers, such as planning, organizing, directing and controlling. Current issues facing managers will also be discussed to provide students with the necessary skills they can build upon to succeed as future managers.",
+    "creditHours": 3,
+    "cost": 2700,
+    "category": "Major Supporting",
+    "department": 14
+  },
+  {
+    "id": 43,
+    "code": "GEOG 110",
+    "title": "General Geography",
+    "description": "This course will study the principles of general geography: Geographical thinking, branch definition and geographical interests and methodologies; Real facts about the planet Earth - universal and mathematical facts about planet Earth, also its climate and biological environment; humanities and economical geography such as population, type of populations, political group, natural resources and various economic activities.",
+    "creditHours": 3,
+    "cost": 2400,
+    "department": 7
+  },
+  {
+    "id": 44,
+    "code": "MCOM 103",
+    "title": "Media and Society",
+    "description": "This course introduces students to the basics of communication, and provides an overview of the history and development of the various mass media. It deals with issues pertained to the role of communication media in society, and highlights issues of press freedom and social responsibilities of the media; role of media in fostering diversity; and the impact of mass media on society. The course provides a critical evaluation of media content in relation to social and cultural variables of society.",
+    "creditHours": 3,
+    "cost": 2400,
+    "department": 9
+  },
+  {
+    "id": 45,
+    "code": "EDUC 203",
+    "title": "Family Relationships",
+    "description": "This course provides students with a range of knowledge, skills, and positive attitudes towards the family and family relations. It covers the concept of families, their functions and characteristics, the functions of the individual that change with marriage and family life, and family growth in the life cycle. Content includes the family’s role in child-rearing during different developmental stages. The role of family organizations in helping families address marital issues and problems is also addressed",
+    "creditHours": 3,
+    "cost": 2400,
+    "department": 16
+  },
+  {
+    "id": 46,
+    "code": "INTA 206",
+    "title": "Globalization",
+    "description": "Globalization is a popular term that remains poorly understood. For many it is associated with progress and development, while others see it representing rampant capitalism and Westernization. The purpose of this course is to introduce students to key issues in globalization. Through drawing on a variety of key themes, the course will cover globalization’s most important political, economic, social and cultural phenomena, such as transnational social movements, international organizations, political economy and security. This seminar will attempt to answer fundamental concepts such as questions: What is globalization? Is it truly a new? Is it actually global? Does it represent a threat to national sovereignty? What are its implications for domestic policy making?.",
+    "creditHours": 3,
+    "cost": 2400,
+    "department": 8
+  },
+  {
+    "id": 47,
+    "code": "PSYC 201",
+    "title": "Introduction to Psychology",
+    "description": "This course is intended for the scientific study of the behavior of the organism that aims to familiarize students to the history, theories and applications of psychology and its various fields of study as well as the research methods that explain the behavior. This course offers a large number of topics including; research methods in psychology, statistics, biological bases of behavior, learning, memory, sensation and perception, personality, normal and abnormal behaviors. This course is a step for the specialization in the field of psychology",
+    "creditHours": 3,
+    "cost": 2400,
+    "department": 11
+  },
+  {
+    "id": 48,
+    "code": "SOWO 101",
+    "title": "Intro to Social Work",
+    "description": "This course examines the history and philosophy of social welfare, with an emphasis on the social work profession: its mission, philosophy, ethics, values, and diverse fields of intervention with various client populations served in a range of social welfare settings.",
+    "creditHours": 3,
+    "cost": 2400,
+    "department": 11
+  },
+  {
+    "id": 49,
+    "code": "SOCI 120",
+    "title": "Introduction To Sociology",
+    "description": "This course provides a fundamental introduction to the discipline of sociology. In the broadest terms, sociology is the study of society. More specifically, sociology explores the interactions between social institutions, cultures, groups and individuals. It examines how unequal power relations organize the social world, and how those unequal power relations shape individual lives. It also focuses upon how individuals navigate and negotiate the different social and economic contexts in which they live. To accomplish this task, sociology relies on a variety of established theories and methods. This course will introduce students to those theories and methods. It will also provide students with a critical perspective on the application of those ideas in the examination of real- world problems. This course includes field-based projects.",
+    "creditHours": 3,
+    "cost": 2400,
+    "department": 11
+  },
+  {
+    "id": 50,
+    "code": "SOWO 311",
+    "title": "Social and Cultural Diversity",
+    "description": "This course emphasizes social-economic and environmental conditions, such as socio-cultural and political assumptions of race, gender, and ethnicity. Also emphasized is the oppressed and vulnerable populations’ adaptive capabilities and strengths to function under difficult circumstances. Issues of values, ethics, diversity, social and economic justice and populations at risk are infused throughout the course.",
+    "creditHours": 3,
+    "cost": 2400,
+    "department": 11
+  },
+  {
+    "id": 51,
+    "code": "EDUC 200",
+    "title": "Education and Social Problems",
+    "description": "This syllabus was designed to help Qatar University students be aware of the basic educational concepts and their relationships with the local and universal problems and issues directly related to the education field. These issues and problems are considered a foundational introduction to understand education issues and topics at the local, regional and universal levels. It also aims at helping students acquire the skills of recognition, understanding, analysing, and justifying those problems logically and critically. This is in turn will contribute to increasing their analytic abilities and their awareness of the community problems and issues from different domains (culturally, socially, economically, and environmentally, etc.) and in the amount that qualifies them to accept the other. This is of course will be achieved considering the renewed conditions of the Qatari society in addition to the variables and hurried universal innovations. This course also aims on assuring the importance of students’ personal awareness of the importance and role of the educational process in participating in solving the Qatari society problems. It is to be considered that education is a society issue that requires forming an effective partnerships with institutions and many religious, environmental, health, and security parties in the society. All these objectives are to be achieved in a distinguished, educational environment that is open to the local and international realities, an environment that is varied in its ways of presentation, research, analyses and evaluation. The role and importance of the university student in communication and dialogue can’t be overlooked in developing transparency and the spirit and soul. Consequently, this syllabus motivates students to cooperate and participate in suggesting some topics that require group work and offer solutions with peers. This in turn develops their abilities to discuss issues, to have a dialogue, to search, analyse problems and suggest proper solutions. By being involved in all of these processes, their role as effective and productive university students will be enhanced and will assure their loyalty and belongings to their Qatari society, keeps their ethics, values, morals and distinguish their identities, in addition to motivating them to keep their society’s wealth and possessions.",
+    "creditHours": 3,
+    "cost": 2400,
+    "department": 16
+  },
+  {
+    "id": 52,
+    "code": "INTA 203",
+    "title": "Women in Islam",
+    "description": "This course examines the women’s issues related to Islam and contemporary Muslim culture including the role and rights of women in Islam. It will cover the changing roles what women have played throughout Islamic history and the shifting discourse in Muslim communities on the construction of gender identities. This class will challenge western assumptions and interpretations of other societies and provide a framework for in which to understand women in Islam from a variety of perspectives.",
+    "creditHours": 3,
+    "cost": 2400,
+    "department": 8
+  },
+  {
+    "id": 53,
+    "code": "EDUC 320",
+    "title": "Human Development",
+    "description": "This course reviews the literature on child biological, motor, perceptual, cognitive (including intelligence), language, emotional, social, and gender development. Child development history, theory, and research strategies will be discussed, as well as the effect of family, peers, media, and schooling",
+    "creditHours": 3,
+    "cost": 2400,
+    "department": 16
+  },
+  {
+    "id": 54,
+    "code": "ECON 111",
+    "title": "Principles of Microeconomics",
+    "description": "This course focuses on basic microeconomic concepts such as supply and demand, market equilibrium, the concept of elasticity, consumer choice, utility, production and costs, the theory of perfect competition, monopoly and monopolistic competition",
+    "creditHours": 3,
+    "cost": 2700,
+    "department": 13
+  },
+  {
+    "id": 55,
+    "code": "SOCI 263",
+    "title": "Badawi Society",
+    "description": "This course examines Bedouin society, with a strong focus on Bedouin society on the Arabian Peninsula. Students will examine the traditional livelihood of Bedouin nomads, the pastoral mode of production, and the traditional interconnections between these nomads and the villages and towns of the Arabian Peninsula. In the second portion of the course, students will evaluate the the impact of modernization and urbanization upon the Bedouin peoples, changes in the pastoral livelihood, and the intricate relations between Bedouin peoples and the state. This course includes a significant independent research project",
+    "creditHours": 3,
+    "cost": 2400,
+    "department": 11
+  },
+  {
+    "id": 56,
+    "code": "PSYC 206",
+    "title": "Introduction to Social Psychology",
+    "description": "Social Psychology is the scientific study of the way in which people’s thoughts, feelings, and behaviors are influenced by the real or imagined presence of other people. This course will focus on three major categories: (a) thinking about the self and the others,(b) evaluating persons and relationship, and (c) interacting with other people. Thinking about the self. Evaluating persons and relationships involves attitudes, attitude change, prejudice, interpersonal attraction, and close interpersonal power, and groups",
+    "creditHours": 3,
+    "cost": 2400,
+    "department": 11
+  },
+  {
+    "id": 57,
+    "code": "SOCI 363",
+    "title": "Ethnicity",
+    "description": "Ethnicity is typically defined as common identity based upon a presumed or real common heritage, recognized by both the group in question and others in the world. At the same time, however, the concept of ethnicity has a long and mercurial history, and the use of this concept has shifted dramatically over time. In this course, students will explore the history of the concept of ethnicity, examine the long association of ethnicity with minority status, and evaluate the connections between the concept of ethnicity and the concept of race. While the focus of the course will be global, many case studies will be drawn from Qatar and the other Gulf States.",
+    "creditHours": 3,
+    "cost": 2400,
+    "department": 11
+  },
+  {
+    "id": 58,
+    "code": "UNIV 220",
+    "title": "community service learning",
+    "description": "Service Learning is a form of experiential learning that integrates academic study with hands-on meaningful community service activities and structured reflection. This course engages students in a minimum of 40 organized community service hours to meet local community needs and gain a sense of civic responsibility. The course introduces students to the key concepts, characteristics, benefits, and challenges of community service and equips them with the knowledge, skills, and dispositions required to respond to pressing community needs. Students will create an e-portfolio to reflect on their service-learning experience and the impact of civic engagement on themselves, others, and the community.",
+    "creditHours": 3,
+    "cost": 2400,
+    "department": 32
+  },
+  {
+    "id": 59,
+    "code": "PSYC 205",
+    "title": "Social Psychology",
+    "description": "Social Psychology is the scientific study of the way in which people’s thoughts, feelings, and behaviors are influenced by the real or imagined presence of other people. This course will focus on three major categories: (a) thinking about the self and the others,(b) evaluating persons and relationship, and (c) interacting with other people. Thinking about the self. Evaluating persons and relationships involves attitudes, attitude change, prejudice, interpersonal attraction, and close interpersonal power, and groups.",
+    "creditHours": 3,
+    "cost": 2400,
+    "department": 15
+  },
+  {
+    "id": 60,
+    "code": "INTA 102",
+    "title": "Intro to Political Science",
+    "description": "This course aims to provide an overview of political science by examining its major approaches, concepts, theories and subject matter in practice. The course intends to allow students to understand political analysis. The ultimate goal of the course is to offer students a firm conceptual foundation in the discipline so that these questions can be studied in more detail throughout the rest of their academic career.",
+    "creditHours": 3,
+    "cost": 2400,
+    "department": 8
+  },
+  {
+    "id": 61,
+    "code": "INTA 103",
+    "title": "Intro to Inter Relations",
+    "description": "This is an introductory course to topics in international relations. It provides students with: (1) the analytical and theoretical frameworks and vocabularies needed to explore and understand the subject matter of international relations, and (2) case-oriented accounts relating to local, regional and global issues, including, but not limited to, ethnic and religious conflicts, wars, foreign policymaking, diplomacy, democratization and global terrorism.",
+    "creditHours": 3,
+    "cost": 2400,
+    "department": 8
+  },
+  {
+    "id": 62,
+    "code": "HONS 102",
+    "title": "Introduction to Honors (H)",
+    "description": "This course has been specifically created to support students in capitalizing on their honors experience, forming a feeling of community amongst the honors students, and prepare them for life during and after college. This course will allow honors students to have discussions about the realities of the mind, the nature of knowledge, the idea of a university, and how university education can change and influence the future of individuals. The course will acquaint honors students with the college experience by directly involving them in service, scholarship, and leadership endeavors. This course incorporates workshops, practical experiences, and notable guest speakers, which will encourage independent scholarship and collaborative learning.",
+    "creditHours": 3,
+    "cost": 2400,
+    "department": 33
+  },
+  {
+    "id": 63,
+    "code": "PUBH 202",
+    "title": "Health, Behaviour and Society",
+    "description": "This course introduces students to social and behavioral science theories that are relevant to public health. Throughout the course, students will learn to apply those theories to explain how public health problems arise and how they can be successfully addressed. The course will discuss the role of factors such as gender, race/ethnicity and culture on health behaviors and outcomes. The fundamental concepts of inequity and inequality will be addressed",
+    "creditHours": 3,
+    "cost": 2700,
+    "department": 26
+  },
+  {
+    "id": 64,
+    "code": "UNIV 200",
+    "title": "Innovation, Leadership and Civic Engagement",
+    "description": "Innovation, Leadership, and Civic Engagement (UNIV 200) is an interdisciplinary course designed to introduce students to the concept of social entrepreneurship and equip them with the skills needed to create social value and address Sustainable Development Goals. In this project-based course, students from different disciplines work collaboratively to come up with an innovative solution that addresses one or more challenges faced by local or global communities. In the process, students learn about the mechanisms of civic engagement, develop their leadership skills, unlock their creativity and most importantly, learn to think like entrepreneurs.",
+    "creditHours": 3,
+    "cost": 2400,
+    "department": 32
+  },
+  {
+    "id": 65,
+    "code": "SOCI 467",
+    "title": "Globalization",
+    "description": "This course examines ways in which globalization constitutes complex economic, social, cultural and political trends around the world. In addition, it provides an overview of the major social scientific theoretical perspectives applicable to understanding the process of globalization and its connection to economic underdevelopment. The theoretical distinctions and the debate between modernization theorists on the one hand, and dependency and world- system theorists on the other are emphasized. Intrinsic to the above is an elucidation of the development of the world capitalist system and its future in a rapidly changing global context.",
+    "creditHours": 3,
+    "cost": 2400,
+    "department": 11
+  },
+  {
+    "id": 66,
+    "code": "SOWO 361",
+    "title": "Society & Human Rights",
+    "description": "The course discusses social work between the concept universality of human rights and the concept of cultural relativism. The course tries to answer to what extent the universality of human rights conflicts with the concept of cultural relativism regarding the social issues dealt with in the Universal Declaration of Human Right. In general the course tries to answer the following question: how Social Work can utilize human rights documents as they are in the United Nations in dealing with the social issues?",
+    "creditHours": 3,
+    "cost": 2400,
+    "department": 11
+  },
+  {
+    "id": 67,
+    "code": "INTA 101",
+    "title": "Political & Social Thought",
+    "description": "In the last half a millennium Western Europe transformed in radical ways, from individual selfperception to the way the state legitimizes its authority. Most of the changes were unprecedented in human history, and along the way, brought about new philosophical problems that since then have occupied the western world. This course introduces some of the central philosophical problems as well as responds to the course of European transformation and some solutions offered by European philosophers.",
+    "creditHours": 3,
+    "cost": 2400,
+    "department": 8
+  },
+  {
+    "id": 68,
+    "code": "EPSY 205",
+    "title": "Social Psychology",
+    "description": "Social Psychology is the scientific study of the way in which people’s thoughts, feelings, and behaviors are influenced by the real or imagined presence of other people. This course will focus on three major categories: (a) thinking about the self and the others,(b) evaluating persons and relationship, and (c) interacting with other people. Thinking about the self. Evaluating persons and relationships involves attitudes, attitude change, prejudice, interpersonal attraction, and close interpersonal power, and groups.",
+    "creditHours": 3,
+    "cost": 2400,
+    "department": 15
+  },
+  {
+    "id": 69,
+    "code": "SOCI 121",
+    "title": "Introduction to Anthropology",
+    "description": "This course introduces students to the discipline of anthropology. Students will briefly explore the four subfields of anthropology (physical or biological anthropology, linguistic anthropology, archaeology, and sociocultural anthropology). The central focus of this course will be on the last of those subdisciplines. Students will explore the historical development of anthropology, the primary theoretical frameworks it has developed, and the methods anthropologists utilize in the field. Students will also have the opportunity to apply these tools in solving a real-world problem through a field-based project.",
+    "creditHours": 3,
+    "cost": 2400,
+    "department": 11
+  },
+  {
+    "id": 70,
+    "code": "EPSY 201",
+    "title": "Introduction to Psychology",
+    "description": "The course provides students with introductory knowledge and skills about the basic principles, methods, and areas of psychology, such as learning, memory, emotion, perception, physiological, developmental, intellectual, social, and abnormal. The aim of this course is to provide students with a basic overview of psychology as behavioral science and to help them develop a more comprehensives and accurate understanding behavior.",
+    "creditHours": 3,
+    "cost": 2400,
+    "department": 15
+  },
+  {
+    "id": 71,
+    "code": "HIST 222",
+    "title": "The Gulf in Modern Period",
+    "description": "This course is designed to provide the students with the necessary information that would help them understand the historical developments in Gulf countries during the past five centuries, as well as acquaint them with main sources of Gulf history. The course will focus on the political history of the Gulf and the conditions that led to the emergence of Gulf countries.",
+    "creditHours": 3,
+    "cost": 2400,
+    "department": 6
+  },
+  {
+    "id": 72,
+    "code": "HIST 323",
+    "title": "Gulf ‐South Asian Relations in Modern and Contemporary History",
+    "description": "This course is designed to help the students understand the nature of the relationship between the Gulf and South Asia, particularly India, and the economic and social dimensions of this relationship. The students will explore the early contacts beginning with the sixteenth century; commercial exchange; the economic activities associated with pearl trade; Gulf presence in India; and the impact of European colonialism on the relationship between the two regions.",
+    "creditHours": 3,
+    "cost": 2400,
+    "department": 6
+  },
+  {
+    "id": 73,
+    "code": "HIST 421",
+    "title": "The Gulf and the Arab World",
+    "description": "This course is designed to acquaint the students with the relationship between the Gulf countries and the Arab World during the modern period, the evolution of this relationship, and its social, political, and economic dimensions. The course will examine Gulf-Arab relations since the nineteenth century, cultural and educational exchange, Arab migrant labor in the Gulf, the policies of Gulf countries towards nationalist movements in the Arab world, and their position regarding the Arab-Israeli conflict.",
+    "creditHours": 3,
+    "cost": 2400,
+    "department": 6
+  },
+  {
+    "id": 74,
+    "code": "INTA 306",
+    "title": "Gulf Studies",
+    "description": "This course explores the eight political systems located in the oil-rich Arabian Gulf. The course will focus on the clash between tradition and modernity, resurgent Islam and secularism in this unique part of the world.",
+    "creditHours": 3,
+    "cost": 2400,
+    "department": 8
+  },
+  {
+    "id": 75,
+    "code": "BIOL 101",
+    "title": "Biology I",
+    "description": "Biology 101 is the first introductory course for biology majors and minors, covering important biological concepts, including biochemistry, cell structure and function, photosynthesis, cellular respiration, cellular reproduction, genetics, and biotechnology. The laboratory introduces basic laboratory skills such as safety, microscope use, measurement, and reinforces concepts discussed in lecture. There are two hours of lecture and three hours of laboratory per week.",
+    "creditHours": 3,
+    "cost": 2700,
+    "department": 3
+  },
+  {
+    "id": 76,
+    "code": "BIOL 110",
+    "title": "Human Biology",
+    "description": "An introductory course to human biology, it covers principles of structure and function of human body; nutrition & digestion, the circulatory system, the blood, the immune system, respiration, the urinary system, the nervous system, the sense, the skeleton & muscles, the endocrine system. Principles of human genetics, human development and aging. These systems are approached through an understanding of their functioning in the healthful condition followed by examples of the common disease conditions resulting from their dysfunction.",
+    "creditHours": 3,
+    "cost": 2700,
+    "department": 3
+  },
+  {
+    "id": 77,
+    "code": "MATH 105",
+    "title": "Mathematics in Society",
+    "description": "Mathematics in society is a math course that meets the needs of students majoring in non-science undergraduate programs not requiring calculus or discrete mathematics. The course develops students’ mathematical understanding through an engaging and non-traditional design that connects theoretical math curriculum to daily life examples and applications regarding the local context. The course emphasizes topics that effectively and creatively convey the fundamental mathematical concepts to students. Specifically, the content focuses on improving students ‘numerical, statistical and logical reasoning skills through hands on activities, real life scenarios, and computer applications.",
+    "creditHours": 3,
+    "cost": 2700,
+    "department": 10
+  },
+  {
+    "id": 78,
+    "code": "MATH 103",
+    "title": "Intermediate Algebra",
+    "description": "This course is an elementary course which provides the students with the basic concepts and skills about numbers, polynomials and rational expressions along with algebraic operations. Also, it furnishes students with basic facts about relations and functions along with sketching of graphs of certain functions.",
+    "creditHours": 3,
+    "cost": 2700,
+    "department": 10
+  },
+  {
+    "id": 79,
+    "code": "MATH 104",
+    "title": "Basic Geometry and Measures",
+    "description": "Basic Geometry and Measures (Math104) is meant to strengthen the basic concepts of geometry and measures. This course is very helpful in studying different shapes and their measurements. It begins with concepts of length, mass and capacity, estimating and making measurements using standard metric units. It also includes topics about the rectangular coordinates, angle-classification of triangles , polygons and areas, circles, solids. Finally, we focus on trigonometric ratios: sine, cosine tangent, and their inverses.",
+    "creditHours": 3,
+    "cost": 2700,
+    "department": 10
+  },
+  {
+    "id": 80,
+    "code": "GSCN 100",
+    "title": "Science for Life",
+    "description": "“Science for Life” is a general Science course that is designed to meet the needs of students majoring in non-science undergraduate programs. The course develops students’ broad understanding of basic science concepts with an integrative approach of physics, chemistry, environmental sciences, and biology in one course. Students will be engaged in real-life experiences that connects theoretical science to daily life phenomena and applications. The course emphasizes captivating topics that both effectively and creatively convey the fundamental science concepts to students. Specifically, the content focuses on improving students’ skills in areas of scientific reasoning, critical thinking, problem solving and cooperative dialogue through hands-on activities and real-life scenarios. It will also increase students’ self-awareness on scientific issues relevant to their local, regional and global contexts",
+    "creditHours": 3,
+    "cost": 2700,
+    "department": 3
+  },
+  {
+    "id": 81,
+    "code": "PHYS 101",
+    "title": "General Physics I",
+    "description": "Vectors - motion in one dimension - motion in a plane - Newton’s laws - work and energy - potential energy - momentum - rotational motion - dynamics of rotational motion - elasticity - fluid mechanics.",
+    "creditHours": 3,
+    "cost": 2700,
+    "department": 10
+  },
+  {
+    "id": 82,
+    "code": "PHYS 183",
+    "title": "Introduction to General Physics",
+    "description": "This course aims to investigate physical principles encountered in elementary schools. It is algebra and trigonometry-based and covers essential topics from classical and modern Physics, with emphasis on experimental laboratory work. Topics include: Measurements and Units, Classical description of motion in terms of force and energy, States of matter, Elasticity and elastic modulus, Heat and Thermal properties of matter, Electrostatics, Electrodynamics, Elements of Electric Circuits, Magnetostatics, Magnetic effects of electric current, Electromagnetic Induction, Wave Motion, Sound and light, Optics, and Atomic Structure of Matter.",
+    "creditHours": 3,
+    "cost": 2700,
+    "department": 10
+  },
+  {
+    "id": 83,
+    "code": "STAT 101",
+    "title": "Statistics I",
+    "description": "This course covers Basic concepts, Population. Types of data, Sampling methods, Tables and graphs. Descriptive Statistics, Basic probability concepts, Random experiment. Sample space, Rules of probability. Counting techniques. Conditional probability. Independence, Discrete and continuous random variables. Sampling distributions, The Student-t distribution, Point estimation. Confidence intervals for a single population, Testing hypotheses for a single population. For the lab one Statistical software like SPSS, Minitab or Excel are used.",
+    "creditHours": 3,
+    "cost": 2700,
+    "department": 10
+  },
+  {
+    "id": 84,
+    "code": "ARAB 221",
+    "title": "Classical Arabic Poetry I",
+    "description": "Arabic poem in pre-Islamic and the Umayyad eras: The course covers poetry of Pendants (“Mu’allaqat”), tramp and knight poets of the pre-Islamic era. It also addresses the romantic and political poetry during the Umayyad era. The focus in this course is on explaining the structural and conceptual characteristics achieved by poem in both the pre-Islamic and the Umayyad eras. All this is done in an active learing atmosphere, employing various assessment tools (research papers, presentations, tests, etc.) This course aims to enable the student to re-examine the old Arabic poetry, by focusing on the path of transformations witnessed throughout the two eras mentioned above.",
+    "creditHours": 3,
+    "cost": 2400,
+    "department": 2
+  },
+  {
+    "id": 85,
+    "code": "ARAB 326",
+    "title": "Literary Text Analysis",
+    "description": "The purpose of this course is to enable the students apply the modern methods acquired in the Modern Literary Criticism course, which dealt with the literary text analysis, and identify the achieved contributions and failures of such methodologies. The analysis focuses on the historical, social, structural, psychological, semiotic, hermeneutical, and deconstructive approaches to analyze texts. Hence the student becomes familiar with the application of these approaches in the analysis of literary text with emphasis on the applied models. All this is done in an active learing atmosphere, employing various assessment tools (applied presentations on the literary analysis [with a relative weight of up to 10%], and analytical readings of literary texts [10%], then a research paper and tests, etc.)",
+    "creditHours": 3,
+    "cost": 2400,
+    "department": 2
+  },
+  {
+    "id": 86,
+    "code": "ARAB 482",
+    "title": "Contemporary Gulf Literature",
+    "description": "This course aims to introduce contemporary literature in the Arabian Gulf region and identify the technical characteristics of its poetry and prose. The focus is to highlight the complementary relationships between this literature and its counterparts in other Arab countries, whether in terms of aesthetic and artistic values, or in terms of intellectual values ??and issues posed. This course is based on the analysis of examples of contemporary literature in the Gulf region, in light of the modern criticism educational courses and the comparative historical methodology. All this is done in an active learing atmosphere, employing various assessment tools (research paper, presentations and tests, etc.)",
+    "creditHours": 3,
+    "cost": 2400,
+    "department": 2
+  },
+  {
+    "id": 87,
+    "code": "HIST 103",
+    "title": "An Introduction to History",
+    "description": "This history gateway course traces the key themes of history. The course explores the concept and meaning of history. It enables students to develop critical and analytical thinking skills through examination of primary and secondary sources, as well as research and writing processes, which includes different modes of historical writing such as arguments, along with class presentations and discussions. This course covers history of the world before 300 AD.",
+    "creditHours": 3,
+    "cost": 2400,
+    "department": 6
+  },
+  {
+    "id": 88,
+    "code": "HIST 217",
+    "title": "Islamic Civilization",
+    "description": "This course focuses on the concept of civilization, the rise and historical circumstances that helped in establishing the Islamic civilization, its interrelation with the other civilizations, and its contributions to the world culture and heritage. The course deals with the foundation of the Islamic state, its administrative, financial, judicial and social institutions. In addition, it is devoted to examine the social, economic, and intellectual activities of Muslims and their impact on other civilizations up to the 16th century.",
+    "creditHours": 3,
+    "cost": 2400,
+    "department": 6
+  },
+  {
+    "id": 89,
+    "code": "HIST 332",
+    "title": "Medieval Europe,500 to 1400 CE",
+    "description": "This course presents an overview of western European history, from the fall of the Roman Empire through to the Hundred Years’ War. Emphasis is placed on the decline of the Roman Empire; the rise of feudalism and manorialism; the rise of the Papacy; the Commercial Revolution; and the origins of nation states. Course assignments include essay exams, reaction papers, as well as class presentations that emphasize critical thinking, writing and communication skills.",
+    "creditHours": 3,
+    "cost": 2400,
+    "department": 6
+  },
+  {
+    "id": 90,
+    "code": "HIST 334",
+    "title": "Arabian Gulf in Antiquity",
+    "description": "This course introduces basic archaeological knowledge about the Arab Gulf region from pre-history to the Islamic period, benefitting from the archaeological evidence that has emerged during the past five decades due to exploration and excavation projects. It explores the role played by the Arab Gulf societies in trade between Mesopotamia and the East. The course includes field visits to some archaeological sites and institutions in Qatar, such as the Museum of Islamic Arts and Qatar National Museum.",
+    "creditHours": 3,
+    "cost": 2400,
+    "department": 6
+  },
+  {
+    "id": 91,
+    "code": "HIST 336",
+    "title": "Women and Gender in the Ancient Near East",
+    "description": "This course will investigate the history of gender roles, images, and experiences in the social, political, economic and legal context of ancient societies such as Mesopotamia, Ancient Egypt, Persia, Levant, India, China, Ancient Yemen, Greece, Rome, Africa, Latin America and Arabia. Through a topical approach, the emphasis is placed on the variety of ancient women’s experience. Reading material includes translations of primary sources; pictorial and archaeological evidence will likewise be at the center of class discussions.",
+    "creditHours": 3,
+    "cost": 2400,
+    "department": 6
+  },
+  {
+    "id": 92,
+    "code": "HIST 380",
+    "title": "The Making of Modern America",
+    "description": "This course examines the cultural, political, and constitutional origins of the US. It covers the series of revolutionary changes in politics and society between the mid?18th to 19th centuries that took thirteen colonies out of the British Empire, and turned them into an independent nation. Starting with the cultural and political glue that held the British Empire together, the course follows the political and ideological processes that broke apart, ending with the series of political struggles that shaped US identit",
+    "creditHours": 3,
+    "cost": 2400,
+    "department": 6
+  },
+  {
+    "id": 93,
+    "code": "HIST 390",
+    "title": "The Hist of Mode China & Japan",
+    "description": "The social, political and cultural history of twentieth?century China and Japan with a focus on issues of nationalism, revolution, modernity and gender. Using a combination of primary and secondary materials relating to various walks of life, and a range of experiences from shopping to constitutional debates, students will be expected to craft their own interpretations of this fundamental period in Japan and China’s histories. Lectures will introduce important developments and provide a framework for developing strong analytical skills.",
+    "creditHours": 3,
+    "cost": 2400,
+    "department": 6
+  },
+  {
+    "id": 94,
+    "code": "HIST 416",
+    "title": "History of Islamic Arts and Architecture (7th -13th Century)",
+    "description": "This course introduces students to Islamic arts and architecture from the rise of Islam to the 13th century C.E. It discusses the influences of the ancient civilizations on the early Islamic art and architecture, followed by studying examples of numismatics, pottery, ceramic crafts, and other artefacts. It also discusses architectural designs of Islamic buildings, such as mosques, castles, and walls. The course includes field visits to some architectural and archaeological sites and institutions in Qatar, such as museums and historical castles and mosques.",
+    "creditHours": 3,
+    "cost": 2400,
+    "department": 6
+  },
+  {
+    "id": 95,
+    "code": "HIST 432",
+    "title": "Europe Between the Two World Wars 1914‐1945",
+    "description": "This course examines the social, economic, and political causes of both wars; the politics and society of the inter-war period, and the rise of totalitarianism; the impact the wars left on the European continent and their repercussions on the rest of the world.",
+    "creditHours": 3,
+    "cost": 2400,
+    "department": 6
+  },
+  {
+    "id": 96,
+    "code": "GEOG 241",
+    "title": "Geography of Qatar",
+    "description": "This course aims at providing the students with insight into the effective factors in the geography of Qatar, methods of investigation and analysis. Additional goal is to highlight the mutual relationship among the natural, human and economic elements that affects the geography of Qatar and how these various elements interplayed to create unique features of Qatar’s geography The course includes the following topics: - Natural elements which comprises the study of climate, soil, natural habitat and water resources. - Human elements which include the study of population. - Economic elements which focus on the agricultural, gas and oil production ; industrial development; trade; transportation and tourism; analytical study of the future perspective of the industrial development and gas production with some focus on the population crisis and the role of the GCC.",
+    "creditHours": 3,
+    "cost": 2400,
+    "department": 7
+  },
+  {
+    "id": 97,
+    "code": "GEOG 300",
+    "title": "Geography of Arab World",
+    "description": "This course includes an introduction to Arab World. It covers a physical study of the Arab World, introduction to the geographical position and its spatial characteristics, international geopolitical situation, structural geology, topography, climate- regional climate, natural plants and their distribution, as well as soils. It also covers the Economics of the Arab world: Agriculture production, physical and human being elements, biological and water resources, mineral resources, energy sources, geographical distribution of petroleum productions, consumption and trading, industry, transportation, Arabian economic corporations, problems facingthe Arab world and studying some Arab countries.",
+    "creditHours": 3,
+    "cost": 2400,
+    "department": 7
+  },
+  {
+    "id": 98,
+    "code": "ENGL 155",
+    "title": "Introduction to Language",
+    "description": "This is an introduction to the general study of language. The course deals with the origin, nature and function of language as a uniquely human phenomenon. That is, what is common to all human speakers no matter what specific language they speak. Topics such as the structure of language, its role in society, and how it is learned are surveyed. Linguistic phenomena and their links to other disciplines such as artificial intelligence, psychology, society, culture, and brain, among others, are discussed.",
+    "creditHours": 3,
+    "cost": 2400,
+    "department": 5
+  },
+  {
+    "id": 99,
+    "code": "ENGL 156",
+    "title": "Introduction to Literature I",
+    "description": "This course introduces plays and a narrative poem from Shakespeare’s career. Class discussions will involve close analysis of Shakespeare’s language, his culture, and the various moral, political, and aesthetic issues raised in the plays and poetry. The class will favour thematic over chronological order of reading so that students can build on a progressive examination of king and kinship, gender, love, friendship and reciprocal obligation; revenge and moral redemption.",
+    "creditHours": 3,
+    "cost": 2400,
+    "department": 5
+  },
+  {
+    "id": 100,
+    "code": "ENGL 157",
+    "title": "Introduction to Linguistics",
+    "description": "The course introduces students to the basic concepts in phonology, morphology, syntax, and semantics, as well as to some of the other subfields of linguistics, such as psycholinguistics, sociolinguistics and historical linguistics. Data and examples from numerous languages, particularly English and Arabic, are used to illustrate these concepts. The course helps students approach language in a scientific way.",
+    "creditHours": 3,
+    "cost": 2400,
+    "department": 5
+  },
+  {
+    "id": 101,
+    "code": "ENGL 209",
+    "title": "Language and Society",
+    "description": "The aim of this course is to give students a basic understanding of the role language plays in the fabric of society at both macro and micro levels, particularly the unifying the separatist functions. The nature of the course calls for encompassing themes from social psychology, communication, semiotics, pragmatics, and language planning. This eclectic approach is meant to provide students with an overall view of language as a social process and a social product. It is also meant to making students aware of the link between the formal and the functional dimensions in the study of language. The students are exposed to the problems and issues related to language diversity with reference to the Qatari society.",
+    "creditHours": 3,
+    "cost": 2400,
+    "department": 5
+  },
+  {
+    "id": 102,
+    "code": "ENGL 213",
+    "title": "Language and Culture",
+    "description": "The aim of this course is to introduce language as a catalyst in the formulation, maintenance and transmission of culture. The importance of this course stems from the ever diminishing role of local cultures in view of a sweeping process of globalization. Language attrition is approached as a back door to cultural attrition. The course adopts an interdisciplinary approach and draws on backgrounds as diverse as linguistic theory, language teaching methodology, media studies and post-colonial literatures in English. The course stresses the role of language maintenance as a means of transmitting artifacts of culture in the case of indigenous minorities. Reference is made to the call for adopting English as an international lingua franca. Also, the role of education, media, and language policies are studied as means of culture maintenance. Case studies of different language communities are presented. Special reference is made to the Arab world in general and the Qatari society in particular.",
+    "creditHours": 3,
+    "cost": 2400,
+    "department": 5
+  },
+  {
+    "id": 103,
+    "code": "ENGL 233",
+    "title": "Language and Computers",
+    "description": "This course aims at familiarizing the students with the basic relationship between linguistics, computing, and cognitive sciences. Students are introduced to the concepts on natural language processing (NLP), particularly the computational models pertaining to the structure and function of language, its use and its acquisition. Students will also have the chance to study the logic behind many of the computer applications they use including speech recognition and natural language generation. Problems of lexical and syntactic ambiguity are studied in depth and the difficulty they pose in NLP will be highlighted. Other applications such as spelling and grammar checkers spam handling, text –to – speech and speech-to text, parsing, machine translation, etc. will be approached from a functional angle. The course does not require any background in programming although knowledge of one or more programming languages is helpful. The course is suitable for linguistics students aim to enrich their background in computing, as well as computer science students trying to understand NLP in more depth. The course may also interest students beyond these two fields, particularly those who dwell on issues like computer-assisted language learning (CALL), and Artificial Intelligence (AI).",
+    "creditHours": 3,
+    "cost": 2400,
+    "department": 5
+  },
+  {
+    "id": 104,
+    "code": "ENGL 234",
+    "title": "Language and Gender",
+    "description": "This course focuses on how the social lives of women and men in a society interact with the ways language(s) is structured, learned and used; how people talk to the opposite sex in face-to-face interaction; and how we read and write. Topics covered include gender differences in linguistic forms, nonverbal communication and conversational patterns. It will also include how gender affects boys and girls as they learn to talk. These issues are considered in terms of theoretical and historical perspectives. References will be made to studies in linguistics and particularly sociolinguistics, anthropology, sociology, psychology and women studies.",
+    "creditHours": 3,
+    "cost": 2400,
+    "department": 5
+  },
+  {
+    "id": 105,
+    "code": "DAWA 117",
+    "title": "Ethics",
+    "description": "1- Educating the student on the centrality of ethics in the making of a human, social, cultural and civilizational makeup. 2- Introducing the student to the role played by ethics in preserving humanity and nature and in the right development of human beings emotionally, socially, academically and culturally as well in achievement of justice and a civil society. 3- Acquaint the student with essential moral qualities, its importance and benefits in life and it practical results. 4- Engraining in the student moral etiquettes through the exposition of the essence of morality and the ways and means to nurture it. 5- Acquainting the student to the characteristics of Islamic ethical values by objectively and academically comparing it with various ethical philosophies",
+    "creditHours": 3,
+    "cost": 2400,
+    "department": 27
+  },
+  {
+    "id": 106,
+    "code": "DAWA 202",
+    "title": "Introduction to general Philopsophy",
+    "description": "1- Introduce the student to the essential issues of philosophy. 2- Introducing the student to the most important schools of philosophy. 3- Introducing the student to the contribution of philosophy in the human civilization. 4- Enable the student to objectively interact and deal with philosophical thought.",
+    "creditHours": 3,
+    "cost": 2400,
+    "department": 27
+  },
+  {
+    "id": 107,
+    "code": "DAWA 305",
+    "title": "Modern Philosophy",
+    "description": "1- Introducing the student to the most important schools of modern western philosophy. 2- Introducing the student to the contribution of modern philosophy in the European civilization. 3- Enable the student to objectively interact and deal with modern western thought, benefit from its positive aspects and forsake its negative aspects. 4- Enable the student to evaluate modern philosophy in the light of Islamic beliefs",
+    "creditHours": 3,
+    "cost": 2400,
+    "department": 27
+  },
+  {
+    "id": 108,
+    "code": "ISLA 205",
+    "title": "Intellectual Foundations of Islamic Civilization",
+    "description": "This course introduces the student to the Islamic Civilization through its Intellectual foundations derived from the Quran and Sunnah. It also enables the student to analyze the forward march of Islamic Civilization and understand its leanings as well as the role of scholars in the dissemination of Islamic Thought.",
+    "creditHours": 3,
+    "cost": 2400,
+    "department": 30
+  },
+  {
+    "id": 109,
+    "code": "PHIL 110",
+    "title": "Introduction to Philosophy",
+    "description": "This course is an overview to the problems of philosophy throughout ages. It tackles the following topics: Various definitions of philosophy and its methodology – classification of sciences – historical overview of the developing stages in philosophy from the Greek era until now– the relation between science and philosophy – relation between religion and philosophy – Epistemology: possibility of knowledge, its sources and nature – Ontology: nature of being, materialism and spiritualism – Axiology: logic as the study of truth, ethics as the study of morals, and aesthetics as the study of norms of beauty. – The problem of body and mind.",
+    "creditHours": 3,
+    "cost": 2400,
+    "department": 7
+  },
+  {
+    "id": 110,
+    "code": "HONS 101",
+    "title": "Honors Freshman Seminar for Humanities",
+    "description": "The Honors Freshman Seminar course for Humanities trains students in how to analyze and interpret texts, including primary and secondary sources. Students gain familiarity with at least one specific humanities discipline, and apply its methods or approaches to examine a given theme, problem or geographic region. They also learn the benefits of interdisciplinary approaches in scholarship. The development of critical, analytical and interpretative reading, writing and rhetorical skills as well as research skills are stressed",
+    "creditHours": 3,
+    "cost": 2400,
+    "department": 33
+  },
+  {
+    "id": 111,
+    "code": "CMPS 360",
+    "title": "Data Science Fundamentals",
+    "description": "Fundamental data science algorithms, methods and tools for analyzing data to effectively solve a broad set of data analysis problems and derive valuable insights from data. Including data collection and integration, data cleaning, various analytical approaches including exploratory data analysis, prediction models, statistical analytics, and data visualization. Acquiring a working knowledge of data science through hands-on projects on real datasets using common Data Science application development tools.",
+    "creditHours": 3,
+    "cost": 3000,
+    "department": 21
+  },
+  {
+    "id": 112,
+    "code": "CMPS 373",
+    "title": "Computer Graphics",
+    "description": "Fundamental concepts of computer graphics illustrated with programming applications using a graphics package or tool. Graphics systems types, architectures and graphical objects; applications of computer graphics; graphics programmer’s interface; designing and rendering 2D and 3D graphical objects (geometric transformations, viewing, shading, discrete techniques, buffers and mappings).",
+    "creditHours": 3,
+    "cost": 3000,
+    "department": 21
+  },
+  {
+    "id": 113,
+    "code": "CMPS 393",
+    "title": "Modeling and Simulation",
+    "description": "Fundamentals of studying systems by modeling and simulation focusing on developing discrete-event simulations. Reasons for simulation, basic simulation modeling; systems modeling; developing discrete-event simulations; queuing models; random number generators, generating random varieties; analysis of simulation data; verification and validation of simulation models",
+    "creditHours": 3,
+    "cost": 3000,
+    "department": 21
+  },
+  {
+    "id": 114,
+    "code": "CMPS 403",
+    "title": "Artificial Intelligence",
+    "description": "Fundamental concepts of artificial intelligence, logic and knowledge representation, associated algorithms and techniques supported with logic programming applications. Reasons for logic and knowledge representation by horn clauses; logic and propositional equivalencies, predicates and quantifiers; matching; backtracking, forward and backward chaining; logic programming applications. Lab session: Hands-on experience with a logic programming language, techniques, and algorithms applied to artificial intelligence applications.",
+    "creditHours": 3,
+    "cost": 3000,
+    "department": 21
+  },
+  {
+    "id": 115,
+    "code": "CMPS 433",
+    "title": "Multimedia Systems",
+    "description": "Learn of analog and digital representation of information and the concept of digitization. Study about various types of multimedia objects and their characteristics, formats, and associated algorithms for text, images, graphics, audio, and video. Fundamentals of data compression, animation, and human-computer interaction. Gain hands-on experience on manipulation of multimedia objects with programming.",
+    "creditHours": 3,
+    "cost": 3000,
+    "department": 21
+  },
+  {
+    "id": 116,
+    "code": "CMPS 434",
+    "title": "Game Design and Development",
+    "description": "Concepts, principles, design strategies and tools to design and develop digital games with interactivity, animation, sound and visual effects. Introduce and practice the game design process including core mechanics, storytelling, game play, game balancing and level design. In-class hands-on tutorials on game implementation fundamentals using a standard game engine, including creating game characters and objects, 3D modeling and animation, use of physics, interaction and interface design, basics of lighting, creating visual effects.",
+    "creditHours": 3,
+    "cost": 3000,
+    "department": 21
+  },
+  {
+    "id": 117,
+    "code": "CMPS 445",
+    "title": "Compiler Construction",
+    "description": "Theoretical and technical aspects needed to construct compilers and interpreters illustrated by a comprehensive study of the design and implementation for a mini language. Fundamentals of compilers and interpreters; syntactic and lexical analysis; handling user-defined types and type checking; context analysis; code generation and optimization; memory management and run-time organization.",
+    "creditHours": 3,
+    "cost": 3000,
+    "department": 21
+  },
+  {
+    "id": 118,
+    "code": "CMPS 451",
+    "title": "Database Management Systems",
+    "description": "Management of operations of internal components and advanced features of database systems and a study of various database types. Transaction management, concurrency control; security; optimization; object-oriented and distributed databases; data warehousing and mining; current developments in database technology; integration of databases to internet environments.",
+    "creditHours": 3,
+    "cost": 3000,
+    "department": 21
+  },
+  {
+    "id": 119,
+    "code": "CMPS 453",
+    "title": "Data mining",
+    "description": "Principles concepts of data mining techniques and their practical application in pattern recognition and knowledge discovery from large data sets. Fundamental strategies and methodologies of various classification, clustering, association rules extraction algorithms applied on tabular data sets. Hands-on experience with a variety of different data mining tools.",
+    "creditHours": 3,
+    "cost": 3000,
+    "department": 21
+  },
+  {
+    "id": 120,
+    "code": "CMPS 465",
+    "title": "Parallel Computing",
+    "description": "Fundamental concepts and practical aspects underlying the design and engineering of modern parallel computing systems including system models and enabling technologies, parallel architectures, parallelization strategies, parallel algorithms and their applications, optimization and performance, implementation frameworks and languages, programming models and design principles for parallel and distributed computing. Students acquire hands-on experience in the design and development of parallel and distributed computing systems.",
+    "creditHours": 3,
+    "cost": 3000,
+    "department": 21
+  },
+  {
+    "id": 121,
+    "code": "CMPS 466",
+    "title": "Information Retrieval",
+    "description": "Fundamental aspects of classical information retrieval techniques, strategies, and future trends. Web information storage and presentation schemes; web- based and online retrieval systems; search strategies; indexing, evaluation, ranking of search results; search engines, web crawling, meta-searchers; centralized and distributed architectures; semi-structured data models; merging technology; query languages for semi-structured data.",
+    "creditHours": 3,
+    "cost": 3000,
+    "department": 21
+  },
+  {
+    "id": 122,
+    "code": "CMPS 497",
+    "title": "Special Topics in Computing",
+    "description": "Selected topics in computing concerning content not normally covered in the formal curriculum. Topics vary",
+    "creditHours": 3,
+    "cost": 3000,
+    "department": 21
+  },
+  {
+    "id": 123,
+    "code": "CMPE 488",
+    "title": "Wireless Network &Applications",
+    "description": "Fundamentals of radio transmission including an overview of wireless networks, cellular networks, wireless LANs, Bluetooth, satellite systems, WiMAX, and LTE. Multiplexing, circuit and packet switching; fundamentals of evolution, medium access control, network architecture, protocols; mobile applications, handset platforms, service delivery platforms.",
+    "creditHours": 3,
+    "cost": 3000,
+    "department": 21
+  }
+]

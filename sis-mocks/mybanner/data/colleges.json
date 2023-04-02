@@ -1,0 +1,38 @@
+[
+  {
+    "id": 1,
+    "name": "College of Arts and Science"
+  },
+  {
+    "id": 2,
+    "name": "College of Business and Economics"
+  },
+  {
+    "id": 3,
+    "name": "College of Education"
+  },
+  {
+    "id": 4,
+    "name": "College of Engineering"
+  },
+  {
+    "id": 5,
+    "name": "College of Law"
+  },
+  {
+    "id": 6,
+    "name": "College of Medicine"
+  },
+  {
+    "id": 7,
+    "name": "Health Sciences"
+  },
+  {
+    "id": 8,
+    "name": "College of Sharia and Islamic Studies"
+  },
+  {
+    "id": 9,
+    "name": "Foundation Program"
+  }
+]
