@@ -49,7 +49,7 @@ const Dashboard = () => {
                                     m: '1rem'
                                 }
                             }}
-                            style={{ maxWidth: '100%', width: 'calc(100% - 2rem)'}}>
+                                style={{ maxWidth: '100%', width: 'calc(100% - 2rem)' }}>
                                 <Typography fontWeight="bold" color="#888888" variant="h4">Welcome</Typography>
                             </Paper>
                         </Box>
@@ -76,7 +76,7 @@ const Dashboard = () => {
                                     m: '1rem'
                                 }
                             }}
-                            style={{ maxWidth: '100%', width: 'calc(100% - 2rem)', overflow: 'auto' }}
+                                style={{ maxWidth: '100%', width: 'calc(100% - 2rem)', overflow: 'auto' }}
                             >
                                 <Typography fontWeight="bold" color="#888888" variant="h5">Study Plans</Typography>
                                 <Box sx={{
@@ -87,8 +87,8 @@ const Dashboard = () => {
                                 }}>
                                     <StudyPlanCard></StudyPlanCard>
                                     <StudyPlanCard></StudyPlanCard>
-                                    {/* <StudyPlanCard></StudyPlanCard>
                                     <StudyPlanCard></StudyPlanCard>
+                                    {/* <StudyPlanCard></StudyPlanCard>
                                     <StudyPlanCard></StudyPlanCard>
                                     <StudyPlanCard></StudyPlanCard> */}
                                 </Box>
@@ -115,7 +115,13 @@ const Dashboard = () => {
                             }
                         }}
                     >
-                        <Paper elevation={0} sx={{ borderRadius: '10px' }} />
+                        <Paper elevation={0} sx={{ borderRadius: '10px', justifyContent:'center', textAlign: 'center', display: 'flex', alignItems: 'center', height: '100%' }}>
+                          <Box>
+                            <Typography fontWeight="bold" color="#888888" variant="h5">Cumulative GPA</Typography>
+                            <Typography fontWeight="bold" color="#267BAA" variant="h2">3.2</Typography>
+                            </Box>
+                        </Paper>
+
                     </Box>
                 </Box>
             </Box>
