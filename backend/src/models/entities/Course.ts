@@ -21,7 +21,7 @@ export class Course extends CustomBaseEntity {
     @Property({type: types.integer})
     creditHours!: number;
 
-    @Property({type: types.string})
+    @Property({type: types.text})
     description!: string;
 
     @Property({type: types.float})
@@ -30,8 +30,8 @@ export class Course extends CustomBaseEntity {
     @ManyToOne({entity: () => Department, inversedBy: (d: Department) => d.courses})
     department!: Rel<Department>;
 
-    @Property({type: types.json})
-    prerequisites!: {};
+    @Property({type: types.json, defaultRaw: `'{"and": []}'::jsonb`})
+    prerequisites!: object;
 
     @OneToMany({entity: () => Section, mappedBy: (s: Section) => s.course})
     sections: Collection<Section> = new Collection<Section>(this);

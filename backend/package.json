@@ -8,7 +8,8 @@
     "dev": "nodemon --exec ts-node-esm ./src/main.ts",
     "test": "echo \"Error: n test specified\" && exit 1",
     "make-migrations": " node  --experimental-specifier-resolution=node --loader ts-node/esm ./node_modules/.bin/mikro-orm migration:create",
-    "migrate": " node  --experimental-specifier-resolution=node --loader ts-node/esm ./node_modules/.bin/mikro-orm migration:up"
+    "migrate": " node  --experimental-specifier-resolution=node --loader ts-node/esm ./node_modules/.bin/mikro-orm migration:up",
+    "fresh": " node  --experimental-specifier-resolution=node --loader ts-node/esm ./node_modules/.bin/mikro-orm migration:fresh"
   },
   "author": "",
   "license": "ISC",

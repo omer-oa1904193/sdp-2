@@ -5,32 +5,52 @@ import {User} from "../models/entities/User.js";
 import {Course} from "../models/entities/Course.js";
 import {Program} from "../models/entities/Program.js";
 import {ProgramRepo} from "../models/repositories/ProgramRepo.js";
+import {College} from "../models/entities/College.js";
+import {Department} from "../models/entities/Department.js";
+import {MapCourseProgram} from "../models/entities/MapCourseProgram.js";
 
 class AdminService {
     async importDataFromSIS(req: Request, res: Response) {
 
         let users: EntityData<User>[];
+        let colleges: EntityData<College>[];
+        let departments: EntityData<Department>[];
         let courses: EntityData<Course>[];
         let programs: EntityData<Program>[];
+        let courseProgramMaps: EntityData<MapCourseProgram>[];
         try {
             let response = await fetch(`${process.env.SIS_URL}/users/`);
             users = await response.json();
+
+            response = await fetch(`${process.env.SIS_URL}/colleges/`);
+            colleges = await response.json();
+
+            response = await fetch(`${process.env.SIS_URL}/departments/`);
+            departments = await response.json();
+
             response = await fetch(`${process.env.SIS_URL}/courses/`);
             courses = await response.json();
+
             response = await fetch(`${process.env.SIS_URL}/programs/`);
             programs = await response.json();
+
+            response = await fetch(`${process.env.SIS_URL}/course-programs/`);
+            courseProgramMaps = await response.json();
+
         } catch (e) {
             res.status(500).send("Failed to fetch data from SIS API");
             return;
         }
-        const userRepo = new UserRepo(req.em);
+        //TODO: think about the id sequences that get de-synced when you specify ids in your upsert
         //upsert all courses based on username
+        const userRepo = new UserRepo(req.em);
         await userRepo.bulkUpsertUsers(users);
+        //upsert all courses based on code, programs based on year and program name
         const programRepo = new ProgramRepo(req.em);
-        //upsert all courses based on code
+        await programRepo.bulkUpsertColleges(colleges);
+        await programRepo.bulkUpsertDepartments(departments);
         await programRepo.bulkUpsertCourses(courses);
-        //upsert all programs based on year and program name
-        await programRepo.bulkUpsertPrograms(programs);
+        await programRepo.bulkUpsertPrograms(programs, courseProgramMaps);
 
         res.send();
     }

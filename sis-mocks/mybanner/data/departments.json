@@ -152,7 +152,8 @@
   {
     "id": 26,
     "name": "Public Health",
-    "college": 7
+    "college": 7,
+    "code": "PUBH"
   },
   {
     "id": 27,

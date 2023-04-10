@@ -3,238 +3,238 @@
     "id": 1,
     "course": 1,
     "program": 1,
-    "semester": "Fall",
+    "season": "Fall",
     "yearOrder": 1
   },
   {
     "id": 2,
     "course": 2,
     "program": 1,
-    "semester": "Fall",
+    "season": "Fall",
     "yearOrder": 1
   },
   {
     "id": 3,
     "course": 26,
     "program": 1,
-    "semester": "Fall",
+    "season": "Fall",
     "yearOrder": 1
   },
   {
     "id": 4,
     "course": 4,
     "program": 1,
-    "semester": "Fall",
+    "season": "Fall",
     "yearOrder": 1
   },
   {
     "id": 5,
     "course": 5,
     "program": 1,
-    "semester": "Fall",
+    "season": "Fall",
     "yearOrder": 1
   },
   {
     "id": 6,
     "course": 6,
     "program": 1,
-    "semester": "Fall",
+    "season": "Fall",
     "yearOrder": 1
   },
   {
     "id": 7,
     "course": 7,
     "program": 1,
-    "semester": "Spring",
+    "season": "Spring",
     "yearOrder": 1
   },
   {
     "id": 8,
     "course": 8,
     "program": 1,
-    "semester": "Spring",
+    "season": "Spring",
     "yearOrder": 1
   },
   {
     "id": 9,
     "course": 9,
     "program": 1,
-    "semester": "Spring",
+    "season": "Spring",
     "yearOrder": 1
   },
   {
     "id": 10,
     "course": 10,
     "program": 1,
-    "semester": "Spring",
+    "season": "Spring",
     "yearOrder": 1
   },
   {
     "id": 11,
     "course": 11,
     "program": 1,
-    "semester": "Spring",
+    "season": "Spring",
     "yearOrder": 1
   },
   {
     "id": 12,
     "course": 12,
     "program": 1,
-    "semester": "Spring",
+    "season": "Spring",
     "yearOrder": 1
   },
   {
     "id": 13,
     "course": 13,
     "program": 1,
-    "semester": "Fall",
+    "season": "Fall",
     "yearOrder": 2
   },
   {
     "id": 14,
     "course": 14,
     "program": 1,
-    "semester": "Fall",
+    "season": "Fall",
     "yearOrder": 2
   },
   {
     "id": 15,
     "course": 15,
     "program": 1,
-    "semester": "Fall",
+    "season": "Fall",
     "yearOrder": 2
   },
   {
     "id": 16,
     "course": 16,
     "program": 1,
-    "semester": "Fall",
+    "season": "Fall",
     "yearOrder": 2
   },
   {
     "id": 17,
     "course": 17,
     "program": 1,
-    "semester": "Fall",
+    "season": "Fall",
     "yearOrder": 2
   },
   {
     "id": 18,
     "course": 18,
     "program": 1,
-    "semester": "Fall",
+    "season": "Fall",
     "yearOrder": 2
   },
   {
     "id": 19,
     "course": 19,
     "program": 1,
-    "semester": "Spring",
+    "season": "Spring",
     "yearOrder": 2
   },
   {
     "id": 20,
     "course": 20,
     "program": 1,
-    "semester": "Spring",
+    "season": "Spring",
     "yearOrder": 2
   },
   {
     "id": 21,
     "course": 21,
     "program": 1,
-    "semester": "Spring",
+    "season": "Spring",
     "yearOrder": 2
   },
   {
     "id": 22,
     "course": 22,
     "program": 1,
-    "semester": "Spring",
+    "season": "Spring",
     "yearOrder": 2
   },
   {
     "id": 23,
     "course": 23,
     "program": 1,
-    "semester": "Spring",
+    "season": "Spring",
     "yearOrder": 2
   },
   {
     "id": 24,
     "course": 24,
     "program": 1,
-    "semester": "Fall",
+    "season": "Fall",
     "yearOrder": 3
   },
   {
     "id": 25,
     "course": 25,
     "program": 1,
-    "semester": "Fall",
+    "season": "Fall",
     "yearOrder": 3
   },
   {
     "id": 26,
     "course": 27,
     "program": 1,
-    "semester": "Fall",
+    "season": "Fall",
     "yearOrder": 3
   },
   {
     "id": 27,
     "course": 28,
     "program": 1,
-    "semester": "Fall",
+    "season": "Fall",
     "yearOrder": 3
   },
   {
     "id": 28,
     "course": 29,
     "program": 1,
-    "semester": "Spring",
+    "season": "Spring",
     "yearOrder": 3
   },
   {
     "id": 29,
     "course": 30,
     "program": 1,
-    "semester": "Spring",
+    "season": "Spring",
     "yearOrder": 3
   },
   {
     "id": 30,
     "course": 31,
     "program": 1,
-    "semester": "Spring",
+    "season": "Spring",
     "yearOrder": 3
   },
   {
     "id": 31,
     "course": 36,
     "program": 1,
-    "semester": "Fall",
+    "season": "Fall",
     "yearOrder": 4
   },
   {
     "id": 32,
     "course": 37,
     "program": 1,
-    "semester": "Fall",
+    "season": "Fall",
     "yearOrder": 4
   },
   {
     "id": 33,
     "course": 41,
     "program": 1,
-    "semester": "Spring",
+    "season": "Spring",
     "yearOrder": 4
   },
   {
     "id": 34,
     "course": 42,
     "program": 1,
-    "semester": "Spring",
+    "season": "Spring",
     "yearOrder": 4
   }
 ]
