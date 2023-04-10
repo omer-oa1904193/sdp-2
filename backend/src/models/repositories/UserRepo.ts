@@ -1,9 +1,5 @@
 import {User} from "../entities/User.js";
-import {Collection, EntityData, EntityManager, Enum, OneToMany, Property, types, Unique} from "@mikro-orm/core";
-import {UserRole} from "../enums/UserRole.js";
-import {StudyPlan} from "../entities/StudyPlan.js";
-import {Season} from "../enums/Season.js";
-import {Comment} from "../entities/Comment.js";
+import {EntityData, EntityManager} from "@mikro-orm/core";
 
 export class UserRepo {
     em: EntityManager;
@@ -13,6 +9,7 @@ export class UserRepo {
     }
 
     async findUser(email: string) {
+        return this.em.findOne(User, {email: email});
     }
 
     async bulkUpsertUsers(usersData: EntityData<User>[]) {

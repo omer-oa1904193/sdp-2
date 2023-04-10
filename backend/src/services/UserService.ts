@@ -15,7 +15,7 @@ class UserService {
         const user = await userRepo.findUser(body.email);
 
         if (user && await bcrypt.compare(body.password, user.password)) {
-            const token = await jwt.sign(user.toObject(), process.env.JWT_KEY);
+            const token = jwt.sign(user.toObject(), process.env.JWT_KEY!);
             res.status(200).send({authToken: token});
         } else
             res.status(401).send({details: "Email and/or password is incorrect"});
