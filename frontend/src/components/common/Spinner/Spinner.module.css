@@ -1,0 +1,13 @@
+.spinner {
+    width: 64px;
+    transform-origin: center;
+    animation: spin .75s infinite linear;
+    color: var(--primary-color);
+}
+
+
+@keyframes spin {
+    100% {
+        transform: rotate(360deg)
+    }
+}
