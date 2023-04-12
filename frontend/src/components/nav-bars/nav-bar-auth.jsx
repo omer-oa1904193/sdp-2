@@ -59,7 +59,7 @@ const UnderlinedTypography = styled(Typography)(({ theme: customTheme }) => ({
 
 
 export default function NavBarPrivate() {
-    const isActive = false;
+    const isActive = true;
 
     return (
         <>
@@ -68,7 +68,7 @@ export default function NavBarPrivate() {
                     <div className={styles["nav-links"]}>
 
                         <button className={styles["home-button"] + " " + styles["inv-button"] + " " + styles["link-button"]}>
-                            <Link href="/dashboard">
+                            <Link href="/">
                                 <FontAwesomeIcon icon={faHouse} />
                             </Link>
                         </button>
@@ -76,7 +76,7 @@ export default function NavBarPrivate() {
                         <nav>
                             <ul>
                                 <li>
-                                    <Link href="/dashboard/dashboard">
+                                    <Link href="/studyplan/study-plan">
                                         <UnderlinedTypography variant="h6" className={isActive ? 'active' : ''}>
                                             Study Plan
                                         </UnderlinedTypography>

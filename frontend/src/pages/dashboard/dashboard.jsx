@@ -10,7 +10,7 @@ const Dashboard = () => {
     return (
         <>
             <Box sx={{ position: 'relative', backgroundColor: '#EFEFEF' }}>
-                <NavBarAuth />
+                {/* <NavBarAuth /> */}
                 <Box
                     sx={{
                         display: 'flex',
@@ -115,10 +115,10 @@ const Dashboard = () => {
                             }
                         }}
                     >
-                        <Paper elevation={0} sx={{ borderRadius: '10px', justifyContent:'center', textAlign: 'center', display: 'flex', alignItems: 'center', height: '100%' }}>
-                          <Box>
-                            <Typography fontWeight="bold" color="#888888" variant="h5">Cumulative GPA</Typography>
-                            <Typography fontWeight="bold" color="#267BAA" variant="h2">3.2</Typography>
+                        <Paper elevation={0} sx={{ borderRadius: '10px', justifyContent: 'center', textAlign: 'center', display: 'flex', alignItems: 'center', height: '100%' }}>
+                            <Box>
+                                <Typography fontWeight="bold" color="#888888" variant="h5">Cumulative GPA</Typography>
+                                <Typography fontWeight="bold" color="#267BAA" variant="h2">3.2</Typography>
                             </Box>
                         </Paper>
 

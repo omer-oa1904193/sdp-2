@@ -1,38 +1,32 @@
 import React from 'react';
+import { Grid, Box } from '@mui/material';
+import CourseCard from '../../components/study-plan-components/coursecard'
 
 const StudyPlan = () => {
-    const userContext = useContext(UserContext);
-    const match = useMatch();
-    const params = match.params;
-    const [originalStudyPlan, setOriginalStudyPlan] = useState(null);
-    const [studyPlan, setStudyPlan] = useState(null);
-    const [courseDialogueIsOpen, setCourseDialogueIsOpen] = useState(false)
-    useEffect(() => {
-        async function fetchStudyPlan() {
-            const response = await userContext.fetchProtected(`${API_URL}/student-study-plans/${params.studyPlanId}`);
-            return await response.json();
-        }
+    const cards = Array.from(Array(40).keys());
 
-        fetchStudyPlan().then(studyPlan => {
-            setOriginalStudyPlan(studyPlan)
-            setStudyPlan(initPlan(studyPlan));
-        });
-    }, [params.studyPlanId, userContext])
+    return <>
+        <Grid container spacing={2} sx={{ height: '100vh' }}>
+            <Grid item sx={{ backgroundColor: '#FFFFFF', width: '7%' }}>
+                {/* Content of first column */}
+            </Grid>
+            <Grid item sx={{ backgroundColor: '#EFEFEF', width: '74%' }}>
+            <Box sx={{ paddingX: '20px' }}>
+      <Grid container spacing={2} columns={{ xs: 5, sm: 8 }}>
+        {cards.map((card) => (
+          <Grid item xs={1} sm={1} key={card}>
+            <CourseCard />
+          </Grid>
+        ))}
+      </Grid>
+    </Box>
+            </Grid>
+            <Grid item sx={{ backgroundColor: '#FFFFFF', width: '17%' }}>
+                {/* Content of third column */}
+            </Grid>
+        </Grid>
+    </>
 
-    if (studyPlan) {
-        return <>
-            <div className="study-plan-page">
-                <div className="buttons-pane">
-                    <CircularIconButton icon={faPen} link={"edit"}/>
-                </div>
-
-                <StudyPlanEditor studyPlan={studyPlan} isEditable={false}
-                                 onCourseClicked={() => setCourseDialogueIsOpen(true)}/>
-                <SummeryPane studyPlan={studyPlan}/>
-                <CourseDialogue isOpen={courseDialogueIsOpen} setOpen={setCourseDialogueIsOpen}/>
-            </div>
-        </>
-    }
 }
 
 export default StudyPlan;

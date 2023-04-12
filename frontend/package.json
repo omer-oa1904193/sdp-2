@@ -9,6 +9,7 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "@chakra-ui/react": "^2.5.5",
     "@emotion/react": "^11.10.6",
     "@emotion/styled": "^11.10.6",
     "@fortawesome/free-solid-svg-icons": "^6.3.0",
@@ -19,6 +20,7 @@
     "@tanstack/react-location": "^3.7.4",
     "eslint": "8.36.0",
     "eslint-config-next": "13.2.4",
+    "framer-motion": "^10.11.5",
     "next": "13.2.4",
     "react": "18.2.0",
     "react-dom": "18.2.0",
