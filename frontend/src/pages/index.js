@@ -1,6 +1,6 @@
 import styles from '@/styles/Home.module.css'
 import {useState} from 'react'
-import Dashboard from '../pages/dashboard/dashboard'
+import DashboardPage from './dashboard/index.jsx'
 
 export default function Home() {
   const [isDashboard, setDashboard] = useState(true);
@@ -8,7 +8,7 @@ export default function Home() {
   return (
     <>
       {isDashboard ? (
-        <Dashboard />
+        <DashboardPage />
       ) : null}
     </>
   )
