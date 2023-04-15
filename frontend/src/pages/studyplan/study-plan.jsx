@@ -77,15 +77,16 @@ const StudyPlan = () => {
                 {/* Content of first column */}
             </Grid>
             <Grid item sx={{ backgroundColor: '#EFEFEF', width: '74%' }}>
-                <Box sx={{ paddingX: '20px', display: 'flex' }}>
+                <Box sx={{ paddingX: '20px', display: 'flex', flexWrap: 'nowrap', overflowX: 'auto' }}>
                     {semesters.map((semester) => (
-                        <Box key={semester.id} sx={{ marginBottom: '20px' }}>
+                        <Box key={semester.id} sx={{ marginBottom: '20px', width: 'calc(100% / 8)', flexShrink: 0 }}>
                             <SemesterButton
                                 variant="outlined"
                                 sx={{
                                     color: '#B1B1B1',
                                     border: '2px solid #B1B1B1',
-                                    borderRadius: '10px'
+                                    borderRadius: '10px',
+                                    width: '100%',
                                 }}
                             >
                                 {semester.id % 2 !== 0 ? `Fall-${semester.year}` : `Spring-${semester.year}`}
@@ -109,8 +110,9 @@ const StudyPlan = () => {
                         </Box>
                     ))}
                 </Box>
-
             </Grid>
+
+
             <Grid item sx={{ backgroundColor: '#FFFFFF', width: '17%' }}>
                 {/* Content of third column */}
             </Grid>
