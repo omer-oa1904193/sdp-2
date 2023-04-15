@@ -4,6 +4,18 @@ import CourseCard from '../../components/study-plan-components/coursecard'
 import courseDetails from "../../../../sis-mocks/mybanner/data/courses.json"
 import cards from "../../../../sis-mocks/mybanner/data/map-course-programs.json"
 import { styled } from '@mui/material/styles';
+import LinearProgress from '@mui/material/LinearProgress';
+
+const StudyPlanProgressBar = styled(LinearProgress)({
+    height: 10,
+    borderRadius: 5,
+    backgroundColor: '#FFFFFF',
+    '& .MuiLinearProgress-bar': {
+      borderRadius: 5,
+      backgroundColor: '#C96161',
+    },
+  });
+  
 
 const StudyPlan = () => {
 
@@ -46,7 +58,7 @@ const StudyPlan = () => {
         color: '#B1B1B1',
         border: '2px solid #B1B1B1',
         borderRadius: '10px',
-
+        backgroundColor: '#FFFFFF',
         boxShadow: 'none',
         textTransform: 'none',
         fontSize: 16,
@@ -72,11 +84,13 @@ const StudyPlan = () => {
     });
 
     return <>
+     
         <Grid container spacing={2} sx={{ height: '100vh' }}>
             <Grid item sx={{ backgroundColor: '#FFFFFF', width: '7%' }}>
                 {/* Content of first column */}
             </Grid>
             <Grid item sx={{ backgroundColor: '#EFEFEF', width: '74%' }}>
+            <StudyPlanProgressBar variant="determinate" value={60} />
                 <Box sx={{ paddingX: '20px', display: 'flex', flexWrap: 'nowrap', overflowX: 'auto' }}>
                     {semesters.map((semester) => (
                         <Box key={semester.id} sx={{ marginBottom: '20px', width: 'calc(100% / 8)', flexShrink: 0 }}>
