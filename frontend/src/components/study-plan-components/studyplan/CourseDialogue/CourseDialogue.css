@@ -1,0 +1,98 @@
+.course-dialogue {
+    background-color: #ffffff;
+    display: flex;
+    flex-direction: column;
+    width: 40vw;
+    max-width: 600px;
+    border-radius: 10px;
+    color: #888888;
+    overflow: hidden;
+}
+
+.course-dialogue .course-name {
+    font-weight: bold;
+}
+
+.course-dialogue .container {
+    display: flex;
+    flex-direction: row;
+    align-items: stretch;
+    border-radius: 0 0 10px 10px;
+}
+
+.course-dialogue .main {
+    height: 100%;
+    width: 100%;
+    border-radius: 0 0 10px 0;
+    background-color: #ffffff;
+    flex: 2px;
+    padding-bottom: 1rem;
+    overflow: auto;
+}
+
+.course-dialogue .side {
+    flex: 1;
+    max-width: 150px;
+    border-radius: 0 0 0 10px;
+    background-color: #EFEFEF;
+    font-weight: bold;
+}
+.course-dialogue .side ul{
+    display: flex;
+    flex-direction: column;
+    row-gap: 0.5rem;
+    cursor: pointer;
+}
+
+.course-dialogue .side ul li:hover{
+
+}
+
+.course-dialogue .course-info {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    margin: 0 10px 25px 10px;
+}
+
+.course-dialogue .credit-hours {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+.course-dialogue .credit-hours-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    margin: 0 10px 25px 10px;
+}
+
+.course-dialogue .info-title {
+    font-weight: 500;
+}
+
+.course-dialogue .info-data {
+    font-weight: 400;
+}
+
+.course-dialogue .description {
+    margin: 0 10px 0 10px;
+    font-size: 0.85rem;
+    font-weight: 400;
+    line-height: 1.2rem;
+}
+
+.course-dialogue ul {
+    list-style-type: none;
+    padding: 0;
+    margin: 10px;
+}
+
+.course-dialogue li {
+    margin-bottom: 10px;
+}
+
+.course-dialogue h2 {
+    margin: 10px 10px 10px 10px;
+}

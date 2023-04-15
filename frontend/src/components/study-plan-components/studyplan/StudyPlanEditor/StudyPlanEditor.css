@@ -1,0 +1,124 @@
+.sp-editor {
+    background-color: #EFEFEF;
+    display: flex;
+    flex-direction: column;
+    row-gap: 1rem;
+    padding: 2rem 1.5rem;
+    max-height: calc(90vh - 1rem);
+    overflow: auto;
+}
+
+.sp-editor .top-div {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    color: #858585;
+}
+
+.sp-editor .major-title {
+    font-weight: 600;
+    font-size: 1.5rem;
+    margin-bottom: 0.1rem;
+}
+
+.sp-editor .plan-title {
+    font-weight: 600;
+    font-size: 1.25rem;
+}
+
+.sp-editor .save-button {
+    font-size: 1rem;
+    padding: 0.6rem 2rem;
+}
+
+.sp-editor .progress-div {
+    display: flex;
+    justify-content: space-between;
+    column-gap: 1.5rem;
+    color: #888888;
+    font-size: 1rem;
+    font-weight: bold;
+}
+
+.sp-editor .progress-bar {
+    flex-grow: 1;
+}
+
+.sp-editor .main-plan {
+    display: flex;
+}
+
+.sp-editor .year-div {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.sp-editor .year-semesters {
+    display: flex;
+    height: 100%;
+}
+
+
+.sp-editor .semester-div {
+    display: flex;
+    height: 100%;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.sp-editor .course-list {
+    display: flex;
+    flex-direction: column;
+    row-gap: 1rem;
+    padding: 0.5rem 0.5rem;
+    height: 90%;
+    border: 3px solid transparent;
+}
+
+.sp-editor .course-dropzone {
+    border: 3px dashed lightgray;
+}
+
+.sp-editor .year-button {
+    background-color: white;
+    border-radius: 7px;
+    font-weight: 600;
+    color: #888888;
+    border: none;
+    padding: 0.5rem 1.25rem;
+    text-align: center;
+    justify-self: center;
+    user-select: none;
+    margin-bottom: 0.5rem;
+}
+
+.sp-editor .semester-button {
+    background-color: white;
+    border-radius: 7px;
+    border: 3px solid #B1B1B1;
+    font-weight: 600;
+    color: #888888;
+    padding: 0.5rem 1rem;
+    text-align: center;
+    user-select: none;
+    margin: 0.5rem 2vw;
+}
+
+.sp-editor .add-course-button {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    padding: 0.5rem 0;
+    opacity: 1;
+}
+
+.sp-editor .add-course-button svg {
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    border: 2px solid #B1B1B1;
+    color: #B1B1B1;
+    padding: 5px;
+}

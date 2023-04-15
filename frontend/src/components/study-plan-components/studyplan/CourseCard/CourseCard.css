@@ -1,0 +1,44 @@
+.course-card {
+    display: flex;
+    border-radius: 6px;
+    box-shadow: 0 4px 4px 0 rgba(0, 0, 0, 0.25);
+    color: white;
+    justify-content: space-between;
+    padding: 0.5rem 1rem;
+    column-gap: 1rem;
+    min-width: 115px;
+    max-width: 150px;
+    min-height: 80px;
+}
+
+.course-card:hover {
+    cursor: pointer;
+}
+
+.course-card .title-div {
+    display: flex;
+    flex-direction: column;
+    row-gap: 0.5rem;
+    user-select: none;
+}
+
+.course-card .course-title {
+    font-weight: 600;
+    font-size: 0.8rem;
+    word-wrap: anywhere;
+}
+
+.course-card .course-code {
+    font-weight: normal;
+    font-size: 0.8rem;
+}
+
+.course-card .icons-div {
+    display: flex;
+    flex-direction: column;
+    row-gap: 0.1rem;
+}
+
+.course-card.error-highlighted {
+    animation: flash-red linear 0.25s 4 alternate;
+}

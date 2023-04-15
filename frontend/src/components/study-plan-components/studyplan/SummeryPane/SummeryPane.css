@@ -1,0 +1,89 @@
+.summery-pane {
+    padding: 1rem;
+    display: flex;
+    flex-direction: column;
+    row-gap: 1rem;
+    width: 15vw;
+    min-width: 150px;
+    max-width: 250px;
+}
+
+.summery-pane .stats-div {
+    font-size: 0.9rem;
+    display: flex;
+    flex-direction: column;
+    row-gap: 0.5rem;
+}
+
+.summery-pane hr {
+    background-color: #B1B1B1;
+    border: none;
+    margin: 0.5rem 0;
+    height: 3px;
+}
+
+.summery-pane .stat-header {
+    color: #858585;
+    font-weight: 600;
+}
+
+.summery-pane .stat-value {
+    color: #9F9F9F;
+}
+
+.summery-pane .course-counts {
+    display: flex;
+    flex-direction: column;
+    row-gap: 0.5rem;
+}
+
+.summery-pane .course-count-span {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    column-gap: 0.5rem;
+    background-color: #EC8888;
+    border-radius: 7px;
+    padding: 0.5rem 1rem;
+    font-weight: 600;
+    color: white;
+    font-size: 0.9rem;
+}
+
+
+.summery-pane .category-keys {
+    display: flex;
+    flex-direction: column;
+    row-gap: 0.75rem;
+}
+
+.summery-pane .category-key {
+    display: flex;
+    column-gap: 0.5rem;
+    align-items: center;
+}
+
+.summery-pane .category-key-text {
+    color: #A4A4A4;
+    font-weight: 600;
+}
+
+.summery-pane .category-key-color {
+    width: 25px;
+    height: 25px;
+    border-radius: 7px;
+    flex-shrink: 0;
+}
+
+.summery-pane .has-prerequisites {
+    background-color: #A4A4A4;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: white;
+}
+
+.summery-pane .has-prerequisites svg {
+    width: 15px;
+    height: 15px;
+}
