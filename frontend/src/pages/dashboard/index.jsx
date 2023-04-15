@@ -1,14 +1,12 @@
 import * as React from "react";
-import Box from "@mui/material/Box";
-import Paper from "@mui/material/Paper";
+import { Box, Grid, Paper, Typography } from '@mui/material';
 import styles from "@/pages/dashboard/DashBoardPage.module.css";
-import StudyPlanCard from "../../components/dashboard-components/studyPlanCard"
-import Typography from "@mui/material/Typography";
+import StudyPlanCard from "../../components/dashboard-components/studyPlanCard";
 
 const DashboardPage = () => {
     return (
         <>
-            <Box sx={{position: "relative", backgroundColor: "#EFEFEF"}}>
+            <Box sx={{ position: "relative", backgroundColor: "#EFEFEF" }}>
                 {/* <NavBarAuth /> */}
                 <Box
                     sx={{
@@ -18,7 +16,6 @@ const DashboardPage = () => {
                         height: "calc(100vh - 64px)",
                         top: "64px"
                     }}>
-                    {/* ///////////////////////// */}
                     <Box
                         sx={{
                             display: "flex",
@@ -48,8 +45,17 @@ const DashboardPage = () => {
                                     m: "1rem"
                                 }
                             }}
-                                   style={{maxWidth: "100%", width: "calc(100% - 2rem)"}}>
-                                <Typography fontWeight="bold" color="#888888" variant="h4">Welcome</Typography>
+                                style={{ maxWidth: "100%", width: "calc(100% - 2rem)" }}>
+                                <Grid container spacing={2}>
+                                    <Grid item xs={12} md={8}>
+                                        <Typography variant="h4" fontWeight="bold" color="#888888" sx={{ mb: 2 }}>
+                                            Welcome
+                                        </Typography>
+                                    </Grid>
+                                    <Grid item xs={12} md={4}>
+                                        <StudyPlanCard isActive={true} />
+                                    </Grid>
+                                </Grid>
                             </Paper>
                         </Box>
                         <Box
@@ -75,7 +81,7 @@ const DashboardPage = () => {
                                     m: "1rem"
                                 }
                             }}
-                                   style={{maxWidth: "100%", width: "calc(100% - 2rem)", overflow: "auto"}}
+                                style={{ maxWidth: "100%", width: "calc(100% - 2rem)", overflow: "auto" }}
                             >
                                 <Typography fontWeight="bold" color="#888888" variant="h5">Study Plans</Typography>
                                 <Box sx={{
@@ -95,7 +101,6 @@ const DashboardPage = () => {
 
                         </Box>
                     </Box>
-                    {/* ///////////////////////// */}
                     <Box
                         sx={{
                             display: "flex",
