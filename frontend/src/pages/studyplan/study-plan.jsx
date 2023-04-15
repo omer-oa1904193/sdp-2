@@ -1,5 +1,5 @@
 import React from 'react';
-import { Grid, Box, Button } from '@mui/material';
+import { Grid, Box, Button, Typography, Stack } from '@mui/material';
 import CourseCard from '../../components/study-plan-components/coursecard'
 import courseDetails from "../../../../sis-mocks/mybanner/data/courses.json"
 import cards from "../../../../sis-mocks/mybanner/data/map-course-programs.json"
@@ -11,11 +11,11 @@ const StudyPlanProgressBar = styled(LinearProgress)({
     borderRadius: 5,
     backgroundColor: '#FFFFFF',
     '& .MuiLinearProgress-bar': {
-      borderRadius: 5,
-      backgroundColor: '#C96161',
+        borderRadius: 5,
+        backgroundColor: '#C96161',
     },
-  });
-  
+});
+
 
 const StudyPlan = () => {
 
@@ -84,13 +84,25 @@ const StudyPlan = () => {
     });
 
     return <>
-     
-        <Grid container spacing={2} sx={{ height: '100vh' }}>
+
+        <Grid container spacing={2} sx={{ height: '100vh'}}>
             <Grid item sx={{ backgroundColor: '#FFFFFF', width: '7%' }}>
                 {/* Content of first column */}
             </Grid>
-            <Grid item sx={{ backgroundColor: '#EFEFEF', width: '74%' }}>
-            <StudyPlanProgressBar variant="determinate" value={60} />
+            <Grid item sx={{backgroundColor: '#EFEFEF', width: '74%' }}>
+
+                <Stack direction="row" justifyContent="space-between" sx={{ color: '#888888' }}>
+                    <Typography  variant="h5" sx={{ fontWeight: 'bold' }}>Your Progress %</Typography>
+                    <Typography  variant="h5" sx={{ fontWeight: 'bold' }}>Computer Engineering</Typography>
+                </Stack>
+
+                <Stack direction="row" alignItems="center" spacing={2} sx={{ color: '#888888' }}>
+                    <Typography sx={{ fontWeight: 'bold' }} variant="body1">Enrollment</Typography>
+                    <StudyPlanProgressBar variant="determinate" value={60} sx={{ flexGrow: 1 }} />
+                    <Typography sx={{ fontWeight: 'bold' }} variant="body1">Graduation</Typography>
+                </Stack>
+
+
                 <Box sx={{ paddingX: '20px', display: 'flex', flexWrap: 'nowrap', overflowX: 'auto' }}>
                     {semesters.map((semester) => (
                         <Box key={semester.id} sx={{ marginBottom: '20px', width: 'calc(100% / 8)', flexShrink: 0 }}>
