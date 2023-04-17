@@ -27,30 +27,56 @@ const CoursesButton = styled(Button)({
     },
 });
 
+const StyledListItem = styled(ListItem)({
+    padding: 0,
+    display: 'flex',
+    flexDirection: 'column',
+    alignItems: 'flex-start',
+    color: '#858585',
+    '& > .MuiListItemText-root': {
+      margin: 0,
+      },
+    '& > .MuiListItemText-root > .MuiTypography-root': {
+      fontSize: '0.8rem',
+      fontWeight: 'bold',
+    },
+  });  
 
-const Section = styled('div')({
-    marginBottom: '10px',
-});
 
 const SummaryPanel = () => {
     return (
         <>
             <Title variant="h4">Summary Panel</Title>
             <Divider sx={{ my: 1, borderColor: '#B1B1B1', borderWidth: 1.5 }} />
-            <Section>
-                <Typography variant="h5">Section 1</Typography>
-                <List>
-                    <ListItem>
-                        <ListItemText primary="Item 1" />
-                    </ListItem>
-                    <ListItem>
-                        <ListItemText primary="Item 2" />
-                    </ListItem>
-                    <ListItem>
-                        <ListItemText primary="Item 3" />
-                    </ListItem>
+            <div>
+                <List padding='0px'>
+                    <StyledListItem>
+                        <ListItemText primary="Total Program Credit Hours" />
+                        {/* <ListItemText  style={{ color: 'red' }} primary="130" /> */}
+                        <ListItemText primary="130" />
+                    </StyledListItem>
+                    <StyledListItem>
+                        <ListItemText primary="Total Program  Courses" />
+                        <ListItemText primary="45" />
+                    </StyledListItem>
+                    <StyledListItem>
+                    <ListItemText primary="Total Planned Credit Hours" />
+                        <ListItemText primary="45" />
+                    </StyledListItem>
+                    <StyledListItem>
+                    <ListItemText primary="Total Planned  Courses" />
+                        <ListItemText primary="45" />
+                    </StyledListItem>
+                    <StyledListItem>
+                    <ListItemText primary="Expected Graduation" />
+                        <ListItemText primary="Spring 2023" />
+                    </StyledListItem>
+                    <StyledListItem>
+                    <ListItemText primary="Total Tuition Fee" />
+                        <ListItemText primary="QR 100,000" />
+                    </StyledListItem>
                 </List>
-            </Section>
+            </div>
 
             <Stack spacing={1.5}>
                 <CoursesButton variant="contained">
