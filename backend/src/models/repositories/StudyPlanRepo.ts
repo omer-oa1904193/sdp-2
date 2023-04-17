@@ -20,7 +20,7 @@ export class StudyPlanRepo {
     }
 
     async getStudentStudyPlan(student: User, studyPlanId: number) {
-        const studyPlan = this.em.findOne(StudyPlan, {id: studyPlanId});
+        const studyPlan = this.em.findOne(StudyPlan, {id: studyPlanId} ,{populate:["program", "courses", "electives"]});
         return studyPlan;
     }
 
