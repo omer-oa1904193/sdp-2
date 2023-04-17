@@ -1,6 +1,6 @@
 import jwt, {JwtPayload} from "jsonwebtoken";
 import {NextFunction, Request, Response} from "express";
-import {User} from "@prisma/client";
+import {User} from "../models/entities/User.js";
 
 export async function authMiddleware(req: Request, res: Response, next: NextFunction): Promise<void> {
     const tokenArray = req.headers?.authorization?.split(" ");

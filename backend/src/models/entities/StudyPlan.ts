@@ -20,12 +20,12 @@ export class StudyPlan extends CustomBaseEntity {
     @ManyToOne({entity: () => User, inversedBy: (u: User) => u.studyPlans})
     author!: Rel<User>;
 
-    @ManyToMany({entity: () => Course, inversedBy: (c: Course) => c.studyPlansAppearingIn, pivotEntity: () => MapCourseStudyPlan})
+    @ManyToMany({entity: () => Course, mappedBy: (c: Course) => c.studyPlansAppearingIn, pivotEntity: () => MapCourseStudyPlan})
     courses: Collection<Course> = new Collection<Course>(this);
 
     @ManyToMany({
         entity: () => ElectivePackage,
-        inversedBy: (p: ElectivePackage) => p.studyPlansAppearingIn,
+        mappedBy: (p: ElectivePackage) => p.studyPlansAppearingIn,
         pivotEntity: () => MapElectivePackageStudyPlan
     })
     electives: Collection<ElectivePackage> = new Collection<ElectivePackage>(this);

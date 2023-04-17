@@ -1,10 +1,8 @@
 import {EntityData, EntityManager} from "@mikro-orm/core";
 import {Course} from "../entities/Course.js";
 import {Program} from "../entities/Program.js";
-import {User} from "../entities/User.js";
 import {College} from "../entities/College.js";
 import {Department} from "../entities/Department.js";
-import {deprecate} from "util";
 import {MapCourseProgram} from "../entities/MapCourseProgram.js";
 
 export class ProgramRepo {
@@ -15,6 +13,10 @@ export class ProgramRepo {
     }
 
     async getProgramStudyPlans(filters = {}) {
+    }
+
+    async getProgramStudyPlan(programId: number) {
+        return await this.em.findOne(Program, {id: programId}, {populate: ["courses"]});
     }
 
     async bulkUpsertColleges(collegesData: EntityData<College>[]) {

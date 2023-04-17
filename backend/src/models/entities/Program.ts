@@ -19,12 +19,12 @@ export class Program extends CustomBaseEntity {
     @Property({type: types.integer})
     yearCreated!: number;
 
-    @ManyToMany({entity: () => Course, inversedBy: (c: Course) => c.programsAppearingIn, pivotEntity: () => MapCourseProgram})
+    @ManyToMany({entity: () => Course, mappedBy: (c: Course) => c.programsAppearingIn, pivotEntity: () => MapCourseProgram})
     courses: Collection<Course> = new Collection<Course>(this);
 
     @ManyToMany({
         entity: () => ElectivePackage,
-        inversedBy: (p: ElectivePackage) => p.programsAppearingIn,
+        mappedBy: (p: ElectivePackage) => p.programsAppearingIn,
         pivotEntity: () => MapElectivePackageProgram
     })
     electives: Collection<ElectivePackage> = new Collection<ElectivePackage>(this);

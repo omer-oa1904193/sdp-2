@@ -36,12 +36,12 @@ export class Course extends CustomBaseEntity {
     @OneToMany({entity: () => Section, mappedBy: (s: Section) => s.course})
     sections: Collection<Section> = new Collection<Section>(this);
 
-    @ManyToMany({entity: () => Program, mappedBy: (p: Program) => p.courses, pivotEntity: () => MapCourseProgram})
+    @ManyToMany({entity: () => Program, inversedBy: (p: Program) => p.courses, pivotEntity: () => MapCourseProgram})
     programsAppearingIn: Collection<Program> = new Collection<Program>(this);
 
-    @ManyToMany({entity: () => ElectivePackage, mappedBy: (p: ElectivePackage) => p.courses, pivotEntity: () => MapCourseElectivePackage})
+    @ManyToMany({entity: () => ElectivePackage, inversedBy: (p: ElectivePackage) => p.courses, pivotEntity: () => MapCourseElectivePackage})
     electivePackagesAppearingIn: Collection<ElectivePackage> = new Collection<ElectivePackage>(this);
 
-    @ManyToMany({entity: () => StudyPlan, mappedBy: (s: StudyPlan) => s.courses, pivotEntity: () => MapCourseStudyPlan})
+    @ManyToMany({entity: () => StudyPlan, inversedBy: (s: StudyPlan) => s.courses, pivotEntity: () => MapCourseStudyPlan})
     studyPlansAppearingIn: Collection<StudyPlan> = new Collection<StudyPlan>(this);
 }

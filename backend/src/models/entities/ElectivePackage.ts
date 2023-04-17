@@ -12,12 +12,12 @@ export class ElectivePackage extends CustomBaseEntity {
     @Property({type: types.string})
     title!: string
 
-    @ManyToMany({entity: () => Course, inversedBy: (c: Course) => c.electivePackagesAppearingIn, pivotEntity: () => MapCourseElectivePackage})
+    @ManyToMany({entity: () => Course, mappedBy: (c: Course) => c.electivePackagesAppearingIn, pivotEntity: () => MapCourseElectivePackage})
     courses: Collection<Course> = new Collection<Course>(this);
 
-    @ManyToMany({entity: () => Program, mappedBy: (p: Program) => p.electives, pivotEntity: () => MapElectivePackageProgram})
+    @ManyToMany({entity: () => Program, inversedBy: (p: Program) => p.electives, pivotEntity: () => MapElectivePackageProgram})
     programsAppearingIn: Collection<Program> = new Collection<Program>(this);
 
-    @ManyToMany({entity: () => StudyPlan, mappedBy: (s: StudyPlan) => s.electives, pivotEntity: () => MapElectivePackageStudyPlan})
+    @ManyToMany({entity: () => StudyPlan, inversedBy: (s: StudyPlan) => s.electives, pivotEntity: () => MapElectivePackageStudyPlan})
     studyPlansAppearingIn: Collection<StudyPlan> = new Collection<StudyPlan>(this);
 }
