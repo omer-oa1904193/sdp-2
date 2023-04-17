@@ -79,7 +79,7 @@ const SummaryPanel = () => {
             </div>
 
             <Stack spacing={1.5}>
-                <CoursesButton variant="contained">
+                <CoursesButton sx={{background:'#61C975', color: '#FFFFFF', '&:hover': {background:'#FFFFFF', color: '#61C975' }}} variant="contained">
                     <Typography variant='p'>Total Completed Courses</Typography>
                     <Typography>44</Typography>
                 </CoursesButton>
