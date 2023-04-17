@@ -85,7 +85,7 @@ const StudyPlan = () => {
     });
 
     return <>
-        <Grid container sx={{ height: '100vh' }}>
+        <Grid container sx={{ height: '100vh'}}>
             <Grid item sx={{ flexDirection: "column", display: 'flex', justifyContent: 'center', alignItems: 'center', backgroundColor: '#FFFFFF', width: '8%' }}>
                 <GearIconButton></GearIconButton>
                 <EditIconButton></EditIconButton>

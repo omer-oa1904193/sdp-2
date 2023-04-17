@@ -51,6 +51,9 @@ const DashboardPage = () => {
                                         <Typography variant="h4" fontWeight="bold" color="#888888" sx={{ mb: 2 }}>
                                             Welcome
                                         </Typography>
+                                        <Typography variant="body1" fontWeight="bold" color="#b3b3b3" sx={{ mb: 2 }}>
+                                        Start by  planning for your graduation by creating a study plan and selecting your program.
+                                        </Typography>
                                     </Grid>
                                     <Grid item xs={12} md={4}>
                                         <StudyPlanCard isActive={true} />
