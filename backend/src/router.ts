@@ -11,7 +11,7 @@ export const router = Router();
 router.post("/sessions/", UserService.login);
 router.get("/users/me/", authMiddleware, UserService.getUser);
 
-// router.get("/student-study-plans/", authMiddleware, studentStudyPlanService.getStudentStudyPlans);
+router.get("/study-plans/", authMiddleware,  studyPlanService.getStudyPlans);
 router.post("/study-plans/", authMiddleware, studyPlanService.addStudyPlan);
 router.get("/study-plans/:studyPlanId/", authMiddleware, studyPlanService.getStudyPlan);
 // router.patch("/student-study-plans/:studyPlanId/", authMiddleware, /*uploadMiddleWare.single("image"),*/ studentStudyPlanService.updateStudentStudyPlan);

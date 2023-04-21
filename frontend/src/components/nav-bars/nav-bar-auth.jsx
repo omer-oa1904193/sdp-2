@@ -79,7 +79,7 @@ export default function NavBarPrivate() {
                         <nav>
                             <ul>
                                 <li>
-                                    <Link href="/studyplan/study-plan">
+                                    <Link href="/study-plans/study-plan">
                                         <UnderlinedTypography variant="h6" className={isActive ? "active" : ""}>
                                             Study Plan
                                         </UnderlinedTypography>

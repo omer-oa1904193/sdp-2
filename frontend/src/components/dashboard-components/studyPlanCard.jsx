@@ -1,14 +1,14 @@
-import Link from 'next/link';
-import Paper from '@mui/material/Paper';
-import { Box, Grid } from '@mui/material';
-import Typography from '@mui/material/Typography';
+import Link from "next/link";
+import Paper from "@mui/material/Paper";
+import {Box, Grid} from "@mui/material";
+import Typography from "@mui/material/Typography";
 import styles from "./StudyPlanCard.module.css";
 import clsx from "clsx";
-import CheckIconButton from './activeCheckIcon';
+import CheckIconButton from "./activeCheckIcon";
 
-export default function StudyPlanCard({ isActive }) {
+export default function StudyPlanCard({studyPlan, isActive}) {
     return (
-        <Link style={{ textDecoration: "none" }} href="#">
+        <Link style={{textDecoration: "none"}} href={`study-plans/${studyPlan.id}`}>
             <Box
                 sx={{
                     display: "flex",
@@ -32,7 +32,7 @@ export default function StudyPlanCard({ isActive }) {
                     }}
                 >
                     <Box className={styles["image-wrapper"]}>
-                        <img src="/images/study-plan.png" alt="Study Plan" />
+                        <img src="/images/study-plan.png" alt="Study Plan"/>
                     </Box>
                     <Box>
                         <Grid container spacing={2} justifyContent="space-between" alignItems="flex-end">
@@ -40,22 +40,22 @@ export default function StudyPlanCard({ isActive }) {
                                 <Box>
                                     <Typography
                                         color="#B1B1B1"
-                                        sx={{ lineHeight: "1.2em" }}
+                                        sx={{lineHeight: "1.2em"}}
                                         variant="h6"
                                     >
-                                        Study plan x
+                                        {studyPlan.name}
                                     </Typography>
                                     <Typography
                                         color="#B1B1B1"
-                                        sx={{ lineHeight: "1.2em" }}
+                                        sx={{lineHeight: "1.2em"}}
                                         variant="body2"
                                     >
-                                        Computer Science
+                                        {studyPlan.program.name}
                                     </Typography>
                                 </Box>
                             </Grid>
-                            <Grid item xs={4} sx={{ display: "flex", justifyContent: "flex-end" }}>
-                                {isActive && <CheckIconButton />}
+                            <Grid item xs={4} sx={{display: "flex", justifyContent: "flex-end"}}>
+                                {isActive && <CheckIconButton/>}
                             </Grid>
                         </Grid>
 

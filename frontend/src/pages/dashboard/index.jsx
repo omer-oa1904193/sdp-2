@@ -1,12 +1,22 @@
+import {useUserStore} from "@/stores/userStore.js";
+import {useEffect, useState} from "react";
 import * as React from "react";
-import { Box, Grid, Paper, Typography } from '@mui/material';
+import {Box, Grid, Paper, Typography} from "@mui/material";
 import styles from "@/pages/dashboard/DashBoardPage.module.css";
 import StudyPlanCard from "../../components/dashboard-components/studyPlanCard";
 
-const DashboardPage = () => {
+export function DashboardPage() {
+    const userStore = useUserStore();
+    const [studyPlans, setStudyPlans] = useState([]);
+    useEffect(() => {
+        userStore.fetchProtected("/study-plans/")
+            .then(r => r.json())
+            .then(d => setStudyPlans(d))
+    }, [])
+    console.log(studyPlans)
     return (
         <>
-            <Box sx={{ position: "relative", backgroundColor: "#EFEFEF" }}>
+            <Box sx={{position: "relative", backgroundColor: "#EFEFEF"}}>
                 {/* <NavBarAuth /> */}
                 <Box
                     sx={{
@@ -45,18 +55,19 @@ const DashboardPage = () => {
                                     m: "1rem"
                                 }
                             }}
-                                style={{ maxWidth: "100%", width: "calc(100% - 2rem)" }}>
+                                   style={{maxWidth: "100%", width: "calc(100% - 2rem)"}}>
                                 <Grid container spacing={2}>
                                     <Grid item xs={12} md={8}>
-                                        <Typography variant="h4" fontWeight="bold" color="#888888" sx={{ mb: 2 }}>
+                                        <Typography variant="h4" fontWeight="bold" color="#888888" sx={{mb: 2}}>
                                             Welcome
                                         </Typography>
-                                        <Typography variant="body1" fontWeight="bold" color="#b3b3b3" sx={{ mb: 2 }}>
-                                        Start by  planning for your graduation by creating a study plan and selecting your program.
+                                        <Typography variant="body1" fontWeight="bold" color="#b3b3b3" sx={{mb: 2}}>
+                                            Start by planning for your graduation by creating a study plan and selecting
+                                            your program.
                                         </Typography>
                                     </Grid>
                                     <Grid item xs={12} md={4}>
-                                        <StudyPlanCard isActive={true} />
+                                        {/*<StudyPlanCard studyPlan={} isActive={true}/>*/}
                                     </Grid>
                                 </Grid>
                             </Paper>
@@ -84,7 +95,7 @@ const DashboardPage = () => {
                                     m: "1rem"
                                 }
                             }}
-                                style={{ maxWidth: "100%", width: "calc(100% - 2rem)", overflow: "auto" }}
+                                   style={{maxWidth: "100%", width: "calc(100% - 2rem)", overflow: "auto"}}
                             >
                                 <Typography fontWeight="bold" color="#888888" variant="h5">Study Plans</Typography>
                                 <Box sx={{
@@ -93,12 +104,9 @@ const DashboardPage = () => {
                                     justifycontent: "stretch",
                                     columnGap: "1rem"
                                 }}>
-                                    <StudyPlanCard></StudyPlanCard>
-                                    <StudyPlanCard></StudyPlanCard>
-                                    <StudyPlanCard></StudyPlanCard>
-                                    {/* <StudyPlanCard></StudyPlanCard>
-                                    <StudyPlanCard></StudyPlanCard>
-                                    <StudyPlanCard></StudyPlanCard> */}
+                                    {studyPlans.map(studyPlan => (
+                                        <StudyPlanCard studyPlan={studyPlan} key={studyPlan.id}></StudyPlanCard>
+                                    ))}
                                 </Box>
                             </Paper>
 

@@ -5,7 +5,7 @@ export const useUserStore = create((set) => ({
     setUser(user) {
         set({user})
     },
-    async fetchProtected(url, options = {}) {
+    async fetchProtected(path, options = {}) {
         options = {
             method: options?.method ?? "GET",
             headers: options?.headers ?? {
@@ -14,7 +14,7 @@ export const useUserStore = create((set) => ({
             ...options
         };
         options.headers.Authorization = `Bearer ${localStorage.authToken}`;
-        const response = await fetch(url, options);
+        const response = await fetch(`${process.env.NEXT_PUBLIC_API_URL}${path}`, options);
         if (response.status === 401) {
             delete localStorage.authToken;
             return Promise.reject();

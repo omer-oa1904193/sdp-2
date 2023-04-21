@@ -6,9 +6,9 @@ import {ProgramRepo} from "../models/repositories/ProgramRepo.js";
 import {UserRole} from "../models/enums/UserRole.js";
 
 class StudyPlanService {
-    async getStudentStudyPlans(req: Request, res: Response) {
+    async getStudyPlans(req: Request, res: Response) {
         const studyPlanRepo = new StudyPlanRepo(req.em);
-        const studyPlans = await studyPlanRepo.getStudentStudyPlans(req.user.id);
+        const studyPlans = await studyPlanRepo.getStudyPlans(req.user!);
         res.json(studyPlans);
     }
 

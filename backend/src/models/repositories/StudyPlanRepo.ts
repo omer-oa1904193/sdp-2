@@ -1,10 +1,9 @@
 import {User} from "../entities/User.js";
-import {EntityManager, Enum, Property, types} from "@mikro-orm/core";
+import {EntityManager} from "@mikro-orm/core";
 import {StudyPlan} from "../entities/StudyPlan.js";
 import {Program} from "../entities/Program.js";
 import {MapCourseStudyPlan} from "../entities/MapCourseStudyPlan.js";
 import {MapElectivePackageStudyPlan} from "../entities/MapElectivePackageStudyPlan.js";
-import {Season} from "../enums/Season.js";
 import {MapCourseProgram} from "../entities/MapCourseProgram.js";
 import {MapElectivePackageProgram} from "../entities/MapElectivePackageProgram.js";
 
@@ -15,12 +14,12 @@ export class StudyPlanRepo {
         this.em = em;
     }
 
-    async getStudentStudyPlans(student: User) {
-
+    async getStudyPlans(student: User) {
+        return this.em.find(StudyPlan, {author: student}, {populate: ["program"]});
     }
 
     async getStudentStudyPlan(student: User, studyPlanId: number) {
-        const studyPlan = this.em.findOne(StudyPlan, {id: studyPlanId} ,{populate:["program", "courses", "electives"]});
+        const studyPlan = this.em.findOne(StudyPlan, {id: studyPlanId}, {populate: ["program", "courses", "electives"]});
         return studyPlan;
     }
 

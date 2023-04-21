@@ -2,11 +2,11 @@ import {Box, Button, Grid, Stack, Typography} from "@mui/material";
 import LinearProgress from "@mui/material/LinearProgress";
 import {styled} from "@mui/material/styles";
 import React from "react";
-import courseDetails from "../../../../sis-mocks/mybanner/data/courses.json"
-import cards from "../../../../sis-mocks/mybanner/data/map-course-programs.json"
-import EditIconButton from "../../components/study-plan-components/editButton"
-import GearIconButton from "../../components/study-plan-components/gearButton"
-import StudyPlanSummary from "../../components/study-plan-components/studyPlanSummary"
+import courseDetails from "../../../../../sis-mocks/mybanner/data/courses.json"
+import cards from "../../../../../sis-mocks/mybanner/data/map-course-programs.json"
+import EditIconButton from "../../../components/study-plan-components/editButton.jsx"
+import GearIconButton from "../../../components/study-plan-components/gearButton.jsx"
+import StudyPlanSummary from "../../../components/study-plan-components/studyPlanSummary.jsx"
 
 const StudyPlanProgressBar = styled(LinearProgress)({
     height: 10,
