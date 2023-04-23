@@ -1,5 +1,5 @@
 import {User} from "../entities/User.js";
-import {EntityManager} from "@mikro-orm/core";
+import {EntityManager} from "@mikro-orm/postgresql";
 import {StudyPlan} from "../entities/StudyPlan.js";
 import {Program} from "../entities/Program.js";
 import {MapCourseStudyPlan} from "../entities/MapCourseStudyPlan.js";
@@ -19,7 +19,7 @@ export class StudyPlanRepo {
     }
 
     async getStudentStudyPlan(student: User, studyPlanId: number) {
-        const studyPlan = this.em.findOne(StudyPlan, {id: studyPlanId}, {populate: ["program", "courses", "electives"]});
+        const studyPlan = this.em.findOne(StudyPlan, {id: studyPlanId}, {populate: ["program", "courseMappings", "courseMappings.course", "electives"]});
         return studyPlan;
     }
 

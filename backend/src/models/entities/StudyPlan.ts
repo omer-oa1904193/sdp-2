@@ -1,6 +1,6 @@
 import {CustomBaseEntity} from "./CustomBaseEntity.js";
 import type {Rel} from "@mikro-orm/core";
-import {Collection, Entity, ManyToMany, ManyToOne, OneToMany, Property, types} from "@mikro-orm/core";
+import {Collection, Entity, EntityDTO, ManyToMany, ManyToOne, OneToMany, Property, types} from "@mikro-orm/core";
 import {User} from "./User.js";
 import {ElectivePackage} from "./ElectivePackage.js";
 import {Course} from "./Course.js";
@@ -20,8 +20,11 @@ export class StudyPlan extends CustomBaseEntity {
     @ManyToOne({entity: () => User, inversedBy: (u: User) => u.studyPlans})
     author!: Rel<User>;
 
-    @ManyToMany({entity: () => Course, mappedBy: (c: Course) => c.studyPlansAppearingIn, pivotEntity: () => MapCourseStudyPlan})
+    @ManyToMany({entity: () => Course, mappedBy: (c: Course) => c.studyPlansAppearingIn, pivotEntity: () => MapCourseStudyPlan, hidden: true})
     courses: Collection<Course> = new Collection<Course>(this);
+
+    @OneToMany({entity: () => MapCourseStudyPlan, mappedBy: (m: MapCourseStudyPlan) => m.studyPlan, persist: false, serializedName: "courses"})
+    courseMappings: Collection<MapCourseStudyPlan> = new Collection<MapCourseStudyPlan>(this);
 
     @ManyToMany({
         entity: () => ElectivePackage,
@@ -32,4 +35,5 @@ export class StudyPlan extends CustomBaseEntity {
 
     @OneToMany({entity: () => Comment, mappedBy: (c: Comment) => c.studyPlan})
     comments: Collection<Comment> = new Collection<Comment>(this);
+
 }
