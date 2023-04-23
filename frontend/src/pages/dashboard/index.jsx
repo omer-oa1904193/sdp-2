@@ -156,7 +156,8 @@ export function getServerSideProps() {
     return {
         props: {
             routeMetaData: {
-                requiresAuth: true
+                requiresAuth: true,
+                showHeader: true
             }
         }
     }

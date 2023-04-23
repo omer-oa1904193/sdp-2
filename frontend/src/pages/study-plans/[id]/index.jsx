@@ -151,3 +151,14 @@ export default function StudyPlanPage() {
     </>
 
 }
+
+export function getServerSideProps() {
+    return {
+        props: {
+            routeMetaData: {
+                requiresAuth: true,
+                showHeader: true
+            }
+        }
+    }
+}

@@ -1,15 +1,22 @@
-import styles from '@/styles/Home.module.css'
-import {useState} from 'react'
-import DashboardPage from './dashboard/index.jsx'
+import {useUserStore} from "@/stores/userStore.js";
+import {useRouter} from "next/router";
+import {useEffect} from "react";
 
 export default function Home() {
-  const [isDashboard, setDashboard] = useState(true);
-  const [isStudyPlan, setStudyPlan] = useState(true);
-  return (
-    <>
-      {isDashboard ? (
-        <DashboardPage />
-      ) : null}
-    </>
-  )
+    const userStore = useUserStore();
+
+    const router = useRouter();
+    useEffect(() => {
+        if (userStore.isAuthenticated()) {
+            router.push("/dashboard")
+        } else {
+            router.push("/login")
+        }
+    }, [])
+
+    return (
+        <>
+            Redirecting...
+        </>
+    )
 }

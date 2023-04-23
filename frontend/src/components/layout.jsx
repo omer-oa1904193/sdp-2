@@ -3,11 +3,13 @@ import NavBarAuth from "./nav-bars/nav-bar-auth";
 import NavBarPublic from "./nav-bars/nav-bar-public";
 
 export default function Layout({children, pageProps}) {
-    if (pageProps.routeMetaData?.requiresAuth) {
+    const routeMetaData = pageProps.routeMetaData ?? {};
+    console.log(routeMetaData)
+    if (routeMetaData.requiresAuth) {
         return (
             <>
                 <RouteGuard>
-                    <NavBarAuth/>
+                    {routeMetaData.showHeader && <NavBarAuth/>}
                     {children}
                 </RouteGuard>
             </>
@@ -15,7 +17,7 @@ export default function Layout({children, pageProps}) {
     } else {
         return (
             <>
-                <NavBarPublic/>
+                {routeMetaData.showHeader && <NavBarPublic/>}
                 {children}
             </>
         )

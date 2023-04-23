@@ -16,7 +16,7 @@ export default function LoginPage() {
 
     useEffect(() => {
         //if already logged in go to dashboard
-        if (userStore.user || localStorage.authToken)
+        if (userStore.isAuthenticated())
             router.push("/dashboard");
     }, [router, userStore]);
 
@@ -75,4 +75,15 @@ export default function LoginPage() {
         </div>
     </div>;
 
+}
+
+export function getServerSideProps() {
+    return {
+        props: {
+            routeMetaData: {
+                requiresAuth: false,
+                showHeader: false
+            }
+        }
+    }
 }

@@ -1,6 +1,6 @@
 import {create} from "zustand"
 
-export const useUserStore = create((set) => ({
+export const useUserStore = create((set, get) => ({
     user: null,
     setUser(user) {
         set({user})
@@ -21,4 +21,7 @@ export const useUserStore = create((set) => ({
         }
         return response;
     },
+    isAuthenticated() {
+        return get().user || localStorage.authToken;
+    }
 }))
