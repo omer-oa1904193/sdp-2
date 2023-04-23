@@ -19,7 +19,7 @@ export class StudyPlanRepo {
     }
 
     async getStudentStudyPlan(student: User, studyPlanId: number) {
-        const studyPlan = this.em.findOne(StudyPlan, {id: studyPlanId}, {populate: ["program", "courseMappings", "courseMappings.course", "electives"]});
+        const studyPlan = this.em.findOne(StudyPlan, {id: studyPlanId}, {populate: ["program", "courseMappings", "courseMappings.course", "electiveMappings", "electiveMappings.electivePackage"]});
         return studyPlan;
     }
 

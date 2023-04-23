@@ -22,12 +22,11 @@ export class MapCourseStudyPlan extends CustomBaseEntity {
     yearOrder!: number;
 
 
-    toPOJO(): EntityDTO<this> {
+    toObject(ignoreFields?: string[]): EntityDTO<this> {
         return {
-            ...((super.toPOJO() as any).course),
+            ...((super.toObject() as EntityData<MapCourseStudyPlan>)?.course as Course),
             season: this.season,
             yearOrder: this.yearOrder,
         } as EntityDTO<this>
     }
-
 }
