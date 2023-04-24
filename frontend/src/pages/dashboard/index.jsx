@@ -13,7 +13,6 @@ export function DashboardPage() {
             .then(r => r.json())
             .then(d => setStudyPlans(d))
     }, [])
-    console.log(studyPlans)
     return (
         <>
             <Box sx={{position: "relative", backgroundColor: "#EFEFEF"}}>

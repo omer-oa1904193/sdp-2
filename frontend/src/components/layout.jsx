@@ -4,7 +4,6 @@ import NavBarPublic from "./nav-bars/nav-bar-public";
 
 export default function Layout({children, pageProps}) {
     const routeMetaData = pageProps.routeMetaData ?? {};
-    console.log(routeMetaData)
     if (routeMetaData.requiresAuth) {
         return (
             <>
