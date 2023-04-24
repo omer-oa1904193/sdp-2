@@ -19,7 +19,10 @@ export class StudyPlanRepo {
     }
 
     async getStudentStudyPlan(student: User, studyPlanId: number) {
-        const studyPlan = this.em.findOne(StudyPlan, {id: studyPlanId}, {populate: ["program", "courseMappings", "courseMappings.course", "electiveMappings", "electiveMappings.electivePackage"]});
+        const studyPlan = this.em.findOne(StudyPlan, {id: studyPlanId}, {
+            orderBy: {courseMappings: {yearOrder: "asc"}, electiveMappings: {yearOrder: "asc"}},
+            populate: ["program", "courseMappings", "courseMappings.course", "electiveMappings", "electiveMappings.electivePackage"]
+        });
         return studyPlan;
     }
 
@@ -39,6 +42,7 @@ export class StudyPlanRepo {
                 studyPlan: newStudyPlan,
                 season: m.season,
                 yearOrder: m.yearOrder,
+                category: m.category,
             })));
         if (electiveMappings.length > 0)
             await this.em.insertMany(MapElectivePackageStudyPlan, electiveMappings.map(m => ({

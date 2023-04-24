@@ -14,12 +14,10 @@ const GearButton = styled(IconButton)(({ theme }) => ({
   }
 }));
 
-function GearIconButton(props) {
+export function GearIconButton(props) {
   return (
     <GearButton aria-label="settings">
       <SettingsIcon />
     </GearButton>
   );
 }
-
-export default GearIconButton;

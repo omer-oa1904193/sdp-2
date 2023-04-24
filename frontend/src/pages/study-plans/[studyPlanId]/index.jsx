@@ -5,9 +5,10 @@ import LinearProgress from "@mui/material/LinearProgress";
 import {styled} from "@mui/material/styles";
 import {useRouter} from "next/router";
 import React, {useEffect, useState} from "react";
-import EditIconButton from "../../../components/study-plan-components/editButton.jsx"
-import GearIconButton from "../../../components/study-plan-components/gearButton.jsx"
-import StudyPlanSummary from "../../../components/study-plan-components/studyPlanSummary.jsx"
+import {EditIconButton} from "@/components/study-plan-components/EditButton.jsx"
+import {GearIconButton} from "@/components/study-plan-components/GearButton.jsx"
+import {StudyPlanSummary} from "@/components/study-plan-components/StudyPlanSummary.jsx"
+import {CourseCard} from "@/components/study-plan-components/studyplan/CourseCard/CourseCard.jsx";
 
 const StudyPlanProgressBar = styled(LinearProgress)({
     height: 10,
@@ -95,9 +96,7 @@ export default function StudyPlanPage(pageProps) {
 
                                         <p>{semesterLabel}</p>
                                         <div>
-                                            {courses.map((course) => <div key={course.id}>
-                                                <p>{course.title}</p>
-                                            </div>)}
+                                            {courses.map((course) => <CourseCard key={course.id} course={course}/>)}
                                         </div>
                                     </div>)}
                             </div>

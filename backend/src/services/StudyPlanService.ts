@@ -3,7 +3,6 @@ import {Request, Response} from "express";
 import fs from "fs-extra";
 import {z} from "zod";
 import {ProgramRepo} from "../models/repositories/ProgramRepo.js";
-import {UserRole} from "../models/enums/UserRole.js";
 
 class StudyPlanService {
     async getStudyPlans(req: Request, res: Response) {

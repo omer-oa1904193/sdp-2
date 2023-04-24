@@ -1,8 +1,10 @@
+import {COURSE_CATEGORIES} from "@/constants.js";
 import {faCaretDown, faExclamationCircle} from "@fortawesome/free-solid-svg-icons";
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 import {useEffect, useRef} from "react";
-import {COURSE_CATEGORIES} from "../../../../constants.js";
-import "./CourseCard.css"
+// import {COURSE_CATEGORIES} from "../../../../constants.js";
+import styles from "./CourseCard.module.css";
+
 
 export function CourseCard({course, onCourseClicked, errorHighlighted, clearErrorHighlighted}) {
     const courseCard = useRef(null);
@@ -11,16 +13,16 @@ export function CourseCard({course, onCourseClicked, errorHighlighted, clearErro
 
     return <div onClick={onCourseClicked}
                 ref={courseCard}
-                className={`course-card ${course.completed ? "completed-course" : getCategoryClass(course.category)} ${errorHighlighted ? "error-highlighted" : ""}`}>
+                className={`${styles.courseCard} ${course.completed ? "completed-course" : getCategoryClass(course.category)} ${errorHighlighted ? "error-highlighted" : ""}`}>
         {/*<FontAwesomeIcon icon={faGripVertical}></FontAwesomeIcon>*/}
-        <div className="title-div">
-            <h4 className="course-title" lang="en">{course.title}</h4>
-            <h5 className="course-code">{course.code} ({course.creditHours})</h5>
+        <div className={styles.titleDiv}>
+            <h4 className={styles.courseTitle} lang="en">{course.title}</h4>
+            <h5 className={styles.courseCode}>{course.code} ({course.creditHours})</h5>
         </div>
-        <div className="icons-div">
-            {course.prerequisites.length > 0 &&
-                <FontAwesomeIcon icon={faExclamationCircle}></FontAwesomeIcon>
-            }
+        <div className={styles.iconsDiv}>
+            {/*{course.prerequisites.length > 0 &&*/}
+            {/*    <FontAwesomeIcon icon={faExclamationCircle}></FontAwesomeIcon>*/}
+            {/*}*/}
         </div>
     </div>
 }

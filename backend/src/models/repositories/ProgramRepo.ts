@@ -64,7 +64,8 @@ export class ProgramRepo {
             course: m.course,
             program: m.program,
             season: m.season,
-            yearOrder: m.yearOrder
+            yearOrder: m.yearOrder,
+            category: m.category,
         })));
     }
 

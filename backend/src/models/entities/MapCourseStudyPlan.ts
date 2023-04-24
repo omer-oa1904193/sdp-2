@@ -5,6 +5,7 @@ import {StudyPlan} from "./StudyPlan.js";
 import type {Rel} from "@mikro-orm/core";
 import {Season} from "../enums/Season.js";
 import {MapCourseProgram} from "./MapCourseProgram.js";
+import {CourseCategory} from "../enums/CourseCategory.js";
 
 @Entity()
 @Unique({properties: ["course", "studyPlan"]})
@@ -21,12 +22,16 @@ export class MapCourseStudyPlan extends CustomBaseEntity {
     @Property({type: types.integer})
     yearOrder!: number;
 
+    @Enum({items: () => CourseCategory, type: types.enum})
+    category!: CourseCategory;
+
 
     toObject(ignoreFields?: string[]): EntityDTO<this> {
         return {
             ...((super.toObject() as EntityData<MapCourseStudyPlan>)?.course as Course),
             season: this.season,
             yearOrder: this.yearOrder,
+            category: this.category,
         } as EntityDTO<this>
     }
 }

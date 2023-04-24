@@ -14,12 +14,10 @@ const EditButton = styled(IconButton)(({ theme }) => ({
   }
 }));
 
-function EditIconButton(props) {
+export function EditIconButton(props) {
   return (
     <EditButton aria-label="settings">
       <EditIcon />
     </EditButton>
   );
 }
-
-export default EditIconButton;

@@ -323,6 +323,16 @@
       "schema": "public",
       "indexes": [
         {
+          "keyName": "map_course_elective_package_course_id_elective_package_id_unique",
+          "columnNames": [
+            "course_id",
+            "elective_package_id"
+          ],
+          "composite": true,
+          "primary": false,
+          "unique": true
+        },
+        {
           "keyName": "map_course_elective_package_pkey",
           "columnNames": [
             "id"
@@ -486,6 +496,16 @@
       "schema": "public",
       "indexes": [
         {
+          "keyName": "map_elective_package_program_elective_package_id_p_9df7d_unique",
+          "columnNames": [
+            "elective_package_id",
+            "program_id"
+          ],
+          "composite": true,
+          "primary": false,
+          "unique": true
+        },
+        {
           "keyName": "map_elective_package_program_pkey",
           "columnNames": [
             "id"
@@ -575,11 +595,37 @@
           "primary": false,
           "nullable": false,
           "mappedType": "integer"
+        },
+        "category": {
+          "name": "category",
+          "type": "text",
+          "unsigned": false,
+          "autoincrement": false,
+          "primary": false,
+          "nullable": false,
+          "enumItems": [
+            "Major Course",
+            "CCP Course",
+            "College Requirement",
+            "Major Supporting",
+            "Major Elective"
+          ],
+          "mappedType": "enum"
         }
       },
       "name": "map_course_program",
       "schema": "public",
       "indexes": [
+        {
+          "keyName": "map_course_program_course_id_program_id_unique",
+          "columnNames": [
+            "course_id",
+            "program_id"
+          ],
+          "composite": true,
+          "primary": false,
+          "unique": true
+        },
         {
           "keyName": "map_course_program_pkey",
           "columnNames": [
@@ -1061,6 +1107,16 @@
       "schema": "public",
       "indexes": [
         {
+          "keyName": "map_elective_package_study_plan_elective_package_i_b4ad2_unique",
+          "columnNames": [
+            "elective_package_id",
+            "study_plan_id"
+          ],
+          "composite": true,
+          "primary": false,
+          "unique": true
+        },
+        {
           "keyName": "map_elective_package_study_plan_pkey",
           "columnNames": [
             "id"
@@ -1150,11 +1206,37 @@
           "primary": false,
           "nullable": false,
           "mappedType": "integer"
+        },
+        "category": {
+          "name": "category",
+          "type": "text",
+          "unsigned": false,
+          "autoincrement": false,
+          "primary": false,
+          "nullable": false,
+          "enumItems": [
+            "Major Course",
+            "CCP Course",
+            "College Requirement",
+            "Major Supporting",
+            "Major Elective"
+          ],
+          "mappedType": "enum"
         }
       },
       "name": "map_course_study_plan",
       "schema": "public",
       "indexes": [
+        {
+          "keyName": "map_course_study_plan_course_id_study_plan_id_unique",
+          "columnNames": [
+            "course_id",
+            "study_plan_id"
+          ],
+          "composite": true,
+          "primary": false,
+          "unique": true
+        },
         {
           "keyName": "map_course_study_plan_pkey",
           "columnNames": [

@@ -4,6 +4,7 @@ import {Course} from "./Course.js";
 import {Program} from "./Program.js";
 import type {Rel} from "@mikro-orm/core";
 import {Season} from "../enums/Season.js";
+import {CourseCategory} from "../enums/CourseCategory.js";
 
 @Entity()
 @Unique({properties: ["course", "program"]})
@@ -19,4 +20,8 @@ export class MapCourseProgram extends CustomBaseEntity {
 
     @Property({type: types.integer})
     yearOrder!: number;
+
+    @Enum({items: () => CourseCategory, type: types.enum})
+    category!: CourseCategory;
+
 }

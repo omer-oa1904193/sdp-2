@@ -1,3 +1,4 @@
+import type {Rel} from "@mikro-orm/core";
 import {Collection, Entity, ManyToMany, ManyToOne, OneToMany, Property, types} from "@mikro-orm/core";
 import {CustomBaseEntity} from "./CustomBaseEntity.js";
 import {Department} from "./Department.js";
@@ -8,7 +9,6 @@ import {StudyPlan} from "./StudyPlan.js";
 import {MapCourseProgram} from "./MapCourseProgram.js";
 import {MapCourseElectivePackage} from "./MapCourseElectivePackage.js";
 import {MapCourseStudyPlan} from "./MapCourseStudyPlan.js";
-import type {Rel} from "@mikro-orm/core";
 
 @Entity()
 export class Course extends CustomBaseEntity {
