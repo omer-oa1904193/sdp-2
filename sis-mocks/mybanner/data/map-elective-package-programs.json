@@ -1,0 +1,51 @@
+[
+  {
+    "id": 1,
+    "electivePackage": 3,
+    "program": 1,
+    "season": "Fall",
+    "yearOrder": 3
+  },
+  {
+    "id": 2,
+    "electivePackage": 5,
+    "program": 1,
+    "season": "Fall",
+    "yearOrder": 3
+  },
+  {
+    "id": 3,
+    "electivePackage": 5,
+    "program": 1,
+    "season": "Spring",
+    "yearOrder": 3
+  },
+  {
+    "id": 4,
+    "electivePackage": 5,
+    "program": 1,
+    "season": "Fall",
+    "yearOrder": 4
+  },
+  {
+    "id": 5,
+    "electivePackage": 4,
+    "program": 1,
+    "season": "Fall",
+    "yearOrder": 4
+  },
+  {
+    "id": 6,
+    "electivePackage": 5,
+    "program": 1,
+    "season": "Spring",
+    "yearOrder": 4
+  },
+  {
+    "id": 7,
+    "electivePackage": 1,
+    "program": 1,
+    "season": "Spring",
+    "yearOrder": 4
+  }
+]
