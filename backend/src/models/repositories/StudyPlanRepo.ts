@@ -38,7 +38,7 @@ export class StudyPlanRepo {
         const electiveMappings = await this.em.find(MapElectivePackageProgram, {program: studyPlanData.program});
         if (courseMappings.length > 0)
             await this.em.insertMany(MapCourseStudyPlan, courseMappings.map(m => ({
-                course: m,
+                course: m.course,
                 studyPlan: newStudyPlan,
                 season: m.season,
                 yearOrder: m.yearOrder,
@@ -46,7 +46,7 @@ export class StudyPlanRepo {
             })));
         if (electiveMappings.length > 0)
             await this.em.insertMany(MapElectivePackageStudyPlan, electiveMappings.map(m => ({
-                electivePackage: m,
+                electivePackage: m.electivePackage,
                 studyPlan: newStudyPlan,
                 season: m.season,
                 yearOrder: m.yearOrder,

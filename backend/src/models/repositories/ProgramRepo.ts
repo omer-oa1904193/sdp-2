@@ -4,6 +4,9 @@ import {Program} from "../entities/Program.js";
 import {College} from "../entities/College.js";
 import {Department} from "../entities/Department.js";
 import {MapCourseProgram} from "../entities/MapCourseProgram.js";
+import {MapElectivePackageProgram} from "../entities/MapElectivePackageProgram.js";
+import {ElectivePackage} from "../entities/ElectivePackage.js";
+import {MapCourseElectivePackage} from "../entities/MapCourseElectivePackage.js";
 
 export class ProgramRepo {
     em: EntityManager;
@@ -52,7 +55,21 @@ export class ProgramRepo {
         }));
     }
 
-    async bulkUpsertPrograms(programsData: EntityData<Program>[], courseProgramMaps: EntityData<MapCourseProgram>[]) {
+    async bulkUpsertElectivePackages(electivePackageData: EntityData<ElectivePackage>[], courseElectivePackageMaps: EntityData<MapCourseElectivePackage>[]) {
+        await this.em.upsertMany(ElectivePackage, electivePackageData.map(e => ({
+            id: e.id,
+            title: e.title,
+            category: e.category
+        })));
+
+        await this.em.upsertMany(MapCourseElectivePackage, courseElectivePackageMaps.map(m => ({
+            id: m.id,
+            course: m.course,
+            electivePackage: m.electivePackage
+        })));
+    }
+
+    async bulkUpsertPrograms(programsData: EntityData<Program>[], courseProgramMaps: EntityData<MapCourseProgram>[], electiveProgramMaps: EntityData<MapElectivePackageProgram>[]) {
         await this.em.upsertMany(Program, programsData.map(p => ({
             id: p.id,
             name: p.name,
@@ -66,6 +83,13 @@ export class ProgramRepo {
             season: m.season,
             yearOrder: m.yearOrder,
             category: m.category,
+        })));
+        await this.em.upsertMany(MapElectivePackageProgram, electiveProgramMaps.map(m => ({
+            id: m.id,
+            electivePackage: m.electivePackage,
+            program: m.program,
+            season: m.season,
+            yearOrder: m.yearOrder
         })));
     }
 

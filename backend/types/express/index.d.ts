@@ -1,4 +1,4 @@
-import {EntityManager} from "@mikro-orm/core";
+import {EntityManager} from "@mikro-orm/postgresql";
 import {User} from "../../src/models/entities/User.js";
 
 declare module "express-serve-static-core" {

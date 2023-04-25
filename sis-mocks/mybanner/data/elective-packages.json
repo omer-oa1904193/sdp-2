@@ -1,0 +1,32 @@
+[
+  {
+    "id": 1,
+    "title": "Social/Behavioral Sciences",
+    "creditHours": 3,
+    "category": "CCP Course"
+  },
+  {
+    "id": 2,
+    "title": "Qatar and Gulf History",
+    "creditHours": 3,
+    "category": "CCP Course"
+  },
+  {
+    "id": 3,
+    "title": "Natural Science/Mathematics",
+    "creditHours": 3,
+    "category": "CCP Course"
+  },
+  {
+    "id": 4,
+    "title": "Humanities/Fine Arts",
+    "creditHours": 3,
+    "category": "CCP Course"
+  },
+  {
+    "id": 5,
+    "title": "Computer Science Electives",
+    "creditHours": 3,
+    "category": "Major Elective"
+  }
+]

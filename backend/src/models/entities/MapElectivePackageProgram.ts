@@ -6,7 +6,6 @@ import type {Rel} from "@mikro-orm/core";
 import {Season} from "../enums/Season.js";
 
 @Entity()
-@Unique({properties: ["electivePackage", "program"]})
 export class MapElectivePackageProgram extends CustomBaseEntity {
     @ManyToOne({entity: () => ElectivePackage})
     electivePackage!: Rel<ElectivePackage>;

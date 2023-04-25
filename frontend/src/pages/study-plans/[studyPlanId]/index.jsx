@@ -28,7 +28,7 @@ export default function StudyPlanPage(pageProps) {
                     const year = `Year ${elective.yearOrder}`;
                     if (!yearMap.has(year))
                         yearMap.set(year, new Map([["Fall", []], ["Winter", []], ["Spring", []], ["Summer", []]]));
-                    yearMap.get(year).get(elective.season).push(elective);
+                    yearMap.get(year).get(elective.season).push({...elective, isElective: true});
                 });
 
                 setStudyPlan({...studyPlan, yearMap, stats});

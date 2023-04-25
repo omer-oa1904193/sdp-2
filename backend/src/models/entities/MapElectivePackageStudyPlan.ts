@@ -7,7 +7,6 @@ import {Season} from "../enums/Season.js";
 import {Course} from "./Course.js";
 
 @Entity()
-@Unique({properties: ["electivePackage", "studyPlan"]})
 export class MapElectivePackageStudyPlan extends CustomBaseEntity {
     @ManyToOne({entity: () => ElectivePackage})
     electivePackage!: Rel<ElectivePackage>;

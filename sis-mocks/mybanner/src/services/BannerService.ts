@@ -12,6 +12,16 @@ class BannerService {
         res.json(courses);
     }
 
+    async getElectivePackages(req: Request, res: Response) {
+        const electives = await fs.readJSON("data/elective-packages.json");
+        res.json(electives);
+    }
+
+    async getCourseElectivePackageMaps(req: Request, res: Response) {
+        const electives = await fs.readJSON("data/map-course-elective-packages.json");
+        res.json(electives);
+    }
+
     async getPrograms(req: Request, res: Response) {
         const programs = await fs.readJSON("data/programs.json");
         res.json(programs);
@@ -29,6 +39,11 @@ class BannerService {
 
     async getCourseProgramMaps(req: Request, res: Response) {
         const mappings = await fs.readJSON("data/map-course-programs.json");
+        res.json(mappings);
+    }
+
+    async getElectivePackageProgramMaps(req: Request, res: Response) {
+        const mappings = await fs.readJSON("data/map-elective-package-programs.json");
         res.json(mappings);
     }
 }

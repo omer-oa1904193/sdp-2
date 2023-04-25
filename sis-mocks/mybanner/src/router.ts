@@ -7,5 +7,8 @@ router.get("/users/", bannerService.getUsers);
 router.get("/colleges/", bannerService.getColleges);
 router.get("/departments/", bannerService.getDepartments);
 router.get("/courses/", bannerService.getCourses);
+router.get("/elective-packages/", bannerService.getElectivePackages);
 router.get("/programs/", bannerService.getPrograms);
 router.get("/course-programs/", bannerService.getCourseProgramMaps);
+router.get("/elective-packages-programs/", bannerService.getElectivePackageProgramMaps);
+router.get("/courses-elective-packages/", bannerService.getCourseElectivePackageMaps);

@@ -24,10 +24,10 @@ export function ElectiveCard({
         return <>
             <div onClick={() => onCourseClicked(electiveCourse)}
                  ref={courseCard}
-                 className={`elective-card ${electiveCourse.completed ? "completed-course" : getCategoryClass(electiveCourse.category)} ${errorHighlighted ? "error-highlighted" : ""}`}>
-                <div className="title-div">
-                    <h4 className="course-title" lang="en">{electiveCourse.title}</h4>
-                    <h5 className="course-code">{electiveCourse.code} ({electiveCourse.creditHours})</h5>
+                 className={`${styles.electiveCard} ${electiveCourse.completed ? "completed-course" : getCategoryClass(electiveCourse.category)} ${errorHighlighted ? "error-highlighted" : ""}`}>
+                <div className={styles.titleDiv}>
+                    <h4 className={styles.courseTitle} lang="en">{electiveCourse.title}</h4>
+                    <h5 className={styles.courseCode}>{electiveCourse.code} ({electiveCourse.creditHours})</h5>
                 </div>
                 <div className="icons-div">
                     {electiveCourse.prerequisites.length > 0 &&
@@ -47,9 +47,9 @@ export function ElectiveCard({
     }
 
     return <>
-        <div className={`elective-card ${getCategoryClass(electivePackage.category)}`}>
-            <h4 className="package-name">{electivePackage.category === COURSE_CATEGORIES.MAJOR_ELECTIVE ? "Major Elective" : electivePackage.name}</h4>
-            <button className="inv-button show-electives-button" onClick={onElectiveClicked}>
+        <div className={`${styles.electiveCard} ${getCategoryClass(electivePackage.category)}`}>
+            <h4 className={styles.packageName}>{electivePackage.category === COURSE_CATEGORIES.MAJOR_ELECTIVE ? "Major Elective" : electivePackage.title}</h4>
+            <button className={`inv-button ${styles.showElectivesButton}`} onClick={onElectiveClicked}>
                 <FontAwesomeIcon icon={faCaretDown}></FontAwesomeIcon>
             </button>
         </div>
