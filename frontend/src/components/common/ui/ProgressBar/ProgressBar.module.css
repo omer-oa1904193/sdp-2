@@ -1,0 +1,15 @@
+.progress-bar {
+    display: flex;
+    flex-direction: row;
+    flex-grow: 1;
+}
+
+.progress-bar .empty {
+    background-color: white;
+    border-radius: 23px;
+}
+
+.progress-bar .filled {
+    background-color: #C96161;
+    border-radius: 23px;
+}

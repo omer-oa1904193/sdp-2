@@ -3,7 +3,7 @@ import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 import {useEffect, useRef} from "react";
 import {COURSE_CATEGORIES} from "../../../../constants.js";
 import {getCategoryClass} from "../CourseCard/CourseCard.jsx";
-import "./ElectiveCard.css"
+import styles from "./ElectiveCard.module.css"
 
 export function ElectiveCard({
                                  electivePackage,

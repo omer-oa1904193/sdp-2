@@ -1,4 +1,4 @@
-import {SpinnerOverlay} from "@/components/common/SpinnerOverlay/SpinnerOverlay";
+import {SpinnerOverlay} from "@/components/common/ui/SpinnerOverlay/SpinnerOverlay.jsx";
 import styles from "@/pages/login/LoginPage.module.css";
 import {useUserStore} from "@/stores/userStore.js";
 import {useRouter} from "next/router.js";

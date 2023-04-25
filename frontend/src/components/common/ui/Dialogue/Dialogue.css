@@ -1,0 +1,33 @@
+.dialogue-backdrop {
+    border-radius: 10px;
+    border: 1px solid darkblue;
+    position: fixed;
+    z-index: 1;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgba(0, 0, 0, 0.25);
+}
+
+.custom-dialogue {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: white;
+    border-radius: 10px;
+}
+
+.custom-dialogue .dialog-header {
+    border-radius: 10px 10px 0 0;
+    background-color: #267BAA;
+    color: #ffffff;
+    font-size: 16px;
+    padding: 0.8rem 0.75rem;
+}
+
+.custom-dialogue .dialogue-title {
+    font-weight: 500;
+}
