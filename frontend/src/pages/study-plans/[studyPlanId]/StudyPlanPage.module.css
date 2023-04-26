@@ -1,0 +1,13 @@
+.study-plan-page {
+    display: grid;
+    grid-template-columns: auto 5fr auto;
+    justify-content: center;
+}
+
+.study-plan-page .buttons-pane {
+    display: flex;
+    flex-direction: column;
+    row-gap: 1.25rem;
+    padding: 0 1.5rem;
+    align-self: center;
+}

@@ -1,5 +1,5 @@
 import {useRef} from "react";
-import "./Dialogue.css"
+import  styles from "./Dialogue.module.css"
 
 export function Dialogue({children, isOpen, setOpen, title}) {
     const dialog = useRef(null)

@@ -1,18 +1,18 @@
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
-import {Link} from "@tanstack/react-location";
+import Link from "next/link";
 import React from "react";
-import "./CircularIconButton.css"
+import styles from "./CircularIconButton.module.css"
 
 export function CircularIconButton({icon, onClick, link}) {
 
     return <>
-        {link ? <Link to={link}>
-                <button className="inv-button circular-icon-button">
+        {link ? <Link href={link}>
+                <button className={`inv-button ${styles.circularIconButton}`}>
                     <FontAwesomeIcon icon={icon}/>
                 </button>
             </Link>
             :
-            <button className="inv-button circular-icon-button">
+            <button className={`inv-button ${styles.circularIconButton}`}>
                 <FontAwesomeIcon icon={icon}/>
             </button>
         }

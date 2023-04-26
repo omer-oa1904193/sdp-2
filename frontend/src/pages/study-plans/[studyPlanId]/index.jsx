@@ -1,13 +1,19 @@
+import {CircularIconButton} from "@/components/common/ui/CircularIconButton/CircularIconButton.jsx";
 import {SpinnerOverlay} from "@/components/common/ui/SpinnerOverlay/SpinnerOverlay.jsx";
+import {CourseDialogue} from "@/components/study-plan-components/studyplan/CourseDialogue/CourseDialogue.jsx";
 import {StudyPlanEditor} from "@/components/study-plan-components/studyplan/StudyPlanEditor/StudyPlanEditor.jsx";
+import {SummeryPane} from "@/components/study-plan-components/studyplan/SummeryPane/SummeryPane.jsx";
 import {useUserStore} from "@/stores/userStore.js";
+import {faPen} from "@fortawesome/free-solid-svg-icons";
 import {useRouter} from "next/router";
 import React, {useEffect, useState} from "react";
+import styles from "./StudyPlanPage.module.css"
 
 export default function StudyPlanPage(pageProps) {
     const router = useRouter()
     const userStore = useUserStore();
     const [studyPlan, setStudyPlan] = useState(null);
+    const [courseDialogueIsOpen, setCourseDialogueIsOpen] = useState(false)
 
     useEffect(() => {
         userStore.fetchProtected(`/study-plans/${router.query.studyPlanId}`)
@@ -40,7 +46,19 @@ export default function StudyPlanPage(pageProps) {
         return <SpinnerOverlay/>
 
     return <>
-        <StudyPlanEditor studyPlan={studyPlan}></StudyPlanEditor>
+        <div className={styles.studyPlanPage}>
+            <div className={styles.buttonsPane}>
+                <CircularIconButton icon={faPen} link={"edit"}/>
+                {/*<CircularIconButton icon={faGear}/>*/}
+                {/*<CircularIconButton icon={faMessage}/>*/}
+                {/*<CircularIconButton icon={faPrint}/>*/}
+            </div>
+
+            <StudyPlanEditor studyPlan={studyPlan} isEditable={false}
+                             onCourseClicked={() => setCourseDialogueIsOpen(true)}/>
+            <SummeryPane studyPlan={studyPlan}/>
+            <CourseDialogue isOpen={courseDialogueIsOpen} setOpen={setCourseDialogueIsOpen}/>
+        </div>
     </>
 
 }
