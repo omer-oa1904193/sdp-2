@@ -33,15 +33,15 @@ export function StudyPlanEditor({studyPlan, setStudyPlan, isEditable, setDirty, 
     }
 
     function onCourseDropped(event, toYear, toSemester) {
-        // const courseId = event.dataTransfer.getData("courseId");
-        // const fromYear = Number(event.dataTransfer.getData("fromYear"));
-        // const fromSemester = event.dataTransfer.getData("fromSemester");
-        // const courseListElement = event.target.closest(".course-list");
-        // if (!courseListElement)
-        //     return
-        // courseListElement.classList.remove("course-dropzone")
-        // console.log(`${courseId} was dropped from ${fromSemester} ${fromYear} to ${toSemester} ${toYear}`)
-        //
+        const courseId = event.dataTransfer.getData("courseId");
+        const fromYear = Number(event.dataTransfer.getData("fromYear"));
+        const fromSemester = event.dataTransfer.getData("fromSemester");
+        const courseListElement = event.target.closest(".course-list");
+        if (!courseListElement)
+            return
+        courseListElement.classList.remove("course-dropzone")
+        console.log(`${courseId} was dropped from ${fromSemester} ${fromYear} to ${toSemester} ${toYear}`)
+
         // const course = studyPlan.years[fromYear - 1][fromSemester][courseId]
         // if (fromSemester === toSemester && fromYear === toYear)
         //     return;
@@ -121,40 +121,39 @@ export function StudyPlanEditor({studyPlan, setStudyPlan, isEditable, setDirty, 
                 <div key={yearLabel} className={styles.yearDiv}>
                     <button className={styles.yearButton}>{yearLabel}</button>
                     <div className={styles.yearSemesters}>
-                        {Array.from(semesterMap).map(([semesterLabel, courses]) => {
-                            if (courses.length === 0)
-                                return <></>
+                        {Array.from(semesterMap).filter(([_, courses]) => courses.length !== 0).map(([semesterLabel, courses]) => {
                             return <div key={semesterLabel} className={styles.semesterDiv}>
                                 <h3 className={styles.semesterButton}>{semesterLabel}</h3>
                                 <ul className={styles.courseList}
                                     onDragOver={(e) => {
                                         e.preventDefault()
                                         document.querySelectorAll(".course-list").forEach(e => e.classList.remove("course-dropzone"))
+                                        console.log(e)
                                         e.target.closest(".course-list").classList.add("course-dropzone")
                                     }}
                                     onDrop={(e) => {
                                         onCourseDropped(e, yearLabel + 1, semesterLabel)
                                     }}>
-                                    {courses.map(course =>
-                                        <li key={course.id}
-                                            id={`course-li-${course.id}`}
+                                    {courses.map(courseMapping =>
+                                        <li key={`${courseMapping.isElective ? "el-" : ""}${courseMapping.id}`}
+                                            id={`course-li-${courseMapping.id}`}
                                             draggable={isEditable}
                                             onDragStart={(e) => {
-                                                console.log(`${course.id} was dragged`)
-                                                e.dataTransfer.setData("courseId", course.id);
+                                                console.log(`${courseMapping.id} was dragged`)
+                                                e.dataTransfer.setData("courseId", courseMapping.id);
                                                 e.dataTransfer.setData("fromYear", `${yearLabel + 1}`);
-                                                e.dataTransfer.setData("fromSemester", semester);
+                                                e.dataTransfer.setData("fromSemester", semesterLabel);
                                             }
                                             }>
-                                            {course.isElective ?
-                                                <ElectiveCard electivePackage={course}
-                                                              onElectiveClicked={() => isEditable ? onElectiveClicked(course) : undefined}
+                                            {courseMapping.isElective ?
+                                                <ElectiveCard electivePackageMapping={courseMapping}
+                                                              onElectiveClicked={() => isEditable ? onElectiveClicked(courseMapping) : undefined}
                                                               onCourseClicked={(course) => onCourseClicked(course)}
-                                                              errorHighlighted={errorCourseId === course.id}
+                                                              errorHighlighted={errorCourseId === courseMapping.id}
                                                               clearErrorHighlighted={() => setErrorCourseId(null)}/> :
-                                                <CourseCard course={course}
-                                                            onCourseClicked={() => onCourseClicked(course)}
-                                                            errorHighlighted={errorCourseId === course.id}
+                                                <CourseCard courseMapping={courseMapping}
+                                                            onCourseClicked={() => onCourseClicked(courseMapping)}
+                                                            errorHighlighted={errorCourseId === courseMapping.id}
                                                             clearErrorHighlighted={() => setErrorCourseId(null)}/>
                                             }
                                         </li>
@@ -170,8 +169,7 @@ export function StudyPlanEditor({studyPlan, setStudyPlan, isEditable, setDirty, 
                         }
                     </div>
                 </div>
-            )
-            }
+            )}
         </div>
     </div>
 }

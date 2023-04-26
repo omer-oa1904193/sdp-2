@@ -6,7 +6,7 @@ import {getCategoryClass} from "../CourseCard/CourseCard.jsx";
 import styles from "./ElectiveCard.module.css"
 
 export function ElectiveCard({
-                                 electivePackage,
+                                 electivePackageMapping,
                                  onElectiveClicked,
                                  onCourseClicked,
                                  errorHighlighted,
@@ -14,12 +14,12 @@ export function ElectiveCard({
                              }) {
     const courseCard = useRef(null);
     useEffect(() => courseCard.current?.addEventListener("animationend", () => clearErrorHighlighted()), [courseCard])
-    if (electivePackage.currentCourse) {
+    if (electivePackageMapping.currentCourse) {
         const electiveCourse = {
-            ...electivePackage.currentCourse,
-            semester: electivePackage.semester,
-            year: electivePackage.year,
-            category: electivePackage.category
+            ...electivePackageMapping.currentCourse,
+            semester: electivePackageMapping.semester,
+            year: electivePackageMapping.year,
+            category: electivePackageMapping.category
         }
         return <>
             <div onClick={() => onCourseClicked(electiveCourse)}
@@ -47,8 +47,8 @@ export function ElectiveCard({
     }
 
     return <>
-        <div className={`${styles.electiveCard} ${getCategoryClass(electivePackage.category)}`}>
-            <h4 className={styles.packageName}>{electivePackage.category === COURSE_CATEGORIES.MAJOR_ELECTIVE ? "Major Elective" : electivePackage.title}</h4>
+        <div className={`${styles.electiveCard} ${getCategoryClass(electivePackageMapping.electivePackage.category)}`}>
+            <h4 className={styles.packageName}>{electivePackageMapping.category === COURSE_CATEGORIES.MAJOR_ELECTIVE ? "Major Elective" : electivePackageMapping.electivePackage.title}</h4>
             <button className={`inv-button ${styles.showElectivesButton}`} onClick={onElectiveClicked}>
                 <FontAwesomeIcon icon={faCaretDown}></FontAwesomeIcon>
             </button>

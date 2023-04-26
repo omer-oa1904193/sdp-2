@@ -24,7 +24,7 @@ export class StudyPlan extends CustomBaseEntity {
     courses: Collection<Course> = new Collection<Course>(this);
 
     // dummy field used to fetch courses WITH pivot data
-    @OneToMany({entity: () => MapCourseStudyPlan, mappedBy: (m: MapCourseStudyPlan) => m.studyPlan, persist: false, serializedName: "courses"})
+    @OneToMany({entity: () => MapCourseStudyPlan, mappedBy: (m: MapCourseStudyPlan) => m.studyPlan, persist: false})
     courseMappings: Collection<MapCourseStudyPlan> = new Collection<MapCourseStudyPlan>(this);
 
     @ManyToMany({
@@ -40,7 +40,6 @@ export class StudyPlan extends CustomBaseEntity {
         entity: () => MapElectivePackageStudyPlan,
         mappedBy: (m: MapElectivePackageStudyPlan) => m.studyPlan,
         persist: false,
-        serializedName: "electives"
     })
     electiveMappings: Collection<MapElectivePackageStudyPlan> = new Collection<MapElectivePackageStudyPlan>(this);
 

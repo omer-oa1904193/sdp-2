@@ -15,16 +15,16 @@ export default function StudyPlanPage(pageProps) {
             .then(studyPlan => {
                 const yearMap = new Map();
                 const stats = {
-                    courses: studyPlan.courses.length + studyPlan.electives.length,
+                    courses: studyPlan.courseMappings.length + studyPlan.electiveMappings.length,
                     completed: 0, remaining: 0, progress: 0, creditHours: 0, tuitionFees: 0,
                 }
-                studyPlan.courses.forEach(course => {
+                studyPlan.courseMappings.forEach(course => {
                     const year = `Year ${course.yearOrder}`;
                     if (!yearMap.has(year))
                         yearMap.set(year, new Map([["Fall", []], ["Winter", []], ["Spring", []], ["Summer", []]]));
                     yearMap.get(year).get(course.season).push(course);
                 });
-                studyPlan.electives.forEach(elective => {
+                studyPlan.electiveMappings.forEach(elective => {
                     const year = `Year ${elective.yearOrder}`;
                     if (!yearMap.has(year))
                         yearMap.set(year, new Map([["Fall", []], ["Winter", []], ["Spring", []], ["Summer", []]]));

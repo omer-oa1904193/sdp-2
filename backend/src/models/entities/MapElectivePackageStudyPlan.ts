@@ -20,12 +20,4 @@ export class MapElectivePackageStudyPlan extends CustomBaseEntity {
     @Property({type: types.integer})
     yearOrder!: number;
 
-
-    toObject(ignoreFields?: string[]): EntityDTO<this> {
-        return {
-            ...((super.toObject() as EntityData<MapElectivePackageStudyPlan>)?.electivePackage as ElectivePackage),
-            season: this.season,
-            yearOrder: this.yearOrder,
-        } as EntityDTO<this>
-    }
 }

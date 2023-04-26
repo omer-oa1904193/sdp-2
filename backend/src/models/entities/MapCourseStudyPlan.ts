@@ -24,14 +24,4 @@ export class MapCourseStudyPlan extends CustomBaseEntity {
 
     @Enum({items: () => CourseCategory, type: types.enum})
     category!: CourseCategory;
-
-
-    toObject(ignoreFields?: string[]): EntityDTO<this> {
-        return {
-            ...((super.toObject() as EntityData<MapCourseStudyPlan>)?.course as Course),
-            season: this.season,
-            yearOrder: this.yearOrder,
-            category: this.category,
-        } as EntityDTO<this>
-    }
 }

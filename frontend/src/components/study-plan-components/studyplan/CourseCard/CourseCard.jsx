@@ -6,18 +6,18 @@ import {useEffect, useRef} from "react";
 import styles from "./CourseCard.module.css";
 
 
-export function CourseCard({course, onCourseClicked, errorHighlighted, clearErrorHighlighted}) {
+export function CourseCard({courseMapping, onCourseClicked, errorHighlighted, clearErrorHighlighted}) {
     const courseCard = useRef(null);
     useEffect(() => courseCard.current?.addEventListener("animationend", () => clearErrorHighlighted()), [courseCard])
 
 
     return <div onClick={onCourseClicked}
                 ref={courseCard}
-                className={`${styles.courseCard} ${course.completed ? "completed-course" : getCategoryClass(course.category)} ${errorHighlighted ? "error-highlighted" : ""}`}>
+                className={`${styles.courseCard} ${courseMapping.course.completed ? "completed-course" : getCategoryClass(courseMapping.category)} ${errorHighlighted ? "error-highlighted" : ""}`}>
         {/*<FontAwesomeIcon icon={faGripVertical}></FontAwesomeIcon>*/}
         <div className={styles.titleDiv}>
-            <h4 className={styles.courseTitle} lang="en">{course.title}</h4>
-            <h5 className={styles.courseCode}>{course.code} ({course.creditHours})</h5>
+            <h4 className={styles.courseTitle} lang="en">{courseMapping.course.title}</h4>
+            <h5 className={styles.courseCode}>{courseMapping.course.code} ({courseMapping.course.creditHours})</h5>
         </div>
         <div className={styles.iconsDiv}>
             {/*{course.prerequisites.length > 0 &&*/}
