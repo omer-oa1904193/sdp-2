@@ -39,7 +39,7 @@ export function StudyPlanEditor({studyPlan, setStudyPlan, isEditable, setDirty, 
         const courseListElement = event.target.closest(".course-list");
         if (!courseListElement)
             return
-        courseListElement.classList.remove("course-dropzone")
+        courseListElement.classList.remove(styles.courseDropzone)
         console.log(`${courseId} was dropped from ${fromSemester} ${fromYear} to ${toSemester} ${toYear}`)
 
         // const course = studyPlan.years[fromYear - 1][fromSemester][courseId]
@@ -127,9 +127,8 @@ export function StudyPlanEditor({studyPlan, setStudyPlan, isEditable, setDirty, 
                                 <ul className={styles.courseList}
                                     onDragOver={(e) => {
                                         e.preventDefault()
-                                        document.querySelectorAll(".course-list").forEach(e => e.classList.remove("course-dropzone"))
-                                        console.log(e)
-                                        e.target.closest(".course-list").classList.add("course-dropzone")
+                                        document.querySelectorAll(`.${styles.courseList}`).forEach(e => e.classList.remove(styles.courseDropzone))
+                                        e.target.closest(`.${styles.courseList}`).classList.add(styles.courseDropzone)
                                     }}
                                     onDrop={(e) => {
                                         onCourseDropped(e, yearLabel + 1, semesterLabel)

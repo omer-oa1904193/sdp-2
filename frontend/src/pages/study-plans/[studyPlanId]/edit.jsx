@@ -5,7 +5,7 @@ import React from "react";
 export default function StudyPlanPage(pageProps) {
     const router = useRouter()
     return <>
-        <StudyPlanBody isEditable={false}></StudyPlanBody>
+        <StudyPlanBody isEditable={true}></StudyPlanBody>
     </>
 }
 
