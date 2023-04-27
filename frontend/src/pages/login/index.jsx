@@ -24,6 +24,7 @@ export default function LoginPage() {
         event.preventDefault();
         setState({...state, loading: true, error: ""});
         //TODO move API calls somewhere else
+        console.log(process.env.NEXT_PUBLIC_API_URL)
         const response = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/sessions/`, {
             method: "POST",
             headers: {
