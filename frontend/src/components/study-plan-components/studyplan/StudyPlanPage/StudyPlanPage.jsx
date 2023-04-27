@@ -27,19 +27,19 @@ export function StudyPlanPage({studyPlanId, isEditable}) {
                 }
                 studyPlan.courseMappings.forEach(courseMapping => {
                     if (!yearMap.has(courseMapping.yearOrder))
-                        yearMap.set(courseMapping.yearOrder, new Map(SEMESTERS.map(s => [s, {
-                            courses: new Map(),
-                            electives: new Map()
-                        }])),);
-                    yearMap.get(courseMapping.yearOrder).get(courseMapping.season).courses.set(courseMapping.id, courseMapping);
+                        yearMap.set(courseMapping.yearOrder, new Map(SEMESTERS.map(s => [s, new Map()])),);
+                    yearMap.get(courseMapping.yearOrder).get(courseMapping.season).set(`course-${courseMapping.id}`, {
+                        ...courseMapping,
+                        isElective: false
+                    });
                 });
                 studyPlan.electiveMappings.forEach(electiveMapping => {
                     if (!yearMap.has(electiveMapping.yearOrder))
-                        yearMap.set(course.yearOrder, new Map(SEMESTERS.map(s => [s, {
-                            courses: new Map(),
-                            electives: new Map()
-                        }])),);
-                    yearMap.get(electiveMapping.yearOrder).get(electiveMapping.season).electives.set(electiveMapping.id, electiveMapping);
+                        yearMap.set(electiveMapping.yearOrder, new Map(SEMESTERS.map(s => [s, new Map()])),);
+                    yearMap.get(electiveMapping.yearOrder).get(electiveMapping.season).set(`elective-${electiveMapping.id}`, {
+                        ...electiveMapping,
+                        isElective: true
+                    });
                 });
 
                 setStudyPlan({...studyPlan, yearMap, stats});
@@ -59,7 +59,9 @@ export function StudyPlanPage({studyPlanId, isEditable}) {
                     <CircularIconButton icon={faMessage}/>
                 </div>
             }
-            <StudyPlanEditor studyPlan={studyPlan} isEditable={isEditable}
+            <StudyPlanEditor studyPlan={studyPlan}
+                             setStudyPlan={setStudyPlan}
+                             isEditable={isEditable}
                              onCourseClicked={() => setCourseDialogueIsOpen(true)}/>
             <SummeryPane studyPlan={studyPlan}/>
             <CourseDialogue isOpen={courseDialogueIsOpen} setOpen={setCourseDialogueIsOpen}/>

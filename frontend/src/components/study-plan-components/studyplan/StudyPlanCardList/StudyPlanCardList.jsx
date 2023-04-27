@@ -2,7 +2,7 @@ import {CourseCard} from "@/components/study-plan-components/studyplan/CourseCar
 import {ElectiveCard} from "@/components/study-plan-components/studyplan/ElectiveCard/ElectiveCard.jsx";
 import React, {useState} from "react";
 
-export function StudyPlanCardList({year, semester, mappings, isElectives, isEditable}) {
+export function StudyPlanCardList({year, semester, mappings, isEditable}) {
     const [errorCourseId, setErrorCourseId] = useState(null)
     return <>
         {Array.from(mappings).map(([_, mapping]) =>
@@ -14,10 +14,10 @@ export function StudyPlanCardList({year, semester, mappings, isElectives, isEdit
                     e.dataTransfer.setData("mappingId", mapping.id);
                     e.dataTransfer.setData("fromYear", year);
                     e.dataTransfer.setData("fromSemester", semester);
-                    e.dataTransfer.setData("isElective", isElectives);
+                    e.dataTransfer.setData("isElective", mapping.isElective);
                 }
                 }>
-                {isElectives ?
+                {mapping.isElective ?
                     <ElectiveCard electivePackageMapping={mapping}
                                   onElectiveClicked={() => isEditable ? onElectiveClicked(mapping) : undefined}
                                   onCourseClicked={(course) => onCourseClicked(course)}

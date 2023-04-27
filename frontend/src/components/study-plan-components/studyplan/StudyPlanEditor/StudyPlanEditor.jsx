@@ -33,7 +33,7 @@ export function StudyPlanEditor({studyPlan, setStudyPlan, isEditable, setDirty, 
         // }).then(() => setDirty(false))
     }
 
-    function onCourseDropped(event, toYear, toSemester) {
+    function onCardDropped(event, toYear, toSemester) {
         const mappingId = Number(event.dataTransfer.getData("mappingId"));
         const fromYear = Number(event.dataTransfer.getData("fromYear"));
         const fromSemester = event.dataTransfer.getData("fromSemester");
@@ -43,9 +43,9 @@ export function StudyPlanEditor({studyPlan, setStudyPlan, isEditable, setDirty, 
         if (!courseListElement)
             return
         courseListElement.classList.remove(styles.courseDropzone)
-
-        const mapping = isElective ? studyPlan.yearMap.get(fromYear).get(fromSemester).electives.get(mappingId) : studyPlan.yearMap.get(fromYear).get(fromSemester).courses.get(mappingId);
-        console.log(`${isElective ? mapping.electivePackage.title : mapping.course.code} (id: ${mappingId}) was dropped from ${fromSemester} ${fromYear} to ${toSemester} ${toYear}`);
+        const mappingType = isElective ? "elective" : "course";
+        const mapping = studyPlan.yearMap.get(fromYear).get(fromSemester).get(`${mappingType}-${mappingId}`);
+        console.log(`${mappingType} (id: ${mappingId}) was dropped from ${fromSemester} ${fromYear} to ${toSemester} ${toYear}`);
 
         if (fromSemester === toSemester && fromYear === toYear)
             return;
@@ -83,15 +83,12 @@ export function StudyPlanEditor({studyPlan, setStudyPlan, isEditable, setDirty, 
         //     }
         // }
         //
-        // mapping.season = toSemester;
-        // mapping.yearOrder = toYear;
-        // const yearMap = studyPlan.yearMap;
-        // yearMap.get(toYear).get(toSemester)[courseId] = course;
-        // delete yearMap[fromYear - 1][fromSemester][courseId];
-        //
-        // const coursesByCode = studyPlan.coursesByCode;
-        // coursesByCode[course.code] = course;
-        // setStudyPlan({...studyPlan, years, coursesByCode})
+        mapping.season = toSemester;
+        mapping.yearOrder = toYear;
+        const yearMap = studyPlan.yearMap;
+        yearMap.get(toYear).get(toSemester).set(`${mappingType}-${mappingId}`, mapping);
+        yearMap.get(fromYear).get(fromSemester).delete(`${mappingType}-${mappingId}`);
+        setStudyPlan({...studyPlan, yearMap})
         // setDirty(true);
     }
 
@@ -126,13 +123,7 @@ export function StudyPlanEditor({studyPlan, setStudyPlan, isEditable, setDirty, 
                 <div key={yearOrder} className={styles.yearDiv}>
                     <button className={styles.yearButton}>Year {yearOrder}</button>
                     <div className={styles.yearSemesters}>
-                        {Array.from(semesterMap).filter(([_, {
-                            courses,
-                            electives
-                        }]) => (courses.size + electives.size) !== 0).map(([semesterLabel, {
-                            courses,
-                            electives
-                        }]) => {
+                        {Array.from(semesterMap).filter(([_, mappings]) => mappings.size !== 0).map(([semesterLabel, mappings]) => {
                             return <div key={semesterLabel} className={styles.semesterDiv}>
                                 <h3 className={styles.semesterButton}>{semesterLabel}</h3>
                                 <ul className={styles.courseList}
@@ -142,12 +133,10 @@ export function StudyPlanEditor({studyPlan, setStudyPlan, isEditable, setDirty, 
                                         e.target.closest(`.${styles.courseList}`).classList.add(styles.courseDropzone)
                                     }}
                                     onDrop={(e) => {
-                                        onCourseDropped(e, yearOrder, semesterLabel)
+                                        onCardDropped(e, yearOrder, semesterLabel)
                                     }}>
-                                    <StudyPlanCardList mappings={courses} year={yearOrder} semester={semesterLabel}
-                                                       isElectives={false} isEditable={isEditable}/>
-                                    <StudyPlanCardList mappings={electives} year={yearOrder} semester={semesterLabel}
-                                                       isElectives={true} isEditable={isEditable}/>
+                                    <StudyPlanCardList mappings={mappings} year={yearOrder} semester={semesterLabel}
+                                                       isEditable={isEditable}/>
                                 </ul>
                                 {/*{isEditable &&*/}
                                 {/*    <button className="add-course-button inv-button">*/}
