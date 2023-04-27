@@ -3,20 +3,21 @@ import {SpinnerOverlay} from "@/components/common/ui/SpinnerOverlay/SpinnerOverl
 import {CourseDialogue} from "@/components/study-plan-components/studyplan/CourseDialogue/CourseDialogue.jsx";
 import {StudyPlanEditor} from "@/components/study-plan-components/studyplan/StudyPlanEditor/StudyPlanEditor.jsx";
 import {SummeryPane} from "@/components/study-plan-components/studyplan/SummeryPane/SummeryPane.jsx";
+import {SEMESTERS} from "@/constants.js";
 import {useUserStore} from "@/stores/userStore.js";
 import {faGear, faMessage, faPen} from "@fortawesome/free-solid-svg-icons";
 import {useRouter} from "next/router";
 import React, {useEffect, useState} from "react";
 import styles from "./StudyPlanPage.module.css"
 
-export default function StudyPlanBody({isEditable}) {
+export function StudyPlanPage({studyPlanId, isEditable}) {
     const router = useRouter()
     const userStore = useUserStore();
     const [studyPlan, setStudyPlan] = useState(null);
     const [courseDialogueIsOpen, setCourseDialogueIsOpen] = useState(false)
 
     useEffect(() => {
-        userStore.fetchProtected(`/study-plans/${router.query.studyPlanId}`)
+        userStore.fetchProtected(`/study-plans/${studyPlanId}`)
             .then(r => r.json())
             .then(studyPlan => {
                 const yearMap = new Map();
@@ -24,22 +25,26 @@ export default function StudyPlanBody({isEditable}) {
                     courses: studyPlan.courseMappings.length + studyPlan.electiveMappings.length,
                     completed: 0, remaining: 0, progress: 0, creditHours: 0, tuitionFees: 0,
                 }
-                studyPlan.courseMappings.forEach(course => {
-                    const year = `Year ${course.yearOrder}`;
-                    if (!yearMap.has(year))
-                        yearMap.set(year, new Map([["Fall", []], ["Winter", []], ["Spring", []], ["Summer", []]]));
-                    yearMap.get(year).get(course.season).push(course);
+                studyPlan.courseMappings.forEach(courseMapping => {
+                    if (!yearMap.has(courseMapping.yearOrder))
+                        yearMap.set(courseMapping.yearOrder, new Map(SEMESTERS.map(s => [s, {
+                            courses: new Map(),
+                            electives: new Map()
+                        }])),);
+                    yearMap.get(courseMapping.yearOrder).get(courseMapping.season).courses.set(courseMapping.id, courseMapping);
                 });
-                studyPlan.electiveMappings.forEach(elective => {
-                    const year = `Year ${elective.yearOrder}`;
-                    if (!yearMap.has(year))
-                        yearMap.set(year, new Map([["Fall", []], ["Winter", []], ["Spring", []], ["Summer", []]]));
-                    yearMap.get(year).get(elective.season).push({...elective, isElective: true});
+                studyPlan.electiveMappings.forEach(electiveMapping => {
+                    if (!yearMap.has(electiveMapping.yearOrder))
+                        yearMap.set(course.yearOrder, new Map(SEMESTERS.map(s => [s, {
+                            courses: new Map(),
+                            electives: new Map()
+                        }])),);
+                    yearMap.get(electiveMapping.yearOrder).get(electiveMapping.season).electives.set(electiveMapping.id, electiveMapping);
                 });
 
                 setStudyPlan({...studyPlan, yearMap, stats});
             })
-    }, [])
+    }, [studyPlanId])
 
 
     if (!studyPlan)
@@ -61,16 +66,4 @@ export default function StudyPlanBody({isEditable}) {
         </div>
     </>
 
-}
-
-
-export function getServerSideProps() {
-    return {
-        props: {
-            routeMetaData: {
-                requiresAuth: true,
-                showHeader: true
-            }
-        }
-    }
 }

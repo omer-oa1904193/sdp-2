@@ -1,3 +1,4 @@
+import {StudyPlanCardList} from "@/components/study-plan-components/studyplan/StudyPlanCardList/StudyPlanCardList.jsx";
 import React, {useRef, useState} from "react";
 import {ProgressBar} from "@/components/common/ui/ProgressBar/ProgressBar.jsx";
 import {CourseCard} from "@/components/study-plan-components/studyplan/CourseCard/CourseCard.jsx";
@@ -33,18 +34,21 @@ export function StudyPlanEditor({studyPlan, setStudyPlan, isEditable, setDirty, 
     }
 
     function onCourseDropped(event, toYear, toSemester) {
-        const courseId = event.dataTransfer.getData("courseId");
+        const mappingId = Number(event.dataTransfer.getData("mappingId"));
         const fromYear = Number(event.dataTransfer.getData("fromYear"));
         const fromSemester = event.dataTransfer.getData("fromSemester");
-        const courseListElement = event.target.closest(".course-list");
+        const isElective = event.dataTransfer.getData("isElective").toLowerCase() === "true";
+
+        const courseListElement = event.target.closest(`.${styles.courseList}`);
         if (!courseListElement)
             return
         courseListElement.classList.remove(styles.courseDropzone)
-        console.log(`${courseId} was dropped from ${fromSemester} ${fromYear} to ${toSemester} ${toYear}`)
 
-        // const course = studyPlan.years[fromYear - 1][fromSemester][courseId]
-        // if (fromSemester === toSemester && fromYear === toYear)
-        //     return;
+        const mapping = isElective ? studyPlan.yearMap.get(fromYear).get(fromSemester).electives.get(mappingId) : studyPlan.yearMap.get(fromYear).get(fromSemester).courses.get(mappingId);
+        console.log(`${isElective ? mapping.electivePackage.title : mapping.course.code} (id: ${mappingId}) was dropped from ${fromSemester} ${fromYear} to ${toSemester} ${toYear}`);
+
+        if (fromSemester === toSemester && fromYear === toYear)
+            return;
         // let prerequisites;
         // if (course.isElective)
         //     prerequisites = course?.currentCourse?.prerequisites;
@@ -79,17 +83,18 @@ export function StudyPlanEditor({studyPlan, setStudyPlan, isEditable, setDirty, 
         //     }
         // }
         //
-        // course.semester = toSemester;
-        // course.year = toYear;
-        // const years = studyPlan.years;
-        // years[toYear - 1][toSemester][courseId] = course;
-        // delete years[fromYear - 1][fromSemester][courseId];
+        // mapping.season = toSemester;
+        // mapping.yearOrder = toYear;
+        // const yearMap = studyPlan.yearMap;
+        // yearMap.get(toYear).get(toSemester)[courseId] = course;
+        // delete yearMap[fromYear - 1][fromSemester][courseId];
         //
         // const coursesByCode = studyPlan.coursesByCode;
         // coursesByCode[course.code] = course;
         // setStudyPlan({...studyPlan, years, coursesByCode})
         // setDirty(true);
     }
+
 
     return <div className={`${styles.spEditor} styled-scrollbars`}>
         {isEditable ?
@@ -117,11 +122,17 @@ export function StudyPlanEditor({studyPlan, setStudyPlan, isEditable, setDirty, 
         }
 
         <div className={styles.mainPlan} ref={studyPlanEditor}>
-            {Array.from(studyPlan.yearMap).map(([yearLabel, semesterMap]) =>
-                <div key={yearLabel} className={styles.yearDiv}>
-                    <button className={styles.yearButton}>{yearLabel}</button>
+            {Array.from(studyPlan.yearMap).map(([yearOrder, semesterMap]) =>
+                <div key={yearOrder} className={styles.yearDiv}>
+                    <button className={styles.yearButton}>Year {yearOrder}</button>
                     <div className={styles.yearSemesters}>
-                        {Array.from(semesterMap).filter(([_, courses]) => courses.length !== 0).map(([semesterLabel, courses]) => {
+                        {Array.from(semesterMap).filter(([_, {
+                            courses,
+                            electives
+                        }]) => (courses.size + electives.size) !== 0).map(([semesterLabel, {
+                            courses,
+                            electives
+                        }]) => {
                             return <div key={semesterLabel} className={styles.semesterDiv}>
                                 <h3 className={styles.semesterButton}>{semesterLabel}</h3>
                                 <ul className={styles.courseList}
@@ -131,32 +142,12 @@ export function StudyPlanEditor({studyPlan, setStudyPlan, isEditable, setDirty, 
                                         e.target.closest(`.${styles.courseList}`).classList.add(styles.courseDropzone)
                                     }}
                                     onDrop={(e) => {
-                                        onCourseDropped(e, yearLabel + 1, semesterLabel)
+                                        onCourseDropped(e, yearOrder, semesterLabel)
                                     }}>
-                                    {courses.map(courseMapping =>
-                                        <li key={`${courseMapping.isElective ? "el-" : ""}${courseMapping.id}`}
-                                            id={`course-li-${courseMapping.id}`}
-                                            draggable={isEditable}
-                                            onDragStart={(e) => {
-                                                console.log(`${courseMapping.id} was dragged`)
-                                                e.dataTransfer.setData("courseId", courseMapping.id);
-                                                e.dataTransfer.setData("fromYear", `${yearLabel + 1}`);
-                                                e.dataTransfer.setData("fromSemester", semesterLabel);
-                                            }
-                                            }>
-                                            {courseMapping.isElective ?
-                                                <ElectiveCard electivePackageMapping={courseMapping}
-                                                              onElectiveClicked={() => isEditable ? onElectiveClicked(courseMapping) : undefined}
-                                                              onCourseClicked={(course) => onCourseClicked(course)}
-                                                              errorHighlighted={errorCourseId === courseMapping.id}
-                                                              clearErrorHighlighted={() => setErrorCourseId(null)}/> :
-                                                <CourseCard courseMapping={courseMapping}
-                                                            onCourseClicked={() => onCourseClicked(courseMapping)}
-                                                            errorHighlighted={errorCourseId === courseMapping.id}
-                                                            clearErrorHighlighted={() => setErrorCourseId(null)}/>
-                                            }
-                                        </li>
-                                    )}
+                                    <StudyPlanCardList mappings={courses} year={yearOrder} semester={semesterLabel}
+                                                       isElectives={false} isEditable={isEditable}/>
+                                    <StudyPlanCardList mappings={electives} year={yearOrder} semester={semesterLabel}
+                                                       isElectives={true} isEditable={isEditable}/>
                                 </ul>
                                 {/*{isEditable &&*/}
                                 {/*    <button className="add-course-button inv-button">*/}

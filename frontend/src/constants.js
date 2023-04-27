@@ -5,3 +5,7 @@ export const COURSE_CATEGORIES = {
     MAJOR_SUPPORTING: "Major Supporting",
     MAJOR_ELECTIVE: "Major Elective"
 }
+
+export const SEMESTERS = [
+    "Fall", "Winter", "Spring", "Summer"
+]
