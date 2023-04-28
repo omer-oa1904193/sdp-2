@@ -55,6 +55,7 @@ export function StudyPlanPage({studyPlanId, isEditable}) {
         <div className={styles.studyPlanPage}>
             {!isEditable &&
                 <div className={styles.buttonsPane}>
+                    <Score studyPlan={studyPlan}></Score>
                     <CircularIconButton icon={faPen} link={`/study-plans/${router.query.studyPlanId}/edit`}/>
                     <CircularIconButton icon={faGear}/>
                     <CircularIconButton icon={faMessage}/>
@@ -65,7 +66,6 @@ export function StudyPlanPage({studyPlanId, isEditable}) {
                              isEditable={isEditable}
                              onCourseClicked={() => setCourseDialogueIsOpen(true)}/>
             <SummeryPane studyPlan={studyPlan}/>
-            <Score studyPlan={studyPlan}></Score>
             <CourseDialogue isOpen={courseDialogueIsOpen} setOpen={setCourseDialogueIsOpen}/>
         </div>
     </>
