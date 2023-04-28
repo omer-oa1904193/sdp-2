@@ -1,0 +1,800 @@
+{
+    "id": 1,
+    "name": "My Study Plan",
+    "program": {
+        "id": 1,
+        "name": "Computer Science",
+        "yearCreated": 2021,
+        "department": 21
+    },
+    "author": 3,
+    "courseMappings": [
+        {
+            "id": 5,
+            "course": {
+                "id": 5,
+                "title": "Experimental General Chemistry I",
+                "code": "CHEM 103",
+                "creditHours": 1,
+                "description": "Safety in the Lab. Measurement of mass, volume and density. Identification of an unknown compound. Qualitative analysis of anions. Empirical formula of a compound. Thermal decomposition of hydrates. Stoichiometric determination. Acid-base and redox titrations. Enthalpy of reactions.",
+                "cost": 900,
+                "prerequisites": {
+                    "and": []
+                },
+                "department": 4
+            },
+            "season": "Fall",
+            "yearOrder": 1,
+            "category": "College Requirement",
+            "studyPlan": 1
+        },
+        {
+            "id": 8,
+            "course": {
+                "id": 8,
+                "title": "English Language II Post Foundation",
+                "code": "ENGL 203",
+                "creditHours": 3,
+                "description": "English 203 is an advanced academic writing course which provides an opportunity for students to learn and practice the skills needed for a guided university-level academic paper related to their field of study. The course emphasizes the development of academic writing skills as well as the ability to read and think critically. Students will learn to use the library and appropriate online resources to find and evaluate sources to inform, develop and support their ideas in term paper writing.",
+                "cost": 2700,
+                "prerequisites": {
+                    "and": [
+                        2
+                    ]
+                },
+                "department": 5
+            },
+            "season": "Spring",
+            "yearOrder": 1,
+            "category": "CCP Course",
+            "studyPlan": 1
+        },
+        {
+            "id": 2,
+            "course": {
+                "id": 2,
+                "title": "English Language I",
+                "code": "ENGL 202",
+                "creditHours": 3,
+                "description": "This course is designed to help students improve their academic writing ability, and to ensure that they are prepared for the more advanced writing and research skills introduced in English 2. Emphasis is placed on understanding information from authentic texts. Academic vocabulary is taught through inference and context. A collaborative community environment is encouraged, whereby students learn to provide and accept relevant, focused feedback to and from their peers. Throughout the semester, students create and develop an e-portfolio.",
+                "cost": 2700,
+                "prerequisites": {
+                    "and": []
+                },
+                "department": 5
+            },
+            "season": "Fall",
+            "yearOrder": 1,
+            "category": "CCP Course",
+            "studyPlan": 1
+        },
+        {
+            "id": 1,
+            "course": {
+                "id": 1,
+                "title": "Programming Concepts",
+                "code": "CMPS 151",
+                "creditHours": 3,
+                "description": "Problem solving techniques such as pseudo-code of flowcharts, algorithmic thinking. Basic prigramming concepts including: variables, arithmetic and logical operations, input/ output, conditional statements, loops, arrays, functions, and file processing. The laboratory provides a practical programming experience.",
+                "cost": 3000,
+                "prerequisites": {
+                    "and": []
+                },
+                "department": 21
+            },
+            "season": "Fall",
+            "yearOrder": 1,
+            "category": "Major Course",
+            "studyPlan": 1
+        },
+        {
+            "id": 9,
+            "course": {
+                "id": 9,
+                "title": "General Physics For Engineering I",
+                "code": "PHYS 191",
+                "creditHours": 3,
+                "description": "•Physics and Measurements: Units and Physical Quantities- Vectors- Motion in One Dimension- Motion in Tow Dimension- Horizontal Motion- Vertical Motion- Projectile Motion- Kinematic Equations. •The Laws of Motion: Newton’s First Law- Newton’s Second Law- Some Applications of Newton’s Laws- Circular Motion and its Application. •Work and Energy: Kinetic Energy- Work Done by Constant Force- Work Energy Theorem- Potential Energy- Conservation of Energy- Quantization of Energy. •Linear Momentum and Collision: Linear Momentum- Impulse of Momentum- Collisions- Elastic and Inelastic Collision- The Center of Mass- Motion of a System of Particles. •Rotational Motion: Angular Position, Velocity and Acceleration- Rotational Kinematic Motion Equations- Angular and Linear Quantities- Rotational Kinetic Energy- Calculations of Moments of Inertia- Torque- Work, Power and Energy in Rotational Motion- Rolling Motion of a Rigid Objects. •Angular Momentum: Angular Moment- Angular Moment of a Rotational Objects – Conservation of Angular Moment- The Motion of Gyroscopes and Tops. •Elasticity: Elastic Properties of Solids- Type of Elasticity- The Center of Gravity and Static Equilibrium. •Universal Gravitation: Newton’s Law of Gravitation, Measuring the Gravitational Constant – Free-Fall Acceleration and the Gravitational Force- Kepler’s Law and Motion of Planets- Energy Considerations in Planetary and Satellite. •Waves: Definitions of Waves, Pulse on a Rope, Transverse Wave, Longitudinal Wave, Complex Waves, Earthquake Waves, Amplitude of Waves, Wavelength of Waves, Frequency of Waves. •Temperature: Definition of Temperature, Thermal Equilibrium, Zeroth Law of Thermodynamics, Celsius Scale, Kelvin Scale, Fahrenheit Scale, Thermal Expansion, The Mole, The Ideal Gas Law. •Heat: Definition of Heat, Heat Capacity, Specific Heat, Calorimetry, Phase Change, Energy Transfer Mechanism, First Law of Thermodynamics, Thermal Processes.",
+                "cost": 2700,
+                "prerequisites": {
+                    "and": [
+                        6
+                    ]
+                },
+                "department": 10
+            },
+            "season": "Spring",
+            "yearOrder": 1,
+            "category": "College Requirement",
+            "studyPlan": 1
+        },
+        {
+            "id": 6,
+            "course": {
+                "id": 6,
+                "title": "Calculus I",
+                "code": "MATH 101",
+                "creditHours": 3,
+                "description": "Limits and continuity. Differentiation. Applications of derivatives. Integration. Inverse functions. Transcendental functions.",
+                "cost": 2700,
+                "prerequisites": {
+                    "and": []
+                },
+                "department": 10
+            },
+            "season": "Fall",
+            "yearOrder": 1,
+            "category": "CCP Course",
+            "studyPlan": 1
+        },
+        {
+            "id": 10,
+            "course": {
+                "id": 10,
+                "title": "Experimental General Physics For Engineering I",
+                "code": "PHYS 192",
+                "creditHours": 1,
+                "description": "This is the Lab-based course covering the subject matter of PHYS 191.The course presents an introduction to the methods of experimental physics Emphasis is on developing student’s skills in experimental techniques, data analysis, and scientific reporting of lab work. During the course students execute a series of experiments on Kinematics of motion, kinetic and potential energy, Oscillatory motion, Thermal properties of matter, and Viscosity. The course includes computer based experiments Classical Mechanics.",
+                "cost": 900,
+                "prerequisites": {
+                    "and": [
+                        9
+                    ]
+                },
+                "department": 10
+            },
+            "season": "Spring",
+            "yearOrder": 1,
+            "category": "College Requirement",
+            "studyPlan": 1
+        },
+        {
+            "id": 4,
+            "course": {
+                "id": 4,
+                "title": "General Chemistry I",
+                "code": "CHEM 101",
+                "creditHours": 3,
+                "description": "Chemistry and Measurement and significant figures. Atoms, molecules and ions. Formulas and names. Stoichiometry and chemical calculations. Chemical reactions. Thermochemistry and enthalpy changes. Quantum theory of the atom and electron configuration. Chemical bonding and molecular geometry.",
+                "cost": 2700,
+                "prerequisites": {
+                    "and": []
+                },
+                "department": 4
+            },
+            "season": "Fall",
+            "yearOrder": 1,
+            "category": "College Requirement",
+            "studyPlan": 1
+        },
+        {
+            "id": 11,
+            "course": {
+                "id": 11,
+                "title": "Linear Algebra",
+                "code": "MATH 231",
+                "creditHours": 3,
+                "description": "This course introduces the basic concepts of linear algebra, including elementary matrices, solutions of linear systems, vector spaces and subspaces, determinants, eigenvalues and eigenvectors, linear transformations.",
+                "cost": 2700,
+                "prerequisites": {
+                    "and": [
+                        6
+                    ]
+                },
+                "department": 10
+            },
+            "season": "Spring",
+            "yearOrder": 1,
+            "category": "College Requirement",
+            "studyPlan": 1
+        },
+        {
+            "id": 7,
+            "course": {
+                "id": 7,
+                "title": "Objec-Oriented Programming",
+                "code": "CMPS 251",
+                "creditHours": 4,
+                "description": "Fundamentals of object-oriented programming, object-oriented design, apply object oriented concepts such as abstraction, encapsulation, composition, inheritance, polymorphism, and interfaces. Graphical user interface and event-driven programming; exception handling; additional object-oriented features. The laboratory provides practical object-oriented programming experience.",
+                "cost": 4000,
+                "prerequisites": {
+                    "and": [
+                        {
+                            "or": [
+                                1,
+                                124
+                            ]
+                        }
+                    ]
+                },
+                "department": 21
+            },
+            "season": "Spring",
+            "yearOrder": 1,
+            "category": "Major Course",
+            "studyPlan": 1
+        },
+        {
+            "id": 12,
+            "course": {
+                "id": 12,
+                "title": "Calculus II",
+                "code": "MATH 102",
+                "creditHours": 3,
+                "description": "Applications of the integral. Techniques of integration. Sequences and infinite series. Power series. Taylor series. Parametric equations and polar coordinates.",
+                "cost": 2700,
+                "prerequisites": {
+                    "and": [
+                        6
+                    ]
+                },
+                "department": 10
+            },
+            "season": "Spring",
+            "yearOrder": 1,
+            "category": "CCP Course",
+            "studyPlan": 1
+        },
+        {
+            "id": 3,
+            "course": {
+                "id": 26,
+                "title": "History of Qatar",
+                "code": "HIST 121",
+                "creditHours": 3,
+                "description": "This course aims at familiarizing students with the history of Qatar through different historical eras, with particular emphasis on the emergence and development of Qatar Emirate during the Ottoman-British rivalry in the Gulf. The course also deals with social, economic and political life during the pre and post oil and Gas era. It examines the socio-political and economic developments that took place in the country covering the period of his Highness, Sheikh Hamad Ben Khalifa Al Thani.",
+                "cost": 2400,
+                "prerequisites": {
+                    "and": []
+                },
+                "department": 6
+            },
+            "season": "Fall",
+            "yearOrder": 1,
+            "category": "CCP Course",
+            "studyPlan": 1
+        },
+        {
+            "id": 22,
+            "course": {
+                "id": 22,
+                "title": "Arabic Language II",
+                "code": "ARAB 200",
+                "creditHours": 3,
+                "description": "The course aims at enabling the student to master the skill of the Arabic writing, and scientific and professional communication. These aims will be realized by the course content, which combines the basics of the language and linguistic rules to regulate the methods of writing, and experience on the skills of the Arabic writing in the following forms: 1) Functionally and creatively, 2) Traditionally and contemporary, and 3) Descriptively and analytically. Furthermore, the course aims at handling written problems by self-learning and collaborative environments that develop creative skill, dialogue, discussion, and critical thinking. It will also promote methods of written expression toward both the self and career, including help in the acquisition of knowledge, and building cultural awareness and good citizenship. The performance of the student will be evaluated through the various assessment tools that focus on the students’ writing skills, in order to achieve the desired learning outcomes.",
+                "cost": 2400,
+                "prerequisites": {
+                    "and": [
+                        18
+                    ]
+                },
+                "department": 2
+            },
+            "season": "Spring",
+            "yearOrder": 2,
+            "category": "CCP Course",
+            "studyPlan": 1
+        },
+        {
+            "id": 13,
+            "course": {
+                "id": 13,
+                "title": "Data Structures",
+                "code": "CMPS 303",
+                "creditHours": 4,
+                "description": "Fundamental data structures and algorithms and their efficient implementation and application to problem solving. Linked lists, stacks, queues, hash tables, trees and graphs. Develop and analyze iterative and recursive algorithms such as searching and storing algorithms. The laboratory provides practical experience with data structures and algorithms.",
+                "cost": 4000,
+                "prerequisites": {
+                    "and": [
+                        {
+                            "or": [
+                                7
+                            ]
+                        }
+                    ]
+                },
+                "department": 21
+            },
+            "season": "Fall",
+            "yearOrder": 2,
+            "category": "Major Course",
+            "studyPlan": 1
+        },
+        {
+            "id": 14,
+            "course": {
+                "id": 14,
+                "title": "Discrete Structures for Computing",
+                "code": "CMPS 205",
+                "creditHours": 3,
+                "description": "Introduction to the elements of mathematics applicable to the computing field. Logic and methods of proof; logic gates; Boolean algebra and minimization; set theory; relations and functions; sequences and sums; induction; numbering systems and combinatorics.",
+                "cost": 3000,
+                "prerequisites": {
+                    "and": []
+                },
+                "department": 21
+            },
+            "season": "Fall",
+            "yearOrder": 2,
+            "category": "Major Course",
+            "studyPlan": 1
+        },
+        {
+            "id": 15,
+            "course": {
+                "id": 15,
+                "title": "Computer Ethics",
+                "code": "CMPS 200",
+                "creditHours": 1,
+                "description": "Overview of computing ethics and practice. Philosophical ethical theory and morality; codes ethics and professional practice; cyber and computer crimes; whistle blowing; privacy and freedom of expression; legal and ethical issues; intellectual property and rights; safety-critical program development; ethics and the market place.",
+                "cost": 1000,
+                "prerequisites": {
+                    "and": []
+                },
+                "department": 21
+            },
+            "season": "Fall",
+            "yearOrder": 2,
+            "category": "Major Course",
+            "studyPlan": 1
+        },
+        {
+            "id": 16,
+            "course": {
+                "id": 16,
+                "title": "Experimental General Physics for Engineering II",
+                "code": "PHYS 194",
+                "creditHours": 1,
+                "description": "This is the Lab course covering the subject matter of PHYS 193. The course presents an introduction to the methods of experimental physics. Emphasis is on experimental, data analysis, and written presentation skills of lab work. During the course students execute a series of experiments on electrostatic fields, Magnetic fields, Induction, DC circuits, and AC circuits.",
+                "cost": 900,
+                "prerequisites": {
+                    "and": [
+                        17
+                    ]
+                },
+                "department": 10
+            },
+            "season": "Fall",
+            "yearOrder": 2,
+            "category": "College Requirement",
+            "studyPlan": 1
+        },
+        {
+            "id": 17,
+            "course": {
+                "id": 17,
+                "title": "General Physics For Engineering II",
+                "code": "PHYS 193",
+                "creditHours": 3,
+                "description": "Electrostatics: Electric charges, atomic structure, charging and induction, Coulomb’s law, the electric field and lines of force, Gauss’s law, potential and potential energy, capacitors, stored energy in capacitors. The Electric Current: Resistors, electromotive force. Magnetic Properties of Matter: Magnetic material, molecular theory of magnetism, magnetization and magnetic intensity, ferromagnetic, hysteresis. Magnetic Fields and Magnetic Forces: Magnetism and magnetic fields, magnetic flux, motion of charged particles in magnetic fields, force on a conductor, torques on current loops, Biot-Savart law, force between parallel conductors, Ampere’s law, motional electromotive force, Faraday’s law, Lenz’s law, self and mutual inductance, energy associated with inductors. Light: Nature of light, sources of light, light waves and their speed, the laws of reflection and refraction of light, absorption and illumination. Wave Phenomena: Interference, diffraction, polarization of light.",
+                "cost": 2700,
+                "prerequisites": {
+                    "and": [
+                        9
+                    ]
+                },
+                "department": 10
+            },
+            "season": "Fall",
+            "yearOrder": 2,
+            "category": "College Requirement",
+            "studyPlan": 1
+        },
+        {
+            "id": 18,
+            "course": {
+                "id": 18,
+                "title": "Arabic Language I",
+                "code": "ARAB 100",
+                "creditHours": 3,
+                "description": "The course aims to provide students the important skills to communicate in Arabic; listening, speaking and reading, with attention to writing skills in relation to each. This is done through content that includes a variety of topics related to Contemporary Arabic, through deep analysis of linguistics and literary texts. The course has been introduced in an interactive learning environment based on: 1) student activities, 2) Developing student skills, 3) learning and collaborative methods, 4) Communication skills for self-expression and ideas in different ways, 5) Solving problems through critical thinking skills and creativity, and 6) The absorption of ideas in different contexts. The assessment process uses a variety of tools to measure the attainment of student learning outcomes.",
+                "cost": 2400,
+                "prerequisites": {
+                    "and": []
+                },
+                "department": 2
+            },
+            "season": "Fall",
+            "yearOrder": 2,
+            "category": "CCP Course",
+            "studyPlan": 1
+        },
+        {
+            "id": 19,
+            "course": {
+                "id": 19,
+                "title": "Design and Analysis of Algorithms",
+                "code": "CMPS 323",
+                "creditHours": 3,
+                "description": "Analysis, design, and efficiency of algorithms illustrated by a comprehensive exposure to fundamental algorithms and various adopted techniques to solve different types of problems. Analysis of sorting, searching, and other algorithms; designing algorithms using techniques for problem-solving such as greedy methods, divide-and-conquer, backtracking, dynamic programming, and branch-and-bound techniques; complexity of algorithms.",
+                "cost": 3000,
+                "prerequisites": {
+                    "and": [
+                        13
+                    ]
+                },
+                "department": 21
+            },
+            "season": "Spring",
+            "yearOrder": 2,
+            "category": "Major Course",
+            "studyPlan": 1
+        },
+        {
+            "id": 20,
+            "course": {
+                "id": 20,
+                "title": "Fundamentals of Database Systems",
+                "code": "CMPS 351",
+                "creditHours": 4,
+                "description": "Analysis, design, and efficiency of algorithms illustrated by a comprehensive exposure to fundamental algorithms and various adopted techniques to solve different types of problems. Analysis of sorting, searching, and other algorithms; designing algorithms using techniques for problem-solving such as greedy methods, divide-and-conquer, backtracking, dynamic programming, and branch-and-bound techniques; complexity of algorithms.",
+                "cost": 4000,
+                "prerequisites": {
+                    "and": [
+                        7
+                    ]
+                },
+                "department": 21
+            },
+            "season": "Spring",
+            "yearOrder": 2,
+            "category": "Major Course",
+            "studyPlan": 1
+        },
+        {
+            "id": 21,
+            "course": {
+                "id": 21,
+                "title": "Computer Architecture and Organization I",
+                "code": "CMPE 263",
+                "creditHours": 3,
+                "description": "Higher-level concepts in computer architecture. Data representation; classic components of a computer; performance measures for computers; CPU types, design, organization, instruction-level description; processor programming, register transfer languages, addressing modes, assembly language; main and cache memory, caching techniques.",
+                "cost": 3000,
+                "prerequisites": {
+                    "and": [
+                        1
+                    ]
+                },
+                "department": 21
+            },
+            "season": "Spring",
+            "yearOrder": 2,
+            "category": "Major Course",
+            "studyPlan": 1
+        },
+        {
+            "id": 23,
+            "course": {
+                "id": 23,
+                "title": "Probability and Statistics for Engineers",
+                "code": "GENG 200",
+                "creditHours": 3,
+                "description": "Classification of Data. Graphical representation. Arithmetical description. Probability theory, probability of an event and composite events. Addition rule and multiplication rule, independent events. Counting techniques. Random variables and probability distributions. Expected values. Continuous and discrete random variables. Normal distribution. Binomial distribution. Poisson distribution. Joint and marginal probability distributions. Independence of random variables. Covariance and correlation. Random sampling. Unbiased estimates. Statistical intervals and test of hypothesis for a single sample.",
+                "cost": 3000,
+                "prerequisites": {
+                    "and": [
+                        12
+                    ]
+                },
+                "department": 18
+            },
+            "season": "Spring",
+            "yearOrder": 2,
+            "category": "College Requirement",
+            "studyPlan": 1
+        },
+        {
+            "id": 24,
+            "course": {
+                "id": 24,
+                "title": "Software Engineering",
+                "code": "CMPS 310",
+                "creditHours": 4,
+                "description": "Fundamental concepts, principles and techniques for cost-effective engineering of quality software. Software process models, requirements specification, domain analysis, software design and modeling of structural and behavioral aspects of a software system using a common modeling language, implementation, testing and software project management. The laboratory provides practical experience with software engineering and supporting tools.",
+                "cost": 4000,
+                "prerequisites": {
+                    "and": [
+                        7
+                    ]
+                },
+                "department": 21
+            },
+            "season": "Fall",
+            "yearOrder": 3,
+            "category": "Major Course",
+            "studyPlan": 1
+        },
+        {
+            "id": 25,
+            "course": {
+                "id": 25,
+                "title": "Data Communi & Comp.Network I",
+                "code": "CMPE 355",
+                "creditHours": 4,
+                "description": "Concepts and principles underlying data communication networks including TCP/IP protocol suite and OSI model, digital and analog conversions, multiplexing and spread spectrum. Transmission impairments, Ethernet, network layer protocols, IP addressing and submitting, UDP and TCP transport protocols, and application layer protocols. The laboratory provides hands-on experience in designing, simulating, configuring, and troubleshooting small-to-medium size networks",
+                "cost": 4000,
+                "prerequisites": {
+                    "and": [
+                        13
+                    ]
+                },
+                "department": 21
+            },
+            "season": "Fall",
+            "yearOrder": 3,
+            "category": "Major Course",
+            "studyPlan": 1
+        },
+        {
+            "id": 26,
+            "course": {
+                "id": 27,
+                "title": "Islamic Culture",
+                "code": "DAWA 111",
+                "creditHours": 3,
+                "description": "This course seeks to strengthen the unifying identity to which all students subscribe, regardless of their academic specialties. The Course adopts a particular educational philosophy that suits its particular nature. All topics are arranged in a unifying, integrative structure that begins with defining key concepts related to culture, science and civilization. Following these preliminary clarifications, an intensive analytical material on issues related to the message of Islam, creation of man, role of the Islamic ummah, and the relationship with the other, will be presented. يسهم مقرر الثقافة الإسلامية في بناء الهوية الجامعة والسمات المشتركة لكل طلبة الجامعة على اختلاف تخصصاتهم ويستجيب لحاجة الطالب إلى تعزيز شخصيته المتوازنة والمتسمة بقدر عال من الفاعلية والإيجابية والثقة بالنفس بما يؤهله لأن يكون عنصرا مصلحا في مجتمعه ومستجيبا بوعي لمختلف التحديات التي تواجهه داخلية أو خارجية وبما يمكنه من الانفتاح البصير والتعامل الواعي مع الآخر. يعتمد المقرر على فلسفة خاصة تتناسب مع خصوصية المقرر وطبيعته وتنتظم مفرداته في وحدة بنائية تكاملية ومتسلسلة تبدأ بتحرير مفاهيم مفتاحية متصلة بالثقافة للتعاطي التحليلي المركز مع قضايا الإنسان ومقاصد خلقه ورسالة الإسلام والأمة الإسلامية والعلاقة مع الأخر",
+                "cost": 2400,
+                "prerequisites": {
+                    "and": []
+                },
+                "department": 27
+            },
+            "season": "Fall",
+            "yearOrder": 3,
+            "category": "CCP Course",
+            "studyPlan": 1
+        },
+        {
+            "id": 27,
+            "course": {
+                "id": 28,
+                "title": "Numerical Methods",
+                "code": "GENG 300",
+                "creditHours": 3,
+                "description": "The numerical methods course involves solving engineering problems drawn from all fields of engineering. The numerical methods include: error analysis, roots of nonlinear algebraic equations, solution of linear and transcendental simultaneous equations, matrix and vector manipulation, curve fitting and interpolation, numerical integration and differentiation, solution of ordinary and partial differential equations.",
+                "cost": 3000,
+                "prerequisites": {
+                    "and": [
+                        12
+                    ]
+                },
+                "department": 18
+            },
+            "season": "Fall",
+            "yearOrder": 3,
+            "category": "College Requirement",
+            "studyPlan": 1
+        },
+        {
+            "id": 28,
+            "course": {
+                "id": 29,
+                "title": "Operating Systems",
+                "code": "CMPS 405",
+                "creditHours": 4,
+                "description": "Fundamental concepts of operating system design and implementation. Operating system components, concurrency, process management and inter-process communication, process synchronization, deadlock, scheduling algorithms, memory management, input/output and file systems, protection and security. The laboratory provides practical experience on major operating system concepts.",
+                "cost": 4000,
+                "prerequisites": {
+                    "and": [
+                        21
+                    ]
+                },
+                "department": 21
+            },
+            "season": "Spring",
+            "yearOrder": 3,
+            "category": "Major Course",
+            "studyPlan": 1
+        },
+        {
+            "id": 29,
+            "course": {
+                "id": 30,
+                "title": "computer Security",
+                "code": "CMPS 385",
+                "creditHours": 3,
+                "description": "Fundamentals of information security. Risks and vulnerabilities, controls and protection methods, cryptography, authentication, host-based and network-based security issues, privacy, legal and ethical implications.",
+                "cost": 3000,
+                "prerequisites": {
+                    "and": [
+                        25
+                    ]
+                },
+                "department": 21
+            },
+            "season": "Spring",
+            "yearOrder": 3,
+            "category": "Major Course",
+            "studyPlan": 1
+        },
+        {
+            "id": 30,
+            "course": {
+                "id": 31,
+                "title": "Web development Fundamentals",
+                "code": "CMPS 350",
+                "creditHours": 3,
+                "description": "Concepts, protocols and enabling technologies related to the development of modern web applications. Fundamentals of designing and developing dynamic and interactive web applications using HTML and related standards, scripting languages, client-side and server-side programming. Hands-on Lab to design and develop Web applications.",
+                "cost": 3000,
+                "prerequisites": {
+                    "and": [
+                        7
+                    ]
+                },
+                "department": 21
+            },
+            "season": "Spring",
+            "yearOrder": 3,
+            "category": "Major Course",
+            "studyPlan": 1
+        },
+        {
+            "id": 31,
+            "course": {
+                "id": 36,
+                "title": "Senior Project I",
+                "code": "CMPS 493",
+                "creditHours": 3,
+                "description": "The first phase of the computer science capstone project that involves number of students tackling different aspects of applied-research and/or development project requiring significant effort for planning and completion. Team members experience different roles and gain range of diverse technical skills in all phases of the project development. This first part focuses on problem definition, requirements gathering and analysis, defining a high level architecture of the proposed solution, preparation of a project plan for implementing and completing the project, compiling all in a well-formulated interim report and orally presenting it to the examining committee.",
+                "cost": 3000,
+                "prerequisites": {
+                    "and": [
+                        24
+                    ]
+                },
+                "department": 21
+            },
+            "season": "Fall",
+            "yearOrder": 4,
+            "category": "Major Course",
+            "studyPlan": 1
+        },
+        {
+            "id": 32,
+            "course": {
+                "id": 37,
+                "title": "Intro. to Proj. Manag. & Entr.",
+                "code": "CMPS 307",
+                "creditHours": 2,
+                "description": "Introduction to entrepreneurship, and elements of business management with emphasis on managing software and information and communication technologies projects. Concepts of project management; project plan development, progress tracking, staffing, leadership, conflict resolution; organization, costs, risks, control; entrepreneurship, basics of owning and operating a business, business plan development for starting and financing a small business.",
+                "cost": 2000,
+                "prerequisites": {
+                    "and": []
+                },
+                "department": 21
+            },
+            "season": "Fall",
+            "yearOrder": 4,
+            "category": "Major Supporting",
+            "studyPlan": 1
+        },
+        {
+            "id": 34,
+            "course": {
+                "id": 42,
+                "title": "Principles of Management",
+                "code": "MAGT 101",
+                "creditHours": 3,
+                "description": "This course focuses on the fundamental concepts of management including its characteristics, evolution and importance. Topics include the functions performed by managers, such as planning, organizing, directing and controlling. Current issues facing managers will also be discussed to provide students with the necessary skills they can build upon to succeed as future managers.",
+                "cost": 2700,
+                "prerequisites": {
+                    "and": []
+                },
+                "department": 14
+            },
+            "season": "Spring",
+            "yearOrder": 4,
+            "category": "Major Supporting",
+            "studyPlan": 1
+        },
+        {
+            "id": 33,
+            "course": {
+                "id": 41,
+                "title": "Senior Project II",
+                "code": "CMPS 499",
+                "creditHours": 3,
+                "description": "Continuation of the capstone senior project started in CMPS 493 course. It includes detailed design, implementation and testing following a systematic development process while incorporating appropriate design and development principles and standards. This culminates in producing a working solution and a formal final report, and presenting the project achievements including a demo.",
+                "cost": 3000,
+                "prerequisites": {
+                    "and": [
+                        36
+                    ]
+                },
+                "department": 21
+            },
+            "season": "Spring",
+            "yearOrder": 4,
+            "category": "Major Course",
+            "studyPlan": 1
+        }
+    ],
+    "electiveMappings": [
+        {
+            "id": 1,
+            "electivePackage": {
+                "id": 3,
+                "title": "Natural Science/Mathematics",
+                "category": "CCP Course"
+            },
+            "season": "Fall",
+            "yearOrder": 3,
+            "studyPlan": 1
+        },
+        {
+            "id": 2,
+            "electivePackage": {
+                "id": 5,
+                "title": "Computer Science Electives",
+                "category": "Major Elective"
+            },
+            "season": "Fall",
+            "yearOrder": 3,
+            "studyPlan": 1
+        },
+        {
+            "id": 3,
+            "electivePackage": {
+                "id": 5,
+                "title": "Computer Science Electives",
+                "category": "Major Elective"
+            },
+            "season": "Spring",
+            "yearOrder": 3,
+            "studyPlan": 1
+        },
+        {
+            "id": 7,
+            "electivePackage": {
+                "id": 1,
+                "title": "Social/Behavioral Sciences",
+                "category": "CCP Course"
+            },
+            "season": "Spring",
+            "yearOrder": 4,
+            "studyPlan": 1
+        },
+        {
+            "id": 4,
+            "electivePackage": {
+                "id": 5,
+                "title": "Computer Science Electives",
+                "category": "Major Elective"
+            },
+            "season": "Fall",
+            "yearOrder": 4,
+            "studyPlan": 1
+        },
+        {
+            "id": 5,
+            "electivePackage": {
+                "id": 4,
+                "title": "Humanities/Fine Arts",
+                "category": "CCP Course"
+            },
+            "season": "Fall",
+            "yearOrder": 4,
+            "studyPlan": 1
+        },
+        {
+            "id": 6,
+            "electivePackage": {
+                "id": 5,
+                "title": "Computer Science Electives",
+                "category": "Major Elective"
+            },
+            "season": "Spring",
+            "yearOrder": 4,
+            "studyPlan": 1
+        }
+    ],
+    "yearMap": {},
+    "stats": {
+        "courses": 41,
+        "completed": 0,
+        "remaining": 0,
+        "progress": 0,
+        "creditHours": 0,
+        "tuitionFees": 0
+    }
+}

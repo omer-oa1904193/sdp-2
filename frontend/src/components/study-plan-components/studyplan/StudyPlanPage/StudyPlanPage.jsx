@@ -9,6 +9,7 @@ import {faGear, faMessage, faPen} from "@fortawesome/free-solid-svg-icons";
 import {useRouter} from "next/router";
 import React, {useEffect, useState} from "react";
 import styles from "./StudyPlanPage.module.css"
+import Score from "../../../score-study-plan/score"
 
 export function StudyPlanPage({studyPlanId, isEditable}) {
     const router = useRouter()
@@ -64,6 +65,7 @@ export function StudyPlanPage({studyPlanId, isEditable}) {
                              isEditable={isEditable}
                              onCourseClicked={() => setCourseDialogueIsOpen(true)}/>
             <SummeryPane studyPlan={studyPlan}/>
+            <Score studyPlan={studyPlan}></Score>
             <CourseDialogue isOpen={courseDialogueIsOpen} setOpen={setCourseDialogueIsOpen}/>
         </div>
     </>
