@@ -1,0 +1,14 @@
+[
+  {
+    "id": 1,
+    "admissionTest": 2,
+    "student": 3,
+    "score": 670
+  },
+  {
+    "id": 2,
+    "admissionTest": 9,
+    "student": 3,
+    "score": 7.5
+  }
+]

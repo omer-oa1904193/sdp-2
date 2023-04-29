@@ -11,6 +11,8 @@ import {MapCourseProgram} from "../models/entities/MapCourseProgram.js";
 import {ElectivePackage} from "../models/entities/ElectivePackage.js";
 import {MapElectivePackageProgram} from "../models/entities/MapElectivePackageProgram.js";
 import {MapCourseElectivePackage} from "../models/entities/MapCourseElectivePackage.js";
+import {AdmissionTest} from "../models/entities/AdmissionTest.js";
+import {AdmissionTestResult} from "../models/entities/AdmissionTestResult.js";
 
 class AdminService {
     async importDataFromSIS(req: Request, res: Response) {
@@ -18,6 +20,8 @@ class AdminService {
         let users: EntityData<User>[];
         let colleges: EntityData<College>[];
         let departments: EntityData<Department>[];
+        let admissionTests: EntityData<AdmissionTest>[];
+        let admissionTestResults: EntityData<AdmissionTestResult>[];
         let courses: EntityData<Course>[];
         let electivePackages: EntityData<ElectivePackage>[];
         let courseElectivePackageMaps: EntityData<MapCourseElectivePackage>[]
@@ -33,6 +37,12 @@ class AdminService {
 
             response = await fetch(`${process.env.SIS_URL}/departments/`);
             departments = await response.json();
+
+            response = await fetch(`${process.env.SIS_URL}/admission-tests/`);
+            admissionTests = await response.json();
+
+            response = await fetch(`${process.env.SIS_URL}/admission-tests-results/`);
+            admissionTestResults = await response.json();
 
             response = await fetch(`${process.env.SIS_URL}/courses/`);
             courses = await response.json();
@@ -65,6 +75,7 @@ class AdminService {
         const programRepo = new ProgramRepo(req.em);
         await programRepo.bulkUpsertColleges(colleges);
         await programRepo.bulkUpsertDepartments(departments);
+        await programRepo.bulkUpsertAdmissionTests(admissionTests, admissionTestResults);
         await programRepo.bulkUpsertCourses(courses);
         await programRepo.bulkUpsertElectivePackages(electivePackages, courseElectivePackageMaps);
         await programRepo.bulkUpsertPrograms(programs, courseProgramMaps, electiveProgramMaps);

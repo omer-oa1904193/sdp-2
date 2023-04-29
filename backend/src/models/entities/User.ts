@@ -1,9 +1,11 @@
-import {Collection, Entity, Enum, OneToMany, Property, types, Unique} from "@mikro-orm/core";
+import {Collection, Entity, Enum, ManyToMany, OneToMany, Property, types, Unique} from "@mikro-orm/core";
 import {CustomBaseEntity} from "./CustomBaseEntity.js";
 import {UserRole} from "../enums/UserRole.js";
 import {StudyPlan} from "./StudyPlan.js";
 import {Comment} from "./Comment.js";
 import {Season} from "../enums/Season.js";
+import {AdmissionTest} from "./AdmissionTest.js";
+import {AdmissionTestResult} from "./AdmissionTestResult.js";
 
 @Entity()
 export class User extends CustomBaseEntity {
@@ -36,4 +38,6 @@ export class User extends CustomBaseEntity {
     @Property({type: types.integer, nullable: true})
     enrollmentYear?: number;
 
+    @ManyToMany({entity: () => AdmissionTest, mappedBy: (p: AdmissionTest) => p.student, pivotEntity: () => AdmissionTestResult})
+    admissionTestsTaken: Collection<AdmissionTest> = new Collection<AdmissionTest>(this);
 }

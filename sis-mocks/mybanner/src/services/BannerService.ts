@@ -2,6 +2,8 @@ import {Request, Response} from "express";
 import fs from "fs-extra";
 
 class BannerService {
+
+
     async getUsers(req: Request, res: Response) {
         const users = await fs.readJSON("data/users.json");
         res.json(users);
@@ -10,6 +12,16 @@ class BannerService {
     async getCourses(req: Request, res: Response) {
         const courses = await fs.readJSON("data/courses.json");
         res.json(courses);
+    }
+
+    async getAdmissionTests(req: Request, res: Response) {
+        const admissionTests = await fs.readJSON("data/admission-tests.json");
+        res.json(admissionTests);
+    }
+
+    async getAdmissionTestResults(req: Request, res: Response) {
+        const admissionTestResults = await fs.readJSON("data/admission-test-results.json");
+        res.json(admissionTestResults);
     }
 
     async getElectivePackages(req: Request, res: Response) {

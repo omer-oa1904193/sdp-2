@@ -41,22 +41,22 @@
   },
   {
     "id": 9,
-    "test": "International English Language Testing System-IELTS",
+    "name": "International English Language Testing System-IELTS",
     "maxScore": 9
   },
   {
     "id": 10,
-    "test": "Test of English as a Foreign Language Internet-based Test-TOEFL IBT",
+    "name": "Test of English as a Foreign Language Internet-based Test-TOEFL IBT",
     "maxScore": 120
   },
   {
     "id": 11,
-    "test": "APL Integrated Core",
+    "name": "APL Integrated Core",
     "maxScore": 480
   },
   {
     "id": 12,
-    "test": "APL for Writing Workshop",
+    "name": "APL for Writing Workshop",
     "maxScore": 240
   }
 ]

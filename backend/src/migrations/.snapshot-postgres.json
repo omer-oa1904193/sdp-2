@@ -23,6 +23,54 @@
           "primary": false,
           "nullable": false,
           "mappedType": "string"
+        },
+        "max_score": {
+          "name": "max_score",
+          "type": "numeric(10,0)",
+          "unsigned": false,
+          "autoincrement": false,
+          "primary": false,
+          "nullable": false,
+          "precision": 10,
+          "scale": 0,
+          "mappedType": "decimal"
+        }
+      },
+      "name": "admission_test",
+      "schema": "public",
+      "indexes": [
+        {
+          "keyName": "admission_test_pkey",
+          "columnNames": [
+            "id"
+          ],
+          "composite": false,
+          "primary": true,
+          "unique": true
+        }
+      ],
+      "checks": [],
+      "foreignKeys": {}
+    },
+    {
+      "columns": {
+        "id": {
+          "name": "id",
+          "type": "int",
+          "unsigned": true,
+          "autoincrement": true,
+          "primary": true,
+          "nullable": false,
+          "mappedType": "integer"
+        },
+        "name": {
+          "name": "name",
+          "type": "varchar(255)",
+          "unsigned": false,
+          "autoincrement": false,
+          "primary": false,
+          "nullable": false,
+          "mappedType": "string"
         }
       },
       "name": "college",
@@ -1354,6 +1402,98 @@
             "author_id"
           ],
           "localTableName": "public.comment",
+          "referencedColumnNames": [
+            "id"
+          ],
+          "referencedTableName": "public.user",
+          "updateRule": "cascade"
+        }
+      }
+    },
+    {
+      "columns": {
+        "id": {
+          "name": "id",
+          "type": "int",
+          "unsigned": true,
+          "autoincrement": true,
+          "primary": true,
+          "nullable": false,
+          "mappedType": "integer"
+        },
+        "admission_test_id": {
+          "name": "admission_test_id",
+          "type": "int",
+          "unsigned": false,
+          "autoincrement": false,
+          "primary": false,
+          "nullable": false,
+          "mappedType": "integer"
+        },
+        "student_id": {
+          "name": "student_id",
+          "type": "int",
+          "unsigned": false,
+          "autoincrement": false,
+          "primary": false,
+          "nullable": false,
+          "mappedType": "integer"
+        },
+        "score": {
+          "name": "score",
+          "type": "numeric(10,0)",
+          "unsigned": false,
+          "autoincrement": false,
+          "primary": false,
+          "nullable": false,
+          "precision": 10,
+          "scale": 0,
+          "mappedType": "decimal"
+        }
+      },
+      "name": "admission_test_result",
+      "schema": "public",
+      "indexes": [
+        {
+          "keyName": "admission_test_result_admission_test_id_student_id_unique",
+          "columnNames": [
+            "admission_test_id",
+            "student_id"
+          ],
+          "composite": true,
+          "primary": false,
+          "unique": true
+        },
+        {
+          "keyName": "admission_test_result_pkey",
+          "columnNames": [
+            "id"
+          ],
+          "composite": false,
+          "primary": true,
+          "unique": true
+        }
+      ],
+      "checks": [],
+      "foreignKeys": {
+        "admission_test_result_admission_test_id_foreign": {
+          "constraintName": "admission_test_result_admission_test_id_foreign",
+          "columnNames": [
+            "admission_test_id"
+          ],
+          "localTableName": "public.admission_test_result",
+          "referencedColumnNames": [
+            "id"
+          ],
+          "referencedTableName": "public.admission_test",
+          "updateRule": "cascade"
+        },
+        "admission_test_result_student_id_foreign": {
+          "constraintName": "admission_test_result_student_id_foreign",
+          "columnNames": [
+            "student_id"
+          ],
+          "localTableName": "public.admission_test_result",
           "referencedColumnNames": [
             "id"
           ],

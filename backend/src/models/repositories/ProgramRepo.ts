@@ -7,6 +7,8 @@ import {MapCourseProgram} from "../entities/MapCourseProgram.js";
 import {MapElectivePackageProgram} from "../entities/MapElectivePackageProgram.js";
 import {ElectivePackage} from "../entities/ElectivePackage.js";
 import {MapCourseElectivePackage} from "../entities/MapCourseElectivePackage.js";
+import {AdmissionTest} from "../entities/AdmissionTest.js";
+import {AdmissionTestResult} from "../entities/AdmissionTestResult.js";
 
 export class ProgramRepo {
     em: EntityManager;
@@ -93,4 +95,17 @@ export class ProgramRepo {
         })));
     }
 
+    async bulkUpsertAdmissionTests(admissionTests: EntityData<AdmissionTest>[], admissionTestResults: EntityData<AdmissionTestResult>[]) {
+        await this.em.upsertMany(AdmissionTest, admissionTests.map(a => ({
+            id: a.id,
+            name: a.name,
+            maxScore: a.maxScore
+        })));
+        await this.em.upsertMany(AdmissionTestResult, admissionTestResults.map(a => ({
+            id: a.id,
+            admissionTest: a.admissionTest,
+            student: a.student,
+            score: a.score
+        })));
+    }
 }
