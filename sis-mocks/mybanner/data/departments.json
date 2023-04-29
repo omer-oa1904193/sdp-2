@@ -181,18 +181,12 @@
   },
   {
     "id": 31,
-    "name": "English For Foundation",
-    "college": 9,
-    "code": "ENGF"
-  },
-  {
-    "id": 32,
     "name": "Core Curriculum Program",
     "college": null,
     "code": "CCP"
   },
   {
-    "id": 33,
+    "id": 32,
     "name": "Honors Program",
     "college": null,
     "code": "HONS"

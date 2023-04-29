@@ -20,7 +20,64 @@
     "cost": 2700,
     "department": 5,
     "prerequisites": {
-      "and": []
+      "or": [
+        {
+          "and": [
+            {
+              "test": {
+                "id": 11,
+                "minScore": 400
+              }
+            },
+            {
+              "test": {
+                "id": 8,
+                "minScore": 100
+              }
+            },
+            {
+              "test": {
+                "id": 12,
+                "minScore": 225
+              }
+            }
+          ]
+        },
+        {
+          "test": {
+            "id": 9,
+            "minScore": 5.5
+          }
+        },
+        {
+          "test": {
+            "id": 10,
+            "minScore": 61
+          }
+        },
+        {
+          "and": [
+            {
+              "test": {
+                "id": 11,
+                "minScore": 400
+              }
+            },
+            {
+              "test": {
+                "id": 5,
+                "minScore": 100
+              }
+            },
+            {
+              "test": {
+                "id": 8,
+                "minScore": 100
+              }
+            }
+          ]
+        }
+      ]
     }
   },
   {
@@ -32,7 +89,44 @@
     "cost": 2700,
     "department": 13,
     "prerequisites": {
-      "and": []
+      "or": [
+        {
+          "course": {
+            "id": 78,
+            "minGrade": "D"
+          }
+        },
+        {
+          "course": {
+            "id": 6,
+            "minGrade": "D"
+          }
+        },
+        {
+          "test": {
+            "id": 1,
+            "minScore": 500
+          }
+        },
+        {
+          "test": {
+            "id": 2,
+            "minScore": 530
+          }
+        },
+        {
+          "test": {
+            "id": 3,
+            "minScore": 21
+          }
+        },
+        {
+          "test": {
+            "id": 4,
+            "minScore": 200
+          }
+        }
+      ]
     }
   },
   {
@@ -44,7 +138,70 @@
     "cost": 2700,
     "department": 4,
     "prerequisites": {
-      "and": []
+      "or": [
+        {
+          "and": [
+            {
+              "test": {
+                "id": 11,
+                "minScore": 400
+              }
+            },
+            {
+              "test": {
+                "id": 8,
+                "minScore": 100
+              }
+            },
+            {
+              "test": {
+                "id": 12,
+                "minScore": 225
+              }
+            }
+          ]
+        },
+        {
+          "and": [
+            {
+              "test": {
+                "id": 11,
+                "minScore": 400
+              }
+            },
+            {
+              "test": {
+                "id": 8,
+                "minScore": 100
+              }
+            },
+            {
+              "test": {
+                "id": 5,
+                "minScore": 100
+              }
+            }
+          ]
+        },
+        {
+          "test": {
+            "id": 10,
+            "minScore": 61
+          }
+        },
+        {
+          "test": {
+            "id": 9,
+            "minScore": 5.5
+          }
+        },
+        {
+          "course": {
+            "id": 2,
+            "minGrade": "D"
+          }
+        }
+      ]
     }
   },
   {
@@ -56,7 +213,15 @@
     "cost": 900,
     "department": 4,
     "prerequisites": {
-      "and": []
+      "and": [
+        {
+          "course": {
+            "id": 4,
+            "idCorequisite": true,
+            "minGrade": "D"
+          }
+        }
+      ]
     }
   },
   {
@@ -68,7 +233,102 @@
     "cost": 2700,
     "department": 10,
     "prerequisites": {
-      "and": []
+      "and": [
+        {
+          "or": [
+            {
+              "test": {
+                "id": 1,
+                "minScore": 550
+              }
+            },
+            {
+              "test": {
+                "id": 2,
+                "minScore": 570
+              }
+            },
+            {
+              "test": {
+                "id": 3,
+                "minScore": 24
+              }
+            },
+            {
+              "test": {
+                "id": 4,
+                "minScore": 235
+              }
+            }
+          ]
+        },
+        {
+          "or": [
+            {
+              "and": [
+                {
+                  "test": {
+                    "id": 11,
+                    "minScore": 400
+                  }
+                },
+                {
+                  "test": {
+                    "id": 8,
+                    "minScore": 100
+                  }
+                },
+                {
+                  "test": {
+                    "id": 12,
+                    "minScore": 225
+                  }
+                }
+              ]
+            },
+            {
+              "and": [
+                {
+                  "test": {
+                    "id": 11,
+                    "minScore": 400
+                  }
+                },
+                {
+                  "test": {
+                    "id": 8,
+                    "minScore": 100
+                  }
+                },
+                {
+                  "test": {
+                    "id": 5,
+                    "minScore": 100
+                  }
+                }
+              ]
+            },
+            {
+              "test": {
+                "id": 10,
+                "minScore": 61
+              }
+            },
+            {
+              "test": {
+                "id": 9,
+                "minScore": 5.5
+              }
+            },
+            {
+              "course": {
+                "id": 2,
+                "minGrade": "D"
+              }
+            }
+          ]
+        }
+      ]
     }
   },
   {
@@ -80,12 +340,18 @@
     "cost": 4000,
     "department": 21,
     "prerequisites": {
-      "and": [
+      "or": [
         {
-          "or": [
-            1,
-            124
-          ]
+          "course": {
+            "id": 1,
+            "minGrade": "D"
+          }
+        },
+        {
+          "course": {
+            "id": 124,
+            "minGrade": "D"
+          }
         }
       ]
     }
@@ -100,7 +366,12 @@
     "department": 5,
     "prerequisites": {
       "and": [
-        2
+        {
+          "course": {
+            "id": 2,
+            "minGrade": "D"
+          }
+        }
       ]
     }
   },
@@ -114,7 +385,12 @@
     "department": 10,
     "prerequisites": {
       "and": [
-        6
+        {
+          "course": {
+            "id": 6,
+            "minGrade": "D"
+          }
+        }
       ]
     }
   },
@@ -128,7 +404,13 @@
     "department": 10,
     "prerequisites": {
       "and": [
-        9
+        {
+          "course": {
+            "id": 9,
+            "minGrade": "D",
+            "isConcurrent": true
+          }
+        }
       ]
     }
   },
@@ -142,7 +424,12 @@
     "department": 10,
     "prerequisites": {
       "and": [
-        6
+        {
+          "course": {
+            "id": 6,
+            "minGrade": "D"
+          }
+        }
       ]
     }
   },
@@ -156,7 +443,12 @@
     "department": 10,
     "prerequisites": {
       "and": [
-        6
+        {
+          "course": {
+            "id": 6,
+            "minGrade": "D"
+          }
+        }
       ]
     }
   },
@@ -171,9 +463,10 @@
     "prerequisites": {
       "and": [
         {
-          "or": [
-            7
-          ]
+          "course": {
+            "id": 7,
+            "minGrade": "D"
+          }
         }
       ]
     }
@@ -212,7 +505,25 @@
     "department": 10,
     "prerequisites": {
       "and": [
-        17
+        {
+          "course": {
+            "id": 17,
+            "minGrade": "D",
+            "isConcurrent": true
+          }
+        },
+        {
+          "course": {
+            "id": 10,
+            "minGrade": "D"
+          }
+        },
+        {
+          "course": {
+            "id": 9,
+            "minGrade": "D"
+          }
+        }
       ]
     }
   },
@@ -226,7 +537,38 @@
     "department": 10,
     "prerequisites": {
       "and": [
-        9
+        {
+          "or": [
+            {
+              "course": {
+                "id": 9,
+                "minGrade": "D"
+              }
+            },
+            {
+              "course": {
+                "id": 81,
+                "minGrade": "D"
+              }
+            }
+          ]
+        },
+        {
+          "or": [
+            {
+              "course": {
+                "id": 10,
+                "minGrade": "D"
+              }
+            },
+            {
+              "course": {
+                "id": 126,
+                "minGrade": "D"
+              }
+            }
+          ]
+        }
       ]
     }
   },
@@ -252,7 +594,18 @@
     "department": 21,
     "prerequisites": {
       "and": [
-        13
+        {
+          "course": {
+            "id": 13,
+            "minGrade": "D"
+          }
+        },
+        {
+          "course": {
+            "id": 14,
+            "minGrade": "D"
+          }
+        }
       ]
     }
   },
@@ -266,7 +619,12 @@
     "department": 21,
     "prerequisites": {
       "and": [
-        7
+        {
+          "course": {
+            "id": 7,
+            "minGrade": "D"
+          }
+        }
       ]
     }
   },
@@ -280,7 +638,28 @@
     "department": 21,
     "prerequisites": {
       "and": [
-        1
+        {
+          "course": {
+            "id": 14,
+            "minGrade": "D"
+          }
+        },
+        {
+          "or": [
+            {
+              "course": {
+                "id": 1,
+                "minGrade": "D"
+              }
+            },
+            {
+              "course": {
+                "id": 124,
+                "minGrade": "D"
+              }
+            }
+          ]
+        }
       ]
     }
   },
@@ -294,7 +673,12 @@
     "department": 2,
     "prerequisites": {
       "and": [
-        18
+        {
+          "course": {
+            "id": 18,
+            "minGrade": "D"
+          }
+        }
       ]
     }
   },
@@ -308,7 +692,12 @@
     "department": 18,
     "prerequisites": {
       "and": [
-        12
+        {
+          "course": {
+            "id": 12,
+            "minGrade": "D"
+          }
+        }
       ]
     }
   },
@@ -322,7 +711,12 @@
     "department": 21,
     "prerequisites": {
       "and": [
-        7
+        {
+          "course": {
+            "id": 7,
+            "minGrade": "D"
+          }
+        }
       ]
     }
   },
@@ -336,7 +730,18 @@
     "department": 21,
     "prerequisites": {
       "and": [
-        13
+        {
+          "course": {
+            "id": 23,
+            "minGrade": "D"
+          }
+        },
+        {
+          "course": {
+            "id": 21,
+            "minGrade": "D"
+          }
+        }
       ]
     }
   },
@@ -374,7 +779,48 @@
     "department": 18,
     "prerequisites": {
       "and": [
-        12
+        {
+          "or": [
+            {
+              "course": {
+                "id": 124,
+                "minGrade": "D"
+              }
+            },
+            {
+              "course": {
+                "id": 1,
+                "minGrade": "D"
+              }
+            }
+          ]
+        },
+        {
+          "or": [
+            {
+              "course": {
+                "id": 40,
+                "minGrade": "D"
+              }
+            },
+            {
+              "and": [
+                {
+                  "course": {
+                    "id": 12,
+                    "minGrade": "D"
+                  }
+                },
+                {
+                  "course": {
+                    "id": 11,
+                    "minGrade": "D"
+                  }
+                }
+              ]
+            }
+          ]
+        }
       ]
     }
   },
@@ -388,7 +834,18 @@
     "department": 21,
     "prerequisites": {
       "and": [
-        21
+        {
+          "course": {
+            "id": 21,
+            "minGrade": "D"
+          }
+        },
+        {
+          "course": {
+            "id": 13,
+            "minGrade": "D"
+          }
+        }
       ]
     }
   },
@@ -402,7 +859,12 @@
     "department": 21,
     "prerequisites": {
       "and": [
-        25
+        {
+          "course": {
+            "id": 25,
+            "minGrade": "D"
+          }
+        }
       ]
     }
   },
@@ -416,7 +878,12 @@
     "department": 21,
     "prerequisites": {
       "and": [
-        7
+        {
+          "course": {
+            "id": 7,
+            "minGrade": "D"
+          }
+        }
       ]
     }
   },
@@ -430,7 +897,18 @@
     "department": 21,
     "prerequisites": {
       "and": [
-        23
+        {
+          "course": {
+            "id": 23,
+            "minGrade": "D"
+          }
+        },
+        {
+          "course": {
+            "id": 13,
+            "minGrade": "D"
+          }
+        }
       ]
     }
   },
@@ -444,7 +922,12 @@
     "department": 21,
     "prerequisites": {
       "and": [
-        7
+        {
+          "course": {
+            "id": 7,
+            "minGrade": "D"
+          }
+        }
       ]
     }
   },
@@ -457,7 +940,70 @@
     "cost": 2700,
     "department": 4,
     "prerequisites": {
-      "and": []
+      "or": [
+        {
+          "and": [
+            {
+              "test": {
+                "id": 11,
+                "minScore": 400
+              }
+            },
+            {
+              "test": {
+                "id": 8,
+                "minScore": 100
+              }
+            },
+            {
+              "test": {
+                "id": 12,
+                "minScore": 225
+              }
+            }
+          ]
+        },
+        {
+          "and": [
+            {
+              "test": {
+                "id": 11,
+                "minScore": 400
+              }
+            },
+            {
+              "test": {
+                "id": 8,
+                "minScore": 100
+              }
+            },
+            {
+              "test": {
+                "id": 5,
+                "minScore": 100
+              }
+            }
+          ]
+        },
+        {
+          "test": {
+            "id": 10,
+            "minScore": 61
+          }
+        },
+        {
+          "test": {
+            "id": 9,
+            "minScore": "5.5"
+          }
+        },
+        {
+          "course": {
+            "id": 2,
+            "minGrade": "D"
+          }
+        }
+      ]
     }
   },
   {
@@ -482,7 +1028,12 @@
     "department": 21,
     "prerequisites": {
       "and": [
-        24
+        {
+          "course": {
+            "id": 24,
+            "minGrade": "D"
+          }
+        }
       ]
     }
   },
@@ -508,7 +1059,12 @@
     "department": 21,
     "prerequisites": {
       "and": [
-        7
+        {
+          "course": {
+            "id": 7,
+            "minGrade": "D"
+          }
+        }
       ]
     }
   },
@@ -522,7 +1078,12 @@
     "department": 21,
     "prerequisites": {
       "and": [
-        31
+        {
+          "course": {
+            "id": 31,
+            "minGrade": "D"
+          }
+        }
       ]
     }
   },
@@ -535,7 +1096,14 @@
     "cost": 2700,
     "department": 10,
     "prerequisites": {
-      "and": []
+      "and": [
+        {
+          "course": {
+            "id": 12,
+            "minGrade": "D"
+          }
+        }
+      ]
     }
   },
   {
@@ -548,7 +1116,12 @@
     "department": 21,
     "prerequisites": {
       "and": [
-        36
+        {
+          "course": {
+            "id": 36,
+            "minGrade": "D"
+          }
+        }
       ]
     }
   },
@@ -561,7 +1134,54 @@
     "cost": 2700,
     "department": 14,
     "prerequisites": {
-      "and": []
+      "or": [
+        {
+          "course": {
+            "id": 18,
+            "minGrade": "D"
+          }
+        },
+        {
+          "course": {
+            "id": 2,
+            "minGrade": "D"
+          }
+        },
+        {
+          "test": {
+            "id": 10,
+            "minScore": 61
+          }
+        },
+        {
+          "test": {
+            "id": 9,
+            "minScore": 5.5
+          }
+        },
+        {
+          "and": [
+            {
+              "test": {
+                "id": 11,
+                "minScore": 400
+              }
+            },
+            {
+              "test": {
+                "id": 8,
+                "minScore": 100
+              }
+            },
+            {
+              "test": {
+                "id": 5,
+                "minScore": 100
+              }
+            }
+          ]
+        }
+      ]
     }
   },
   {
@@ -657,7 +1277,14 @@
     "cost": 2400,
     "department": 11,
     "prerequisites": {
-      "and": []
+      "and": [
+        {
+          "course": {
+            "id": 48,
+            "minGrade": "D"
+          }
+        }
+      ]
     }
   },
   {
@@ -705,7 +1332,50 @@
     "cost": 2700,
     "department": 13,
     "prerequisites": {
-      "and": []
+      "or": [
+        {
+          "course": {
+            "id": 78,
+            "minGrade": "D"
+          }
+        },
+        {
+          "course": {
+            "id": 127,
+            "minGrade": "D"
+          }
+        },
+        {
+          "course": {
+            "id": 6,
+            "minGrade": "D"
+          }
+        },
+        {
+          "test": {
+            "id": 1,
+            "minScore": 500
+          }
+        },
+        {
+          "test": {
+            "id": 2,
+            "minScore": 530
+          }
+        },
+        {
+          "test": {
+            "id": 3,
+            "minScore": 21
+          }
+        },
+        {
+          "test": {
+            "id": 4,
+            "minScore": 200
+          }
+        }
+      ]
     }
   },
   {
@@ -751,7 +1421,7 @@
     "description": "Service Learning is a form of experiential learning that integrates academic study with hands-on meaningful community service activities and structured reflection. This course engages students in a minimum of 40 organized community service hours to meet local community needs and gain a sense of civic responsibility. The course introduces students to the key concepts, characteristics, benefits, and challenges of community service and equips them with the knowledge, skills, and dispositions required to respond to pressing community needs. Students will create an e-portfolio to reflect on their service-learning experience and the impact of civic engagement on themselves, others, and the community.",
     "creditHours": 3,
     "cost": 2400,
-    "department": 32,
+    "department": 31,
     "prerequisites": {
       "and": []
     }
@@ -799,7 +1469,7 @@
     "description": "This course has been specifically created to support students in capitalizing on their honors experience, forming a feeling of community amongst the honors students, and prepare them for life during and after college. This course will allow honors students to have discussions about the realities of the mind, the nature of knowledge, the idea of a university, and how university education can change and influence the future of individuals. The course will acquaint honors students with the college experience by directly involving them in service, scholarship, and leadership endeavors. This course incorporates workshops, practical experiences, and notable guest speakers, which will encourage independent scholarship and collaborative learning.",
     "creditHours": 3,
     "cost": 2400,
-    "department": 33,
+    "department": 32,
     "prerequisites": {
       "and": []
     }
@@ -823,7 +1493,7 @@
     "description": "Innovation, Leadership, and Civic Engagement (UNIV 200) is an interdisciplinary course designed to introduce students to the concept of social entrepreneurship and equip them with the skills needed to create social value and address Sustainable Development Goals. In this project-based course, students from different disciplines work collaboratively to come up with an innovative solution that addresses one or more challenges faced by local or global communities. In the process, students learn about the mechanisms of civic engagement, develop their leadership skills, unlock their creativity and most importantly, learn to think like entrepreneurs.",
     "creditHours": 3,
     "cost": 2400,
-    "department": 32,
+    "department": 31,
     "prerequisites": {
       "and": []
     }
@@ -957,7 +1627,70 @@
     "cost": 2700,
     "department": 3,
     "prerequisites": {
-      "and": []
+      "or": [
+        {
+          "and": [
+            {
+              "course": {
+                "id": 11,
+                "minScore": 400
+              }
+            },
+            {
+              "course": {
+                "id": 8,
+                "minScore": 100
+              }
+            },
+            {
+              "course": {
+                "id": 12,
+                "minScore": 225
+              }
+            }
+          ]
+        },
+        {
+          "and": [
+            {
+              "course": {
+                "id": 11,
+                "minScore": 400
+              }
+            },
+            {
+              "course": {
+                "id": 8,
+                "minScore": 100
+              }
+            },
+            {
+              "course": {
+                "id": 5,
+                "minScore": 100
+              }
+            }
+          ]
+        },
+        {
+          "test": {
+            "id": 10,
+            "minScore": 61
+          }
+        },
+        {
+          "test": {
+            "id": 9,
+            "minScore": 5.5
+          }
+        },
+        {
+          "course": {
+            "id": 2,
+            "minGrade": "D"
+          }
+        }
+      ]
     }
   },
   {
@@ -969,7 +1702,74 @@
     "cost": 2700,
     "department": 3,
     "prerequisites": {
-      "and": []
+      "or": [
+        {
+          "and": [
+            {
+              "or": [
+                {
+                  "test": {
+                    "id": 11,
+                    "minScore": 400
+                  }
+                },
+                {
+                  "test": {
+                    "id": 8,
+                    "minScore": 100
+                  }
+                }
+              ]
+            },
+            {
+              "test": {
+                "id": 12,
+                "minScore": 225
+              }
+            }
+          ]
+        },
+        {
+          "and": [
+            {
+              "test": {
+                "id": 11,
+                "minScore": 400
+              }
+            },
+            {
+              "test": {
+                "id": 8,
+                "minScore": 100
+              }
+            },
+            {
+              "test": {
+                "id": 5,
+                "minScore": 100
+              }
+            }
+          ]
+        },
+        {
+          "test": {
+            "id": 10,
+            "minScore": 61
+          }
+        },
+        {
+          "test": {
+            "id": 9,
+            "minScore": 5.5
+          }
+        },
+        {
+          "course": {
+            "id": 2,
+            "minGrade": "D"
+          }
+        }
+      ]
     }
   },
   {
@@ -993,7 +1793,70 @@
     "cost": 2700,
     "department": 10,
     "prerequisites": {
-      "and": []
+      "or": [
+        {
+          "and": [
+            {
+              "test": {
+                "id": 11,
+                "minScore": 400
+              }
+            },
+            {
+              "test": {
+                "id": 8,
+                "minScore": 100
+              }
+            },
+            {
+              "test": {
+                "id": 12,
+                "minScore": 225
+              }
+            }
+          ]
+        },
+        {
+          "and": [
+            {
+              "test": {
+                "id": 11,
+                "minScore": 400
+              }
+            },
+            {
+              "test": {
+                "id": 8,
+                "minScore": 100
+              }
+            },
+            {
+              "test": {
+                "id": 5,
+                "minScore": 100
+              }
+            }
+          ]
+        },
+        {
+          "test": {
+            "id": 10,
+            "minScore": 61
+          }
+        },
+        {
+          "test": {
+            "id": 9,
+            "minScore": 5.5
+          }
+        },
+        {
+          "course": {
+            "id": 2,
+            "minGrade": "D"
+          }
+        }
+      ]
     }
   },
   {
@@ -1005,7 +1868,70 @@
     "cost": 2700,
     "department": 10,
     "prerequisites": {
-      "and": []
+      "or": [
+        {
+          "and": [
+            {
+              "test": {
+                "id": 11,
+                "minScore": 400
+              }
+            },
+            {
+              "test": {
+                "id": 8,
+                "minScore": 100
+              }
+            },
+            {
+              "test": {
+                "id": 12,
+                "minScore": 225
+              }
+            }
+          ]
+        },
+        {
+          "and": [
+            {
+              "test": {
+                "id": 11,
+                "minScore": 400
+              }
+            },
+            {
+              "test": {
+                "id": 8,
+                "minScore": 100
+              }
+            },
+            {
+              "test": {
+                "id": 5,
+                "minScore": 100
+              }
+            }
+          ]
+        },
+        {
+          "test": {
+            "id": 10,
+            "minScore": 61
+          }
+        },
+        {
+          "test": {
+            "id": 9,
+            "minScore": 5.5
+          }
+        },
+        {
+          "course": {
+            "id": 2,
+            "minGrade": "D"
+          }
+        }
+      ]
     }
   },
   {
@@ -1029,7 +1955,80 @@
     "cost": 2700,
     "department": 10,
     "prerequisites": {
-      "and": []
+      "and": [
+        {
+          "course": {
+            "id": 6,
+            "minGrade": "D"
+          }
+        },
+        {
+          "or": [
+            {
+              "and": [
+                {
+                  "test": {
+                    "id": 11,
+                    "minScore": 400
+                  }
+                },
+                {
+                  "test": {
+                    "id": 8,
+                    "minScore": 100
+                  }
+                },
+                {
+                  "test": {
+                    "id": 12,
+                    "minScore": 225
+                  }
+                }
+              ]
+            },
+            {
+              "and": [
+                {
+                  "test": {
+                    "id": 11,
+                    "minScore": 400
+                  }
+                },
+                {
+                  "test": {
+                    "id": 8,
+                    "minScore": 100
+                  }
+                },
+                {
+                  "test": {
+                    "id": 5,
+                    "minScore": 100
+                  }
+                }
+              ]
+            },
+            {
+              "test": {
+                "id": 10,
+                "minScore": 61
+              }
+            },
+            {
+              "test": {
+                "id": 9,
+                "minScore": 5.5
+              }
+            },
+            {
+              "course": {
+                "id": 2,
+                "minGrade": "D"
+              }
+            }
+          ]
+        }
+      ]
     }
   },
   {
@@ -1041,7 +2040,70 @@
     "cost": 2700,
     "department": 10,
     "prerequisites": {
-      "and": []
+      "or": [
+        {
+          "and": [
+            {
+              "test": {
+                "id": 11,
+                "minScore": 400
+              }
+            },
+            {
+              "test": {
+                "id": 8,
+                "minScore": 100
+              }
+            },
+            {
+              "test": {
+                "id": 12,
+                "minScore": 225
+              }
+            }
+          ]
+        },
+        {
+          "and": [
+            {
+              "test": {
+                "id": 11,
+                "minScore": 400
+              }
+            },
+            {
+              "test": {
+                "id": 8,
+                "minScore": 100
+              }
+            },
+            {
+              "test": {
+                "id": 5,
+                "minScore": 100
+              }
+            }
+          ]
+        },
+        {
+          "test": {
+            "id": 10,
+            "minScore": 61
+          }
+        },
+        {
+          "test": {
+            "id": 9,
+            "minScore": 5.5
+          }
+        },
+        {
+          "course": {
+            "id": 2,
+            "minGrade": "D"
+          }
+        }
+      ]
     }
   },
   {
@@ -1053,7 +2115,70 @@
     "cost": 2700,
     "department": 10,
     "prerequisites": {
-      "and": []
+      "or": [
+        {
+          "and": [
+            {
+              "test": {
+                "id": 11,
+                "minScore": 400
+              }
+            },
+            {
+              "test": {
+                "id": 8,
+                "minScore": 100
+              }
+            },
+            {
+              "test": {
+                "id": 12,
+                "minScore": 225
+              }
+            }
+          ]
+        },
+        {
+          "and": [
+            {
+              "test": {
+                "id": 11,
+                "minScore": 400
+              }
+            },
+            {
+              "test": {
+                "id": 8,
+                "minScore": 100
+              }
+            },
+            {
+              "test": {
+                "id": 5,
+                "minScore": 100
+              }
+            }
+          ]
+        },
+        {
+          "test": {
+            "id": 10,
+            "minScore": 61
+          }
+        },
+        {
+          "test": {
+            "id": 9,
+            "minScore": 5.5
+          }
+        },
+        {
+          "course": {
+            "id": 2,
+            "minGrade": "D"
+          }
+        }
+      ]
     }
   },
   {
@@ -1257,7 +2382,14 @@
     "cost": 2400,
     "department": 5,
     "prerequisites": {
-      "and": []
+      "and": [
+        {
+          "course": {
+            "id": 98,
+            "minGrade": "D"
+          }
+        }
+      ]
     }
   },
   {
@@ -1375,7 +2507,7 @@
     "description": "The Honors Freshman Seminar course for Humanities trains students in how to analyze and interpret texts, including primary and secondary sources. Students gain familiarity with at least one specific humanities discipline, and apply its methods or approaches to examine a given theme, problem or geographic region. They also learn the benefits of interdisciplinary approaches in scholarship. The development of critical, analytical and interpretative reading, writing and rhetorical skills as well as research skills are stressed",
     "creditHours": 3,
     "cost": 2400,
-    "department": 33,
+    "department": 32,
     "prerequisites": {
       "and": []
     }
@@ -1390,7 +2522,12 @@
     "department": 21,
     "prerequisites": {
       "and": [
-        20
+        {
+          "course": {
+            "id": 20,
+            "minGrade": "D"
+          }
+        }
       ]
     }
   },
@@ -1404,7 +2541,12 @@
     "department": 21,
     "prerequisites": {
       "and": [
-        13
+        {
+          "course": {
+            "id": 13,
+            "minGrade": "D"
+          }
+        }
       ]
     }
   },
@@ -1418,7 +2560,18 @@
     "department": 21,
     "prerequisites": {
       "and": [
-        23
+        {
+          "course": {
+            "id": 13,
+            "minGrade": "D"
+          }
+        },
+        {
+          "course": {
+            "id": 23,
+            "minGrade": "D"
+          }
+        }
       ]
     }
   },
@@ -1432,7 +2585,12 @@
     "department": 21,
     "prerequisites": {
       "and": [
-        13
+        {
+          "course": {
+            "id": 13,
+            "minGrade": "D"
+          }
+        }
       ]
     }
   },
@@ -1446,7 +2604,12 @@
     "department": 21,
     "prerequisites": {
       "and": [
-        31
+        {
+          "course": {
+            "id": 31,
+            "minGrade": "D"
+          }
+        }
       ]
     }
   },
@@ -1460,7 +2623,12 @@
     "department": 21,
     "prerequisites": {
       "and": [
-        7
+        {
+          "course": {
+            "id": 7,
+            "minGrade": "D"
+          }
+        }
       ]
     }
   },
@@ -1474,7 +2642,12 @@
     "department": 21,
     "prerequisites": {
       "and": [
-        13
+        {
+          "course": {
+            "id": 13,
+            "minGrade": "D"
+          }
+        }
       ]
     }
   },
@@ -1488,7 +2661,12 @@
     "department": 21,
     "prerequisites": {
       "and": [
-        20
+        {
+          "course": {
+            "id": 20,
+            "minGrade": "D"
+          }
+        }
       ]
     }
   },
@@ -1502,7 +2680,18 @@
     "department": 21,
     "prerequisites": {
       "and": [
-        23
+        {
+          "course": {
+            "id": 23,
+            "minGrade": "D"
+          }
+        },
+        {
+          "course": {
+            "id": 20,
+            "minGrade": "D"
+          }
+        }
       ]
     }
   },
@@ -1516,7 +2705,12 @@
     "department": 21,
     "prerequisites": {
       "and": [
-        29
+        {
+          "course": {
+            "id": 29,
+            "minGrade": "D"
+          }
+        }
       ]
     }
   },
@@ -1530,7 +2724,12 @@
     "department": 21,
     "prerequisites": {
       "and": [
-        13
+        {
+          "course": {
+            "id": 13,
+            "minGrade": "D"
+          }
+        }
       ]
     }
   },
@@ -1556,7 +2755,12 @@
     "department": 21,
     "prerequisites": {
       "and": [
-        25
+        {
+          "course": {
+            "id": 25,
+            "minGrade": "D"
+          }
+        }
       ]
     }
   },
@@ -1570,6 +2774,87 @@
     "department": 18,
     "prerequisites": {
       "and": []
+    }
+  },
+  {
+    "id": 125,
+    "code": "PHYS 102",
+    "title": "General Physics II",
+    "description": "Periodic motion - mechanical waves - superposition of waves - sound- heat and temperature - quantity of heat - mechanism of heat transfer- thermal properties of matter - the first law of thermodynamics- the second law of thermodynamics - the nature and propagation of light - geometric optics - optical instruments.",
+    "creditHours": 3,
+    "cost": 2700,
+    "department": 10,
+    "prerequisites": {
+      "and": [
+        {
+          "course": {
+            "id": 81,
+            "minGrade": "D"
+          }
+        }
+      ]
+    }
+  },
+  {
+    "id": 126,
+    "code": "PHYS 103",
+    "title": "General Physics Lab",
+    "description": "This is the Lab course covering the subject matter of PHYS101, and PHYS102 and designed to be taken concurrently with PHYS102. The course presents an introduction to the methods of experimental physics. Emphasis is placed on developing students’ skills in experimental techniques, data analysis, and scientific reporting of lab work. During the course, students will execute a series of experiments on Kinematics of motion, Kinetic and potential energy, Oscillatory motion, Thermal properties of matter, and Viscosity. The course includes computer-based experiments in Classical Mechanics",
+    "creditHours": 1,
+    "cost": 900,
+    "department": 10,
+    "prerequisites": {
+      "and": [
+        {
+          "course": {
+            "id": 125,
+            "minGrade": "D"
+          }
+        }
+      ]
+    }
+  },
+  {
+    "id": 127,
+    "code": "MATH 119",
+    "title": "Business Mathematics I",
+    "description": "",
+    "creditHours": 3,
+    "cost": 2700,
+    "department": 10,
+    "prerequisites": {
+      "or": [
+        {
+          "course": {
+            "id": 78,
+            "minGrade": "D"
+          }
+        },
+        {
+          "test": {
+            "id": 3,
+            "minScore": 21
+          }
+        },
+        {
+          "test": {
+            "id": 1,
+            "minScore": 500
+          }
+        },
+        {
+          "test": {
+            "id": 2,
+            "minScore": 530
+          }
+        },
+        {
+          "test": {
+            "id": 4,
+            "minScore": 200
+          }
+        }
+      ]
     }
   }
 ]

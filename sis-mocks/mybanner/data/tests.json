@@ -1,0 +1,62 @@
+[
+  {
+    "id": 1,
+    "name": "Scholastic Aptitude Test-SAT (Math)",
+    "maxScore": 800
+  },
+  {
+    "id": 2,
+    "name": "Scholastic Aptitude SAT New (Math)",
+    "maxScore": 800
+  },
+  {
+    "id": 3,
+    "name": "American College Testing-ACT",
+    "maxScore": 36
+  },
+  {
+    "id": 4,
+    "name": "QU Placer Math",
+    "maxScore": 275
+  },
+  {
+    "id": 5,
+    "name": "ESL Language Use",
+    "maxScore": 120
+  },
+  {
+    "id": 6,
+    "name": "ESL Listening",
+    "maxScore": 120
+  },
+  {
+    "id": 7,
+    "name": "ESL Sentence Meaning",
+    "maxScore": 120
+  },
+  {
+    "id": 8,
+    "name": "ESL Reading Skills",
+    "maxScore": 120
+  },
+  {
+    "id": 9,
+    "test": "International English Language Testing System-IELTS",
+    "maxScore": 9
+  },
+  {
+    "id": 10,
+    "test": "Test of English as a Foreign Language Internet-based Test-TOEFL IBT",
+    "maxScore": 120
+  },
+  {
+    "id": 11,
+    "test": "APL Integrated Core",
+    "maxScore": 480
+  },
+  {
+    "id": 12,
+    "test": "APL for Writing Workshop",
+    "maxScore": 240
+  }
+]
