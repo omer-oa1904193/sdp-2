@@ -17,6 +17,7 @@
     "@mui/icons-material": "^5.11.11",
     "@mui/material": "^5.11.13",
     "@mui/system": "^5.11.14",
+    "@mui/x-data-grid-pro": "^6.3.0",
     "@tanstack/react-location": "^3.7.4",
     "clsx": "^1.2.1",
     "eslint": "8.36.0",

@@ -1,9 +1,10 @@
-import {useUserStore} from "@/stores/userStore.js";
-import {useEffect, useState} from "react";
+import { useUserStore } from "@/stores/userStore.js";
+import { useEffect, useState } from "react";
 import * as React from "react";
-import {Box, Grid, Paper, Typography} from "@mui/material";
+import { Box, Grid, Paper, Typography } from "@mui/material";
 import styles from "@/pages/dashboard/DashBoardPage.module.css";
 import StudyPlanCard from "../../components/dashboard-components/studyPlanCard";
+import RectangularButton from "../../components/dashboard-components/rectangularButton";
 
 export function DashboardPage() {
     const userStore = useUserStore();
@@ -15,7 +16,7 @@ export function DashboardPage() {
     }, [])
     return (
         <>
-            <Box sx={{position: "relative", backgroundColor: "#EFEFEF"}}>
+            <Box sx={{ position: "relative", backgroundColor: "#EFEFEF" }}>
                 {/* <NavBarAuth /> */}
                 <Box
                     sx={{
@@ -54,16 +55,33 @@ export function DashboardPage() {
                                     m: "1rem"
                                 }
                             }}
-                                   style={{maxWidth: "100%", width: "calc(100% - 2rem)"}}>
+                                style={{ maxWidth: "100%", width: "calc(100% - 2rem)" }}>
                                 <Grid container spacing={2}>
                                     <Grid item xs={12} md={8}>
-                                        <Typography variant="h4" fontWeight="bold" color="#888888" sx={{mb: 2}}>
+                                        <Typography variant="h4" fontWeight="bold" color="#888888" sx={{ mb: 2 }}>
                                             Welcome
                                         </Typography>
-                                        <Typography variant="body1" fontWeight="bold" color="#b3b3b3" sx={{mb: 2}}>
+                                        <Typography variant="body1" fontWeight="bold" color="#b3b3b3" sx={{ mb: 2 }}>
                                             Start by planning for your graduation by creating a study plan and selecting
                                             your program.
                                         </Typography>
+                                        {studyPlans.map(studyPlan => (
+                                            // studyPlan.isActive ? (
+                                            //     <RectangularButton
+                                            //         text="Analyze current study plan"
+                                            //         studyPlan={studyPlan}
+                                            //         key={studyPlan.id}
+                                            //         linkTo="analyze/student/"
+                                            //     />
+                                            // ) : null
+                                            <RectangularButton
+                                                    text="Analyze current study plan"
+                                                    studyPlan={studyPlan}
+                                                    key={studyPlan.id}
+                                                    linkTo="analyze/student/"
+                                                />
+                                            ))}
+
                                     </Grid>
                                     <Grid item xs={12} md={4}>
                                         {/*<StudyPlanCard studyPlan={} isActive={true}/>*/}
@@ -94,7 +112,7 @@ export function DashboardPage() {
                                     m: "1rem"
                                 }
                             }}
-                                   style={{maxWidth: "100%", width: "calc(100% - 2rem)", overflow: "auto"}}
+                                style={{ maxWidth: "100%", width: "calc(100% - 2rem)", overflow: "auto" }}
                             >
                                 <Typography fontWeight="bold" color="#888888" variant="h5">Study Plans</Typography>
                                 <Box sx={{
