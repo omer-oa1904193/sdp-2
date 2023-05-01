@@ -9,10 +9,6 @@ export default function Score({ studyPlan }) {
     let totalCreditHours = 0;
     let courseCodeDifficulty = 0;
 
-    // const g = new dagreD3.graphlib.Graph().setGraph({});
-    // g.setDefaultEdgeLabel(() => ({}));
-    // g.setDefaultNodeLabel(() => ({}));
-    const svg = d3.select("svg");
     const force = d3.forceSimulation();
     const nodes = [];
     const links = [];
@@ -61,50 +57,7 @@ export default function Score({ studyPlan }) {
     force.force("link", d3.forceLink(links).id(d => d.id));
 
     console.log('graph node length ' + force.nodes().length);
-// Create a new D3 selection for the nodes of the graph
-const node = svg.selectAll(".node")
-  .data(nodes)
-  .enter().append("circle")
-  .attr("r", 10)
-  .attr("fill", "steelblue");
-
-// Create a new D3 selection for the links of the graph
-const link = svg.selectAll(".link")
-  .data(links)
-  .enter().append("line")
-  .attr("stroke", "gray");
-
-// Update the position of the nodes and links on each tick of the force layout
-force.on("tick", () => {
-  node.attr("cx", d => d.x)
-      .attr("cy", d => d.y);
-  link.attr("x1", d => d.source.x)
-      .attr("y1", d => d.source.y)
-      .attr("x2", d => d.target.x)
-      .attr("y2", d => d.target.y);
-});
-    // using dagreD3
-
-    // g.nodes().forEach((node) => {
-    //     const label = g.node(node).label;
-    //     console.log(`Node ${node} has label ${label}`);
-    // });
-    // g.nodes().forEach((nodeId) => {
-    //     console.log(`Outgoing edges for node ${nodeId}:`);
-    //     const outgoingEdges = g.outEdges(nodeId);
-    //     outgoingEdges.forEach((edge) => {
-    //         console.log(`- Edge from ${edge.v} to ${edge.w}`);
-    //     });
-    // });
-    // g.nodes().forEach((nodeId) => {
-    //     console.log(`Incoming edges for node ${nodeId}:`);
-    //     const incomingEdges = g.inEdges(nodeId);
-    //     incomingEdges.forEach((edge) => {
-    //         console.log(`- Edge from ${edge.v} to ${edge.w}`);
-    //     });
-    // });
-
-    // using d3:
+// using d3:
 
     // force.nodes().forEach((node) => {
     //     console.log(`Outgoing edges for node ${node.id}:`);
