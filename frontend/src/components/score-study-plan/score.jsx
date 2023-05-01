@@ -1,6 +1,5 @@
 import React from 'react';
 import { Box, Typography } from "@mui/material";
-import * as d3 from "d3";
 import * as dagreD3 from "dagre-d3";
 
 export default function Score({ studyPlan }) {
@@ -9,9 +8,9 @@ export default function Score({ studyPlan }) {
     let totalCreditHours = 0;
     let courseCodeDifficulty = 0;
 
-    const force = d3.forceSimulation();
-    const nodes = [];
-    const links = [];
+    const g = new dagreD3.graphlib.Graph().setGraph({});
+    g.setDefaultEdgeLabel(() => ({}));
+    g.setDefaultNodeLabel(() => ({}));
 
     for (let [key, value] of studyPlan.yearMap) {
         for (let [innerKey, innerValue] of value) {
@@ -21,8 +20,7 @@ export default function Score({ studyPlan }) {
                 totalCourses++
                 if (typeof subValue.course !== "undefined") {
                     const courseId = subValue.course.id;
-                    // g.setNode(courseId, { label: courseId });
-                    nodes.push({ id: courseId });
+                        g.setNode(courseId, { label: courseId });
                     if (subValue.course.prerequisites) {
                         const prerequisites = subValue.course.prerequisites.and;
                         if (typeof prerequisites !== "undefined" && prerequisites.length > 0) {
@@ -30,9 +28,7 @@ export default function Score({ studyPlan }) {
 
                                 if (prerequisite.or) continue;
                                 const prerequisiteId = prerequisite.course.id;
-                                nodes.push({ id: prerequisiteId });
-                                links.push({ source: prerequisiteId, target: courseId });
-                                // g.setEdge(prerequisiteId, courseId);
+                                   g.setEdge(prerequisiteId, courseId);
                             }
                         }
 
@@ -53,26 +49,25 @@ export default function Score({ studyPlan }) {
         }
     }
 
-    force.nodes(nodes);
-    force.force("link", d3.forceLink(links).id(d => d.id));
-
-    console.log('graph node length ' + force.nodes().length);
-// using d3:
-
-    // force.nodes().forEach((node) => {
-    //     console.log(`Outgoing edges for node ${node.id}:`);
-    //     const outgoingEdges = links.filter((link) => link.source.id === node.id);
+    console.log('graph node length ' + g.nodes().length);
+    // g.nodes().forEach((node) => {
+    //     const label = g.node(node).label;
+    //     console.log(`Node ${node} has label ${label}`);
+    // });
+    // g.nodes().forEach((nodeId) => {
+    //     console.log(`Outgoing edges for node ${nodeId}:`);
+    //     const outgoingEdges = g.outEdges(nodeId);
     //     outgoingEdges.forEach((edge) => {
-    //       console.log(`- Edge from ${edge.source.id} to ${edge.target.id}`);
+    //         console.log(`- Edge from ${edge.v} to ${edge.w}`);
     //     });
-    //   });
-    //   force.nodes().forEach((node) => {
-    //     console.log(`Incoming edges for node ${node.id}:`);
-    //     const incomingEdges = links.filter((link) => link.target.id === node.id);
+    // });
+    // g.nodes().forEach((nodeId) => {
+    //     console.log(`Incoming edges for node ${nodeId}:`);
+    //     const incomingEdges = g.inEdges(nodeId);
     //     incomingEdges.forEach((edge) => {
-    //       console.log(`- Edge from ${edge.source.id} to ${edge.target.id}`);
+    //         console.log(`- Edge from ${edge.v} to ${edge.w}`);
     //     });
-    //   });
+    // });
       
 
     let averageCoursesPerSemester = totalCourses / semesterCount;
@@ -111,25 +106,28 @@ export default function Score({ studyPlan }) {
     // const overallScore = 71
     console.log(`Overall score: ${overallScore}`);
 
-    return (
-        <>
-            <Box textAlign="center">
-                <Typography fontWeight="bold" color="#888888" variant="h5">Score</Typography>
-                <Typography
-                    fontWeight="bold"
-                    variant="h5"
-                    style={{
-                        color:
-                            overallScore > 70
-                                ? "#61C975"
-                                : overallScore > 50
-                                    ? "#DAAE6B"
-                                    : "#C96161",
-                    }}
-                >
-                    {overallScore}
-                </Typography>
-            </Box>
-        </>
-    );
-}
+
+return (
+  <>
+    <Box textAlign="center">
+      <Typography fontWeight="bold" color="#888888" variant="h5">
+        Score
+      </Typography>
+      <Typography
+        fontWeight="bold"
+        variant="h5"
+        style={{
+          color:
+            overallScore > 70
+              ? "#61C975"
+              : overallScore > 50
+              ? "#DAAE6B"
+              : "#C96161",
+        }}
+      >
+        {overallScore}
+      </Typography>
+    </Box>
+  </>
+);
+    }
