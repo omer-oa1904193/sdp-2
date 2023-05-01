@@ -5,7 +5,7 @@ import React from "react";
 export default function StudyPlanViewPage(pageProps) {
     const router = useRouter()
     return <>
-        <StudyPlanPage studyPlanId={router.query.studyPlanId} isEditable={false}></StudyPlanPage>
+        <StudyPlanPage studyPlanId={router.query.studyPlanId} isEditable={false} isDirty={false} setDirty={void 0}/>
     </>
 }
 

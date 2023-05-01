@@ -79,7 +79,7 @@ export function StudyPlanEditor({studyPlan, setStudyPlan, isEditable, setDirty, 
         }
 
         setStudyPlan({...studyPlan, yearMap: updatedYearMap})
-        // setDirty(true);
+        setDirty(true);
     }
 
 
@@ -130,7 +130,8 @@ export function StudyPlanEditor({studyPlan, setStudyPlan, isEditable, setDirty, 
                                                        semester={semesterLabel}
                                                        isEditable={isEditable}
                                                        onCourseClicked={onCourseClicked}
-                                                       onElectiveClicked={onElectiveClicked}/>
+                                                       onElectiveClicked={onElectiveClicked}
+                                                       setDirty={setDirty}/>
                                 </ul>
                                 {/*{isEditable &&*/}
                                 {/*    <button className="add-course-button inv-button">*/}

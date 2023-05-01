@@ -11,12 +11,11 @@ import React, {useEffect, useState} from "react";
 import styles from "./StudyPlanPage.module.css"
 import Score from "../../../score-study-plan/score"
 
-export function StudyPlanPage({studyPlanId, isEditable}) {
+export function StudyPlanPage({studyPlanId, isEditable, isDirty, setDirty}) {
     const router = useRouter()
     const userStore = useUserStore();
     const [studyPlan, setStudyPlan] = useState(null);
     const [courseDialogueCourse, setCourseDialogueCourse] = useState(null);
-
     useEffect(() => {
         userStore.fetchProtected(`/study-plans/${studyPlanId}`)
             .then(r => r.json())
@@ -63,6 +62,7 @@ export function StudyPlanPage({studyPlanId, isEditable}) {
             }
             <StudyPlanEditor studyPlan={studyPlan}
                              setStudyPlan={setStudyPlan}
+                             setDirty={setDirty}
                              isEditable={isEditable}
                              onCourseClicked={(course) => setCourseDialogueCourse(course)}/>
             <SummeryPane studyPlan={studyPlan}/>
