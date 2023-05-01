@@ -15,7 +15,7 @@ export class StudyPlanRepo {
     }
 
     async getStudyPlans(student: User) {
-        return this.em.find(StudyPlan, {author: student}, {populate: ["program"]});
+        return this.em.find(StudyPlan, {author: student.id}, {populate: ["program"]});
     }
 
     async getStudentStudyPlan(student: User, studyPlanId: number) {

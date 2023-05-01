@@ -8,7 +8,7 @@ export class AdmissionTest extends CustomBaseEntity {
     @Property({type: types.string})
     name!: string;
 
-    @Property({type: types.decimal})
+    @Property({type: types.decimal, serializer: value => Number(value)})
     maxScore!: number;
 
     @ManyToMany({entity: () => User, inversedBy: (p: User) => p.admissionTestsTaken, pivotEntity: () => AdmissionTestResult})

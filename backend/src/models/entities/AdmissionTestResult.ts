@@ -13,7 +13,7 @@ export class AdmissionTestResult extends CustomBaseEntity {
     @ManyToOne({entity: () => User})
     student!: Rel<User>;
 
-    @Property({type: types.decimal})
+    @Property({type: types.decimal, serializer: value => Number(value)})
     score!: number;
 
 }

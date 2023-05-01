@@ -9,7 +9,7 @@ export class UserRepo {
     }
 
     async findUser(email: string) {
-        return this.em.findOne(User, {email: email});
+        return this.em.findOne(User, {email: email}, {populate:["admissionTestResults"]});
     }
 
     async bulkUpsertUsers(usersData: EntityData<User>[]) {

@@ -1,13 +1,13 @@
-import {StudyPlanCardList} from "@/components/study-plan-components/studyplan/StudyPlanCardList/StudyPlanCardList.jsx";
-import React, {useRef, useState} from "react";
 import {ProgressBar} from "@/components/common/ui/ProgressBar/ProgressBar.jsx";
-import {CourseCard} from "@/components/study-plan-components/studyplan/CourseCard/CourseCard.jsx";
-import {ElectiveCard} from "../ElectiveCard/ElectiveCard.jsx";
+import {StudyPlanCardList} from "@/components/study-plan-components/studyplan/StudyPlanCardList/StudyPlanCardList.jsx";
+import {useUserStore} from "@/stores/userStore.js";
+import React, {useRef, useState} from "react";
 import styles from "./StudyPlanEditor.module.css"
 
 export function StudyPlanEditor({studyPlan, setStudyPlan, isEditable, setDirty, onCourseClicked, onElectiveClicked}) {
     const [errorCourseId, setErrorCourseId] = useState(null)
     const studyPlanEditor = useRef(null);
+    const user = useUserStore(store => store.user);
 
     async function saveStudyPlan() {
         // const allCourses = [];
@@ -49,46 +49,36 @@ export function StudyPlanEditor({studyPlan, setStudyPlan, isEditable, setDirty, 
 
         if (fromSemester === toSemester && fromYear === toYear)
             return;
-        // let prerequisites;
-        // if (course.isElective)
-        //     prerequisites = course?.currentCourse?.prerequisites;
-        // else
-        //     prerequisites = course?.prerequisites;
-        //
-        // const latestPreReq = prerequisites?.map(preReq => ({
-        //     ...preReq,
-        //     ...studyPlan.coursesByCode[preReq.code],
-        // })).sort((p1, p2) => compareCourses(p1, p2))[0]
-        // if (latestPreReq) {
-        //     const d = compareTerm(latestPreReq.year, latestPreReq.semester, toYear, toSemester)
-        //     if ((latestPreReq.isConcurrect && d < 0) || (!latestPreReq.isConcurrect && d <= 0)) {
-        //         setErrorCourseId(latestPreReq.id)
-        //         return;
-        //     }
-        // }
-        // let postrequisites;
-        // if (course.isElective)
-        //     postrequisites = course?.currentCourse?.postrequisites;
-        // else
-        //     postrequisites = course?.postrequisites;
-        // const earliestPostReq = postrequisites?.map(postReq => ({
-        //     ...postReq,
-        //     ...studyPlan.coursesByCode[postReq.code]
-        // })).sort((p1, p2) => compareCourses(p2, p1))[0]
-        // if (earliestPostReq) {
-        //     const d = compareTerm(earliestPostReq.year, earliestPostReq.semester, toYear, toSemester)
-        //     if ((earliestPostReq.isConcurrect && d > 0) || (!earliestPostReq.isConcurrect && d >= 0)) {
-        //         setErrorCourseId(earliestPostReq.id)
-        //         return;
-        //     }
-        // }
-        //
+        const updatedYearMap = new Map(studyPlan.yearMap)
+        updatedYearMap.get(toYear).get(toSemester).set(`${mappingType}-${mappingId}`, mapping);
+        updatedYearMap.get(fromYear).get(fromSemester).delete(`${mappingType}-${mappingId}`);
         mapping.season = toSemester;
         mapping.yearOrder = toYear;
-        const yearMap = studyPlan.yearMap;
-        yearMap.get(toYear).get(toSemester).set(`${mappingType}-${mappingId}`, mapping);
-        yearMap.get(fromYear).get(fromSemester).delete(`${mappingType}-${mappingId}`);
-        setStudyPlan({...studyPlan, yearMap})
+
+        //check prerequisites are valid for every course in the plan
+        const coursesBefore = [];
+        for (const s of updatedYearMap.values()) {
+            for (const ms of s.values()) {
+                const coursesSameSemester = Array.from(ms.values()).filter(m => !m.isElective).map(m => m.course.id);
+                for (const m of ms.values()) {
+                    if (!m.isElective) {
+                        const isValid = checkPrerequisites(m.course.prerequisites, coursesBefore, coursesSameSemester, user.admissionTestResults);
+                        if (!isValid) {
+                            console.log(`${m.course.code} has prerequisite conditions that are not fulfilled`)
+                            //undo
+                            updatedYearMap.get(fromYear).get(fromSemester).set(`${mappingType}-${mappingId}`, mapping);
+                            updatedYearMap.get(toYear).get(toSemester).delete(`${mappingType}-${mappingId}`);
+                            mapping.season = fromSemester;
+                            mapping.yearOrder = fromYear;
+                            return;
+                        }
+                    }
+                }
+                coursesBefore.push(...coursesSameSemester)
+            }
+        }
+
+        setStudyPlan({...studyPlan, yearMap: updatedYearMap})
         // setDirty(true);
     }
 
@@ -153,3 +143,16 @@ export function StudyPlanEditor({studyPlan, setStudyPlan, isEditable, setDirty, 
     </div>
 }
 
+function checkPrerequisites(expression, previousCourses, currentCourses, admissionTestResults) {
+    if ("and" in expression)
+        return expression["and"].every(subexpression => checkPrerequisites(subexpression, previousCourses, currentCourses, admissionTestResults));
+    else if ("or" in expression)
+        return expression["or"].some(subexpression => checkPrerequisites(subexpression, previousCourses, currentCourses, admissionTestResults));
+    else if ("course" in expression) {
+        return previousCourses.includes(expression.course.id) || (expression.course.allowConcurrent && currentCourses.includes(expression.course.id));
+    } else if ("test" in expression) {
+        return admissionTestResults.some(t => expression.test.id === t.admissionTest && t.score >= expression.test.minScore);
+    } else {
+        return false;
+    }
+}

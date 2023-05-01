@@ -217,7 +217,7 @@
         {
           "course": {
             "id": 4,
-            "idCorequisite": true,
+            "allowConcurrent": true,
             "minGrade": "D"
           }
         }
@@ -408,7 +408,7 @@
           "course": {
             "id": 9,
             "minGrade": "D",
-            "isConcurrent": true
+            "allowConcurrent": true
           }
         }
       ]
@@ -509,7 +509,7 @@
           "course": {
             "id": 17,
             "minGrade": "D",
-            "isConcurrent": true
+            "allowConcurrent": true
           }
         },
         {
