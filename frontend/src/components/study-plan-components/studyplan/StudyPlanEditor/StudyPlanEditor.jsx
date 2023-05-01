@@ -125,8 +125,12 @@ export function StudyPlanEditor({studyPlan, setStudyPlan, isEditable, setDirty, 
                                     onDrop={(e) => {
                                         onCardDropped(e, yearOrder, semesterLabel)
                                     }}>
-                                    <StudyPlanCardList mappings={mappings} year={yearOrder} semester={semesterLabel}
-                                                       isEditable={isEditable}/>
+                                    <StudyPlanCardList mappings={mappings}
+                                                       year={yearOrder}
+                                                       semester={semesterLabel}
+                                                       isEditable={isEditable}
+                                                       onCourseClicked={onCourseClicked}
+                                                       onElectiveClicked={onElectiveClicked}/>
                                 </ul>
                                 {/*{isEditable &&*/}
                                 {/*    <button className="add-course-button inv-button">*/}

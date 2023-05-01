@@ -2,7 +2,7 @@ import {CourseCard} from "@/components/study-plan-components/studyplan/CourseCar
 import {ElectiveCard} from "@/components/study-plan-components/studyplan/ElectiveCard/ElectiveCard.jsx";
 import React, {useState} from "react";
 
-export function StudyPlanCardList({year, semester, mappings, isEditable}) {
+export function StudyPlanCardList({year, semester, mappings, isEditable, onCourseClicked, onElectiveClicked}) {
     const [errorCourseId, setErrorCourseId] = useState(null)
     return <>
         {Array.from(mappings).map(([_, mapping]) =>
@@ -24,7 +24,7 @@ export function StudyPlanCardList({year, semester, mappings, isEditable}) {
                                   errorHighlighted={errorCourseId === mapping.id}
                                   clearErrorHighlighted={() => setErrorCourseId(null)}/> :
                     <CourseCard courseMapping={mapping}
-                                onCourseClicked={() => onCourseClicked(mapping)}
+                                onCourseClicked={() => onCourseClicked(mapping.course)}
                                 errorHighlighted={errorCourseId === mapping.id}
                                 clearErrorHighlighted={() => setErrorCourseId(null)}/>
                 }

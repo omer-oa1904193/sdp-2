@@ -15,7 +15,7 @@ export function StudyPlanPage({studyPlanId, isEditable}) {
     const router = useRouter()
     const userStore = useUserStore();
     const [studyPlan, setStudyPlan] = useState(null);
-    const [courseDialogueIsOpen, setCourseDialogueIsOpen] = useState(false)
+    const [courseDialogueCourse, setCourseDialogueCourse] = useState(null);
 
     useEffect(() => {
         userStore.fetchProtected(`/study-plans/${studyPlanId}`)
@@ -64,9 +64,9 @@ export function StudyPlanPage({studyPlanId, isEditable}) {
             <StudyPlanEditor studyPlan={studyPlan}
                              setStudyPlan={setStudyPlan}
                              isEditable={isEditable}
-                             onCourseClicked={() => setCourseDialogueIsOpen(true)}/>
+                             onCourseClicked={(course) => setCourseDialogueCourse(course)}/>
             <SummeryPane studyPlan={studyPlan}/>
-            <CourseDialogue isOpen={courseDialogueIsOpen} setOpen={setCourseDialogueIsOpen}/>
+            <CourseDialogue course={courseDialogueCourse} setCourse={setCourseDialogueCourse}/>
         </div>
     </>
 
