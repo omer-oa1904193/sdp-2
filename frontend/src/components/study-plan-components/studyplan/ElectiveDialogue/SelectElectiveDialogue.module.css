@@ -34,3 +34,7 @@
     font-weight: 600;
     color: #858585;
 }
+
+.loading-padding {
+    height: 4rem;
+}

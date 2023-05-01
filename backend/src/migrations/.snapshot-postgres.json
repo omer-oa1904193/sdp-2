@@ -132,6 +132,15 @@
       "schema": "public",
       "indexes": [
         {
+          "keyName": "department_college_id_index",
+          "columnNames": [
+            "college_id"
+          ],
+          "composite": false,
+          "primary": false,
+          "unique": false
+        },
+        {
           "keyName": "department_pkey",
           "columnNames": [
             "id"
@@ -237,6 +246,15 @@
       "name": "course",
       "schema": "public",
       "indexes": [
+        {
+          "keyName": "course_department_id_index",
+          "columnNames": [
+            "department_id"
+          ],
+          "composite": false,
+          "primary": false,
+          "unique": false
+        },
         {
           "keyName": "course_pkey",
           "columnNames": [
@@ -559,6 +577,16 @@
       "name": "map_elective_package_program",
       "schema": "public",
       "indexes": [
+        {
+          "keyName": "map_elective_package_program_elective_package_id_pr_7ee95_index",
+          "columnNames": [
+            "elective_package_id",
+            "program_id"
+          ],
+          "composite": true,
+          "primary": false,
+          "unique": false
+        },
         {
           "keyName": "map_elective_package_program_pkey",
           "columnNames": [
@@ -1161,6 +1189,16 @@
       "schema": "public",
       "indexes": [
         {
+          "keyName": "map_elective_package_study_plan_elective_package_id_70522_index",
+          "columnNames": [
+            "elective_package_id",
+            "study_plan_id"
+          ],
+          "composite": true,
+          "primary": false,
+          "unique": false
+        },
+        {
           "keyName": "map_elective_package_study_plan_pkey",
           "columnNames": [
             "id"
@@ -1372,6 +1410,24 @@
       "name": "comment",
       "schema": "public",
       "indexes": [
+        {
+          "keyName": "comment_author_id_index",
+          "columnNames": [
+            "author_id"
+          ],
+          "composite": false,
+          "primary": false,
+          "unique": false
+        },
+        {
+          "keyName": "comment_study_plan_id_index",
+          "columnNames": [
+            "study_plan_id"
+          ],
+          "composite": false,
+          "primary": false,
+          "unique": false
+        },
         {
           "keyName": "comment_pkey",
           "columnNames": [

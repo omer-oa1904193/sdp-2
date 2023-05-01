@@ -5,6 +5,7 @@ import {studyPlanService} from "./services/StudyPlanService.js";
 import Router from "express-promise-router";
 import {ZodError} from "zod";
 import {NextFunction, Response} from "express";
+import {programService} from "./services/ProgramService.js";
 
 export const router = Router();
 
@@ -18,6 +19,7 @@ router.get("/study-plans/:studyPlanId/", authMiddleware, studyPlanService.getStu
 // router.get("/colleges/", programStudyPlanService.getColleges);
 // router.get("/majors/", programStudyPlanService.getMajors);
 // router.get("/program-study-plans/", programStudyPlanService.getProgramStudyPlans);
+router.get("/elective-packages/:packageId", authMiddleware,  programService.getElectivePackage);
 router.post("/sync-data/", adminService.importDataFromSIS)
 
 router.use((err: Error, req: Request, res: Response, next: NextFunction) => {

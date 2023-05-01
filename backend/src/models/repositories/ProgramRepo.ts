@@ -24,6 +24,11 @@ export class ProgramRepo {
         return await this.em.findOne(Program, {id: programId}, {populate: ["courses"]});
     }
 
+
+    async getElectivePackage(packageId: number) {
+        return await this.em.findOne(ElectivePackage, {id: packageId}, {populate: ["courses"]});
+    }
+
     async bulkUpsertColleges(collegesData: EntityData<College>[]) {
         await this.em.upsertMany(College, collegesData.map(c => ({
             id: c.id,

@@ -1,10 +1,12 @@
 import type {Rel} from "@mikro-orm/core";
-import {Entity, ManyToOne, Property, types} from "@mikro-orm/core";
+import {Entity, Index, ManyToOne, Property, types} from "@mikro-orm/core";
 import {CustomBaseEntity} from "./CustomBaseEntity.js";
 import {User} from "./User.js";
 import {StudyPlan} from "./StudyPlan.js";
 
 @Entity()
+@Index({properties: ["studyPlan"]})
+@Index({properties: ["author"]})
 export class Comment extends CustomBaseEntity {
     @Property({type: types.string})
     text!: string;

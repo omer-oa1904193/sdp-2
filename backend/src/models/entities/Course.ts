@@ -1,5 +1,5 @@
 import type {Rel} from "@mikro-orm/core";
-import {Collection, Entity, ManyToMany, ManyToOne, OneToMany, Property, types} from "@mikro-orm/core";
+import {Collection, Entity, Index, ManyToMany, ManyToOne, OneToMany, Property, types} from "@mikro-orm/core";
 import {CustomBaseEntity} from "./CustomBaseEntity.js";
 import {Department} from "./Department.js";
 import {Section} from "./Section.js";
@@ -11,6 +11,7 @@ import {MapCourseElectivePackage} from "./MapCourseElectivePackage.js";
 import {MapCourseStudyPlan} from "./MapCourseStudyPlan.js";
 
 @Entity()
+@Index({properties: ["department"]})
 export class Course extends CustomBaseEntity {
     @Property({type: types.string})
     title!: string;

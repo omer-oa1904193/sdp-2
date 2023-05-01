@@ -1,6 +1,9 @@
 import {CircularIconButton} from "@/components/common/ui/CircularIconButton/CircularIconButton.jsx";
 import {SpinnerOverlay} from "@/components/common/ui/SpinnerOverlay/SpinnerOverlay.jsx";
 import {CourseDialogue} from "@/components/study-plan-components/studyplan/CourseDialogue/CourseDialogue.jsx";
+import {
+    SelectElectiveDialogue
+} from "@/components/study-plan-components/studyplan/ElectiveDialogue/SelectElectiveDialogue.jsx";
 import {StudyPlanEditor} from "@/components/study-plan-components/studyplan/StudyPlanEditor/StudyPlanEditor.jsx";
 import {SummeryPane} from "@/components/study-plan-components/studyplan/SummeryPane/SummeryPane.jsx";
 import {SEMESTERS} from "@/constants.js";
@@ -16,6 +19,7 @@ export function StudyPlanPage({studyPlanId, isEditable, isDirty, setDirty}) {
     const userStore = useUserStore();
     const [studyPlan, setStudyPlan] = useState(null);
     const [courseDialogueCourse, setCourseDialogueCourse] = useState(null);
+    const [selectElectiveDialogMapping, setSelectElectiveDialogMapping] = useState(null);
     useEffect(() => {
         userStore.fetchProtected(`/study-plans/${studyPlanId}`)
             .then(r => r.json())
@@ -64,9 +68,14 @@ export function StudyPlanPage({studyPlanId, isEditable, isDirty, setDirty}) {
                              setStudyPlan={setStudyPlan}
                              setDirty={setDirty}
                              isEditable={isEditable}
-                             onCourseClicked={(course) => setCourseDialogueCourse(course)}/>
+                             onCourseClicked={(course) => setCourseDialogueCourse(course)}
+                             onElectiveClicked={(mapping) => setSelectElectiveDialogMapping(mapping)}/>
             <SummeryPane studyPlan={studyPlan}/>
             <CourseDialogue course={courseDialogueCourse} setCourse={setCourseDialogueCourse}/>
+            <SelectElectiveDialogue electiveMapping={selectElectiveDialogMapping}
+                                    setMapping={setSelectElectiveDialogMapping} onCourseClicked={() => {
+                console.log("A course was clicked!");
+            }}/>
         </div>
     </>
 
