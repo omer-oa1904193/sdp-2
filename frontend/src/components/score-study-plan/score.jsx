@@ -68,6 +68,7 @@ export default function Score({ studyPlan }) {
     //         console.log(`- Edge from ${edge.v} to ${edge.w}`);
     //     });
     // });
+  
       
 
     let averageCoursesPerSemester = totalCourses / semesterCount;
@@ -105,7 +106,6 @@ export default function Score({ studyPlan }) {
     overallScore = (scores.reduce((acc, { score }) => acc + score, 0) / scores.length).toFixed(1);
     // const overallScore = 71
     console.log(`Overall score: ${overallScore}`);
-
 
 return (
   <>
