@@ -5,10 +5,9 @@ import {StudyPlanRepo} from "../models/repositories/StudyPlanRepo.js";
 
 class ProgramService {
     async getColleges(req: Request, res: Response) {
-        // const colleges = new Set();
-        // const programs = await programStudyPlanRepo.getProgramStudyPlans();
-        // programs.forEach(program => colleges.add(program.college));
-        // res.json(Array.from(colleges));
+        const programRepo = new ProgramRepo(req.em)
+        const colleges = await programRepo.getColleges();
+        res.json(colleges);
     }
 
     async getMajors(req: Request, res: Response) {
@@ -28,7 +27,7 @@ class ProgramService {
         const queryParams = queryParamsValidator.parse(req.query)
         const programRepo = new ProgramRepo(req.em)
         const programs = await programRepo.getProgramStudyPlans({
-            college: req.query.college,
+            college: queryParams.college,
         });
         res.json(programs);
     }
