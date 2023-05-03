@@ -10,26 +10,34 @@ import CreateStudyPlanButton from '../../components/dashboard-components/CreateS
 
 export function DashboardPage() {
     const boxRef = useRef();
+    const userStore = useUserStore();
+    const [studyPlans, setStudyPlans] = useState([]);
+    const [isAddDialogOpen, setAddDialog] = useState(false)
 
+    useEffect(() => {
+        userStore.fetchProtected("/study-plans/")
+            .then(r => r.json())
+            .then(d => setStudyPlans(d))
+    }, [isAddDialogOpen])
+    console.log(studyPlans)
+
+
+    const handleAddDialogClose = () => {
+        setAddDialog(false);
+    };
     const handleScrollUp = () => {
         console.log(boxRef.current)
         if (boxRef.current) {
-            boxRef.current.scrollTop -= (2* boxRef.current.clientHeight) / 8;
+            boxRef.current.scrollTop -= (2 * boxRef.current.clientHeight) / 8;
         }
     };
-
     const handleScrollDown = () => {
         if (boxRef.current) {
             boxRef.current.scrollTop += (2 * boxRef.current.clientHeight) / 8;
         }
     };
-    const userStore = useUserStore();
-    const [studyPlans, setStudyPlans] = useState([]);
-    useEffect(() => {
-        userStore.fetchProtected("/study-plans/")
-            .then(r => r.json())
-            .then(d => setStudyPlans(d))
-    }, [])
+
+
     return (
         <>
             <Box sx={{ position: "relative", backgroundColor: "#EFEFEF" }}>
@@ -148,9 +156,14 @@ export function DashboardPage() {
                             }}
                                 style={{ maxWidth: "100%", width: "calc(100% - 2rem)", overflow: "auto" }}
                             >
-                                <Stack sx={{display: 'flex', flexDirection:'row', justifyContent: 'space-between'}}>
-                                <Typography fontWeight="bold" color="#888888" variant="h5">Study Plans</Typography>
-                                <CreateStudyPlanButton></CreateStudyPlanButton>
+                                <Stack sx={{ display: 'flex', flexDirection: 'row', justifyContent: 'space-between' }}>
+                                    <Typography fontWeight="bold" color="#888888" variant="h5">Study Plans</Typography>
+                                    <CreateStudyPlanButton
+                                        isAddDialogOpen={isAddDialogOpen}
+                                        setAddDialog={setAddDialog}
+                                        handleAddDialogClose={handleAddDialogClose}
+                                        setStudyPlans={setStudyPlans}>
+                                    </CreateStudyPlanButton>
                                 </Stack>
                                 <Box sx={{
                                     display: "flex",

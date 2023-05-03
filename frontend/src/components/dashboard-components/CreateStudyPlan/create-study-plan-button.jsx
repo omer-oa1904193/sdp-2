@@ -16,8 +16,7 @@ import { styled } from "@mui/material/styles";
 import AddIcon from '@mui/icons-material/Add';
 import { useUserStore } from "@/stores/userStore.js";
 
-export default function CreateStudyPlanButton() {
-  const [open, setOpen] = useState(false);
+export default function CreateStudyPlanButton({isAddDialogOpen,setAddDialog,handleAddDialogClose,setStudyPlans}) {
   const [programId, setSelectedOption] = useState("");
   const [name, setInputValue] = useState("");
 
@@ -43,20 +42,11 @@ export default function CreateStudyPlanButton() {
       .then(r => r.json())
       .then(d => setProgramList(d))
   }, [])
-  // console.log(programList)
-
-  useEffect(() => {
-   
-  }, [])
-
 
   const handleButtonClick = () => {
-    setOpen(true);
+    setAddDialog(true);
   };
 
-  const handleDialogClose = () => {
-    setOpen(false);
-  };
 
   const handleOptionChange = (event) => {
     setSelectedOption(event.target.value);
@@ -75,7 +65,7 @@ export default function CreateStudyPlanButton() {
       body: JSON.stringify({ programId, name })
     };
     userStore.fetchProtected("/study-plans/", requestOptions)
-    handleDialogClose();
+    handleAddDialogClose();
   };
 
   return (
@@ -84,7 +74,7 @@ export default function CreateStudyPlanButton() {
         <AddIcon></AddIcon>
         <Typography sx={{ padding: '0px', fontWeight: "bold", fontSize: '0.7rem' }}>Add study plan</Typography>
       </CreateButton>
-      <Dialog open={open} onClose={handleDialogClose}>
+      <Dialog open={isAddDialogOpen} onClose={handleAddDialogClose}>
         <DialogTitle>Add study plan</DialogTitle>
         <DialogContent>
           <form onSubmit={handleFormSubmit}>
@@ -110,7 +100,7 @@ export default function CreateStudyPlanButton() {
           </form>
         </DialogContent>
         <DialogActions>
-          <Button onClick={handleDialogClose}>Cancel</Button>
+          <Button onClick={handleAddDialogClose}>Cancel</Button>
           <Button onClick={handleFormSubmit}>Submit</Button>
         </DialogActions>
       </Dialog>
