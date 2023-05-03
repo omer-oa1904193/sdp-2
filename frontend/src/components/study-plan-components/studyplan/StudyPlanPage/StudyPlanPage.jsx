@@ -10,10 +10,9 @@ import {SEMESTERS} from "@/constants.js";
 import {useUserStore} from "@/stores/userStore.js";
 import {faGear, faMessage, faPen} from "@fortawesome/free-solid-svg-icons";
 import {useRouter} from "next/router";
-import CreateStudyPlanButton from '../../../dashboard-components/CreateStudyPlan/create-study-plan-button'
 import React, {useEffect, useState} from "react";
-import styles from "./StudyPlanPage.module.css"
 import Score from "../../../score-study-plan/score"
+import styles from "./StudyPlanPage.module.css"
 
 export function StudyPlanPage({studyPlanId, isEditable, isDirty, setDirty}) {
     const router = useRouter()
@@ -21,6 +20,7 @@ export function StudyPlanPage({studyPlanId, isEditable, isDirty, setDirty}) {
     const [studyPlan, setStudyPlan] = useState(null);
     const [courseDialogueCourse, setCourseDialogueCourse] = useState(null);
     const [selectElectiveDialogMapping, setSelectElectiveDialogMapping] = useState(null);
+    const [selectedElectives, setSelectedElectives] = useState({});
     useEffect(() => {
         userStore.fetchProtected(`/study-plans/${studyPlanId}`)
             .then(r => r.json())
@@ -74,9 +74,19 @@ export function StudyPlanPage({studyPlanId, isEditable, isDirty, setDirty}) {
             <SummeryPane studyPlan={studyPlan}/>
             <CourseDialogue course={courseDialogueCourse} setCourse={setCourseDialogueCourse}/>
             <SelectElectiveDialogue electiveMapping={selectElectiveDialogMapping}
-                                    setMapping={setSelectElectiveDialogMapping} onCourseClicked={() => {
-                console.log("A course was clicked!");
-            }}/>
+                                    setMapping={setSelectElectiveDialogMapping}
+                                    packageSelectedElectivesSet={selectedElectives[selectElectiveDialogMapping?.electivePackage?.id] ?? new Set()}
+                                    onElectiveSelected={(electiveCourse) => {
+                                        const m = selectElectiveDialogMapping;
+                                        if (!(m.electivePackage.id in selectedElectives))
+                                            selectedElectives[m.electivePackage.id] = new Set();
+                                        if (m.currentCourse)
+                                            selectedElectives[m.electivePackage.id].delete(m.currentCourse.id)
+                                        m.currentCourse = electiveCourse;
+                                        selectedElectives[m.electivePackage.id].add(electiveCourse.id)
+                                        setDirty(true);
+                                        setSelectElectiveDialogMapping(null);
+                                    }}/>
         </div>
     </>
 

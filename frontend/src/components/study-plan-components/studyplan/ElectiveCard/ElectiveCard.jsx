@@ -19,7 +19,7 @@ export function ElectiveCard({
             ...electivePackageMapping.currentCourse,
             semester: electivePackageMapping.semester,
             year: electivePackageMapping.year,
-            category: electivePackageMapping.category
+            category: electivePackageMapping.electivePackage.category
         }
         return <>
             <div onClick={() => onCourseClicked(electiveCourse)}
@@ -33,7 +33,7 @@ export function ElectiveCard({
                     {electiveCourse.prerequisites.length > 0 &&
                         <FontAwesomeIcon icon={faExclamationCircle}></FontAwesomeIcon>
                     }
-                    <button className="inv-button show-electives-button" onClick={(e) => {
+                    <button className={`inv-button ${styles.showElectivesButton}`} onClick={(e) => {
                         e.stopPropagation();
                         onElectiveClicked();
                     }}>

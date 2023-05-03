@@ -4,7 +4,7 @@ import {useEffect, useState} from "react";
 import {Dialogue} from "../../../common/ui/Dialogue/Dialogue.jsx";
 import styles from "./SelectElectiveDialogue.module.css"
 
-export function SelectElectiveDialogue({electiveMapping, setMapping, onCourseClicked}) {
+export function SelectElectiveDialogue({electiveMapping, setMapping, packageSelectedElectivesSet, onElectiveSelected}) {
     const userStore = useUserStore();
     const [electivePackage, setElectivePackage] = useState(null)
     useEffect(() => {
@@ -36,8 +36,8 @@ export function SelectElectiveDialogue({electiveMapping, setMapping, onCourseCli
                         </tr>
                         </thead>
                         <tbody>
-                        {electivePackage.courses.map((course) => (
-                            <tr key={course.id} onClick={() => onCourseClicked(course)}>
+                        {electivePackage.courses.filter(c => !packageSelectedElectivesSet.has(c.id)).map((course) => (
+                            <tr key={course.id} onClick={() => onElectiveSelected(course)}>
                                 <td>{course.code}</td>
                                 <td>{course.title}</td>
                                 <td>{course.creditHours}</td>

@@ -10,16 +10,6 @@ class ProgramService {
         res.json(colleges);
     }
 
-    async getMajors(req: Request, res: Response) {
-        // const majors = new Set();
-        // const programs = await programStudyPlanRepo.getProgramStudyPlans();
-        // programs.forEach(program => {
-        //     if (!req.query.college || program.college === req.query.college)
-        //         majors.add(program.major);
-        // });
-        // res.json(Array.from(majors));
-    }
-
     async getProgramStudyPlans(req: Request, res: Response) {
         const queryParamsValidator = z.object({
             college: z.string().regex(/^\d+$/).transform(Number).optional(),
