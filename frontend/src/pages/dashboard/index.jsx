@@ -1,11 +1,12 @@
 import { useUserStore } from "@/stores/userStore.js";
 import { useEffect, useState, useRef } from "react";
 import * as React from "react";
-import { Box, Grid, Paper, Typography, IconButton } from "@mui/material";
+import { Box, Grid, Paper, Typography, IconButton, Stack } from "@mui/material";
 import styles from "@/pages/dashboard/DashBoardPage.module.css";
 import StudyPlanCard from "../../components/dashboard-components/studyPlanCard";
 import RectangularButton from "../../components/dashboard-components/rectangularButton";
 import { ArrowUpward, ArrowDownward } from '@mui/icons-material';
+import CreateStudyPlanButton from '../../components/dashboard-components/CreateStudyPlan/create-study-plan-button'
 
 export function DashboardPage() {
     const boxRef = useRef();
@@ -115,7 +116,6 @@ export function DashboardPage() {
                                                 <ArrowDownward />
                                             </IconButton>
                                         </Box>
-
                                     </Grid>
                                     <Grid item xs={12} md={4}>
                                         {/*<StudyPlanCard studyPlan={} isActive={true}/>*/}
@@ -148,7 +148,10 @@ export function DashboardPage() {
                             }}
                                 style={{ maxWidth: "100%", width: "calc(100% - 2rem)", overflow: "auto" }}
                             >
+                                <Stack sx={{display: 'flex', flexDirection:'row', justifyContent: 'space-between'}}>
                                 <Typography fontWeight="bold" color="#888888" variant="h5">Study Plans</Typography>
+                                <CreateStudyPlanButton></CreateStudyPlanButton>
+                                </Stack>
                                 <Box sx={{
                                     display: "flex",
                                     flexDirection: "row",
