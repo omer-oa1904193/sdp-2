@@ -11,7 +11,6 @@ import {useUserStore} from "@/stores/userStore.js";
 import {faGear, faMessage, faPen} from "@fortawesome/free-solid-svg-icons";
 import {useRouter} from "next/router";
 import CreateStudyPlanButton from '../../../dashboard-components/CreateStudyPlan/create-study-plan-button'
-import CreateStudyPlanDialogue from '../../../dashboard-components/CreateStudyPlan/create-study-plan-dialogue'
 import React, {useEffect, useState} from "react";
 import styles from "./StudyPlanPage.module.css"
 import Score from "../../../score-study-plan/score"

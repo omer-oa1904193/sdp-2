@@ -7,7 +7,7 @@ import {styled} from "@mui/material/styles";
 
 export default function RectangularButton({ studyPlan, text, icon, linkTo }){
 
-  console.log(studyPlan)
+  // console.log(studyPlan)
     const CoursesButton = styled(Button)({
         background: "#267BAA",
         color: "#FFFFFF",

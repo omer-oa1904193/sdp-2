@@ -14,6 +14,7 @@ router.get("/users/me/", authMiddleware, UserService.getUser);
 
 router.get("/study-plans/", authMiddleware,  studyPlanService.getStudyPlans);
 router.post("/study-plans/", authMiddleware, studyPlanService.addStudyPlan);
+router.patch("/study-plans/", authMiddleware, studyPlanService.updateStudyPlan);
 router.get("/study-plans/:studyPlanId/", authMiddleware, studyPlanService.getStudyPlan);
 // router.patch("/student-study-plans/:studyPlanId/", authMiddleware, /*uploadMiddleWare.single("image"),*/ studentStudyPlanService.updateStudentStudyPlan);
 router.get("/colleges/", programService.getColleges);

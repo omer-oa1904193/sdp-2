@@ -42,6 +42,7 @@ class StudyPlanService {
         }
         res.json(studyPlan);
     }
+      
 
     async updateStudentStudyPlan(req: Request, res: Response) {
         req.body = JSON.parse(req.body.data);

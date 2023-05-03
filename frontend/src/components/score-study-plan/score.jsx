@@ -16,7 +16,6 @@ export default function Score({ studyPlan }) {
    
         for (let [innerKey, innerValue] of value) {
             if (innerValue.size == 0) continue;
-            console.log(innerValue)
             semesterCount++
             for (let [subKey, subValue] of innerValue) {
                 totalCourses++
@@ -63,13 +62,13 @@ export default function Score({ studyPlan }) {
     //         console.log(`- Edge from ${edge.v} to ${edge.w}`);
     //     });
     // });
-    g.nodes().forEach((nodeId) => {
-        console.log(`Incoming edges for node ${nodeId}:`);
-        const incomingEdges = g.inEdges(nodeId);
-        incomingEdges.forEach((edge) => {
-            console.log(`- Edge from ${edge.v} to ${edge.w}`);
-        });
-    });
+    // g.nodes().forEach((nodeId) => {
+    //     console.log(`Incoming edges for node ${nodeId}:`);
+    //     const incomingEdges = g.inEdges(nodeId);
+    //     incomingEdges.forEach((edge) => {
+    //         console.log(`- Edge from ${edge.v} to ${edge.w}`);
+    //     });
+    // });
   
       
 
