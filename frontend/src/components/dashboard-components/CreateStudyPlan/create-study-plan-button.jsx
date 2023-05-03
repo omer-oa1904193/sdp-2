@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect} from "react";
 import {
   Button,
   Dialog,
@@ -14,11 +14,12 @@ import {
 } from "@mui/material";
 import {styled} from "@mui/material/styles";
 import AddIcon from '@mui/icons-material/Add';
+import { useUserStore } from "@/stores/userStore.js";
 
 export default function CreateStudyPlanButton(){
   const [open, setOpen] = useState(false);
-  const [selectedOption, setSelectedOption] = useState("");
-  const [inputValue, setInputValue] = useState("");
+  const [programId, setSelectedOption] = useState("");
+  const [name, setInputValue] = useState("");
 
   const CreateButton = styled(Button)({
     background: "#267BAA",
@@ -34,6 +35,23 @@ export default function CreateStudyPlanButton(){
       boxShadow: "0px 0px 10px rgba(0, 0, 0, 0.2)",
     },
   });
+
+  const userStore = useUserStore();
+  const [programList,setProgramList] = useState([])
+  useEffect(() => {
+    userStore.fetchProtected("/study-plans/")
+    .then(r => r.json())
+    .then(d => setProgramList(d))
+}, [])
+console.log(programList)
+
+  useEffect(() => {
+    const requestOptions = {
+      method: 'POST',
+      body: JSON.stringify({ programId, name })
+    };
+    userStore.fetchProtected("/study-plans/",requestOptions)
+}, [])
 
   const handleButtonClick = () => {
     setOpen(true);
@@ -53,8 +71,8 @@ export default function CreateStudyPlanButton(){
 
   const handleFormSubmit = (event) => {
     event.preventDefault();
-    console.log("Selected option:", selectedOption);
-    console.log("Input value:", inputValue);
+    console.log("Selected option:", programId);
+    console.log("Input value:", name);
     handleDialogClose();
   };
 
@@ -72,7 +90,7 @@ export default function CreateStudyPlanButton(){
               <InputLabel id="select-label">Select Option</InputLabel>
               <Select
                 labelId="select-label"
-                value={selectedOption}
+                value={programId}
                 onChange={handleOptionChange}
               >
                 <MenuItem value="option1">Option 1</MenuItem>
@@ -82,7 +100,7 @@ export default function CreateStudyPlanButton(){
             </FormControl>
             <TextField
               label="Input Value"
-              value={inputValue}
+              value={name}
               onChange={handleInputChange}
               fullWidth
             />
