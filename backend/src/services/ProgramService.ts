@@ -22,11 +22,15 @@ class ProgramService {
     }
 
     async getProgramStudyPlans(req: Request, res: Response) {
-        // const programs = await programStudyPlanRepo.getProgramStudyPlans({
-        //     college: req.query.college,
-        //     major: req.query.major
-        // });
-        // res.json(programs);
+        const queryParamsValidator = z.object({
+            college: z.string().regex(/^\d+$/).transform(Number).optional(),
+        });
+        const queryParams = queryParamsValidator.parse(req.query)
+        const programRepo = new ProgramRepo(req.em)
+        const programs = await programRepo.getProgramStudyPlans({
+            college: req.query.college,
+        });
+        res.json(programs);
     }
 
     async getElectivePackage(req: Request, res: Response) {

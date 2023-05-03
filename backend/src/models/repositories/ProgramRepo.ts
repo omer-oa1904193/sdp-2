@@ -1,4 +1,4 @@
-import {EntityData, EntityManager} from "@mikro-orm/core";
+import {EntityData, EntityManager, FindOptions} from "@mikro-orm/core";
 import {Course} from "../entities/Course.js";
 import {Program} from "../entities/Program.js";
 import {College} from "../entities/College.js";
@@ -9,6 +9,7 @@ import {ElectivePackage} from "../entities/ElectivePackage.js";
 import {MapCourseElectivePackage} from "../entities/MapCourseElectivePackage.js";
 import {AdmissionTest} from "../entities/AdmissionTest.js";
 import {AdmissionTestResult} from "../entities/AdmissionTestResult.js";
+import {FilterQuery} from "@mikro-orm/core/typings.js";
 
 export class ProgramRepo {
     em: EntityManager;
@@ -17,7 +18,11 @@ export class ProgramRepo {
         this.em = em;
     }
 
-    async getProgramStudyPlans(filters = {}) {
+    async getProgramStudyPlans(filters: { college?: number } = {}) {
+        const programFilters: FilterQuery<Program> = {$and: []};
+        if (filters.college !== undefined)
+            programFilters.$and!.push({department: {college: filters.college}})
+        return await this.em.find(Program, programFilters, {});
     }
 
     async getProgramStudyPlan(programId: number) {

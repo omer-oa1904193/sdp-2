@@ -18,7 +18,7 @@ router.get("/study-plans/:studyPlanId/", authMiddleware, studyPlanService.getStu
 // router.patch("/student-study-plans/:studyPlanId/", authMiddleware, /*uploadMiddleWare.single("image"),*/ studentStudyPlanService.updateStudentStudyPlan);
 // router.get("/colleges/", programStudyPlanService.getColleges);
 // router.get("/majors/", programStudyPlanService.getMajors);
-// router.get("/program-study-plans/", programStudyPlanService.getProgramStudyPlans);
+router.get("/programs/", programService.getProgramStudyPlans);
 router.get("/elective-packages/:packageId", authMiddleware,  programService.getElectivePackage);
 router.post("/sync-data/", adminService.importDataFromSIS)
 
