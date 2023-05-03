@@ -13,8 +13,10 @@ export default function Score({ studyPlan }) {
     g.setDefaultNodeLabel(() => ({}));
 
     for (let [key, value] of studyPlan.yearMap) {
+   
         for (let [innerKey, innerValue] of value) {
             if (innerValue.size == 0) continue;
+            console.log(innerValue)
             semesterCount++
             for (let [subKey, subValue] of innerValue) {
                 totalCourses++
@@ -61,13 +63,14 @@ export default function Score({ studyPlan }) {
     //         console.log(`- Edge from ${edge.v} to ${edge.w}`);
     //     });
     // });
-    // g.nodes().forEach((nodeId) => {
-    //     console.log(`Incoming edges for node ${nodeId}:`);
-    //     const incomingEdges = g.inEdges(nodeId);
-    //     incomingEdges.forEach((edge) => {
-    //         console.log(`- Edge from ${edge.v} to ${edge.w}`);
-    //     });
-    // });
+    g.nodes().forEach((nodeId) => {
+        console.log(`Incoming edges for node ${nodeId}:`);
+        const incomingEdges = g.inEdges(nodeId);
+        incomingEdges.forEach((edge) => {
+            console.log(`- Edge from ${edge.v} to ${edge.w}`);
+        });
+    });
+  
       
 
     let averageCoursesPerSemester = totalCourses / semesterCount;
@@ -98,14 +101,14 @@ export default function Score({ studyPlan }) {
     };
 
     let overallScore = 0;
+    //calculate the % score for each key in the objects by dividing the actual value by the ideal value and multiplying by 100
     let scores = Object.entries(ideal).map(([key, value]) => ({
         key,
         score: (actual[key] / value) * 100,
     }));
+    //calculate the average of all the scores to get the overall score
     overallScore = (scores.reduce((acc, { score }) => acc + score, 0) / scores.length).toFixed(1);
-    // const overallScore = 71
     console.log(`Overall score: ${overallScore}`);
-
 
 return (
   <>

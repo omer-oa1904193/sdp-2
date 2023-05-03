@@ -1,14 +1,13 @@
 import React from 'react';
 import {useRouter} from "next/router";
-import {StudentAnalyzePage} from "@/components/study-plan-components/studyplan/StudyPlanPage/StudyPlanPage.jsx";
+import AnalyzeForm from '../../../components/analyze/student/analyzeForm'
 
 
 export default function StudentAnalyze(){
     const router = useRouter()
     return (
         <>
-       {/* <StudentAnalyzePage></StudentAnalyzePage> */}
-       test
+       <AnalyzeForm></AnalyzeForm>
         </>
     );
 }
