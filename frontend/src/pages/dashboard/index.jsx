@@ -169,7 +169,7 @@ export function DashboardPage() {
                             flexWrap: "wrap",
                             width: "25%",
                             height: "50%",
-                            flexDirection: "row",
+                            flexDirection: "column",
                             "& > :not(style)": {
                                 mt: 3,
                                 mr: 3,
@@ -196,24 +196,6 @@ export function DashboardPage() {
 
 
                         </Paper>
-
-
-                        {studyPlans.map(studyPlan => (
-                            // studyPlan.isActive ? (
-                            //     <RectangularButton
-                            //         text="Analyze current study plan"
-                            //         studyPlan={studyPlan}
-                            //         key={studyPlan.id}
-                            //         linkTo="analyze/student/"
-                            //     />
-                            // ) : null
-                            <RectangularButton
-                                text="Analyze current study plan"
-                                studyPlan={studyPlan}
-                                key={studyPlan.id}
-                                linkTo="analyze/student/"
-                            />
-                        ))}
                     </Box>
 
                 </Box>

@@ -5,6 +5,7 @@ import Typography from "@mui/material/Typography";
 import styles from "./StudyPlanCard.module.css";
 import clsx from "clsx";
 import CheckIconButton from "./activeCheckIcon";
+import RectangularButton from "../../components/dashboard-components/rectangularButton";
 
 export default function StudyPlanCard({studyPlan, isActive}) {
     return (
@@ -28,7 +29,7 @@ export default function StudyPlanCard({studyPlan, isActive}) {
                     sx={{
                         display: "flex",
                         flexDirection: "column",
-                        justifyContent: "space-between",
+                        justifyContent: "space-between"
                     }}
                 >
                     <Box className={styles["image-wrapper"]}>
@@ -58,8 +59,13 @@ export default function StudyPlanCard({studyPlan, isActive}) {
                                 {isActive && <CheckIconButton/>}
                             </Grid>
                         </Grid>
-
                     </Box>
+                    <RectangularButton
+                                text="Analyze study plan"
+                                studyPlan={studyPlan}
+                                key={studyPlan.id}
+                                linkTo={`analyze/student/${studyPlan.id}`}
+                            />
                 </Paper>
             </Box>
         </Link>

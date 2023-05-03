@@ -11,10 +11,9 @@ export default function RectangularButton({ studyPlan, text, icon, linkTo }){
     const CoursesButton = styled(Button)({
         background: "#267BAA",
         color: "#FFFFFF",
-        fontSize: "18px",
         borderRadius: "10px",
         boxShadow: "none",
-        fontWeight: "bold",
+        width: '100%',
         "&:hover": {
           background: "#FFFFFF",
           color: "#267BAA",
@@ -29,7 +28,7 @@ export default function RectangularButton({ studyPlan, text, icon, linkTo }){
     <Link href={linkTo} passHref>
       <CoursesButton variant="contained">
         <QueryStatsIcon></QueryStatsIcon>
-        <Typography sx={{ fontWeight: "bold" }}>{text}</Typography>
+        <Typography sx={{ padding: '0px', fontWeight: "bold", fontSize: '0.7rem' }}>{text}</Typography>
       </CoursesButton>
     </Link>
   );
