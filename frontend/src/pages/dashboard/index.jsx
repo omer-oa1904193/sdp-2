@@ -1,12 +1,27 @@
 import { useUserStore } from "@/stores/userStore.js";
-import { useEffect, useState } from "react";
+import { useEffect, useState, useRef } from "react";
 import * as React from "react";
-import { Box, Grid, Paper, Typography } from "@mui/material";
+import { Box, Grid, Paper, Typography, IconButton } from "@mui/material";
 import styles from "@/pages/dashboard/DashBoardPage.module.css";
 import StudyPlanCard from "../../components/dashboard-components/studyPlanCard";
 import RectangularButton from "../../components/dashboard-components/rectangularButton";
+import { ArrowUpward, ArrowDownward } from '@mui/icons-material';
 
 export function DashboardPage() {
+    const boxRef = useRef();
+
+    const handleScrollUp = () => {
+        console.log(boxRef.current)
+        if (boxRef.current) {
+            boxRef.current.scrollTop -= (2* boxRef.current.clientHeight) / 8;
+        }
+    };
+
+    const handleScrollDown = () => {
+        if (boxRef.current) {
+            boxRef.current.scrollTop += (2 * boxRef.current.clientHeight) / 8;
+        }
+    };
     const userStore = useUserStore();
     const [studyPlans, setStudyPlans] = useState([]);
     useEffect(() => {
@@ -61,26 +76,45 @@ export function DashboardPage() {
                                         <Typography variant="h4" fontWeight="bold" color="#888888" sx={{ mb: 2 }}>
                                             Welcome
                                         </Typography>
-                                        <Typography variant="body1" fontWeight="bold" color="#b3b3b3" sx={{ mb: 2 }}>
-                                            Start by planning for your graduation by creating a study plan and selecting
-                                            your program.
-                                        </Typography>
-                                        {studyPlans.map(studyPlan => (
-                                            // studyPlan.isActive ? (
-                                            //     <RectangularButton
-                                            //         text="Analyze current study plan"
-                                            //         studyPlan={studyPlan}
-                                            //         key={studyPlan.id}
-                                            //         linkTo="analyze/student/"
-                                            //     />
-                                            // ) : null
-                                            <RectangularButton
-                                                    text="Analyze current study plan"
-                                                    studyPlan={studyPlan}
-                                                    key={studyPlan.id}
-                                                    linkTo="analyze/student/"
-                                                />
-                                            ))}
+                                        <Box
+                                            className={styles.hideScroll}
+                                            ref={boxRef}
+                                            sx={{
+                                                mb: 2,
+                                                height: '100%',
+                                                maxWidth: '100%',
+                                                maxHeight: '8em',
+                                                overflow: 'auto',
+                                                display: '-webkit-box',
+                                                WebkitBoxOrient: 'vertical',
+                                                WebkitLineClamp: 8,
+                                            }}
+                                        >
+                                            <Typography variant="body1"
+                                                fontWeight="bold"
+                                                color="#b3b3b3"
+                                                sx={{ my: '1em' }}>
+                                                Start by planning for your graduation by creating a study plan and selecting your program.</Typography>
+                                            <Typography variant="body1"
+                                                fontWeight="bold"
+                                                color="#b3b3b3"
+                                                sx={{ my: '1em' }}>
+                                                Consider meeting with a guidance counselor to help you select the best program for your interests and career goals.</Typography>
+                                            <Typography variant="body1"
+                                                fontWeight="bold"
+                                                color="#b3b3b3"
+                                                sx={{ my: '1em' }}>
+                                                With a solid plan in place, you'll be well on your way to achieving your educational and professional aspirations.</Typography>
+
+                                        </Box>
+                                        <Box sx={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
+                                            <IconButton onClick={handleScrollUp}>
+                                                <ArrowUpward />
+                                            </IconButton>
+                                            <IconButton onClick={handleScrollDown}>
+                                                <ArrowDownward />
+                                            </IconButton>
+                                        </Box>
 
                                     </Grid>
                                     <Grid item xs={12} md={4}>
@@ -135,7 +169,7 @@ export function DashboardPage() {
                             flexWrap: "wrap",
                             width: "25%",
                             height: "50%",
-                            flexDirection: "column",
+                            flexDirection: "row",
                             "& > :not(style)": {
                                 mt: 3,
                                 mr: 3,
@@ -159,9 +193,29 @@ export function DashboardPage() {
                                 <Typography fontWeight="bold" color="#888888" variant="h5">Cumulative GPA</Typography>
                                 <Typography fontWeight="bold" color="#267BAA" variant="h2">3.2</Typography>
                             </Box>
+
+
                         </Paper>
 
+
+                        {studyPlans.map(studyPlan => (
+                            // studyPlan.isActive ? (
+                            //     <RectangularButton
+                            //         text="Analyze current study plan"
+                            //         studyPlan={studyPlan}
+                            //         key={studyPlan.id}
+                            //         linkTo="analyze/student/"
+                            //     />
+                            // ) : null
+                            <RectangularButton
+                                text="Analyze current study plan"
+                                studyPlan={studyPlan}
+                                key={studyPlan.id}
+                                linkTo="analyze/student/"
+                            />
+                        ))}
                     </Box>
+
                 </Box>
             </Box>
         </>
