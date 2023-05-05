@@ -41,6 +41,11 @@ export function StudyPlanPage({studyPlanId, isEditable, isDirty, setDirty}) {
                 studyPlan.electiveMappings.forEach(electiveMapping => {
                     if (!yearMap.has(electiveMapping.yearOrder))
                         yearMap.set(electiveMapping.yearOrder, new Map(SEMESTERS.map(s => [s, new Map()])),);
+                    if (electiveMapping.currentCourse) {
+                        if (!(electiveMapping.electivePackage.id in selectedElectives))
+                            selectedElectives[electiveMapping.electivePackage.id] = new Set();
+                        selectedElectives[electiveMapping.electivePackage.id].add(electiveMapping.currentCourse.id)
+                    }
                     yearMap.get(electiveMapping.yearOrder).get(electiveMapping.season).set(`elective-${electiveMapping.id}`, {
                         ...electiveMapping,
                         isElective: true

@@ -7,30 +7,42 @@ import styles from "./StudyPlanEditor.module.css"
 export function StudyPlanEditor({studyPlan, setStudyPlan, isEditable, setDirty, onCourseClicked, onElectiveClicked}) {
     const [errorCourseId, setErrorCourseId] = useState(null)
     const studyPlanEditor = useRef(null);
-    const user = useUserStore(store => store.user);
+    const userStore = useUserStore();
 
     async function saveStudyPlan() {
-        // const allCourses = [];
-        // studyPlan.years.forEach(y => allCourses.push(...Object.values(y).map(c => Object.values(c)).flat(1)));
-        // const courses = allCourses.filter(c => !c.isElective)
-        //     .map(c => ({id: c.id, semester: c.semester, year: c.year}));
-        // const packages = allCourses.filter(c => c.isElective)
-        //     .map(c => ({id: c.id, semester: c.semester, year: c.year, currentCourse: c.currentCourse?.id}));
-        //
-        //
-        // const formData = new FormData()
-        // if (studyPlanScreenshot)
-        //     formData.append("image", await canvas2Blob(studyPlanScreenshot), `${studyPlan.id}.png`)
-        // formData.append("data", JSON.stringify({
-        //     name: studyPlan.name,
-        //     courses: courses,
-        //     packages: packages,
-        // }));
-        // userContext.fetchProtected(`${API_URL}/student-study-plans/${studyPlan.id}`, {
-        //     method: "PATCH",
-        //     body: formData,
-        //     headers: {}
-        // }).then(() => setDirty(false))
+        const allMappings = [];
+        const courseMappings = []
+        const electivePackageMappings = [];
+
+        for (let y of studyPlan.yearMap.values()) {
+            for (let s of y.values()) {
+                for (let m of s.values()) {
+                    if (m.isElective) {
+                        electivePackageMappings.push({
+                            id: m.id,
+                            season: m.season,
+                            yearOrder: m.yearOrder,
+                            currentCourse: m.currentCourse?.id
+                        })
+                    } else
+                        courseMappings.push({
+                            course: m.course.id,
+                            season: m.season,
+                            yearOrder: m.yearOrder,
+                        })
+                }
+            }
+        }
+        console.log(allMappings)
+
+        userStore.fetchProtected(`/study-plans/${studyPlan.id}`, {
+            method: "PATCH",
+            body: JSON.stringify({
+                name: studyPlan.name,
+                courseMappings: courseMappings,
+                electivePackageMappings: electivePackageMappings,
+            }),
+        }).then(() => setDirty(false))
     }
 
     function onCardDropped(event, toYear, toSemester) {
@@ -62,7 +74,7 @@ export function StudyPlanEditor({studyPlan, setStudyPlan, isEditable, setDirty, 
                 const coursesSameSemester = Array.from(ms.values()).filter(m => !m.isElective).map(m => m.course.id);
                 for (const m of ms.values()) {
                     if (!m.isElective) {
-                        const isValid = checkPrerequisites(m.course.prerequisites, coursesBefore, coursesSameSemester, user.admissionTestResults);
+                        const isValid = checkPrerequisites(m.course.prerequisites, coursesBefore, coursesSameSemester, userStore.user.admissionTestResults);
                         if (!isValid) {
                             console.log(`${m.course.code} has prerequisite conditions that are not fulfilled`)
                             //undo

@@ -11,7 +11,7 @@ export class Migration20230429232826 extends Migration {
 
     this.addSql('create table "course" ("id" serial primary key, "title" varchar(255) not null, "code" varchar(255) not null, "credit_hours" int not null, "description" text not null, "cost" real not null, "department_id" int not null, "prerequisites" jsonb not null default \'{"and": []}\');');
 
-    this.addSql('create table "elective_package" ("id" serial primary key, "title" varchar(255) not null, "category" text check ("category" in (\'Major Course\', \'CCP Course\', \'College Requirement\', \'Major Supporting\', \'Major Elective\')) not null);');
+    this.addSql('create table "elective_package" ("id" serial primary key, "title" varchar(255) not null, "category" text check ("category" in (\'Major Course\', \'CCP Course\', \'College Requirement\', \'Major Supporting\', \'Major Elective\', \'Other\')) not null);');
 
     this.addSql('create table "instructor" ("id" serial primary key, "name" varchar(255) not null);');
 
@@ -22,7 +22,7 @@ export class Migration20230429232826 extends Migration {
 
     this.addSql('create table "map_elective_package_program" ("id" serial primary key, "elective_package_id" int not null, "program_id" int not null, "season" text check ("season" in (\'Fall\', \'Winter\', \'Spring\', \'Summer\')) not null, "year_order" int not null);');
 
-    this.addSql('create table "map_course_program" ("id" serial primary key, "course_id" int not null, "program_id" int not null, "season" text check ("season" in (\'Fall\', \'Winter\', \'Spring\', \'Summer\')) not null, "year_order" int not null, "category" text check ("category" in (\'Major Course\', \'CCP Course\', \'College Requirement\', \'Major Supporting\', \'Major Elective\')) not null);');
+    this.addSql('create table "map_course_program" ("id" serial primary key, "course_id" int not null, "program_id" int not null, "season" text check ("season" in (\'Fall\', \'Winter\', \'Spring\', \'Summer\')) not null, "year_order" int not null, "category" text check ("category" in (\'Major Course\', \'CCP Course\', \'College Requirement\', \'Major Supporting\', \'Major Elective\', \'Other\')) not null);');
     this.addSql('alter table "map_course_program" add constraint "map_course_program_course_id_program_id_unique" unique ("course_id", "program_id");');
 
     this.addSql('create table "section" ("id" serial primary key, "course_id" int not null, "type" text check ("type" in (\'Lecture\', \'Lab\')) not null, "season" text check ("season" in (\'Fall\', \'Winter\', \'Spring\', \'Summer\')) not null, "year" int not null, "instructor_id" int not null);');
@@ -36,7 +36,7 @@ export class Migration20230429232826 extends Migration {
 
     this.addSql('create table "map_elective_package_study_plan" ("id" serial primary key, "elective_package_id" int not null, "study_plan_id" int not null, "season" text check ("season" in (\'Fall\', \'Winter\', \'Spring\', \'Summer\')) not null, "year_order" int not null);');
 
-    this.addSql('create table "map_course_study_plan" ("id" serial primary key, "course_id" int not null, "study_plan_id" int not null, "season" text check ("season" in (\'Fall\', \'Winter\', \'Spring\', \'Summer\')) not null, "year_order" int not null, "category" text check ("category" in (\'Major Course\', \'CCP Course\', \'College Requirement\', \'Major Supporting\', \'Major Elective\')) not null);');
+    this.addSql('create table "map_course_study_plan" ("id" serial primary key, "course_id" int not null, "study_plan_id" int not null, "season" text check ("season" in (\'Fall\', \'Winter\', \'Spring\', \'Summer\')) not null, "year_order" int not null, "category" text check ("category" in (\'Major Course\', \'CCP Course\', \'College Requirement\', \'Major Supporting\', \'Major Elective\', \'Other\')) not null);');
     this.addSql('alter table "map_course_study_plan" add constraint "map_course_study_plan_course_id_study_plan_id_unique" unique ("course_id", "study_plan_id");');
 
     this.addSql('create table "comment" ("id" serial primary key, "text" varchar(255) not null, "time_posted" timestamptz(0) not null default now(), "study_plan_id" int not null, "author_id" int not null);');

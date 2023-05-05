@@ -6,6 +6,9 @@ import {MapCourseStudyPlan} from "../entities/MapCourseStudyPlan.js";
 import {MapElectivePackageStudyPlan} from "../entities/MapElectivePackageStudyPlan.js";
 import {MapCourseProgram} from "../entities/MapCourseProgram.js";
 import {MapElectivePackageProgram} from "../entities/MapElectivePackageProgram.js";
+import {Season} from "../enums/Season.js";
+import {CourseCategory} from "../enums/CourseCategory.js";
+import {wrap} from "@mikro-orm/core";
 
 export class StudyPlanRepo {
     em: EntityManager;
@@ -21,7 +24,7 @@ export class StudyPlanRepo {
     async getStudentStudyPlan(student: User, studyPlanId: number) {
         const studyPlan = this.em.findOne(StudyPlan, {id: studyPlanId}, {
             orderBy: {courseMappings: {yearOrder: "asc"}, electiveMappings: {yearOrder: "asc"}},
-            populate: ["program", "courseMappings", "courseMappings.course", "electiveMappings", "electiveMappings.electivePackage"]
+            populate: ["program", "courseMappings", "courseMappings.course", "electiveMappings", "electiveMappings.currentCourse", "electiveMappings.electivePackage"]
         });
         return studyPlan;
     }
@@ -55,6 +58,56 @@ export class StudyPlanRepo {
         return newStudyPlan;
     }
 
-    async updateStudentStudyPlan(studyPlanId: number, updatedFields) {
+    async updateStudentStudyPlan(studyPlanId: number, updatedFields: {
+        name?: string,
+        courseMappings?: { course: number, season: Season, yearOrder: number }[],
+        electivePackageMappings?: { id: number, season: Season, yearOrder: number, currentCourse?: number }[]
+    }) {
+        const studyPlan = await this.em.findOneOrFail(StudyPlan, {id: studyPlanId});
+        if (updatedFields.name !== undefined)
+            studyPlan.name = updatedFields.name;
+        await this.em.flush();
+
+        if (updatedFields.courseMappings !== undefined) {
+            await this.em.nativeDelete(MapCourseStudyPlan, {
+                course: {$nin: updatedFields.courseMappings.map(c => c.course),},
+                studyPlan: studyPlan,
+                category: CourseCategory.OTHER,
+            })
+            const qb = this.em.createQueryBuilder(MapCourseStudyPlan, 'mcsp');
+
+            await qb.insert(updatedFields.courseMappings.map(m => ({
+                course: m.course,
+                studyPlan: studyPlan,
+                season: m.season,
+                yearOrder: m.yearOrder,
+                category: CourseCategory.OTHER
+            }))).onConflict(["study_plan_id", "course_id"])
+                .merge({
+                    season: qb.raw('excluded.season'),
+                    yearOrder: qb.raw('excluded.year_order'),
+                }).execute();
+        }
+
+
+        if (updatedFields.electivePackageMappings !== undefined) {
+            const idToUpdatedData = updatedFields.electivePackageMappings.reduce((obj: {
+                [key: string]: { id: number, season: Season, yearOrder: number, currentCourse?: number };
+            }, item) => {
+                obj[item.id] = item;
+                return obj;
+            }, {});
+            const mappings = await this.em.find(MapElectivePackageStudyPlan, {id: {$in: updatedFields.electivePackageMappings.map(m => m.id)}})
+            mappings.forEach(m => {
+                wrap(m).assign({
+                    season: idToUpdatedData[m.id].season,
+                    yearOrder: idToUpdatedData[m.id].yearOrder,
+                    currentCourse: idToUpdatedData[m.id].currentCourse ?? null
+                });
+            })
+            await this.em.persist(mappings)
+            await this.em.flush()
+        }
+        return studyPlan;
     }
 }

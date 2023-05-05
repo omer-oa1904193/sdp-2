@@ -3,6 +3,7 @@ import {Request, Response} from "express";
 import fs from "fs-extra";
 import {z} from "zod";
 import {ProgramRepo} from "../models/repositories/ProgramRepo.js";
+import {Season} from "../models/enums/Season.js";
 
 class StudyPlanService {
     async getStudyPlans(req: Request, res: Response) {
@@ -42,15 +43,29 @@ class StudyPlanService {
         }
         res.json(studyPlan);
     }
-      
+
 
     async updateStudentStudyPlan(req: Request, res: Response) {
-        req.body = JSON.parse(req.body.data);
-        if (req.file) {
-            fs.writeFileSync(`public/images/study-plans/${req.params.studyPlanId}.png`, req.file.buffer);
-        }
+        const pathParamsValidator = z.object({studyPlanId: z.string().regex(/^\d+$/).transform(Number)})
+        const pathParams = pathParamsValidator.parse(req.params);
+
+        const bodyValidator = z.object({
+            name: z.string(),
+            courseMappings: z.array(z.object({
+                course: z.number().min(0),
+                season: z.nativeEnum(Season),
+                yearOrder: z.number().min(1)
+            })),
+            electivePackageMappings: z.array(z.object({
+                id: z.number().min(0),
+                season: z.nativeEnum(Season),
+                yearOrder: z.number().min(1),
+                currentCourse: z.number().min(0).optional()
+            }))
+        })
+        const body = bodyValidator.parse(req.body);
         const studyPlanRepo = new StudyPlanRepo(req.em);
-        const studyPlan = await studyPlanRepo.updateStudentStudyPlan(req.params.studyPlanId, req.body);
+        const studyPlan = await studyPlanRepo.updateStudentStudyPlan(pathParams.studyPlanId, body);
         res.json(studyPlan);
     }
 }

@@ -12,13 +12,13 @@ export const router = Router();
 router.post("/sessions/", UserService.login);
 router.get("/users/me/", authMiddleware, UserService.getUser);
 
-router.get("/study-plans/", authMiddleware,  studyPlanService.getStudyPlans);
+router.get("/study-plans/", authMiddleware, studyPlanService.getStudyPlans);
 router.post("/study-plans/", authMiddleware, studyPlanService.addStudyPlan);
 router.get("/study-plans/:studyPlanId/", authMiddleware, studyPlanService.getStudyPlan);
-// router.patch("/student-study-plans/:studyPlanId/", authMiddleware, /*uploadMiddleWare.single("image"),*/ studentStudyPlanService.updateStudentStudyPlan);
+router.patch("/study-plans/:studyPlanId/", authMiddleware, studyPlanService.updateStudentStudyPlan);
 router.get("/colleges/", programService.getColleges);
 router.get("/programs/", programService.getProgramStudyPlans);
-router.get("/elective-packages/:packageId", authMiddleware,  programService.getElectivePackage);
+router.get("/elective-packages/:packageId", authMiddleware, programService.getElectivePackage);
 router.post("/sync-data/", adminService.importDataFromSIS)
 
 router.use((err: Error, req: Request, res: Response, next: NextFunction) => {
