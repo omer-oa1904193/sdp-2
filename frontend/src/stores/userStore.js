@@ -18,8 +18,9 @@ export const useUserStore = create((set, get) => ({
         if (response.status === 401) {
             delete localStorage.authToken;
             return Promise.reject();
-        } else if (response.status >= 400 && response.status < 500)
-            return Promise.reject(await response.json());
+        } else if (response.status >= 400 && response.status < 500) {
+            return Promise.reject(response);
+        }
         return response;
     },
     isAuthenticated() {

@@ -37,6 +37,8 @@ export function StudyPlanPage({studyPlanId, isEditable, isDirty, setDirty}) {
                         ...courseMapping,
                         isElective: false
                     });
+                    stats.creditHours += courseMapping.course.creditHours;
+                    stats.tuitionFees += courseMapping.course.cost;
                 });
                 studyPlan.electiveMappings.forEach(electiveMapping => {
                     if (!yearMap.has(electiveMapping.yearOrder))
@@ -50,10 +52,17 @@ export function StudyPlanPage({studyPlanId, isEditable, isDirty, setDirty}) {
                         ...electiveMapping,
                         isElective: true
                     });
+                    stats.creditHours += electiveMapping.electivePackage.creditHours;
                 });
 
                 setStudyPlan({...studyPlan, yearMap, stats});
-            })
+            }).catch(e => {
+            if (e.status === 404) {
+                router.push("/404")
+                return;
+            }
+            throw e;
+        })
     }, [studyPlanId])
 
 

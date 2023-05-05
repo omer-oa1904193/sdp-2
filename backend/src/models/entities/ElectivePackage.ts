@@ -24,4 +24,7 @@ export class ElectivePackage extends CustomBaseEntity {
 
     @Enum({items: () => CourseCategory, type: types.enum})
     category!: CourseCategory;
+
+    @Property({type: types.integer})
+    creditHours!: number;
 }

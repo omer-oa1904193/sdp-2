@@ -34,7 +34,7 @@ export class ProgramRepo {
         return await this.em.findOne(ElectivePackage, {id: packageId}, {populate: ["courses"]});
     }
 
-    async getColleges(){
+    async getColleges() {
         return await this.em.find(College, {});
     }
 
@@ -75,7 +75,8 @@ export class ProgramRepo {
         await this.em.upsertMany(ElectivePackage, electivePackageData.map(e => ({
             id: e.id,
             title: e.title,
-            category: e.category
+            category: e.category,
+            creditHours: e.creditHours
         })));
 
         await this.em.upsertMany(MapCourseElectivePackage, courseElectivePackageMaps.map(m => ({
