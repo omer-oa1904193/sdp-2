@@ -9,7 +9,7 @@ export function SummeryPane({studyPlan}) {
     const [isOpen, setOpen] = useState(true)
     useEffect(() => {
         if (isOpen) {
-            pane.current.style.maxWidth = "250px"
+            pane.current.style.maxWidth = "300px"
 
         } else
             pane.current.style.maxWidth = "0"

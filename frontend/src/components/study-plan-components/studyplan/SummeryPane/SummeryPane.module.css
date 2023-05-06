@@ -1,9 +1,10 @@
 .collapsable-pane-wrapper {
     display: flex;
+
 }
 
 .paneButton {
-
+    color: #858585;
 }
 
 .collapsable-pane {
@@ -18,7 +19,8 @@
     display: flex;
     flex-direction: column;
     row-gap: 1rem;
-    width: 15vw;
+    width: 13vw;
+    min-width: 250px;
 }
 
 .summery-pane .stats-div {
