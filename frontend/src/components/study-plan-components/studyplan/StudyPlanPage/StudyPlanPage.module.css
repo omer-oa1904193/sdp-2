@@ -1,6 +1,6 @@
 .study-plan-page {
     display: grid;
-    grid-template-columns: 5fr auto;
+    grid-template-columns: auto 5fr auto;
     justify-content: center;
 }
 

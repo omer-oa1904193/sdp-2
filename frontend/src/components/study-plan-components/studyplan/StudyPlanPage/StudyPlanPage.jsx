@@ -70,7 +70,8 @@ export function StudyPlanPage({studyPlanId, isEditable, isDirty, setDirty}) {
         return <SpinnerOverlay/>
 
     return <>
-        <div className={styles.studyPlanPage}>
+        <div className={styles.studyPlanPage}
+             style={{gridTemplateColumns: isEditable ? "5fr auto" : "auto 5fr auto"}}>
             {!isEditable &&
                 <div className={styles.buttonsPane}>
                     <Score studyPlan={studyPlan}></Score>
