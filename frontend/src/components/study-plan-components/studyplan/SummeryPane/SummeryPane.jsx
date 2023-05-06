@@ -1,23 +1,24 @@
 import {currencyFormatter} from "@/utils.js";
-import {faCaretLeft, faExclamationCircle} from "@fortawesome/free-solid-svg-icons";
+import {faCaretLeft, faCaretRight, faExclamationCircle} from "@fortawesome/free-solid-svg-icons";
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 import {useEffect, useRef, useState} from "react";
 import styles from "./SummeryPane.module.css"
 
 export function SummeryPane({studyPlan}) {
     const pane = useRef();
-    const [isOpen, setOpen] = useState(false)
+    const [isOpen, setOpen] = useState(true)
     useEffect(() => {
-        if (isOpen)
+        if (isOpen) {
             pane.current.style.maxWidth = "250px"
-        else
+
+        } else
             pane.current.style.maxWidth = "0"
 
     }, [isOpen])
     return <>
         <div className={styles.collapsablePaneWrapper}>
             <button onClick={() => setOpen(!isOpen)} className={`${styles.paneButton} inv-button`}>
-                <FontAwesomeIcon icon={faCaretLeft}></FontAwesomeIcon>
+                <FontAwesomeIcon icon={isOpen ? faCaretRight : faCaretLeft}></FontAwesomeIcon>
             </button>
             <aside className={styles.collapsablePane} ref={pane}>
                 <div className={styles.summeryPane}>

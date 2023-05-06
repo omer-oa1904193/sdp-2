@@ -98,13 +98,15 @@ export function StudyPlanEditor({studyPlan, setStudyPlan, isEditable, setDirty, 
     return <div className={`${styles.spEditor} styled-scrollbars`}>
         {isEditable ?
             <>
-                <div className={styles.topDiv}>
+                <form className={styles.topDiv} onSubmit={e => e.preventDefault()}>
                     <div>
                         <h2 className={styles.majorTitle}>{studyPlan.program.major}</h2>
-                        <h4 className={styles.planTitle}>{studyPlan.name}</h4>
+
+                        <input required className={styles.planTitle} type="text" value={studyPlan.name}
+                               onChange={(e) => setStudyPlan({...studyPlan, name: e.target.value})}/>
                     </div>
                     <button className={`main-button ${styles.saveButton}`} onClick={saveStudyPlan}>Save</button>
-                </div>
+                </form>
             </>
             :
             <>
