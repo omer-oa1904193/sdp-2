@@ -21,6 +21,11 @@ export function DashboardPage() {
             .then(r => r.json())
             .then(d => setStudyPlans(d))
     }, [flag])
+    useEffect(() => {
+        userStore.fetchProtected("/study-plans/")
+            .then(r => r.json())
+            .then(d => setStudyPlans(d))
+    }, [isAddDialogOpen])
     console.log(studyPlans)
 
     const fetchStudyPlans = (async() => {
@@ -34,6 +39,7 @@ export function DashboardPage() {
 
     const handleAddDialogClose = () => {
         setAddDialog(false);
+        fetchStudyPlans()
     };
     const handleScrollUp = () => {
         console.log(boxRef.current)

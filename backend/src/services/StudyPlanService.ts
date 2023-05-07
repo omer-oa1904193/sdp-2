@@ -44,6 +44,15 @@ class StudyPlanService {
         res.json(studyPlan);
     }
 
+    async deleteStudyPlan(req: Request, res: Response) {
+        const pathParamsValidator = z.object({studyPlanId: z.string().regex(/^\d+$/).transform(Number)})
+        const pathParams = pathParamsValidator.parse(req.params);
+      
+        const studyPlanRepo = new StudyPlanRepo(req.em);
+        await studyPlanRepo.deleteStudyPlan(req.user!, pathParams.studyPlanId)
+      
+        res.status(204).send();
+      }
 
     async updateStudentStudyPlan(req: Request, res: Response) {
         

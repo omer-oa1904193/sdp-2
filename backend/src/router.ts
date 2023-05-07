@@ -16,6 +16,7 @@ router.get("/study-plans/", authMiddleware, studyPlanService.getStudyPlans);
 router.post("/study-plans/", authMiddleware, studyPlanService.addStudyPlan);
 router.get("/study-plans/:studyPlanId/", authMiddleware, studyPlanService.getStudyPlan);
 router.patch("/study-plans/:studyPlanId/", authMiddleware, studyPlanService.updateStudentStudyPlan);
+router.delete("/study-plans/:studyPlanId/", authMiddleware, studyPlanService.deleteStudyPlan);
 router.get("/colleges/", programService.getColleges);
 router.get("/programs/", programService.getProgramStudyPlans);
 router.get("/elective-packages/:packageId", authMiddleware, programService.getElectivePackage);

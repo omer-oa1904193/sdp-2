@@ -56,7 +56,7 @@ export default function CreateStudyPlanButton({isAddDialogOpen,setAddDialog,hand
     setInputValue(event.target.value);
   };
 
-  const handleFormSubmit = (event) => {
+  const handleFormSubmit = async(event) => {
     event.preventDefault();
     console.log("Selected option:", programId);
     console.log("Input value:", name);
@@ -64,7 +64,7 @@ export default function CreateStudyPlanButton({isAddDialogOpen,setAddDialog,hand
       method: 'POST',
       body: JSON.stringify({ programId, name })
     };
-    userStore.fetchProtected("/study-plans/", requestOptions)
+    await userStore.fetchProtected("/study-plans/", requestOptions)
     handleAddDialogClose();
   };
 

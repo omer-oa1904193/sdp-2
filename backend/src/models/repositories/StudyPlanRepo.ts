@@ -29,6 +29,14 @@ export class StudyPlanRepo {
         return studyPlan;
     }
 
+    async deleteStudyPlan(student: User, studyPlanId: number) {
+        const studyPlan = await this.em.findOneOrFail(StudyPlan, { id: studyPlanId });
+        await this.em.nativeDelete(MapCourseStudyPlan, { studyPlan });
+        await this.em.nativeDelete(MapElectivePackageStudyPlan, { studyPlan });
+        await this.em.removeAndFlush(studyPlan);
+      }
+      
+
     async addStudentStudyPlan(studyPlanData: { name: string, program: Program, author: User }) {
         const newStudyPlan = this.em.create(StudyPlan, {
             name: studyPlanData.name,

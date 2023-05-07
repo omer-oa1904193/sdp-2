@@ -10,6 +10,7 @@ import {
   TextField,
 } from "@mui/material";
 import {useUserStore} from "@/stores/userStore.js";
+import DeleteIcon from '@mui/icons-material/Delete';
 
 export default function EditStudyPlanCard({fetchStudyPlans,setIsEditDialogOpen, studyPlan, isEditDialogOpen }) {
   const userStore = useUserStore();
@@ -23,6 +24,21 @@ export default function EditStudyPlanCard({fetchStudyPlans,setIsEditDialogOpen, 
     setName(event.target.value);
   };
 
+  const handleDelete = async () => {
+    const confirmed = window.confirm("Are you sure you want to delete this study plan?");
+    if (confirmed) {
+      try {
+        await userStore.fetchProtected(`/study-plans/${studyPlan.id}`, {
+          method: "DELETE"
+        });
+        fetchStudyPlans();
+      } catch (error) {
+        console.error(error);
+      }
+    }
+  }; 
+
+  
   const handleDialogClose = () => {
     setIsEditDialogOpen(false);
     fetchStudyPlans()
@@ -56,6 +72,7 @@ export default function EditStudyPlanCard({fetchStudyPlans,setIsEditDialogOpen, 
       <DialogActions>
         <Button onClick={handleDialogClose}>Cancel</Button>
         <Button onClick={handleFormSubmit}>Submit</Button>
+        <Button onClick={handleDelete}><DeleteIcon color="error" ></DeleteIcon></Button>
       </DialogActions>
     </Dialog>
   );
