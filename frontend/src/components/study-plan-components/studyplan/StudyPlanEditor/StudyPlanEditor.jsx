@@ -13,7 +13,7 @@ export function StudyPlanEditor({studyPlan, setStudyPlan, isEditable, setDirty, 
         const allMappings = [];
         const courseMappings = []
         const electivePackageMappings = [];
-
+        console.log(studyPlan)
         for (let y of studyPlan.yearMap.values()) {
             for (let s of y.values()) {
                 for (let m of s.values()) {
@@ -34,7 +34,7 @@ export function StudyPlanEditor({studyPlan, setStudyPlan, isEditable, setDirty, 
             }
         }
         console.log(allMappings)
-
+        
         userStore.fetchProtected(`/study-plans/${studyPlan.id}`, {
             method: "PATCH",
             body: JSON.stringify({
@@ -43,6 +43,7 @@ export function StudyPlanEditor({studyPlan, setStudyPlan, isEditable, setDirty, 
                 electivePackageMappings: electivePackageMappings,
             }),
         }).then(() => setDirty(false))
+        
     }
 
     function onCardDropped(event, toYear, toSemester) {

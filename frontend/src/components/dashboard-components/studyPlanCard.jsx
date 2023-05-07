@@ -13,7 +13,7 @@ import { styled } from '@mui/material/styles';
 import EditStudyPlanCard from "./editStudyPlanCard";
 import RectangularButton from "../../components/dashboard-components/rectangularButton";
 
-export default function StudyPlanCard({ studyPlan, isActive }) {
+export default function StudyPlanCard({fetchStudyPlans,studyPlan, isActive }) {
 
     const EditButton = styled(IconButton)(({ theme }) => ({
         color: '#FFFFFF',
@@ -98,7 +98,7 @@ export default function StudyPlanCard({ studyPlan, isActive }) {
                                             <EditIcon sx={{ fontSize: '16px' }} />
                                         </EditButton>
                                         {isEditDialogOpen && (
-                                            <EditStudyPlanCard isEditDialogOpen={isEditDialogOpen} setIsEditDialogOpen={setIsEditDialogOpen} studyPlan={studyPlan} />
+                                            <EditStudyPlanCard fetchStudyPlans={fetchStudyPlans} isEditDialogOpen={isEditDialogOpen} setIsEditDialogOpen={setIsEditDialogOpen} studyPlan={studyPlan} />
                                         )}
                                     </>
                                 }

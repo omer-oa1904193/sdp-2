@@ -11,15 +11,25 @@ import CreateStudyPlanButton from '../../components/dashboard-components/CreateS
 export function DashboardPage() {
     const boxRef = useRef();
     const userStore = useUserStore();
+    const [editCount, setEditCount] = useState(0);
     const [studyPlans, setStudyPlans] = useState([]);
     const [isAddDialogOpen, setAddDialog] = useState(false)
+    const [flag,setFlag] = useState(false)
 
     useEffect(() => {
         userStore.fetchProtected("/study-plans/")
             .then(r => r.json())
             .then(d => setStudyPlans(d))
-    }, [isAddDialogOpen])
+    }, [flag])
     console.log(studyPlans)
+
+    const fetchStudyPlans = (async() => {
+        console.log("I just fetched");
+        await userStore.fetchProtected("/study-plans/")
+            .then(r => r.json())
+            .then(d => setStudyPlans(d))
+        setFlag(true)
+    })
 
 
     const handleAddDialogClose = () => {
@@ -172,7 +182,7 @@ export function DashboardPage() {
                                     columnGap: "1rem"
                                 }}>
                                     {studyPlans.map(studyPlan => (
-                                        <StudyPlanCard studyPlan={studyPlan} key={studyPlan.id}></StudyPlanCard>
+                                        <StudyPlanCard fetchStudyPlans={fetchStudyPlans}  studyPlan={studyPlan} key={studyPlan.id}></StudyPlanCard>
                                     ))}
                                 </Box>
                             </Paper>

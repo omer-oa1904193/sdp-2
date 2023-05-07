@@ -46,25 +46,26 @@ class StudyPlanService {
 
 
     async updateStudentStudyPlan(req: Request, res: Response) {
+        
         const pathParamsValidator = z.object({studyPlanId: z.string().regex(/^\d+$/).transform(Number)})
         const pathParams = pathParamsValidator.parse(req.params);
-
         const bodyValidator = z.object({
             name: z.string(),
             courseMappings: z.array(z.object({
                 course: z.number().min(0),
                 season: z.nativeEnum(Season),
                 yearOrder: z.number().min(1)
-            })),
+            })).optional(),
             electivePackageMappings: z.array(z.object({
                 id: z.number().min(0),
                 season: z.nativeEnum(Season),
                 yearOrder: z.number().min(1),
                 currentCourse: z.number().min(0).optional()
-            }))
+            })).optional()
         })
         const body = bodyValidator.parse(req.body);
         const studyPlanRepo = new StudyPlanRepo(req.em);
+
         const studyPlan = await studyPlanRepo.updateStudentStudyPlan(pathParams.studyPlanId, body);
         res.json(studyPlan);
     }

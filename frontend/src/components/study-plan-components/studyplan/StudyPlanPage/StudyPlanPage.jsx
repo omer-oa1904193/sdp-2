@@ -14,7 +14,7 @@ import React, {useEffect, useState} from "react";
 import Score from "../../../score-study-plan/score"
 import styles from "./StudyPlanPage.module.css"
 
-export function StudyPlanPage({studyPlanId, isEditable, isDirty, setDirty}) {
+export function StudyPlanPage({studyPlanId, isEditable,isDirty, setDirty}) {
     const router = useRouter()
     const userStore = useUserStore();
     const [studyPlan, setStudyPlan] = useState(null);
