@@ -19,7 +19,8 @@ export default async function exportAsImage(element, imageFileName) {
     let bodyHeight = body.clientHeight;
     const newWidth = element.scrollWidth - element.clientWidth;
     const newHeight = element.scrollHeight - element.clientHeight;
-    if (newWidth > element.clientWidth) {
+    console.log(htmlWidth, bodyWidth, newWidth, htmlHeight, bodyHeight, newHeight);
+    if (newWidth < element.clientWidth) {
       htmlWidth += newWidth;
       bodyWidth += newWidth;
     }
@@ -27,6 +28,8 @@ export default async function exportAsImage(element, imageFileName) {
       htmlHeight += newHeight;
       bodyHeight += newHeight;
     }
+    console.log("=============================");
+    console.log(htmlWidth, bodyWidth, newWidth, htmlHeight, bodyHeight, newHeight);
     html.style.width = htmlWidth + "px";
     body.style.width = bodyWidth + "px";
     html.style.height = htmlHeight + "px";
@@ -39,4 +42,5 @@ export default async function exportAsImage(element, imageFileName) {
     html.style.height = null;
     body.style.height = null;
   }
+  
   

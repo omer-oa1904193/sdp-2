@@ -97,21 +97,7 @@ export function StudyPlanPage({ studyPlanId, isEditable, isDirty, setDirty }) {
                     <CircularIconButton
                         icon={faDownload}
                         onClick={async () => {
-                            exportAsImage(document.querySelector("#studyPlanEditor"),'test')
-                            // const element = document.querySelector("#studyPlanEditor")
-                            // const { x, y } = element.getBoundingClientRect();
-                            // const windowWidth = element.offsetWidth;
-                            // const windowHeight = element.offsetHeight;
-                            // const canvas = await html2canvas(element, {
-                            //     windowWidth,
-                            //     windowHeight,
-                            //     scrollX: +x,
-                            //     scrollY: +y,
-                            //   });
-                            // document.body.appendChild(canvas);
-                            
-                            // const image = canvas.toDataURL("image/png", 1.0);
-                            // downloadImage(image, "study-plan");
+                            exportAsImage(document.querySelector(".StudyPlanEditor_main-plan__s6F7L"),'test')
                         }}
                     />
 
