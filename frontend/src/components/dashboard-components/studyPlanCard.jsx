@@ -59,7 +59,7 @@ export default function StudyPlanCard({fetchStudyPlans,studyPlan, isActive }) {
                     }}
                 >
                     <Box className={styles["image-wrapper"]}>
-                        <img src="/images/study-plan.png" alt="Study Plan" />
+                        <img src="/study-plan.png" alt="Study Plan" />
                     </Box>
                     <Box>
                         <Grid container spacing={2} justifyContent="space-between" alignItems="flex-end">

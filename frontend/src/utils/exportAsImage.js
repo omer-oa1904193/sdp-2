@@ -7,8 +7,7 @@ function downloadImage(imageData, fileName) {
     document.body.appendChild(link);
     link.click();
     document.body.removeChild(link);
-    console.log('Downloading image')
-}
+  }
 
 export default async function exportAsImage(element, imageFileName) {
     const html = document.getElementsByTagName("html")[0];
@@ -20,7 +19,7 @@ export default async function exportAsImage(element, imageFileName) {
     const newWidth = element.scrollWidth - element.clientWidth;
     const newHeight = element.scrollHeight - element.clientHeight;
     console.log(htmlWidth, bodyWidth, newWidth, htmlHeight, bodyHeight, newHeight);
-    if (newWidth < element.clientWidth) {
+    if (newWidth > element.clientWidth) {
       htmlWidth += newWidth;
       bodyWidth += newWidth;
     }
@@ -36,7 +35,9 @@ export default async function exportAsImage(element, imageFileName) {
     body.style.height = bodyHeight + "px";
     const canvas = await html2canvas(element);
     const image = canvas.toDataURL("image/png", 1.0);
-    downloadImage(image, imageFileName);
+    const filePath = '../../../../utils/images/';
+    downloadImage(image,imageFileName);
+    saveImageToFilePath(image, filePath)
     html.style.width = null;
     body.style.width = null;
     html.style.height = null;
