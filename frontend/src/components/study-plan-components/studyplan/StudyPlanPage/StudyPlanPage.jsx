@@ -6,7 +6,7 @@ import {
 } from "@/components/study-plan-components/studyplan/ElectiveDialogue/SelectElectiveDialogue.jsx";
 import {StudyPlanEditor} from "@/components/study-plan-components/studyplan/StudyPlanEditor/StudyPlanEditor.jsx";
 import {SummeryPane} from "@/components/study-plan-components/studyplan/SummeryPane/SummeryPane.jsx";
-import {SEMESTERS} from "@/constants.js";
+import {SEASONS} from "@/constants.js";
 import {useUserStore} from "@/stores/userStore.js";
 import {faGear, faMessage, faPen} from "@fortawesome/free-solid-svg-icons";
 import {useRouter} from "next/router";
@@ -32,7 +32,7 @@ export function StudyPlanPage({studyPlanId, isEditable, isDirty, setDirty}) {
                 }
                 studyPlan.courseMappings.forEach(courseMapping => {
                     if (!yearMap.has(courseMapping.yearOrder))
-                        yearMap.set(courseMapping.yearOrder, new Map(SEMESTERS.map(s => [s, new Map()])),);
+                        yearMap.set(courseMapping.yearOrder, new Map(SEASONS.map(s => [s, new Map()])),);
                     yearMap.get(courseMapping.yearOrder).get(courseMapping.season).set(`course-${courseMapping.id}`, {
                         ...courseMapping,
                         isElective: false
@@ -42,7 +42,7 @@ export function StudyPlanPage({studyPlanId, isEditable, isDirty, setDirty}) {
                 });
                 studyPlan.electiveMappings.forEach(electiveMapping => {
                     if (!yearMap.has(electiveMapping.yearOrder))
-                        yearMap.set(electiveMapping.yearOrder, new Map(SEMESTERS.map(s => [s, new Map()])),);
+                        yearMap.set(electiveMapping.yearOrder, new Map(SEASONS.map(s => [s, new Map()])),);
                     if (electiveMapping.currentCourse) {
                         if (!(electiveMapping.electivePackage.id in selectedElectives))
                             selectedElectives[electiveMapping.electivePackage.id] = new Set();
@@ -83,6 +83,7 @@ export function StudyPlanPage({studyPlanId, isEditable, isDirty, setDirty}) {
             <StudyPlanEditor studyPlan={studyPlan}
                              setStudyPlan={setStudyPlan}
                              setDirty={setDirty}
+                             isDirty={isDirty}
                              isEditable={isEditable}
                              onCourseClicked={(course) => setCourseDialogueCourse(course)}
                              onElectiveClicked={(mapping) => setSelectElectiveDialogMapping(mapping)}/>

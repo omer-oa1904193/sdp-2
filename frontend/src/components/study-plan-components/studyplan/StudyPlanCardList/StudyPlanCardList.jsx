@@ -2,12 +2,21 @@ import {CourseCard} from "@/components/study-plan-components/studyplan/CourseCar
 import {ElectiveCard} from "@/components/study-plan-components/studyplan/ElectiveCard/ElectiveCard.jsx";
 import React, {useState} from "react";
 
-export function StudyPlanCardList({year, semester, mappings, isEditable, onCourseClicked, onElectiveClicked}) {
+export function StudyPlanCardList({
+                                      year,
+                                      semester,
+                                      mappings,
+                                      isEditable,
+                                      columnIndex,
+                                      onCourseClicked,
+                                      onElectiveClicked
+                                  }) {
     const [errorCourseId, setErrorCourseId] = useState(null)
     return <>
-        {Array.from(mappings).map(([_, mapping]) =>
+        {Array.from(mappings).map(([_, mapping], cardIndex) =>
             <li key={mapping.id}
-                id={`course-li-${mapping.id}`}
+                data-x={columnIndex}
+                data-y={cardIndex}
                 draggable={isEditable}
                 onDragStart={(e) => {
                     console.log(`${mapping.id} was dragged`)

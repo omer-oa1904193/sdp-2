@@ -6,6 +6,6 @@ export const COURSE_CATEGORIES = {
     MAJOR_ELECTIVE: "Major Elective"
 }
 
-export const SEMESTERS = [
+export const SEASONS = [
     "Fall", "Winter", "Spring", "Summer"
 ]

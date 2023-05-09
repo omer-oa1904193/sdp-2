@@ -13,6 +13,7 @@ export function CourseCard({courseMapping, onCourseClicked, errorHighlighted, cl
 
     return <div onClick={onCourseClicked}
                 ref={courseCard}
+                id={`course-${courseMapping.id}`}
                 className={`${styles.courseCard} ${courseMapping.course.completed ? "completed-course" : getCategoryClass(courseMapping.category)} ${errorHighlighted ? "error-highlighted" : ""}`}>
         {/*<FontAwesomeIcon icon={faGripVertical}></FontAwesomeIcon>*/}
         <div className={styles.titleDiv}>
