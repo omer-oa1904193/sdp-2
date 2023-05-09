@@ -1,4 +1,4 @@
-import {currencyFormatter} from "@/utils.js";
+import {currencyFormatter} from "@/utils/utils.js";
 import {faCaretLeft, faCaretRight, faExclamationCircle} from "@fortawesome/free-solid-svg-icons";
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 import {useEffect, useRef, useState} from "react";
@@ -6,7 +6,7 @@ import styles from "./SummeryPane.module.css"
 
 export function SummeryPane({studyPlan}) {
     const pane = useRef();
-    const [isOpen, setOpen] = useState(true)
+    const [isOpen, setOpen] = useState(false)
     useEffect(() => {
         if (isOpen) {
             pane.current.style.maxWidth = "300px"
@@ -29,9 +29,9 @@ export function SummeryPane({studyPlan}) {
                         <p className={styles.statValue}>{studyPlan.program.creditHours}</p>
                         <h5 className={styles.statHeader}>Total Program Courses</h5>
                         <p className={styles.statValue}>{studyPlan.program.courseCount}</p>
-                        <h5 className={styles.statHeader}>Total Planned Credit Hours</h5>
+                        <h5 className={styles.statHeader}>Planned Credit Hours</h5>
                         <p className={styles.statValue}>{studyPlan.stats.creditHours}</p>
-                        <h5 className={styles.statHeader}>Total Planned Courses</h5>
+                        <h5 className={styles.statHeader}>Planned Courses</h5>
                         <p className={styles.statValue}>{studyPlan.stats.courses}</p>
                         <h5 className={styles.statHeader}>Program Length</h5>
                         <p className={styles.statValue}>{studyPlan.yearMap.size} years</p>
@@ -40,11 +40,11 @@ export function SummeryPane({studyPlan}) {
                     </div>
                     <div className={styles.courseCounts}>
                         <span className={styles.courseCountSpan}>
-                            <p>Total Completed Courses</p>
+                            <p>Completed Courses</p>
                             <p>{studyPlan.stats.completed}</p>
                         </span>
                         <span className={styles.courseCountSpan}>
-                            <p>Total Remaining Courses</p>
+                            <p>Remaining Courses</p>
                             <p>{studyPlan.stats.remaining}</p>
                         </span>
                     </div>

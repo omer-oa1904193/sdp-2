@@ -1,4 +1,4 @@
-import {currencyFormatter} from "@/utils.js";
+import {currencyFormatter} from "@/utils/utils.js";
 import {Dialogue} from "../../../common/ui/Dialogue/Dialogue.jsx";
 import styles from "./CourseDialogue.module.css"
 

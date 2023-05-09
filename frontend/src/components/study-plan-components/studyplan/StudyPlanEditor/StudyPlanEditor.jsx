@@ -96,7 +96,7 @@ export function StudyPlanEditor({studyPlan, setStudyPlan, isEditable, setDirty, 
     }
 
 
-    return <div className={`${styles.spEditor} styled-scrollbars`}>
+    return <div id="studyPlanEditor" className={`${styles.spEditor} styled-scrollbars`}>
         {isEditable ?
             <>
                 <form className={styles.topDiv} onSubmit={e => e.preventDefault()}>
