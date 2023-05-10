@@ -14,6 +14,7 @@ router.get("/users/me/", authMiddleware, UserService.getUser);
 
 router.get("/study-plans/", authMiddleware, studyPlanService.getStudyPlans);
 router.post("/study-plans/", authMiddleware, studyPlanService.addStudyPlan);
+router.post("/study-plans/shared/", authMiddleware, studyPlanService.addSharedStudyPlan);
 router.get("/study-plans/:studyPlanId/", authMiddleware, studyPlanService.getStudyPlan);
 router.patch("/study-plans/:studyPlanId/", authMiddleware, studyPlanService.updateStudentStudyPlan);
 router.delete("/study-plans/:studyPlanId/", authMiddleware, studyPlanService.deleteStudyPlan);
