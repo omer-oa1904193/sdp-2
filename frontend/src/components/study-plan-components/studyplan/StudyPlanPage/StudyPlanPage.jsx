@@ -97,10 +97,10 @@ export function StudyPlanPage({ studyPlanId, isEditable, isDirty, setDirty }) {
                     <CircularIconButton
                         icon={faDownload}
                         onClick={async () => {
-                            exportAsImage(document.querySelector(".StudyPlanEditor_main-plan__s6F7L"),'study-plan')
+                            exportAsImage(document.querySelector(".StudyPlanEditor_main-plan__s6F7L"), 'study-plan')
                         }}
                     />
-
+                    <CircularIconButton icon={faMessage} />
                     <CircularIconButton icon={faGear} />
                 </div>
             }

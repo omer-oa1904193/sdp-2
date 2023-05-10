@@ -1,9 +1,10 @@
-import {StudyPlanRepo} from "../models/repositories/StudyPlanRepo.js";
-import {Request, Response} from "express";
+import { StudyPlanRepo } from "../models/repositories/StudyPlanRepo.js";
+import { Request, Response } from "express";
 import fs from "fs-extra";
-import {z} from "zod";
-import {ProgramRepo} from "../models/repositories/ProgramRepo.js";
-import {Season} from "../models/enums/Season.js";
+import { z } from "zod";
+import { ProgramRepo } from "../models/repositories/ProgramRepo.js";
+import { Season } from "../models/enums/Season.js";
+import { SharedStudyPlan } from "../models/entities/SharedStudyPlans.js";
 
 class StudyPlanService {
     async getStudyPlans(req: Request, res: Response) {
@@ -27,12 +28,27 @@ class StudyPlanService {
         }
 
         const studyPlanRepo = new StudyPlanRepo(req.em);
-        const newStudyPlan = await studyPlanRepo.addStudentStudyPlan({name: body.name, program: program, author: req.user!});
+        const newStudyPlan = await studyPlanRepo.addStudentStudyPlan({ name: body.name, program: program, author: req.user! });
         res.json(newStudyPlan);
     }
 
+    async addSharedStudyPlan(req: Request, res: Response) {
+        // const bodyValidator = z.object({
+        //     SharedUser: z.number(),
+        //     studyPlan: z.number(),
+        //   });
+        // const body = bodyValidator.parse(req.body);
+
+        const studyPlanRepo = new StudyPlanRepo(req.em)
+        const newSharedStudyPlan = await studyPlanRepo.addSharedStudyPlan({
+            studyPlan: req.body.studyPlan,
+            SharedUser: req.body.SharedUser
+        })
+        res.json(newSharedStudyPlan);
+    }
+
     async getStudyPlan(req: Request, res: Response) {
-        const pathParamsValidator = z.object({studyPlanId: z.string().regex(/^\d+$/).transform(Number)})
+        const pathParamsValidator = z.object({ studyPlanId: z.string().regex(/^\d+$/).transform(Number) })
         const pathParams = pathParamsValidator.parse(req.params);
 
         const studyPlanRepo = new StudyPlanRepo(req.em);
@@ -45,18 +61,18 @@ class StudyPlanService {
     }
 
     async deleteStudyPlan(req: Request, res: Response) {
-        const pathParamsValidator = z.object({studyPlanId: z.string().regex(/^\d+$/).transform(Number)})
+        const pathParamsValidator = z.object({ studyPlanId: z.string().regex(/^\d+$/).transform(Number) })
         const pathParams = pathParamsValidator.parse(req.params);
-      
+
         const studyPlanRepo = new StudyPlanRepo(req.em);
         await studyPlanRepo.deleteStudyPlan(req.user!, pathParams.studyPlanId)
-      
+
         res.status(204).send();
-      }
+    }
 
     async updateStudentStudyPlan(req: Request, res: Response) {
-        
-        const pathParamsValidator = z.object({studyPlanId: z.string().regex(/^\d+$/).transform(Number)})
+
+        const pathParamsValidator = z.object({ studyPlanId: z.string().regex(/^\d+$/).transform(Number) })
         const pathParams = pathParamsValidator.parse(req.params);
         const bodyValidator = z.object({
             name: z.string(),

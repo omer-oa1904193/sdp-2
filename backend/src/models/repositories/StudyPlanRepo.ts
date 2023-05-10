@@ -1,6 +1,7 @@
 import {User} from "../entities/User.js";
 import {EntityManager} from "@mikro-orm/postgresql";
 import {StudyPlan} from "../entities/StudyPlan.js";
+import { SharedStudyPlan } from "../entities/SharedStudyPlans.js";
 import {Program} from "../entities/Program.js";
 import {MapCourseStudyPlan} from "../entities/MapCourseStudyPlan.js";
 import {MapElectivePackageStudyPlan} from "../entities/MapElectivePackageStudyPlan.js";
@@ -36,6 +37,14 @@ export class StudyPlanRepo {
         await this.em.removeAndFlush(studyPlan);
       }
       
+      async addSharedStudyPlan(sharedStudyPlan: {studyPlan: StudyPlan, SharedUser: User}){
+        const newSharedStudyPlan = this.em.create(SharedStudyPlan,{
+            studyPlan: sharedStudyPlan.studyPlan,
+            SharedUser: sharedStudyPlan.SharedUser
+        })
+        await this.em.flush()
+        return newSharedStudyPlan
+      }
 
     async addStudentStudyPlan(studyPlanData: { name: string, program: Program, author: User }) {
         const newStudyPlan = this.em.create(StudyPlan, {
