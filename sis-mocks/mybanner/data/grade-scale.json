@@ -1,0 +1,47 @@
+[
+  {
+    "id": 1,
+    "letterGrade": "A",
+    "numericalValue": 4.0
+  },
+  {
+    "id": 2,
+    "letterGrade": "B+",
+    "numericalValue": 3.5
+  },
+  {
+    "id": 3,
+    "letterGrade": "B",
+    "numericalValue": 3.0
+  },
+  {
+    "id": 4,
+    "letterGrade": "C+",
+    "numericalValue": 2.5
+  },
+  {
+    "id": 5,
+    "letterGrade": "C",
+    "numericalValue": 2.0
+  },
+  {
+    "id": 6,
+    "letterGrade": "D+",
+    "numericalValue": 1.5
+  },
+  {
+    "id": 7,
+    "letterGrade": "D",
+    "numericalValue": 1.0
+  },
+  {
+    "id": 8,
+    "letterGrade": "F",
+    "numericalValue": 0.0
+  },
+  {
+    "id": 8,
+    "letterGrade": "FA",
+    "numericalValue": 0.0
+  }
+]

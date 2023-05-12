@@ -1,0 +1,146 @@
+[
+  {
+    "id": 1,
+    "student": 3,
+    "course": 1,
+    "season": "Fall",
+    "year": 2019,
+    "grade": 1
+  },
+  {
+    "id": 2,
+    "student": 3,
+    "course": 2,
+    "season": "Fall",
+    "year": 2019,
+    "grade": 1
+  },
+  {
+    "id": 3,
+    "student": 3,
+    "course": 3,
+    "season": "Fall",
+    "year": 2019,
+    "grade": 1
+  },
+  {
+    "id": 4,
+    "student": 3,
+    "course": 4,
+    "season": "Fall",
+    "year": 2019,
+    "grade": 1
+  },
+  {
+    "id": 5,
+    "student": 3,
+    "course": 5,
+    "season": "Fall",
+    "year": 2019,
+    "grade": 2
+  },
+  {
+    "id": 6,
+    "student": 3,
+    "course": 6,
+    "season": "Fall",
+    "year": 2019,
+    "grade": 1
+  },
+  {
+    "id": 7,
+    "student": 3,
+    "course": 7,
+    "season": "Spring",
+    "year": 2020,
+    "grade": 1
+  },
+  {
+    "id": 8,
+    "student": 3,
+    "course": 8,
+    "season": "Spring",
+    "year": 2020,
+    "grade": 1
+  },
+  {
+    "id": 9,
+    "student": 3,
+    "course": 9,
+    "season": "Spring",
+    "year": 2020,
+    "grade": 1
+  },
+  {
+    "id": 10,
+    "student": 3,
+    "course": 10,
+    "season": "Spring",
+    "year": 2020,
+    "grade": 1
+  },
+  {
+    "id": 11,
+    "student": 3,
+    "course": 11,
+    "season": "Spring",
+    "year": 2020,
+    "grade": 1
+  },
+  {
+    "id": 12,
+    "student": 3,
+    "course": 12,
+    "season": "Spring",
+    "year": 2020,
+    "grade": 1
+  },
+  {
+    "id": 13,
+    "student": 3,
+    "course": 13,
+    "season": "Fall",
+    "year": 2020,
+    "grade": 1
+  },
+  {
+    "id": 14,
+    "student": 3,
+    "course": 14,
+    "season": "Fall",
+    "year": 2020,
+    "grade": 1
+  },
+  {
+    "id": 15,
+    "student": 3,
+    "course": 15,
+    "season": "Fall",
+    "year": 2020,
+    "grade": 1
+  },
+  {
+    "id": 16,
+    "student": 3,
+    "course": 16,
+    "season": "Fall",
+    "year": 2020,
+    "grade": 1
+  },
+  {
+    "id": 17,
+    "student": 3,
+    "course": 17,
+    "season": "Fall",
+    "year": 2020,
+    "grade": 1
+  },
+  {
+    "id": 18,
+    "student": 3,
+    "course": 18,
+    "season": "Fall",
+    "year": 2020,
+    "grade": 1
+  }
+]

@@ -9,6 +9,7 @@ import {StudyPlan} from "./StudyPlan.js";
 import {MapCourseProgram} from "./MapCourseProgram.js";
 import {MapCourseElectivePackage} from "./MapCourseElectivePackage.js";
 import {MapCourseStudyPlan} from "./MapCourseStudyPlan.js";
+import {Enrollment} from "./Enrollment.js";
 
 @Entity()
 @Index({properties: ["department"]})
@@ -45,4 +46,7 @@ export class Course extends CustomBaseEntity {
 
     @ManyToMany({entity: () => StudyPlan, inversedBy: (s: StudyPlan) => s.courses, pivotEntity: () => MapCourseStudyPlan})
     studyPlansAppearingIn: Collection<StudyPlan> = new Collection<StudyPlan>(this);
+
+    @OneToMany({entity: () => Enrollment, mappedBy: (a: Enrollment) => a.course})
+    enrollments: Collection<Enrollment> = new Collection<Enrollment>(this);
 }

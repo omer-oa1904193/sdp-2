@@ -1,8 +1,8 @@
-import {Entity, Enum, Index, ManyToOne, Property, types, Unique} from "@mikro-orm/core";
+import type {Rel} from "@mikro-orm/core";
+import {Entity, Enum, Index, ManyToOne, Property, types} from "@mikro-orm/core";
 import {CustomBaseEntity} from "./CustomBaseEntity.js";
 import {Program} from "./Program.js";
 import {ElectivePackage} from "./ElectivePackage.js";
-import type {Rel} from "@mikro-orm/core";
 import {Season} from "../enums/Season.js";
 
 @Entity()

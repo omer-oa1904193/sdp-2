@@ -1,9 +1,8 @@
 import { Migration } from '@mikro-orm/migrations';
 
-export class Migration20230505224436 extends Migration {
+export class Migration20230512220301 extends Migration {
 
   async up(): Promise<void> {
-
     this.addSql('create table "admission_test" ("id" serial primary key, "name" varchar(255) not null, "max_score" numeric(10,0) not null);');
 
     this.addSql('create table "college" ("id" serial primary key, "name" varchar(255) not null);');
@@ -89,7 +88,6 @@ export class Migration20230505224436 extends Migration {
   }
 
   async down(): Promise<void> {
-
     this.addSql('alter table "admission_test_result" drop constraint "admission_test_result_admission_test_id_foreign";');
 
     this.addSql('alter table "department" drop constraint "department_college_id_foreign";');

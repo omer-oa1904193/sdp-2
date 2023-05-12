@@ -7,6 +7,7 @@ import {Season} from "../enums/Season.js";
 import {AdmissionTest} from "./AdmissionTest.js";
 import {AdmissionTestResult} from "./AdmissionTestResult.js";
 import {Department} from "./Department.js";
+import {Enrollment} from "./Enrollment.js";
 
 @Entity()
 export class User extends CustomBaseEntity {
@@ -44,4 +45,7 @@ export class User extends CustomBaseEntity {
 
     @OneToMany({entity: () => AdmissionTestResult, mappedBy: (a: AdmissionTestResult) => a.student, persist: false})
     admissionTestResults: Collection<AdmissionTestResult> = new Collection<AdmissionTestResult>(this);
+
+    @OneToMany({entity: () => Enrollment, mappedBy: (a: Enrollment) => a.student})
+    courseEnrollments: Collection<Enrollment> = new Collection<Enrollment>(this);
 }
