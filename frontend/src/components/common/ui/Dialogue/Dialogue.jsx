@@ -1,11 +1,11 @@
 import {useRef} from "react";
 import styles from "./Dialogue.module.css"
 
-export function Dialogue({children, isOpen, setOpen, title}) {
+export function Dialogue({children, isOpen, setOpen, closeOnOverlayClick = true, title}) {
     const dialog = useRef(null)
     if (!isOpen)
         return;
-    return <div ref={dialog} onClick={() => setOpen(false)} className={styles.dialogueBackdrop}>
+    return <div ref={dialog} onClick={() => setOpen(!closeOnOverlayClick)} className={styles.dialogueBackdrop}>
         <div className={styles.customDialogue} onClick={(e) => e.stopPropagation()}>
             <div className={styles.dialogHeader}>
                 <h3 className={styles.dialogueTitle}>{title}</h3>

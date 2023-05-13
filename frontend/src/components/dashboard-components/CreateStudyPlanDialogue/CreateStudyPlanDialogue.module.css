@@ -1,0 +1,30 @@
+.create-study-plan-dialogue {
+    background-color: #ffffff;
+    display: flex;
+    flex-direction: column;
+    width: 35vw;
+    max-width: 600px;
+    border-radius: 10px;
+    color: #888888;
+    height: auto;
+    padding: 1rem;
+}
+
+.create-study-plan-form {
+    display: flex;
+    flex-direction: column;
+    row-gap: 1rem;
+}
+
+.buttons-div {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    column-gap: 1rem;
+}
+
+.buttons-div button {
+    font-size: 1rem;
+    padding: 0.9rem 0.5rem;
+    flex: 1;
+}

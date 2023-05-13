@@ -22,18 +22,24 @@ export class StudyPlanRepo {
     }
 
     async getStudentStudyPlan(student: User, studyPlanId: number) {
-        const studyPlan = this.em.findOne(StudyPlan, {id: studyPlanId}, {
+        const studyPlan = await this.em.findOne(StudyPlan, {id: studyPlanId}, {
             orderBy: {courseMappings: {yearOrder: "asc"}, electiveMappings: {yearOrder: "asc"}},
-            populate: ["program", "courseMappings", "courseMappings.course", "electiveMappings", "electiveMappings.currentCourse", "electiveMappings.electivePackage"]
+            populate: ["program", "courseMappings", "courseMappings.course",
+                "electiveMappings", "electiveMappings.currentCourse", "electiveMappings.electivePackage"]
         });
+        if (studyPlan) {
+            await this.em.getRepository(StudyPlan).populate(studyPlan, ["courseMappings.course.enrollments", "courseMappings.course.enrollments.grade"],
+                {where: {courseMappings: {course: {enrollments: {student: student.id}}}}})
+        }
         return studyPlan;
     }
 
-    async addStudentStudyPlan(studyPlanData: { name: string, program: Program, author: User }) {
+    async addStudentStudyPlan(studyPlanData: { name: string, yearStarted: number, program: Program, author: User }) {
         const newStudyPlan = this.em.create(StudyPlan, {
             name: studyPlanData.name,
             program: studyPlanData.program,
             author: studyPlanData.author.id,
+            yearStarted: studyPlanData.yearStarted
         })
         await this.em.flush();
 

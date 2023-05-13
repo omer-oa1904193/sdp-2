@@ -1,6 +1,5 @@
 import {StudyPlanRepo} from "../models/repositories/StudyPlanRepo.js";
 import {Request, Response} from "express";
-import fs from "fs-extra";
 import {z} from "zod";
 import {ProgramRepo} from "../models/repositories/ProgramRepo.js";
 import {Season} from "../models/enums/Season.js";
@@ -16,6 +15,7 @@ class StudyPlanService {
         const bodyValidator = z.object({
             name: z.string(),
             programId: z.number().min(0),
+            yearStarted: z.number().min(0)
         })
         const body = bodyValidator.parse(req.body);
 
@@ -27,7 +27,12 @@ class StudyPlanService {
         }
 
         const studyPlanRepo = new StudyPlanRepo(req.em);
-        const newStudyPlan = await studyPlanRepo.addStudentStudyPlan({name: body.name, program: program, author: req.user!});
+        const newStudyPlan = await studyPlanRepo.addStudentStudyPlan({
+            name: body.name,
+            yearStarted: body.yearStarted,
+            program: program,
+            author: req.user!
+        });
         res.json(newStudyPlan);
     }
 

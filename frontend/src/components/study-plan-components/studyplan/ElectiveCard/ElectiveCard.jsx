@@ -1,7 +1,7 @@
 import {faCaretDown, faExclamationCircle} from "@fortawesome/free-solid-svg-icons";
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 import {useEffect, useRef} from "react";
-import {COURSE_CATEGORIES} from "../../../../constants.js";
+import {COURSE_CATEGORIES} from "@/constants.js";
 import {getCategoryClass} from "../CourseCard/CourseCard.jsx";
 import styles from "./ElectiveCard.module.css"
 
@@ -48,7 +48,7 @@ export function ElectiveCard({
 
     return <>
         <div className={`${styles.electiveCard} ${getCategoryClass(electivePackageMapping.electivePackage.category)}`}>
-            <h4 className={styles.packageName}>{electivePackageMapping.category === COURSE_CATEGORIES.MAJOR_ELECTIVE ? "Major Elective" : electivePackageMapping.electivePackage.title}</h4>
+            <h4 className={styles.packageName}>{`${electivePackageMapping.category === COURSE_CATEGORIES.MAJOR_ELECTIVE ? "Major Elective" : electivePackageMapping.electivePackage.title} (${electivePackageMapping.electivePackage.creditHours})`}</h4>
             <button className={`inv-button ${styles.showElectivesButton}`} onClick={onElectiveClicked}>
                 <FontAwesomeIcon icon={faCaretDown}></FontAwesomeIcon>
             </button>

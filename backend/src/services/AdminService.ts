@@ -15,6 +15,7 @@ import {AdmissionTest} from "../models/entities/AdmissionTest.js";
 import {AdmissionTestResult} from "../models/entities/AdmissionTestResult.js";
 import {GradeScale} from "../models/entities/GradeScale.js";
 import {Enrollment} from "../models/entities/Enrollment.js";
+import {Season} from "../models/enums/Season.js";
 
 class AdminService {
     async importDataFromSIS(req: Request, res: Response) {
@@ -92,6 +93,13 @@ class AdminService {
         await programRepo.bulkUpsertEnrollments(enrollments);
 
         res.send();
+    }
+
+    async getCurrentSemester(req: Request, res: Response) {
+        return {
+            season: Season.FALL,
+            year: 2023
+        }
     }
 }
 

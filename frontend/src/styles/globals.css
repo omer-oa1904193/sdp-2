@@ -44,7 +44,7 @@ form input, form select {
     row-gap: 0.5rem;
 }
 
-.main-button {
+.filled-button {
     padding: 1.25rem 1rem;
     background-color: var(--primary-color);
     border-radius: 8px;
@@ -54,7 +54,19 @@ form input, form select {
     font-weight: bold;
 }
 
-.main-button:hover {
+.filled-button:hover {
+    cursor: pointer;
+}
+.outlined-button{
+    padding: 1.25rem 1rem;
+    background-color: transparent;
+    color: var(--primary-color);
+    border:1px solid  var(--primary-color);
+    border-radius: 8px;
+    font-size: 1.5rem;
+    font-weight: bold;
+}
+.outlined-button:hover{
     cursor: pointer;
 }
 
@@ -78,7 +90,7 @@ form input, form select {
 }
 
 .completed-course {
-    background-color: #61C975;
+    background-color: #AAAFB4;
 }
 
 .major-course {
@@ -140,4 +152,16 @@ form input, form select {
 .inv-link {
     text-decoration: none;
     color: black;
+}
+
+/* Chrome, Safari, Edge, Opera */
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+
+/* Firefox */
+input[type=number] {
+    -moz-appearance: textfield;
 }

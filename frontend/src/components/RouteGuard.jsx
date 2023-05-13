@@ -23,7 +23,7 @@ export default function RouteGuard({children}) {
             if (localStorage.authToken)
                 fetchUser()
                     .then(user => userStore.setUser(user))
-                    .catch((e) => {
+                    .catch(() => {
                         delete localStorage.authToken;
                         router.push("/login")
                     });

@@ -14,6 +14,9 @@ export class StudyPlan extends CustomBaseEntity {
     @Property({type: types.string})
     name!: string;
 
+    @Property({type: types.integer})
+    yearStarted!: number;
+
     @ManyToOne({entity: () => Program, inversedBy: (p: Program) => p.studyPlans})
     program!: Rel<Program>;
 

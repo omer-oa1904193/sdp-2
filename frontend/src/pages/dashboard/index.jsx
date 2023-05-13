@@ -1,12 +1,13 @@
-import { useUserStore } from "@/stores/userStore.js";
-import { useEffect, useState, useRef } from "react";
+import {useUserStore} from "@/stores/userStore.js";
+import {styled} from "@mui/system";
+import {useEffect, useState, useRef} from "react";
 import * as React from "react";
-import { Box, Grid, Paper, Typography, IconButton, Stack } from "@mui/material";
+import {Box, Grid, Paper, Typography, IconButton, Stack, Button} from "@mui/material";
 import styles from "@/pages/dashboard/DashBoardPage.module.css";
 import StudyPlanCard from "../../components/dashboard-components/studyPlanCard";
-import RectangularButton from "../../components/dashboard-components/rectangularButton";
-import { ArrowUpward, ArrowDownward } from '@mui/icons-material';
-import CreateStudyPlanButton from '../../components/dashboard-components/CreateStudyPlan/create-study-plan-button'
+import {ArrowUpward, ArrowDownward} from "@mui/icons-material";
+import AddIcon from '@mui/icons-material/Add';
+import CreateStudyPlanDialogue from "@/components/dashboard-components/CreateStudyPlanDialogue/CreateStudyPlanDialogue.jsx"
 
 export function DashboardPage() {
     const boxRef = useRef();
@@ -19,14 +20,12 @@ export function DashboardPage() {
             .then(r => r.json())
             .then(d => setStudyPlans(d))
     }, [isAddDialogOpen])
-    console.log(studyPlans)
 
 
     const handleAddDialogClose = () => {
         setAddDialog(false);
     };
     const handleScrollUp = () => {
-        console.log(boxRef.current)
         if (boxRef.current) {
             boxRef.current.scrollTop -= (2 * boxRef.current.clientHeight) / 8;
         }
@@ -37,10 +36,23 @@ export function DashboardPage() {
         }
     };
 
+    const CreateButton = styled(Button)({
+        background: "#267BAA",
+        color: "#FFFFFF",
+        borderRadius: "10px",
+        boxShadow: "none",
+        "&:hover": {
+            background: "#FFFFFF",
+            color: "#267BAA",
+            fontWeight: "bold",
+            transform: "scale(1.02)",
+            boxShadow: "0px 0px 10px rgba(0, 0, 0, 0.2)",
+        },
+    });
 
     return (
         <>
-            <Box sx={{ position: "relative", backgroundColor: "#EFEFEF" }}>
+            <Box sx={{position: "relative", backgroundColor: "#EFEFEF"}}>
                 {/* <NavBarAuth /> */}
                 <Box
                     sx={{
@@ -79,10 +91,10 @@ export function DashboardPage() {
                                     m: "1rem"
                                 }
                             }}
-                                style={{ maxWidth: "100%", width: "calc(100% - 2rem)" }}>
+                                   style={{maxWidth: "100%", width: "calc(100% - 2rem)"}}>
                                 <Grid container spacing={2}>
                                     <Grid item xs={12} md={8}>
-                                        <Typography variant="h4" fontWeight="bold" color="#888888" sx={{ mb: 2 }}>
+                                        <Typography variant="h4" fontWeight="bold" color="#888888" sx={{mb: 2}}>
                                             Welcome
                                         </Typography>
                                         <Box
@@ -90,38 +102,45 @@ export function DashboardPage() {
                                             ref={boxRef}
                                             sx={{
                                                 mb: 2,
-                                                height: '100%',
-                                                maxWidth: '100%',
-                                                maxHeight: '8em',
-                                                overflow: 'auto',
-                                                display: '-webkit-box',
-                                                WebkitBoxOrient: 'vertical',
+                                                height: "100%",
+                                                maxWidth: "100%",
+                                                maxHeight: "8em",
+                                                overflow: "auto",
+                                                display: "-webkit-box",
+                                                WebkitBoxOrient: "vertical",
                                                 WebkitLineClamp: 8,
                                             }}
                                         >
                                             <Typography variant="body1"
-                                                fontWeight="bold"
-                                                color="#b3b3b3"
-                                                sx={{ my: '1em' }}>
-                                                Start by planning for your graduation by creating a study plan and selecting your program.</Typography>
+                                                        fontWeight="bold"
+                                                        color="#b3b3b3"
+                                                        sx={{my: "1em"}}>
+                                                Start by planning for your graduation by creating a study plan and
+                                                selecting your program.</Typography>
                                             <Typography variant="body1"
-                                                fontWeight="bold"
-                                                color="#b3b3b3"
-                                                sx={{ my: '1em' }}>
-                                                Consider meeting with a guidance counselor to help you select the best program for your interests and career goals.</Typography>
+                                                        fontWeight="bold"
+                                                        color="#b3b3b3"
+                                                        sx={{my: "1em"}}>
+                                                Consider meeting with a guidance counselor to help you select the best
+                                                program for your interests and career goals.</Typography>
                                             <Typography variant="body1"
-                                                fontWeight="bold"
-                                                color="#b3b3b3"
-                                                sx={{ my: '1em' }}>
-                                                With a solid plan in place, you'll be well on your way to achieving your educational and professional aspirations.</Typography>
+                                                        fontWeight="bold"
+                                                        color="#b3b3b3"
+                                                        sx={{my: "1em"}}>
+                                                With a solid plan in place, you'll be well on your way to achieving your
+                                                educational and professional aspirations.</Typography>
 
                                         </Box>
-                                        <Box sx={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
+                                        <Box sx={{
+                                            display: "flex",
+                                            justifyContent: "space-between",
+                                            alignItems: "center"
+                                        }}>
                                             <IconButton onClick={handleScrollUp}>
-                                                <ArrowUpward />
+                                                <ArrowUpward/>
                                             </IconButton>
                                             <IconButton onClick={handleScrollDown}>
-                                                <ArrowDownward />
+                                                <ArrowDownward/>
                                             </IconButton>
                                         </Box>
                                     </Grid>
@@ -154,16 +173,20 @@ export function DashboardPage() {
                                     m: "1rem"
                                 }
                             }}
-                                style={{ maxWidth: "100%", width: "calc(100% - 2rem)", overflow: "auto" }}
+                                   style={{maxWidth: "100%", width: "calc(100% - 2rem)", overflow: "auto"}}
                             >
-                                <Stack sx={{ display: 'flex', flexDirection: 'row', justifyContent: 'space-between' }}>
+                                <Stack sx={{display: "flex", flexDirection: "row", justifyContent: "space-between"}}>
                                     <Typography fontWeight="bold" color="#888888" variant="h5">Study Plans</Typography>
-                                    <CreateStudyPlanButton
-                                        isAddDialogOpen={isAddDialogOpen}
-                                        setAddDialog={setAddDialog}
-                                        handleAddDialogClose={handleAddDialogClose}
-                                        setStudyPlans={setStudyPlans}>
-                                    </CreateStudyPlanButton>
+                                    <CreateButton variant="contained" onClick={() => setAddDialog(true)}>
+                                        <AddIcon></AddIcon>
+                                        <Typography sx={{padding: "0px", fontWeight: "bold", fontSize: "0.7rem"}}>Add
+                                            study plan</Typography>
+                                    </CreateButton>
+                                    <CreateStudyPlanDialogue
+                                        isOpen={isAddDialogOpen}
+                                        setOpen={setAddDialog}
+                                        closeDialogue={handleAddDialogClose}>
+                                    </CreateStudyPlanDialogue>
                                 </Stack>
                                 <Box sx={{
                                     display: "flex",

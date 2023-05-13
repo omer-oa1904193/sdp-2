@@ -105,7 +105,7 @@ export function StudyPlanEditor({studyPlan, setStudyPlan, isEditable, setDirty, 
                         <input required className={styles.planTitle} type="text" value={studyPlan.name}
                                onChange={(e) => setStudyPlan({...studyPlan, name: e.target.value})}/>
                     </div>
-                    <button className={`main-button ${styles.saveButton}`} onClick={saveStudyPlan}>Save</button>
+                    <button className={`filled-button ${styles.saveButton}`} onClick={saveStudyPlan}>Save</button>
                 </form>
             </>
             :
@@ -141,7 +141,7 @@ export function StudyPlanEditor({studyPlan, setStudyPlan, isEditable, setDirty, 
                                     }}>
                                     <StudyPlanCardList mappings={mappings}
                                                        year={yearOrder}
-                                                       semester={semesterLabel}
+                                                       season={semesterLabel}
                                                        isEditable={isEditable}
                                                        onCourseClicked={onCourseClicked}
                                                        onElectiveClicked={onElectiveClicked}

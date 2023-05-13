@@ -17,15 +17,18 @@ export function encodeUrlQueryParams(data) {
     return params.filter(value => !!value).join("&");
 }
 
-
-export function compareMappings(mapping1, mapping2) {
+export function compareSemesters(season1, year1, season2, year2) {
     // noinspection CommaExpressionJS
     const seasonsOrder = SEASONS.reduce((obj, val, idx) => (obj[val] = idx, obj), {});
-    if (mapping1.yearOrder === mapping2.yearOrder) {
-        return seasonsOrder[mapping1.season] - seasonsOrder[mapping2.season];
+    if (year1 === year2) {
+        return seasonsOrder[season1] - seasonsOrder[season2];
     } else {
-        return mapping1.yearOrder - mapping2.yearOrder;
+        return year1 - year2;
     }
+}
+
+export function compareMappings(mapping1, mapping2) {
+    return compareSemesters(mapping1.season, mapping1.yearOrder, mapping2.season, mapping1.yearOrder);
 }
 
 

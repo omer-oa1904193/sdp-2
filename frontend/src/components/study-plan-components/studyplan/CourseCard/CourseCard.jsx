@@ -9,12 +9,12 @@ import styles from "./CourseCard.module.css";
 export function CourseCard({courseMapping, onCourseClicked, errorHighlighted, clearErrorHighlighted}) {
     const courseCard = useRef(null);
     useEffect(() => courseCard.current?.addEventListener("animationend", () => clearErrorHighlighted()), [courseCard])
-
+    const isCompleted = courseMapping.course.enrollments.filter(e => e.grade.numericalValue > 1.0).length > 0;
 
     return <div onClick={onCourseClicked}
                 ref={courseCard}
                 id={`course-${courseMapping.id}`}
-                className={`${styles.courseCard} ${courseMapping.course.completed ? "completed-course" : getCategoryClass(courseMapping.category)} ${errorHighlighted ? "error-highlighted" : ""}`}>
+                className={`${styles.courseCard} ${isCompleted > 0 ? "completed-course" : getCategoryClass(courseMapping.category)} ${errorHighlighted ? "error-highlighted" : ""}`}>
         {/*<FontAwesomeIcon icon={faGripVertical}></FontAwesomeIcon>*/}
         <div className={styles.titleDiv}>
             <h4 className={styles.courseTitle} lang="en">{courseMapping.course.title}</h4>

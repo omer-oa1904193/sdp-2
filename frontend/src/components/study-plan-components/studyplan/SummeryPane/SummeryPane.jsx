@@ -25,14 +25,10 @@ export function SummeryPane({studyPlan}) {
                     <div className={styles.statsDiv}>
                         <h3 className={styles.statHeader}>Summery</h3>
                         <hr></hr>
-                        <h5 className={styles.statHeader}>Total Program Credit Hours</h5>
-                        <p className={styles.statValue}>{studyPlan.program.creditHours}</p>
-                        <h5 className={styles.statHeader}>Total Program Courses</h5>
-                        <p className={styles.statValue}>{studyPlan.program.courseCount}</p>
-                        <h5 className={styles.statHeader}>Total Planned Credit Hours</h5>
+                        <h5 className={styles.statHeader}>Credit Hours</h5>
                         <p className={styles.statValue}>{studyPlan.stats.creditHours}</p>
-                        <h5 className={styles.statHeader}>Total Planned Courses</h5>
-                        <p className={styles.statValue}>{studyPlan.stats.courses}</p>
+                        <h5 className={styles.statHeader}>Number of Courses</h5>
+                        <p className={styles.statValue}>{studyPlan.stats.courseCount}</p>
                         <h5 className={styles.statHeader}>Program Length</h5>
                         <p className={styles.statValue}>{studyPlan.yearMap.size} years</p>
                         <h5 className={styles.statHeader}>Total Tuition Fee</h5>
@@ -40,11 +36,11 @@ export function SummeryPane({studyPlan}) {
                     </div>
                     <div className={styles.courseCounts}>
                         <span className={styles.courseCountSpan}>
-                            <p>Total Completed Courses</p>
+                            <p>Completed Courses</p>
                             <p>{studyPlan.stats.completed}</p>
                         </span>
                         <span className={styles.courseCountSpan}>
-                            <p>Total Remaining Courses</p>
+                            <p>Remaining Courses</p>
                             <p>{studyPlan.stats.remaining}</p>
                         </span>
                     </div>

@@ -142,5 +142,13 @@
     "season": "Fall",
     "year": 2020,
     "grade": 1
+  },
+  {
+    "id": 19,
+    "student": 4,
+    "course": 1,
+    "season": "Fall",
+    "year": 2019,
+    "grade": 1
   }
 ]

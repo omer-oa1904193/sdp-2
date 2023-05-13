@@ -1,10 +1,14 @@
 import {CourseCard} from "@/components/study-plan-components/studyplan/CourseCard/CourseCard.jsx";
 import {ElectiveCard} from "@/components/study-plan-components/studyplan/ElectiveCard/ElectiveCard.jsx";
+import {compareMappings, compareSemesters} from "@/utils.js";
 import React, {useState} from "react";
+import styles from "./StudyPlanCardList.module.css"
 
 export function StudyPlanCardList({
                                       year,
-                                      semester,
+                                      season,
+                                      currentYear,
+                                      currentSeason,
                                       mappings,
                                       isEditable,
                                       columnIndex,
@@ -22,10 +26,10 @@ export function StudyPlanCardList({
                     console.log(`${mapping.id} was dragged`)
                     e.dataTransfer.setData("mappingId", mapping.id);
                     e.dataTransfer.setData("fromYear", year);
-                    e.dataTransfer.setData("fromSemester", semester);
+                    e.dataTransfer.setData("fromSemester", season);
                     e.dataTransfer.setData("isElective", mapping.isElective);
-                }
-                }>
+                }}
+                className={compareSemesters(season, year, currentSeason, currentYear)}>
                 {mapping.isElective ?
                     <ElectiveCard electivePackageMapping={mapping}
                                   onElectiveClicked={() => isEditable ? onElectiveClicked(mapping) : undefined}

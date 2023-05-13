@@ -27,7 +27,7 @@ export function StudyPlanPage({studyPlanId, isEditable, isDirty, setDirty}) {
             .then(studyPlan => {
                 const yearMap = new Map();
                 const stats = {
-                    courses: studyPlan.courseMappings.length + studyPlan.electiveMappings.length,
+                    courseCount: studyPlan.courseMappings.length + studyPlan.electiveMappings.length,
                     completed: 0, remaining: 0, progress: 0, creditHours: 0, tuitionFees: 0,
                 }
                 studyPlan.courseMappings.forEach(courseMapping => {
@@ -35,7 +35,7 @@ export function StudyPlanPage({studyPlanId, isEditable, isDirty, setDirty}) {
                         yearMap.set(courseMapping.yearOrder, new Map(SEASONS.map(s => [s, new Map()])),);
                     yearMap.get(courseMapping.yearOrder).get(courseMapping.season).set(`course-${courseMapping.id}`, {
                         ...courseMapping,
-                        isElective: false
+                        isElective: false,
                     });
                     stats.creditHours += courseMapping.course.creditHours;
                     stats.tuitionFees += courseMapping.course.cost;
