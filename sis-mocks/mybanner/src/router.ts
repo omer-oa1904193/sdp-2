@@ -14,3 +14,5 @@ router.get("/programs/", bannerService.getPrograms);
 router.get("/course-programs/", bannerService.getCourseProgramMaps);
 router.get("/elective-packages-programs/", bannerService.getElectivePackageProgramMaps);
 router.get("/courses-elective-packages/", bannerService.getCourseElectivePackageMaps);
+router.get("/enrollments/", bannerService.getEnrollments);
+router.get("/grade-scales/", bannerService.getGradeScales);

@@ -58,6 +58,16 @@ class BannerService {
         const mappings = await fs.readJSON("data/map-elective-package-programs.json");
         res.json(mappings);
     }
+
+    async getEnrollments(req: Request, res: Response){
+        const enrollments = await fs.readJSON("data/enrollments.json");
+        res.json(enrollments);
+    }
+
+    async getGradeScales(req: Request, res: Response){
+        const gradeScales = await fs.readJSON("data/grade-scales.json");
+        res.json(gradeScales);
+    }
 }
 
 export const bannerService = new BannerService();

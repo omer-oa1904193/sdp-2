@@ -13,6 +13,8 @@ import {MapElectivePackageProgram} from "../models/entities/MapElectivePackagePr
 import {MapCourseElectivePackage} from "../models/entities/MapCourseElectivePackage.js";
 import {AdmissionTest} from "../models/entities/AdmissionTest.js";
 import {AdmissionTestResult} from "../models/entities/AdmissionTestResult.js";
+import {GradeScale} from "../models/entities/GradeScale.js";
+import {Enrollment} from "../models/entities/Enrollment.js";
 
 class AdminService {
     async importDataFromSIS(req: Request, res: Response) {
@@ -28,6 +30,8 @@ class AdminService {
         let programs: EntityData<Program>[];
         let courseProgramMaps: EntityData<MapCourseProgram>[];
         let electiveProgramMaps: EntityData<MapElectivePackageProgram>[];
+        let gradeScales: EntityData<GradeScale>[]
+        let enrollments: EntityData<Enrollment>[]
         try {
             let response = await fetch(`${process.env.SIS_URL}/users/`);
             users = await response.json();
@@ -62,6 +66,11 @@ class AdminService {
             response = await fetch(`${process.env.SIS_URL}/elective-packages-programs/`);
             electiveProgramMaps = await response.json();
 
+            response = await fetch(`${process.env.SIS_URL}/grade-scales/`);
+            gradeScales = await response.json();
+
+            response = await fetch(`${process.env.SIS_URL}/enrollments/`);
+            enrollments = await response.json();
 
         } catch (e) {
             res.status(500).send("Failed to fetch data from SIS API");
@@ -79,6 +88,8 @@ class AdminService {
         await programRepo.bulkUpsertCourses(courses);
         await programRepo.bulkUpsertElectivePackages(electivePackages, courseElectivePackageMaps);
         await programRepo.bulkUpsertPrograms(programs, courseProgramMaps, electiveProgramMaps);
+        await programRepo.bulkUpsertGradeScales(gradeScales);
+        await programRepo.bulkUpsertEnrollments(enrollments);
 
         res.send();
     }

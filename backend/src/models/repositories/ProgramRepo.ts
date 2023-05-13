@@ -10,6 +10,8 @@ import {MapCourseElectivePackage} from "../entities/MapCourseElectivePackage.js"
 import {AdmissionTest} from "../entities/AdmissionTest.js";
 import {AdmissionTestResult} from "../entities/AdmissionTestResult.js";
 import {FilterQuery} from "@mikro-orm/core/typings.js";
+import {GradeScale} from "../entities/GradeScale.js";
+import {Enrollment} from "../entities/Enrollment.js";
 
 export class ProgramRepo {
     em: EntityManager;
@@ -121,6 +123,25 @@ export class ProgramRepo {
             admissionTest: a.admissionTest,
             student: a.student,
             score: a.score
+        })));
+    }
+
+    async bulkUpsertGradeScales(gradeScales: EntityData<GradeScale>[]) {
+        await this.em.upsertMany(GradeScale, gradeScales.map(g => ({
+            id: g.id,
+            letterGrade: g.letterGrade,
+            numericalValue: g.numericalValue
+        })));
+    }
+
+    async bulkUpsertEnrollments(enrollments: EntityData<Enrollment>[]) {
+        await this.em.upsertMany(Enrollment, enrollments.map(e => ({
+            id: e.id,
+            course: e.course,
+            student: e.student,
+            season: e.season,
+            year: e.year,
+            grade: e.grade
         })));
     }
 }

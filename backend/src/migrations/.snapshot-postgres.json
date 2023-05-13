@@ -355,6 +355,52 @@
           "nullable": false,
           "mappedType": "integer"
         },
+        "letter_grade": {
+          "name": "letter_grade",
+          "type": "varchar(255)",
+          "unsigned": false,
+          "autoincrement": false,
+          "primary": false,
+          "nullable": false,
+          "mappedType": "string"
+        },
+        "numerical_value": {
+          "name": "numerical_value",
+          "type": "double precision",
+          "unsigned": false,
+          "autoincrement": false,
+          "primary": false,
+          "nullable": false,
+          "mappedType": "double"
+        }
+      },
+      "name": "grade_scale",
+      "schema": "public",
+      "indexes": [
+        {
+          "keyName": "grade_scale_pkey",
+          "columnNames": [
+            "id"
+          ],
+          "composite": false,
+          "primary": true,
+          "unique": true
+        }
+      ],
+      "checks": [],
+      "foreignKeys": {}
+    },
+    {
+      "columns": {
+        "id": {
+          "name": "id",
+          "type": "int",
+          "unsigned": true,
+          "autoincrement": true,
+          "primary": true,
+          "nullable": false,
+          "mappedType": "integer"
+        },
         "name": {
           "name": "name",
           "type": "varchar(255)",
@@ -1387,6 +1433,134 @@
             "id"
           ],
           "referencedTableName": "public.study_plan",
+          "updateRule": "cascade"
+        }
+      }
+    },
+    {
+      "columns": {
+        "id": {
+          "name": "id",
+          "type": "int",
+          "unsigned": true,
+          "autoincrement": true,
+          "primary": true,
+          "nullable": false,
+          "mappedType": "integer"
+        },
+        "student_id": {
+          "name": "student_id",
+          "type": "int",
+          "unsigned": false,
+          "autoincrement": false,
+          "primary": false,
+          "nullable": false,
+          "mappedType": "integer"
+        },
+        "course_id": {
+          "name": "course_id",
+          "type": "int",
+          "unsigned": false,
+          "autoincrement": false,
+          "primary": false,
+          "nullable": false,
+          "mappedType": "integer"
+        },
+        "season": {
+          "name": "season",
+          "type": "text",
+          "unsigned": false,
+          "autoincrement": false,
+          "primary": false,
+          "nullable": false,
+          "enumItems": [
+            "Fall",
+            "Winter",
+            "Spring",
+            "Summer"
+          ],
+          "mappedType": "enum"
+        },
+        "year": {
+          "name": "year",
+          "type": "int",
+          "unsigned": false,
+          "autoincrement": false,
+          "primary": false,
+          "nullable": false,
+          "mappedType": "integer"
+        },
+        "grade_id": {
+          "name": "grade_id",
+          "type": "int",
+          "unsigned": false,
+          "autoincrement": false,
+          "primary": false,
+          "nullable": false,
+          "mappedType": "integer"
+        }
+      },
+      "name": "enrollment",
+      "schema": "public",
+      "indexes": [
+        {
+          "keyName": "enrollment_student_id_course_id_season_year_unique",
+          "columnNames": [
+            "student_id",
+            "course_id",
+            "season",
+            "year"
+          ],
+          "composite": true,
+          "primary": false,
+          "unique": true
+        },
+        {
+          "keyName": "enrollment_pkey",
+          "columnNames": [
+            "id"
+          ],
+          "composite": false,
+          "primary": true,
+          "unique": true
+        }
+      ],
+      "checks": [],
+      "foreignKeys": {
+        "enrollment_student_id_foreign": {
+          "constraintName": "enrollment_student_id_foreign",
+          "columnNames": [
+            "student_id"
+          ],
+          "localTableName": "public.enrollment",
+          "referencedColumnNames": [
+            "id"
+          ],
+          "referencedTableName": "public.user",
+          "updateRule": "cascade"
+        },
+        "enrollment_course_id_foreign": {
+          "constraintName": "enrollment_course_id_foreign",
+          "columnNames": [
+            "course_id"
+          ],
+          "localTableName": "public.enrollment",
+          "referencedColumnNames": [
+            "id"
+          ],
+          "referencedTableName": "public.course",
+          "updateRule": "cascade"
+        },
+        "enrollment_grade_id_foreign": {
+          "constraintName": "enrollment_grade_id_foreign",
+          "columnNames": [
+            "grade_id"
+          ],
+          "localTableName": "public.enrollment",
+          "referencedColumnNames": [
+            "id"
+          ],
+          "referencedTableName": "public.grade_scale",
           "updateRule": "cascade"
         }
       }
