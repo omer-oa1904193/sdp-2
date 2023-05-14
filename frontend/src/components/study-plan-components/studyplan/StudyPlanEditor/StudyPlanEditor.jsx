@@ -4,7 +4,15 @@ import {useUserStore} from "@/stores/userStore.js";
 import React, {useRef, useState} from "react";
 import styles from "./StudyPlanEditor.module.css"
 
-export function StudyPlanEditor({studyPlan, setStudyPlan, isEditable, setDirty, onCourseClicked, onElectiveClicked}) {
+export function StudyPlanEditor({
+                                    studyPlan,
+                                    setStudyPlan,
+                                    isEditable,
+                                    setDirty,
+                                    currentSemester,
+                                    onCourseClicked,
+                                    onElectiveClicked
+                                }) {
     const [errorCourseId, setErrorCourseId] = useState(null)
     const studyPlanEditor = useRef(null);
     const userStore = useUserStore();
@@ -44,6 +52,7 @@ export function StudyPlanEditor({studyPlan, setStudyPlan, isEditable, setDirty, 
             }),
         }).then(() => setDirty(false))
     }
+
 
     function onCardDropped(event, toYear, toSemester) {
         const mappingId = Number(event.dataTransfer.getData("mappingId"));
@@ -123,13 +132,12 @@ export function StudyPlanEditor({studyPlan, setStudyPlan, isEditable, setDirty, 
         }
 
         <div className={styles.mainPlan} ref={studyPlanEditor}>
-            {Array.from(studyPlan.yearMap).map(([yearOrder, semesterMap]) =>
-                <div key={yearOrder} className={styles.yearDiv}>
-                    <button className={styles.yearButton}>Year {yearOrder}</button>
+            {Array.from(studyPlan.yearMap).map(([year, semesterMap]) =>
+                <div key={year} className={styles.yearDiv}>
                     <div className={styles.yearSemesters}>
                         {Array.from(semesterMap).filter(([_, mappings]) => mappings.size !== 0).map(([semesterLabel, mappings]) => {
                             return <div key={semesterLabel} className={styles.semesterDiv}>
-                                <h3 className={styles.semesterButton}>{semesterLabel}</h3>
+                                <h3 className={styles.semesterButton}>{semesterLabel} {year}</h3>
                                 <ul className={styles.courseList}
                                     onDragOver={(e) => {
                                         e.preventDefault()
@@ -137,15 +145,19 @@ export function StudyPlanEditor({studyPlan, setStudyPlan, isEditable, setDirty, 
                                         e.target.closest(`.${styles.courseList}`).classList.add(styles.courseDropzone)
                                     }}
                                     onDrop={(e) => {
-                                        onCardDropped(e, yearOrder, semesterLabel)
+                                        onCardDropped(e, year, semesterLabel)
                                     }}>
                                     <StudyPlanCardList mappings={mappings}
-                                                       year={yearOrder}
+                                                       yearOrder={year}
                                                        season={semesterLabel}
+                                                       yearStarted={studyPlan.yearStarted}
                                                        isEditable={isEditable}
                                                        onCourseClicked={onCourseClicked}
                                                        onElectiveClicked={onElectiveClicked}
-                                                       setDirty={setDirty}/>
+                                                       setDirty={setDirty}
+                                                       currentSeason={currentSemester.season}
+                                                       currentYear={currentSemester.year}
+                                    />
                                 </ul>
                                 {/*{isEditable &&*/}
                                 {/*    <button className="add-course-button inv-button">*/}

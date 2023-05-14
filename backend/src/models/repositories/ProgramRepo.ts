@@ -99,16 +99,14 @@ export class ProgramRepo {
             id: m.id,
             course: m.course,
             program: m.program,
-            season: m.season,
-            yearOrder: m.yearOrder,
+            semesterOrder: m.semesterOrder,
             category: m.category,
         })));
         await this.em.upsertMany(MapElectivePackageProgram, electiveProgramMaps.map(m => ({
             id: m.id,
             electivePackage: m.electivePackage,
             program: m.program,
-            season: m.season,
-            yearOrder: m.yearOrder
+            semesterOrder: m.semesterOrder,
         })));
     }
 

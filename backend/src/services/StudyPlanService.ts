@@ -15,6 +15,7 @@ class StudyPlanService {
         const bodyValidator = z.object({
             name: z.string(),
             programId: z.number().min(0),
+            seasonStarted: z.nativeEnum(Season),
             yearStarted: z.number().min(0)
         })
         const body = bodyValidator.parse(req.body);
@@ -30,6 +31,7 @@ class StudyPlanService {
         const newStudyPlan = await studyPlanRepo.addStudentStudyPlan({
             name: body.name,
             yearStarted: body.yearStarted,
+            seasonStarted: body.seasonStarted,
             program: program,
             author: req.user!
         });

@@ -7,5 +7,5 @@ export const COURSE_CATEGORIES = {
 }
 
 export const SEASONS = [
-    "Fall", "Winter", "Spring", "Summer"
+    "Spring", "Summer", "Fall", "Winter",
 ]

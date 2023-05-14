@@ -96,10 +96,10 @@ class AdminService {
     }
 
     async getCurrentSemester(req: Request, res: Response) {
-        return {
+        return res.json({
             season: Season.FALL,
             year: 2023
-        }
+        })
     }
 }
 

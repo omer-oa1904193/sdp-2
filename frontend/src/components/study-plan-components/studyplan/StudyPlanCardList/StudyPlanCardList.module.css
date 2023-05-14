@@ -1,0 +1,10 @@
+.semester-course-list {
+    display: flex;
+    row-gap: 1rem;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.completedSemester {
+    opacity: 0.6;
+}

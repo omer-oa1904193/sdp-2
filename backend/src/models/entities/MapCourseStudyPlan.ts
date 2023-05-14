@@ -20,7 +20,7 @@ export class MapCourseStudyPlan extends CustomBaseEntity {
     season!: Season;
 
     @Property({type: types.integer})
-    yearOrder!: number;
+    year!: number;
 
     @Enum({items: () => CourseCategory, type: types.enum})
     category!: CourseCategory;

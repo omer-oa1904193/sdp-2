@@ -9,6 +9,7 @@ import {MapElectivePackageProgram} from "../entities/MapElectivePackageProgram.j
 import {Season} from "../enums/Season.js";
 import {CourseCategory} from "../enums/CourseCategory.js";
 import {wrap} from "@mikro-orm/core";
+import {getNthNextMajorTerm} from "../../utils.js";
 
 export class StudyPlanRepo {
     em: EntityManager;
@@ -23,7 +24,7 @@ export class StudyPlanRepo {
 
     async getStudentStudyPlan(student: User, studyPlanId: number) {
         const studyPlan = await this.em.findOne(StudyPlan, {id: studyPlanId}, {
-            orderBy: {courseMappings: {yearOrder: "asc"}, electiveMappings: {yearOrder: "asc"}},
+            orderBy: {courseMappings: {year: "asc"}, electiveMappings: {year: "asc"}},
             populate: ["program", "courseMappings", "courseMappings.course",
                 "electiveMappings", "electiveMappings.currentCourse", "electiveMappings.electivePackage"]
         });
@@ -34,40 +35,48 @@ export class StudyPlanRepo {
         return studyPlan;
     }
 
-    async addStudentStudyPlan(studyPlanData: { name: string, yearStarted: number, program: Program, author: User }) {
+    async addStudentStudyPlan(studyPlanData: { name: string, seasonStarted: Season, yearStarted: number, program: Program, author: User }) {
         const newStudyPlan = this.em.create(StudyPlan, {
             name: studyPlanData.name,
             program: studyPlanData.program,
             author: studyPlanData.author.id,
-            yearStarted: studyPlanData.yearStarted
+            seasonStarted: studyPlanData.seasonStarted,
+            yearStarted: studyPlanData.yearStarted,
         })
         await this.em.flush();
 
         const courseMappings = await this.em.find(MapCourseProgram, {program: studyPlanData.program});
         const electiveMappings = await this.em.find(MapElectivePackageProgram, {program: studyPlanData.program});
         if (courseMappings.length > 0)
-            await this.em.insertMany(MapCourseStudyPlan, courseMappings.map(m => ({
-                course: m.course,
-                studyPlan: newStudyPlan,
-                season: m.season,
-                yearOrder: m.yearOrder,
-                category: m.category,
-            })));
+            await this.em.insertMany(MapCourseStudyPlan, courseMappings.map(m => {
+                const [season, year] = getNthNextMajorTerm(newStudyPlan.seasonStarted, newStudyPlan.yearStarted, m.semesterOrder)
+                return {
+                    course: m.course,
+                    studyPlan: newStudyPlan,
+                    season: season,
+                    year: year,
+                    category: m.category
+                }
+            }));
         if (electiveMappings.length > 0)
-            await this.em.insertMany(MapElectivePackageStudyPlan, electiveMappings.map(m => ({
-                electivePackage: m.electivePackage,
-                studyPlan: newStudyPlan,
-                season: m.season,
-                yearOrder: m.yearOrder,
-            })));
+            await this.em.insertMany(MapElectivePackageStudyPlan, electiveMappings.map(m => {
+                const [season, year] = getNthNextMajorTerm(newStudyPlan.seasonStarted, newStudyPlan.yearStarted, m.semesterOrder)
+                return {
+                    electivePackage: m.electivePackage,
+                    studyPlan: newStudyPlan,
+                    season: season,
+                    year: year
+                }
+            }));
 
         return newStudyPlan;
     }
 
+
     async updateStudentStudyPlan(studyPlanId: number, updatedFields: {
         name?: string,
-        courseMappings?: { course: number, season: Season, yearOrder: number }[],
-        electivePackageMappings?: { id: number, season: Season, yearOrder: number, currentCourse?: number }[]
+        courseMappings?: { course: number, season: Season, year: number }[],
+        electivePackageMappings?: { id: number, season: Season, year: number, currentCourse?: number }[]
     }) {
         const studyPlan = await this.em.findOneOrFail(StudyPlan, {id: studyPlanId});
         if (updatedFields.name !== undefined)
@@ -86,19 +95,19 @@ export class StudyPlanRepo {
                 course: m.course,
                 studyPlan: studyPlan,
                 season: m.season,
-                yearOrder: m.yearOrder,
+                year: m.year,
                 category: CourseCategory.OTHER
             }))).onConflict(["study_plan_id", "course_id"])
                 .merge({
                     season: qb.raw('excluded.season'),
-                    yearOrder: qb.raw('excluded.year_order'),
+                    year: qb.raw('excluded.year_order'),
                 }).execute();
         }
 
 
         if (updatedFields.electivePackageMappings !== undefined) {
             const idToUpdatedData = updatedFields.electivePackageMappings.reduce((obj: {
-                [key: string]: { id: number, season: Season, yearOrder: number, currentCourse?: number };
+                [key: string]: { id: number, season: Season, year: number, currentCourse?: number };
             }, item) => {
                 obj[item.id] = item;
                 return obj;
@@ -107,7 +116,7 @@ export class StudyPlanRepo {
             mappings.forEach(m => {
                 wrap(m).assign({
                     season: idToUpdatedData[m.id].season,
-                    yearOrder: idToUpdatedData[m.id].yearOrder,
+                    year: idToUpdatedData[m.id].year,
                     currentCourse: idToUpdatedData[m.id].currentCourse ?? null
                 });
             })

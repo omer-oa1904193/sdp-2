@@ -1,6 +1,6 @@
 import {CustomBaseEntity} from "./CustomBaseEntity.js";
 import type {Rel} from "@mikro-orm/core";
-import {Collection, Entity, EntityDTO, ManyToMany, ManyToOne, OneToMany, Property, types} from "@mikro-orm/core";
+import {Collection, Entity, Enum, ManyToMany, ManyToOne, OneToMany, Property, types} from "@mikro-orm/core";
 import {User} from "./User.js";
 import {ElectivePackage} from "./ElectivePackage.js";
 import {Course} from "./Course.js";
@@ -8,11 +8,15 @@ import {Program} from "./Program.js";
 import {MapCourseStudyPlan} from "./MapCourseStudyPlan.js";
 import {MapElectivePackageStudyPlan} from "./MapElectivePackageStudyPlan.js";
 import {Comment} from "./Comment.js";
+import {Season} from "../enums/Season.js";
 
 @Entity()
 export class StudyPlan extends CustomBaseEntity {
     @Property({type: types.string})
     name!: string;
+
+    @Enum({items: () => Season, type: types.enum})
+    seasonStarted!: Season;
 
     @Property({type: types.integer})
     yearStarted!: number;

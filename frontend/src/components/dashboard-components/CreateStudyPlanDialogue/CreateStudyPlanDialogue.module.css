@@ -16,14 +16,14 @@
     row-gap: 1rem;
 }
 
-.buttons-div {
+.horizontal-div {
     display: flex;
     flex-direction: row;
     justify-content: center;
     column-gap: 1rem;
 }
 
-.buttons-div button {
+.horizontal-div > * {
     font-size: 1rem;
     padding: 0.9rem 0.5rem;
     flex: 1;

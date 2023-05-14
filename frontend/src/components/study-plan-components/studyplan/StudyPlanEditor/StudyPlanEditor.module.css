@@ -105,13 +105,14 @@
 .sp-editor .semester-button {
     background-color: white;
     border-radius: 7px;
+    font-size: 0.9rem;
     border: 3px solid #B1B1B1;
     font-weight: 600;
     color: #888888;
     padding: 0.5rem 1rem;
     text-align: center;
     user-select: none;
-    margin: 0.5rem 2vw;
+    margin: 0.5rem 0.5rem;
 }
 
 .sp-editor .add-course-button {

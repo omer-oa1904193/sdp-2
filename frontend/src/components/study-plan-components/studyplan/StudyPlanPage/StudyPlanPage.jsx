@@ -21,6 +21,10 @@ export function StudyPlanPage({studyPlanId, isEditable, isDirty, setDirty}) {
     const [courseDialogueCourse, setCourseDialogueCourse] = useState(null);
     const [selectElectiveDialogMapping, setSelectElectiveDialogMapping] = useState(null);
     const [selectedElectives, setSelectedElectives] = useState({});
+    const [currentSemester, setCurrentsemester] = useState();
+    useEffect(() => {
+        userStore.fetchProtected(`/semesters/current`).then(r => r.json()).then(d => setCurrentsemester(d))
+    }, [userStore])
     useEffect(() => {
         userStore.fetchProtected(`/study-plans/${studyPlanId}`)
             .then(r => r.json())
@@ -31,9 +35,9 @@ export function StudyPlanPage({studyPlanId, isEditable, isDirty, setDirty}) {
                     completed: 0, remaining: 0, progress: 0, creditHours: 0, tuitionFees: 0,
                 }
                 studyPlan.courseMappings.forEach(courseMapping => {
-                    if (!yearMap.has(courseMapping.yearOrder))
-                        yearMap.set(courseMapping.yearOrder, new Map(SEASONS.map(s => [s, new Map()])),);
-                    yearMap.get(courseMapping.yearOrder).get(courseMapping.season).set(`course-${courseMapping.id}`, {
+                    if (!yearMap.has(courseMapping.year))
+                        yearMap.set(courseMapping.year, new Map(SEASONS.map(s => [s, new Map()])),);
+                    yearMap.get(courseMapping.year).get(courseMapping.season).set(`course-${courseMapping.id}`, {
                         ...courseMapping,
                         isElective: false,
                     });
@@ -41,14 +45,14 @@ export function StudyPlanPage({studyPlanId, isEditable, isDirty, setDirty}) {
                     stats.tuitionFees += courseMapping.course.cost;
                 });
                 studyPlan.electiveMappings.forEach(electiveMapping => {
-                    if (!yearMap.has(electiveMapping.yearOrder))
-                        yearMap.set(electiveMapping.yearOrder, new Map(SEASONS.map(s => [s, new Map()])),);
+                    if (!yearMap.has(electiveMapping.year))
+                        yearMap.set(electiveMapping.year, new Map(SEASONS.map(s => [s, new Map()])),);
                     if (electiveMapping.currentCourse) {
                         if (!(electiveMapping.electivePackage.id in selectedElectives))
                             selectedElectives[electiveMapping.electivePackage.id] = new Set();
                         selectedElectives[electiveMapping.electivePackage.id].add(electiveMapping.currentCourse.id)
                     }
-                    yearMap.get(electiveMapping.yearOrder).get(electiveMapping.season).set(`elective-${electiveMapping.id}`, {
+                    yearMap.get(electiveMapping.year).get(electiveMapping.season).set(`elective-${electiveMapping.id}`, {
                         ...electiveMapping,
                         isElective: true
                     });
@@ -66,7 +70,7 @@ export function StudyPlanPage({studyPlanId, isEditable, isDirty, setDirty}) {
     }, [studyPlanId])
 
 
-    if (!studyPlan)
+    if (!studyPlan || !currentSemester)
         return <SpinnerOverlay/>
 
     return <>
@@ -86,7 +90,9 @@ export function StudyPlanPage({studyPlanId, isEditable, isDirty, setDirty}) {
                              isDirty={isDirty}
                              isEditable={isEditable}
                              onCourseClicked={(course) => setCourseDialogueCourse(course)}
-                             onElectiveClicked={(mapping) => setSelectElectiveDialogMapping(mapping)}/>
+                             onElectiveClicked={(mapping) => setSelectElectiveDialogMapping(mapping)}
+                             currentSemester={currentSemester}
+            />
             <SummeryPane studyPlan={studyPlan}/>
             <CourseDialogue course={courseDialogueCourse} setCourse={setCourseDialogueCourse}/>
             <SelectElectiveDialogue electiveMapping={selectElectiveDialogMapping}

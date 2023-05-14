@@ -605,23 +605,8 @@
           "nullable": false,
           "mappedType": "integer"
         },
-        "season": {
-          "name": "season",
-          "type": "text",
-          "unsigned": false,
-          "autoincrement": false,
-          "primary": false,
-          "nullable": false,
-          "enumItems": [
-            "Fall",
-            "Winter",
-            "Spring",
-            "Summer"
-          ],
-          "mappedType": "enum"
-        },
-        "year_order": {
-          "name": "year_order",
+        "semester_order": {
+          "name": "semester_order",
           "type": "int",
           "unsigned": false,
           "autoincrement": false,
@@ -710,23 +695,8 @@
           "nullable": false,
           "mappedType": "integer"
         },
-        "season": {
-          "name": "season",
-          "type": "text",
-          "unsigned": false,
-          "autoincrement": false,
-          "primary": false,
-          "nullable": false,
-          "enumItems": [
-            "Fall",
-            "Winter",
-            "Spring",
-            "Summer"
-          ],
-          "mappedType": "enum"
-        },
-        "year_order": {
-          "name": "year_order",
+        "semester_order": {
+          "name": "semester_order",
           "type": "int",
           "unsigned": false,
           "autoincrement": false,
@@ -1128,6 +1098,21 @@
           "nullable": false,
           "mappedType": "string"
         },
+        "season_started": {
+          "name": "season_started",
+          "type": "text",
+          "unsigned": false,
+          "autoincrement": false,
+          "primary": false,
+          "nullable": false,
+          "enumItems": [
+            "Fall",
+            "Winter",
+            "Spring",
+            "Summer"
+          ],
+          "mappedType": "enum"
+        },
         "year_started": {
           "name": "year_started",
           "type": "int",
@@ -1241,8 +1226,8 @@
           ],
           "mappedType": "enum"
         },
-        "year_order": {
-          "name": "year_order",
+        "year": {
+          "name": "year",
           "type": "int",
           "unsigned": false,
           "autoincrement": false,
@@ -1368,8 +1353,8 @@
           ],
           "mappedType": "enum"
         },
-        "year_order": {
-          "name": "year_order",
+        "year": {
+          "name": "year",
           "type": "int",
           "unsigned": false,
           "autoincrement": false,

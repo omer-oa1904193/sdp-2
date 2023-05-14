@@ -20,7 +20,7 @@ export class MapElectivePackageStudyPlan extends CustomBaseEntity {
     season!: Season;
 
     @Property({type: types.integer})
-    yearOrder!: number;
+    year!: number;
 
     @ManyToOne({entity: () => Course, nullable: true})
     currentCourse!: Rel<Course>;

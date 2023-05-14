@@ -1,8 +1,9 @@
 import { Migration } from '@mikro-orm/migrations';
 
-export class Migration20230513162234 extends Migration {
+export class Migration20230514143235 extends Migration {
 
   async up(): Promise<void> {
+
 
     this.addSql('create table "admission_test" ("id" serial primary key, "name" varchar(255) not null, "max_score" numeric(10,0) not null);');
 
@@ -25,10 +26,10 @@ export class Migration20230513162234 extends Migration {
 
     this.addSql('create table "program" ("id" serial primary key, "name" varchar(255) not null, "department_id" int not null, "year_created" int not null);');
 
-    this.addSql('create table "map_elective_package_program" ("id" serial primary key, "elective_package_id" int not null, "program_id" int not null, "season" text check ("season" in (\'Fall\', \'Winter\', \'Spring\', \'Summer\')) not null, "year_order" int not null);');
+    this.addSql('create table "map_elective_package_program" ("id" serial primary key, "elective_package_id" int not null, "program_id" int not null, "semester_order" int not null);');
     this.addSql('create index "map_elective_package_program_elective_package_id_pr_7ee95_index" on "map_elective_package_program" ("elective_package_id", "program_id");');
 
-    this.addSql('create table "map_course_program" ("id" serial primary key, "course_id" int not null, "program_id" int not null, "season" text check ("season" in (\'Fall\', \'Winter\', \'Spring\', \'Summer\')) not null, "year_order" int not null, "category" text check ("category" in (\'Major Course\', \'CCP Course\', \'College Requirement\', \'Major Supporting\', \'Major Elective\', \'Other\')) not null);');
+    this.addSql('create table "map_course_program" ("id" serial primary key, "course_id" int not null, "program_id" int not null, "semester_order" int not null, "category" text check ("category" in (\'Major Course\', \'CCP Course\', \'College Requirement\', \'Major Supporting\', \'Major Elective\', \'Other\')) not null);');
     this.addSql('alter table "map_course_program" add constraint "map_course_program_course_id_program_id_unique" unique ("course_id", "program_id");');
 
     this.addSql('create table "section" ("id" serial primary key, "course_id" int not null, "type" text check ("type" in (\'Lecture\', \'Lab\')) not null, "season" text check ("season" in (\'Fall\', \'Winter\', \'Spring\', \'Summer\')) not null, "year" int not null, "instructor_id" int not null);');
@@ -38,12 +39,12 @@ export class Migration20230513162234 extends Migration {
     this.addSql('create table "user" ("id" serial primary key, "email" varchar(255) not null, "password" varchar(255) not null, "role" text check ("role" in (\'Student\', \'Academic Advisor\', \'Program Coordinator\')) not null, "name" varchar(255) null, "university_id" varchar(255) null, "enrollment_season" text check ("enrollment_season" in (\'Fall\', \'Winter\', \'Spring\', \'Summer\')) null, "enrollment_year" int null);');
     this.addSql('alter table "user" add constraint "user_email_unique" unique ("email");');
 
-    this.addSql('create table "study_plan" ("id" serial primary key, "name" varchar(255) not null, "year_started" int not null, "program_id" int not null, "author_id" int not null);');
+    this.addSql('create table "study_plan" ("id" serial primary key, "name" varchar(255) not null, "season_started" text check ("season_started" in (\'Fall\', \'Winter\', \'Spring\', \'Summer\')) not null, "year_started" int not null, "program_id" int not null, "author_id" int not null);');
 
-    this.addSql('create table "map_elective_package_study_plan" ("id" serial primary key, "elective_package_id" int not null, "study_plan_id" int not null, "season" text check ("season" in (\'Fall\', \'Winter\', \'Spring\', \'Summer\')) not null, "year_order" int not null, "current_course_id" int null);');
+    this.addSql('create table "map_elective_package_study_plan" ("id" serial primary key, "elective_package_id" int not null, "study_plan_id" int not null, "season" text check ("season" in (\'Fall\', \'Winter\', \'Spring\', \'Summer\')) not null, "year" int not null, "current_course_id" int null);');
     this.addSql('create index "map_elective_package_study_plan_elective_package_id_70522_index" on "map_elective_package_study_plan" ("elective_package_id", "study_plan_id");');
 
-    this.addSql('create table "map_course_study_plan" ("id" serial primary key, "course_id" int not null, "study_plan_id" int not null, "season" text check ("season" in (\'Fall\', \'Winter\', \'Spring\', \'Summer\')) not null, "year_order" int not null, "category" text check ("category" in (\'Major Course\', \'CCP Course\', \'College Requirement\', \'Major Supporting\', \'Major Elective\', \'Other\')) not null);');
+    this.addSql('create table "map_course_study_plan" ("id" serial primary key, "course_id" int not null, "study_plan_id" int not null, "season" text check ("season" in (\'Fall\', \'Winter\', \'Spring\', \'Summer\')) not null, "year" int not null, "category" text check ("category" in (\'Major Course\', \'CCP Course\', \'College Requirement\', \'Major Supporting\', \'Major Elective\', \'Other\')) not null);');
     this.addSql('alter table "map_course_study_plan" add constraint "map_course_study_plan_course_id_study_plan_id_unique" unique ("course_id", "study_plan_id");');
 
     this.addSql('create table "enrollment" ("id" serial primary key, "student_id" int not null, "course_id" int not null, "season" text check ("season" in (\'Fall\', \'Winter\', \'Spring\', \'Summer\')) not null, "year" int not null, "grade_id" int not null);');
@@ -99,6 +100,8 @@ export class Migration20230513162234 extends Migration {
   }
 
   async down(): Promise<void> {
+
+
     this.addSql('alter table "admission_test_result" drop constraint "admission_test_result_admission_test_id_foreign";');
 
     this.addSql('alter table "department" drop constraint "department_college_id_foreign";');
