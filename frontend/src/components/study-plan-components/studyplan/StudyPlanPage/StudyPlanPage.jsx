@@ -29,37 +29,44 @@ export function StudyPlanPage({studyPlanId, isEditable, isDirty, setDirty}) {
         userStore.fetchProtected(`/study-plans/${studyPlanId}`)
             .then(r => r.json())
             .then(studyPlan => {
-                const yearMap = new Map();
+                const semesters = new Map();
                 const stats = {
                     courseCount: studyPlan.courseMappings.length + studyPlan.electiveMappings.length,
                     completed: 0, remaining: 0, progress: 0, creditHours: 0, tuitionFees: 0,
                 }
                 studyPlan.courseMappings.forEach(courseMapping => {
-                    if (!yearMap.has(courseMapping.year))
-                        yearMap.set(courseMapping.year, new Map(SEASONS.map(s => [s, new Map()])),);
-                    yearMap.get(courseMapping.year).get(courseMapping.season).set(`course-${courseMapping.id}`, {
+                    if (!semesters.has(`${courseMapping.season} ${courseMapping.year}`))
+                        semesters.set(`${courseMapping.season} ${courseMapping.year}`, new Map());
+                    semesters.get(`${courseMapping.season} ${courseMapping.year}`).set(`course-${courseMapping.id}`, {
                         ...courseMapping,
                         isElective: false,
+                        // get offering() {
+                        //     return this.course
+                        // }
                     });
                     stats.creditHours += courseMapping.course.creditHours;
                     stats.tuitionFees += courseMapping.course.cost;
                 });
                 studyPlan.electiveMappings.forEach(electiveMapping => {
-                    if (!yearMap.has(electiveMapping.year))
-                        yearMap.set(electiveMapping.year, new Map(SEASONS.map(s => [s, new Map()])),);
+                    if (!semesters.has(`${electiveMapping.season} ${electiveMapping.year}`))
+                        semesters.set(`${electiveMapping.season} ${electiveMapping.year}`, new Map());
                     if (electiveMapping.currentCourse) {
                         if (!(electiveMapping.electivePackage.id in selectedElectives))
                             selectedElectives[electiveMapping.electivePackage.id] = new Set();
                         selectedElectives[electiveMapping.electivePackage.id].add(electiveMapping.currentCourse.id)
                     }
-                    yearMap.get(electiveMapping.year).get(electiveMapping.season).set(`elective-${electiveMapping.id}`, {
+                    semesters.get(`${electiveMapping.season} ${electiveMapping.year}`).set(`elective-${electiveMapping.id}`, {
                         ...electiveMapping,
-                        isElective: true
+                        isElective: true,
+                        // get offering() {
+                        //     return this.electivePackage
+                        // }
                     });
+                    // stats.tuitionFees += electiveMapping.electivePackage.averageCost;
                     stats.creditHours += electiveMapping.electivePackage.creditHours;
                 });
 
-                setStudyPlan({...studyPlan, yearMap, stats});
+                setStudyPlan({...studyPlan, yearMap: semesters, stats});
             }).catch(e => {
             if (e.status === 404) {
                 router.push("/404")

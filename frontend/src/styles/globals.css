@@ -90,7 +90,7 @@ form input, form select {
 }
 
 .completed-course {
-    background-color: #AAAFB4;
+opacity: 0.6;
 }
 
 .major-course {

@@ -5,9 +5,7 @@ import React, {useState} from "react";
 import styles from "./StudyPlanCardList.module.css"
 
 export function StudyPlanCardList({
-                                      yearStarted,
-                                      yearOrder,
-                                      season,
+                                      semester,
                                       currentYear,
                                       currentSeason,
                                       mappings,
@@ -17,32 +15,39 @@ export function StudyPlanCardList({
                                       onElectiveClicked
                                   }) {
     const [errorCourseId, setErrorCourseId] = useState(null)
-    const isCompleted = compareSemesters(season, yearStarted + yearOrder - 1, currentSeason, currentYear) < 0;
-    return <div className={`${styles.semesterCourseList} ${isCompleted && styles.completedSemester}`}>
+    const [season, year] = semester.split(" ");
+    const isPastSemester = compareSemesters(season, year, currentSeason, currentYear) < 0;
+    return <div className={`${styles.semesterCourseList} ${isPastSemester && styles.completedSemester}`}>
         {Array.from(mappings).map(([_, mapping], cardIndex) =>
             <li key={mapping.id}
                 data-x={columnIndex}
                 data-y={cardIndex}
                 draggable={true}
                 onDragStart={(e) => {
-                    if (!isEditable || isCompleted) {
+                    let isCompleted;
+                    if (!mapping.isElective)
+                        isCompleted = mapping.course.enrollments.filter(e => e.grade.numericalValue > 1.0).length > 0;
+                    else
+                        isCompleted = (mapping?.electivePackage?.currentCourse?.enrollments?.filter(e => e.grade.numericalValue > 1.0))?.length > 0;
+                    if (!isEditable || (isPastSemester && isCompleted)) {
                         e.preventDefault();
                         return;
                     }
 
                     console.log(`${mapping.id} was dragged`)
                     e.dataTransfer.setData("mappingId", mapping.id);
-                    e.dataTransfer.setData("fromYear", yearOrder);
-                    e.dataTransfer.setData("fromSemester", season);
+                    e.dataTransfer.setData("fromSemester", semester);
                     e.dataTransfer.setData("isElective", mapping.isElective);
                 }}>
                 {mapping.isElective ?
                     <ElectiveCard electivePackageMapping={mapping}
+                                  isPastSemester={isPastSemester}
                                   onElectiveClicked={() => isEditable ? onElectiveClicked(mapping) : undefined}
                                   onCourseClicked={(course) => onCourseClicked(course)}
                                   errorHighlighted={errorCourseId === mapping.id}
                                   clearErrorHighlighted={() => setErrorCourseId(null)}/> :
                     <CourseCard courseMapping={mapping}
+                                isPastSemester={isPastSemester}
                                 onCourseClicked={() => onCourseClicked(mapping.course)}
                                 errorHighlighted={errorCourseId === mapping.id}
                                 clearErrorHighlighted={() => setErrorCourseId(null)}/>

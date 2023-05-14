@@ -1,4 +1,4 @@
-import {Collection, Entity, Enum, ManyToMany, Property, types} from "@mikro-orm/core";
+import {Collection, Entity, Enum, Formula, ManyToMany, Property, types} from "@mikro-orm/core";
 import {CustomBaseEntity} from "./CustomBaseEntity.js";
 import {Course} from "./Course.js";
 import {MapCourseElectivePackage} from "./MapCourseElectivePackage.js";

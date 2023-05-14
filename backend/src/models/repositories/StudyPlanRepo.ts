@@ -8,7 +8,7 @@ import {MapCourseProgram} from "../entities/MapCourseProgram.js";
 import {MapElectivePackageProgram} from "../entities/MapElectivePackageProgram.js";
 import {Season} from "../enums/Season.js";
 import {CourseCategory} from "../enums/CourseCategory.js";
-import {wrap} from "@mikro-orm/core";
+import {QueryOrder, wrap} from "@mikro-orm/core";
 import {getNthNextMajorTerm} from "../../utils.js";
 
 export class StudyPlanRepo {
@@ -29,8 +29,11 @@ export class StudyPlanRepo {
                 "electiveMappings", "electiveMappings.currentCourse", "electiveMappings.electivePackage"]
         });
         if (studyPlan) {
-            await this.em.getRepository(StudyPlan).populate(studyPlan, ["courseMappings.course.enrollments", "courseMappings.course.enrollments.grade"],
-                {where: {courseMappings: {course: {enrollments: {student: student.id}}}}})
+            await this.em.getRepository(StudyPlan).populate(studyPlan, ["courseMappings.course.enrollments.grade"],
+                {
+                    where: {courseMappings: {course: {enrollments: {student: student.id}}}},
+                    orderBy: {courseMappings: {course: {enrollments: {grade: {numericalValue: QueryOrder.DESC_NULLS_LAST}}}}},
+                })
         }
         return studyPlan;
     }

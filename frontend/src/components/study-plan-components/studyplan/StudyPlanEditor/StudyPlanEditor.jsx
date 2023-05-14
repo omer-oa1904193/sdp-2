@@ -18,30 +18,27 @@ export function StudyPlanEditor({
     const userStore = useUserStore();
 
     async function saveStudyPlan() {
-        const allMappings = [];
         const courseMappings = []
         const electivePackageMappings = [];
 
-        for (let y of studyPlan.yearMap.values()) {
-            for (let s of y.values()) {
-                for (let m of s.values()) {
-                    if (m.isElective) {
-                        electivePackageMappings.push({
-                            id: m.id,
-                            season: m.season,
-                            year: m.year,
-                            currentCourse: m.currentCourse?.id
-                        })
-                    } else
-                        courseMappings.push({
-                            course: m.course.id,
-                            season: m.season,
-                            year: m.year,
-                        })
-                }
+
+        for (let s of studyPlan.yearMap.values()) {
+            for (let m of s.values()) {
+                if (m.isElective) {
+                    electivePackageMappings.push({
+                        id: m.id,
+                        season: m.season,
+                        year: m.year,
+                        currentCourse: m.currentCourse?.id
+                    })
+                } else
+                    courseMappings.push({
+                        course: m.course.id,
+                        season: m.season,
+                        year: m.year,
+                    })
             }
         }
-        console.log(allMappings)
 
         userStore.fetchProtected(`/study-plans/${studyPlan.id}`, {
             method: "PATCH",
@@ -54,9 +51,8 @@ export function StudyPlanEditor({
     }
 
 
-    function onCardDropped(event, toYear, toSemester) {
+    function onCardDropped(event, toSemester) {
         const mappingId = Number(event.dataTransfer.getData("mappingId"));
-        const fromYear = Number(event.dataTransfer.getData("fromYear"));
         const fromSemester = event.dataTransfer.getData("fromSemester");
         const isElective = event.dataTransfer.getData("isElective").toLowerCase() === "true";
 
@@ -65,41 +61,38 @@ export function StudyPlanEditor({
             return
         courseListElement.classList.remove(styles.courseDropzone)
         const mappingType = isElective ? "elective" : "course";
-        const mapping = studyPlan.yearMap.get(fromYear).get(fromSemester).get(`${mappingType}-${mappingId}`);
-        console.log(`${mappingType} (id: ${mappingId}) was dropped from ${fromSemester} ${fromYear} to ${toSemester} ${toYear}`);
+        const mapping = studyPlan.yearMap.get(fromSemester).get(`${mappingType}-${mappingId}`);
+        console.log(`${mappingType} (id: ${mappingId}) was dropped from ${fromSemester} to ${toSemester}`);
 
-        if (fromSemester === toSemester && fromYear === toYear)
+        if (fromSemester === toSemester)
             return;
-        const updatedYearMap = new Map(studyPlan.yearMap)
-        updatedYearMap.get(toYear).get(toSemester).set(`${mappingType}-${mappingId}`, mapping);
-        updatedYearMap.get(fromYear).get(fromSemester).delete(`${mappingType}-${mappingId}`);
-        mapping.season = toSemester;
-        mapping.year = toYear;
+        const updatedSemesters = new Map(studyPlan.yearMap)
+        updatedSemesters.get(toSemester).set(`${mappingType}-${mappingId}`, mapping);
+        updatedSemesters.get(fromSemester).delete(`${mappingType}-${mappingId}`);
+        [mapping.season, mapping.year] = toSemester.split(" ");
+        mapping.year = Number(mapping.year);
 
         //check prerequisites are valid for every course in the plan
         const coursesBefore = [];
-        for (const s of updatedYearMap.values()) {
-            for (const ms of s.values()) {
-                const coursesSameSemester = Array.from(ms.values()).filter(m => !m.isElective).map(m => m.course.id);
-                for (const m of ms.values()) {
-                    if (!m.isElective) {
-                        const isValid = checkPrerequisites(m.course.prerequisites, coursesBefore, coursesSameSemester, userStore.user.admissionTestResults);
-                        if (!isValid) {
-                            console.log(`${m.course.code} has prerequisite conditions that are not fulfilled`)
-                            //undo
-                            updatedYearMap.get(fromYear).get(fromSemester).set(`${mappingType}-${mappingId}`, mapping);
-                            updatedYearMap.get(toYear).get(toSemester).delete(`${mappingType}-${mappingId}`);
-                            mapping.season = fromSemester;
-                            mapping.year = fromYear;
-                            return;
-                        }
+        for (const semester of updatedSemesters.values()) {
+            const coursesSameSemester = Array.from(semester.values()).filter(m => !m.isElective).map(m => m.course.id);
+            for (const m of semester.values()) {
+                if (!m.isElective) {
+                    const isValid = checkPrerequisites(m.course.prerequisites, coursesBefore, coursesSameSemester, userStore.user.admissionTestResults);
+                    if (!isValid) {
+                        console.log(`${m.course.code} has prerequisite conditions that are not fulfilled`)
+                        //undo
+                        updatedSemesters.get(fromSemester).set(`${mappingType}-${mappingId}`, mapping);
+                        updatedSemesters.get(toSemester).delete(`${mappingType}-${mappingId}`);
+                        [mapping.season, mapping.year] = fromSemester.split(" ");
+                        return;
                     }
                 }
-                coursesBefore.push(...coursesSameSemester)
             }
+            coursesBefore.push(...coursesSameSemester)
         }
 
-        setStudyPlan({...studyPlan, yearMap: updatedYearMap})
+        setStudyPlan({...studyPlan, yearMap: updatedSemesters})
         setDirty(true);
     }
 
@@ -132,42 +125,33 @@ export function StudyPlanEditor({
         }
 
         <div className={styles.mainPlan} ref={studyPlanEditor}>
-            {Array.from(studyPlan.yearMap).map(([year, semesterMap]) =>
-                <div key={year} className={styles.yearDiv}>
-                    <div className={styles.yearSemesters}>
-                        {Array.from(semesterMap).filter(([_, mappings]) => mappings.size !== 0).map(([semesterLabel, mappings]) => {
-                            return <div key={semesterLabel} className={styles.semesterDiv}>
-                                <h3 className={styles.semesterButton}>{semesterLabel} {year}</h3>
-                                <ul className={styles.courseList}
-                                    onDragOver={(e) => {
-                                        e.preventDefault()
-                                        document.querySelectorAll(`.${styles.courseList}`).forEach(e => e.classList.remove(styles.courseDropzone))
-                                        e.target.closest(`.${styles.courseList}`).classList.add(styles.courseDropzone)
-                                    }}
-                                    onDrop={(e) => {
-                                        onCardDropped(e, year, semesterLabel)
-                                    }}>
-                                    <StudyPlanCardList mappings={mappings}
-                                                       yearOrder={year}
-                                                       season={semesterLabel}
-                                                       yearStarted={studyPlan.yearStarted}
-                                                       isEditable={isEditable}
-                                                       onCourseClicked={onCourseClicked}
-                                                       onElectiveClicked={onElectiveClicked}
-                                                       setDirty={setDirty}
-                                                       currentSeason={currentSemester.season}
-                                                       currentYear={currentSemester.year}
-                                    />
-                                </ul>
-                                {/*{isEditable &&*/}
-                                {/*    <button className="add-course-button inv-button">*/}
-                                {/*        <FontAwesomeIcon icon={faPlus}/>*/}
-                                {/*    </button>*/}
-                                {/*}*/}
-                            </div>;
-                        })
-                        }
-                    </div>
+            {Array.from(studyPlan.yearMap).map(([semesterLabel, semesterCourses]) =>
+                <div key={semesterLabel} className={styles.semesterDiv}>
+                    <h3 className={styles.semesterButton}>{semesterLabel}</h3>
+                    <ul className={styles.courseList}
+                        onDragOver={(e) => {
+                            e.preventDefault()
+                            document.querySelectorAll(`.${styles.courseList}`).forEach(e => e.classList.remove(styles.courseDropzone))
+                            e.target.closest(`.${styles.courseList}`).classList.add(styles.courseDropzone)
+                        }}
+                        onDrop={(e) => {
+                            onCardDropped(e, semesterLabel)
+                        }}>
+                        <StudyPlanCardList mappings={semesterCourses}
+                                           semester={semesterLabel}
+                                           isEditable={isEditable}
+                                           onCourseClicked={onCourseClicked}
+                                           onElectiveClicked={onElectiveClicked}
+                                           setDirty={setDirty}
+                                           currentSeason={currentSemester.season}
+                                           currentYear={currentSemester.year}
+                        />
+                    </ul>
+                    {/*{isEditable &&*/}
+                    {/*    <button className="add-course-button inv-button">*/}
+                    {/*        <FontAwesomeIcon icon={faPlus}/>*/}
+                    {/*    </button>*/}
+                    {/*}*/}
                 </div>
             )}
         </div>
