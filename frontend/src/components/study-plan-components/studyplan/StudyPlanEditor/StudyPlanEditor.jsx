@@ -11,11 +11,10 @@ export function StudyPlanEditor({
                                     isEditable,
                                     setDirty,
                                     currentSemester,
+                                    showMessage,
                                     onCourseClicked,
                                     onElectiveClicked
                                 }) {
-    const [errorCourseId, setErrorCourseId] = useState(null)
-    const studyPlanEditor = useRef(null);
     const userStore = useUserStore();
 
     async function saveStudyPlan() {
@@ -48,7 +47,10 @@ export function StudyPlanEditor({
                 courseMappings: courseMappings,
                 electivePackageMappings: electivePackageMappings,
             }),
-        }).then(() => setDirty(false))
+        }).then(() => {
+            showMessage("Saved.");
+            setDirty(false)
+        })
     }
 
 
@@ -65,9 +67,13 @@ export function StudyPlanEditor({
         const mapping = studyPlan.yearMap.get(fromSemester).get(`${mappingType}-${mappingId}`);
         console.log(`${mappingType} (id: ${mappingId}) was dropped from ${fromSemester} to ${toSemester}`);
 
-        const isPastSemester = compareSemesters(toSemester, currentSemester) < 0;
-        if (fromSemester === toSemester || isPastSemester)
+
+        if (fromSemester === toSemester)
             return;
+        if (compareSemesters(toSemester, currentSemester) < 0) {
+            showMessage("Cannot drag to completed semester")
+            return;
+        }
         const updatedSemesters = new Map(studyPlan.yearMap)
         updatedSemesters.get(toSemester).set(`${mappingType}-${mappingId}`, mapping);
         updatedSemesters.get(fromSemester).delete(`${mappingType}-${mappingId}`);
@@ -82,7 +88,7 @@ export function StudyPlanEditor({
                 if (!m.isElective) {
                     const isValid = checkPrerequisites(m.course.prerequisites, coursesBefore, coursesSameSemester, userStore.user.admissionTestResults);
                     if (!isValid) {
-                        console.log(`${m.course.code} has prerequisite conditions that are not fulfilled`)
+                        showMessage(`${m.course.code} prerequisite not met in ${toSemester}`)
                         //undo
                         updatedSemesters.get(fromSemester).set(`${mappingType}-${mappingId}`, mapping);
                         updatedSemesters.get(toSemester).delete(`${mappingType}-${mappingId}`);
@@ -127,7 +133,7 @@ export function StudyPlanEditor({
             </>
         }
 
-        <div className={styles.mainPlan} ref={studyPlanEditor}>
+        <div className={styles.mainPlan}>
             {Array.from(studyPlan.yearMap).map(([semesterLabel, semesterCourses]) =>
                 <div key={semesterLabel} className={styles.semesterDiv}>
                     <h3 className={styles.semesterButton}>{semesterLabel} ({Array.from(semesterCourses.values()).reduce((t, c) => t + c.offering.creditHours, 0)})</h3>

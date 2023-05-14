@@ -1,3 +1,4 @@
+import {BottomMessage} from "@/components/common/ui/BottomMessage/BottomMessage.jsx";
 import {CircularIconButton} from "@/components/common/ui/CircularIconButton/CircularIconButton.jsx";
 import {SpinnerOverlay} from "@/components/common/ui/SpinnerOverlay/SpinnerOverlay.jsx";
 import {CourseDialogue} from "@/components/study-plan-components/studyplan/CourseDialogue/CourseDialogue.jsx";
@@ -7,6 +8,7 @@ import {
 import {StudyPlanEditor} from "@/components/study-plan-components/studyplan/StudyPlanEditor/StudyPlanEditor.jsx";
 import {SummeryPane} from "@/components/study-plan-components/studyplan/SummeryPane/SummeryPane.jsx";
 import {useUserStore} from "@/stores/userStore.js";
+import {compareSemesters} from "@/utils.js";
 import {faGear, faMessage, faPen} from "@fortawesome/free-solid-svg-icons";
 import {useRouter} from "next/router";
 import React, {useEffect, useState} from "react";
@@ -21,6 +23,7 @@ export function StudyPlanPage({studyPlanId, isEditable, isDirty, setDirty}) {
     const [selectElectiveDialogMapping, setSelectElectiveDialogMapping] = useState(null);
     const [selectedElectives, setSelectedElectives] = useState({});
     const [currentSemester, setCurrentsemester] = useState();
+    const [bottomMessage, setBottomMessage] = useState("Hello!");
     useEffect(() => {
         userStore.fetchProtected(`/semesters/current`).then(r => r.json()).then(d => setCurrentsemester(`${d.season} ${d.year}`))
     }, [userStore])
@@ -73,8 +76,11 @@ export function StudyPlanPage({studyPlanId, isEditable, isDirty, setDirty}) {
                     // stats.tuitionFees += electiveMapping.electivePackage.averageCost;
                     stats.creditHours += electiveMapping.electivePackage.creditHours;
                 });
-
-                setStudyPlan({...studyPlan, yearMap: semesters, stats});
+                setStudyPlan({
+                    ...studyPlan,
+                    yearMap: new Map([...semesters].sort((a, b) => compareSemesters(a[0], b[0]))),
+                    stats
+                });
             }).catch(e => {
             if (e.status === 404) {
                 router.push("/404")
@@ -104,6 +110,7 @@ export function StudyPlanPage({studyPlanId, isEditable, isDirty, setDirty}) {
                              setDirty={setDirty}
                              isDirty={isDirty}
                              isEditable={isEditable}
+                             showMessage={setBottomMessage}
                              onCourseClicked={(course) => setCourseDialogueCourse(course)}
                              onElectiveClicked={(mapping) => setSelectElectiveDialogMapping(mapping)}
                              currentSemester={currentSemester}
@@ -124,6 +131,7 @@ export function StudyPlanPage({studyPlanId, isEditable, isDirty, setDirty}) {
                                         setDirty(true);
                                         setSelectElectiveDialogMapping(null);
                                     }}/>
+            <BottomMessage message={bottomMessage} isShown={!!bottomMessage} hide={() => setBottomMessage("")}/>
         </div>
     </>
 
