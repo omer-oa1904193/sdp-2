@@ -17,7 +17,11 @@ export function encodeUrlQueryParams(data) {
     return params.filter(value => !!value).join("&");
 }
 
-export function compareSemesters(season1, year1, season2, year2) {
+export function compareSemesters(semester1, semester2) {
+    let [season1, year1] = semester1.split(" ");
+    year1 = Number(year1);
+    let [season2, year2] = semester2.split(" ");
+    year2 = Number(year2);
     // noinspection CommaExpressionJS
     const seasonsOrder = SEASONS.reduce((obj, val, idx) => (obj[val] = idx, obj), {});
     if (year1 === year2) {
@@ -27,8 +31,9 @@ export function compareSemesters(season1, year1, season2, year2) {
     }
 }
 
+
 export function compareMappings(mapping1, mapping2) {
-    return compareSemesters(mapping1.season, mapping1.year, mapping2.season, mapping1.year);
+    return compareSemesters(`${mapping1.season} ${mapping1.year}`, `${mapping2.season} ${mapping2.year}`);
 }
 
 

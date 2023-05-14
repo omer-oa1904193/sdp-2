@@ -6,17 +6,18 @@ import styles from "./StudyPlanCardList.module.css"
 
 export function StudyPlanCardList({
                                       semester,
-                                      currentYear,
-                                      currentSeason,
+                                      currentSemester,
                                       mappings,
                                       isEditable,
                                       columnIndex,
                                       onCourseClicked,
+                                      onDragEnd,
                                       onElectiveClicked
                                   }) {
+
     const [errorCourseId, setErrorCourseId] = useState(null)
     const [season, year] = semester.split(" ");
-    const isPastSemester = compareSemesters(season, year, currentSeason, currentYear) < 0;
+    const isPastSemester = compareSemesters(semester, currentSemester) < 0;
     return <div className={`${styles.semesterCourseList} ${isPastSemester && styles.completedSemester}`}>
         {Array.from(mappings).map(([_, mapping], cardIndex) =>
             <li key={mapping.id}
@@ -24,12 +25,7 @@ export function StudyPlanCardList({
                 data-y={cardIndex}
                 draggable={true}
                 onDragStart={(e) => {
-                    let isCompleted;
-                    if (!mapping.isElective)
-                        isCompleted = mapping.course.enrollments.filter(e => e.grade.numericalValue > 1.0).length > 0;
-                    else
-                        isCompleted = (mapping?.electivePackage?.currentCourse?.enrollments?.filter(e => e.grade.numericalValue > 1.0))?.length > 0;
-                    if (!isEditable || (isPastSemester && isCompleted)) {
+                    if (!isEditable || (isPastSemester && mapping.isCompleted)) {
                         e.preventDefault();
                         return;
                     }
@@ -38,7 +34,8 @@ export function StudyPlanCardList({
                     e.dataTransfer.setData("mappingId", mapping.id);
                     e.dataTransfer.setData("fromSemester", semester);
                     e.dataTransfer.setData("isElective", mapping.isElective);
-                }}>
+                }}
+                onDragEnd={onDragEnd}>
                 {mapping.isElective ?
                     <ElectiveCard electivePackageMapping={mapping}
                                   isPastSemester={isPastSemester}

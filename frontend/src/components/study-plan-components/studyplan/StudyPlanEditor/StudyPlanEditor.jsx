@@ -1,6 +1,7 @@
 import {ProgressBar} from "@/components/common/ui/ProgressBar/ProgressBar.jsx";
 import {StudyPlanCardList} from "@/components/study-plan-components/studyplan/StudyPlanCardList/StudyPlanCardList.jsx";
 import {useUserStore} from "@/stores/userStore.js";
+import {compareSemesters} from "@/utils.js";
 import React, {useRef, useState} from "react";
 import styles from "./StudyPlanEditor.module.css"
 
@@ -64,7 +65,8 @@ export function StudyPlanEditor({
         const mapping = studyPlan.yearMap.get(fromSemester).get(`${mappingType}-${mappingId}`);
         console.log(`${mappingType} (id: ${mappingId}) was dropped from ${fromSemester} to ${toSemester}`);
 
-        if (fromSemester === toSemester)
+        const isPastSemester = compareSemesters(toSemester, currentSemester) < 0;
+        if (fromSemester === toSemester || isPastSemester)
             return;
         const updatedSemesters = new Map(studyPlan.yearMap)
         updatedSemesters.get(toSemester).set(`${mappingType}-${mappingId}`, mapping);
@@ -85,6 +87,7 @@ export function StudyPlanEditor({
                         updatedSemesters.get(fromSemester).set(`${mappingType}-${mappingId}`, mapping);
                         updatedSemesters.get(toSemester).delete(`${mappingType}-${mappingId}`);
                         [mapping.season, mapping.year] = fromSemester.split(" ");
+                        mapping.year = Number(mapping.year);
                         return;
                     }
                 }
@@ -127,11 +130,11 @@ export function StudyPlanEditor({
         <div className={styles.mainPlan} ref={studyPlanEditor}>
             {Array.from(studyPlan.yearMap).map(([semesterLabel, semesterCourses]) =>
                 <div key={semesterLabel} className={styles.semesterDiv}>
-                    <h3 className={styles.semesterButton}>{semesterLabel}</h3>
+                    <h3 className={styles.semesterButton}>{semesterLabel} ({Array.from(semesterCourses.values()).reduce((t, c) => t + c.offering.creditHours, 0)})</h3>
                     <ul className={styles.courseList}
                         onDragOver={(e) => {
                             e.preventDefault()
-                            document.querySelectorAll(`.${styles.courseList}`).forEach(e => e.classList.remove(styles.courseDropzone))
+                            document.querySelectorAll(`.${styles.courseDropzone}`).forEach(e => e.classList.remove(styles.courseDropzone))
                             e.target.closest(`.${styles.courseList}`).classList.add(styles.courseDropzone)
                         }}
                         onDrop={(e) => {
@@ -143,8 +146,8 @@ export function StudyPlanEditor({
                                            onCourseClicked={onCourseClicked}
                                            onElectiveClicked={onElectiveClicked}
                                            setDirty={setDirty}
-                                           currentSeason={currentSemester.season}
-                                           currentYear={currentSemester.year}
+                                           currentSemester={currentSemester}
+                                           onDragEnd={() => document.querySelectorAll(`.${styles.courseDropzone}`).forEach(e => e.classList.remove(styles.courseDropzone))}
                         />
                     </ul>
                     {/*{isEditable &&*/}

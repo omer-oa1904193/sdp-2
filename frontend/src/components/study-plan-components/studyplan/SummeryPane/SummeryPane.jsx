@@ -30,7 +30,7 @@ export function SummeryPane({studyPlan}) {
                         <h5 className={styles.statHeader}>Number of Courses</h5>
                         <p className={styles.statValue}>{studyPlan.stats.courseCount}</p>
                         <h5 className={styles.statHeader}>Program Length</h5>
-                        <p className={styles.statValue}>{studyPlan.yearMap.size} years</p>
+                        <p className={styles.statValue}>{Math.floor(studyPlan.yearMap.size / 2)} years</p>
                         <h5 className={styles.statHeader}>Total Tuition Fee</h5>
                         <p className={styles.statValue}>{currencyFormatter.format(studyPlan.stats.tuitionFees)}</p>
                     </div>
@@ -41,7 +41,7 @@ export function SummeryPane({studyPlan}) {
                         </span>
                         <span className={styles.courseCountSpan}>
                             <p>Remaining Courses</p>
-                            <p>{studyPlan.stats.remaining}</p>
+                            <p>{studyPlan.stats.courseCount - studyPlan.stats.completed}</p>
                         </span>
                     </div>
                     <hr></hr>

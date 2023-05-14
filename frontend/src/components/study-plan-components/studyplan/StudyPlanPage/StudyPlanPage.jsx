@@ -6,7 +6,6 @@ import {
 } from "@/components/study-plan-components/studyplan/ElectiveDialogue/SelectElectiveDialogue.jsx";
 import {StudyPlanEditor} from "@/components/study-plan-components/studyplan/StudyPlanEditor/StudyPlanEditor.jsx";
 import {SummeryPane} from "@/components/study-plan-components/studyplan/SummeryPane/SummeryPane.jsx";
-import {SEASONS} from "@/constants.js";
 import {useUserStore} from "@/stores/userStore.js";
 import {faGear, faMessage, faPen} from "@fortawesome/free-solid-svg-icons";
 import {useRouter} from "next/router";
@@ -23,7 +22,7 @@ export function StudyPlanPage({studyPlanId, isEditable, isDirty, setDirty}) {
     const [selectedElectives, setSelectedElectives] = useState({});
     const [currentSemester, setCurrentsemester] = useState();
     useEffect(() => {
-        userStore.fetchProtected(`/semesters/current`).then(r => r.json()).then(d => setCurrentsemester(d))
+        userStore.fetchProtected(`/semesters/current`).then(r => r.json()).then(d => setCurrentsemester(`${d.season} ${d.year}`))
     }, [userStore])
     useEffect(() => {
         userStore.fetchProtected(`/study-plans/${studyPlanId}`)
@@ -32,20 +31,25 @@ export function StudyPlanPage({studyPlanId, isEditable, isDirty, setDirty}) {
                 const semesters = new Map();
                 const stats = {
                     courseCount: studyPlan.courseMappings.length + studyPlan.electiveMappings.length,
-                    completed: 0, remaining: 0, progress: 0, creditHours: 0, tuitionFees: 0,
+                    completed: 0, progress: 0, creditHours: 0, tuitionFees: 0,
                 }
                 studyPlan.courseMappings.forEach(courseMapping => {
                     if (!semesters.has(`${courseMapping.season} ${courseMapping.year}`))
                         semesters.set(`${courseMapping.season} ${courseMapping.year}`, new Map());
-                    semesters.get(`${courseMapping.season} ${courseMapping.year}`).set(`course-${courseMapping.id}`, {
+                    courseMapping = {
                         ...courseMapping,
                         isElective: false,
-                        // get offering() {
-                        //     return this.course
-                        // }
-                    });
+                        get offering() {
+                            return this.course
+                        },
+                        get isCompleted() {
+                            return this.course.enrollments.filter(e => e.grade.numericalValue > 1.0).length > 0;
+                        }
+                    }
+                    semesters.get(`${courseMapping.season} ${courseMapping.year}`).set(`course-${courseMapping.id}`, courseMapping);
                     stats.creditHours += courseMapping.course.creditHours;
                     stats.tuitionFees += courseMapping.course.cost;
+                    stats.completed += courseMapping.isCompleted;
                 });
                 studyPlan.electiveMappings.forEach(electiveMapping => {
                     if (!semesters.has(`${electiveMapping.season} ${electiveMapping.year}`))
@@ -55,13 +59,17 @@ export function StudyPlanPage({studyPlanId, isEditable, isDirty, setDirty}) {
                             selectedElectives[electiveMapping.electivePackage.id] = new Set();
                         selectedElectives[electiveMapping.electivePackage.id].add(electiveMapping.currentCourse.id)
                     }
-                    semesters.get(`${electiveMapping.season} ${electiveMapping.year}`).set(`elective-${electiveMapping.id}`, {
+                    electiveMapping = {
                         ...electiveMapping,
                         isElective: true,
-                        // get offering() {
-                        //     return this.electivePackage
-                        // }
-                    });
+                        get offering() {
+                            return this.electivePackage
+                        },
+                        get isCompleted() {
+                            return this.electivePackage.currentCourse && this.electivePackage.currentCourse.enrollments.filter(e => e.grade.numericalValue > 1.0).length > 0;
+                        }
+                    }
+                    semesters.get(`${electiveMapping.season} ${electiveMapping.year}`).set(`elective-${electiveMapping.id}`, electiveMapping);
                     // stats.tuitionFees += electiveMapping.electivePackage.averageCost;
                     stats.creditHours += electiveMapping.electivePackage.creditHours;
                 });

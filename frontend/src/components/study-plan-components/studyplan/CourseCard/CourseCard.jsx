@@ -1,20 +1,16 @@
 import {COURSE_CATEGORIES} from "@/constants.js";
-import {faCaretDown, faExclamationCircle} from "@fortawesome/free-solid-svg-icons";
-import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 import {useEffect, useRef} from "react";
 // import {COURSE_CATEGORIES} from "../../../../constants.js";
 import styles from "./CourseCard.module.css";
 
 
-export function CourseCard({courseMapping,isPastSemester, onCourseClicked, errorHighlighted, clearErrorHighlighted}) {
+export function CourseCard({courseMapping, isPastSemester, onCourseClicked, errorHighlighted, clearErrorHighlighted}) {
     const courseCard = useRef(null);
     useEffect(() => courseCard.current?.addEventListener("animationend", () => clearErrorHighlighted()), [courseCard])
-    const isCompleted = courseMapping.course.enrollments.filter(e => e.grade.numericalValue > 1.0).length > 0;
-
     return <div onClick={onCourseClicked}
                 ref={courseCard}
                 id={`course-${courseMapping.id}`}
-                className={`${styles.courseCard} ${getCategoryClass(courseMapping.category)} ${(isCompleted&&isPastSemester) ? "completed-course" : ""} ${errorHighlighted ? "error-highlighted" : ""}`}>
+                className={`${styles.courseCard} ${getCategoryClass(courseMapping.category)} ${(courseMapping.isCompleted && isPastSemester) ? "completed-course" : ""} ${errorHighlighted ? "error-highlighted" : ""}`}>
         {/*<FontAwesomeIcon icon={faGripVertical}></FontAwesomeIcon>*/}
         <div className={styles.titleDiv}>
             <h4 className={styles.courseTitle} lang="en">{courseMapping.course.title}</h4>

@@ -29,10 +29,16 @@ export class StudyPlanRepo {
                 "electiveMappings", "electiveMappings.currentCourse", "electiveMappings.electivePackage"]
         });
         if (studyPlan) {
-            await this.em.getRepository(StudyPlan).populate(studyPlan, ["courseMappings.course.enrollments.grade"],
+            await this.em.getRepository(StudyPlan).populate(studyPlan, ["courseMappings.course.enrollments.grade", "electiveMappings.currentCourse.enrollments.grade"],
                 {
-                    where: {courseMappings: {course: {enrollments: {student: student.id}}}},
-                    orderBy: {courseMappings: {course: {enrollments: {grade: {numericalValue: QueryOrder.DESC_NULLS_LAST}}}}},
+                    where: {
+                        courseMappings: {course: {enrollments: {student: student.id}}},
+                        electiveMappings: {currentCourse: {enrollments: {student: student.id}}}
+                    },
+                    orderBy: {
+                        courseMappings: {course: {enrollments: {grade: {numericalValue: QueryOrder.DESC_NULLS_LAST}}}},
+                        electiveMappings: {currentCourse: {enrollments: {grade: {numericalValue: QueryOrder.DESC_NULLS_LAST}}}}
+                    },
                 })
         }
         return studyPlan;
