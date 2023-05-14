@@ -29,14 +29,14 @@ export function StudyPlanEditor({
                         electivePackageMappings.push({
                             id: m.id,
                             season: m.season,
-                            yearOrder: m.yearOrder,
+                            year: m.year,
                             currentCourse: m.currentCourse?.id
                         })
                     } else
                         courseMappings.push({
                             course: m.course.id,
                             season: m.season,
-                            yearOrder: m.yearOrder,
+                            year: m.year,
                         })
                 }
             }
@@ -74,7 +74,7 @@ export function StudyPlanEditor({
         updatedYearMap.get(toYear).get(toSemester).set(`${mappingType}-${mappingId}`, mapping);
         updatedYearMap.get(fromYear).get(fromSemester).delete(`${mappingType}-${mappingId}`);
         mapping.season = toSemester;
-        mapping.yearOrder = toYear;
+        mapping.year = toYear;
 
         //check prerequisites are valid for every course in the plan
         const coursesBefore = [];
@@ -90,7 +90,7 @@ export function StudyPlanEditor({
                             updatedYearMap.get(fromYear).get(fromSemester).set(`${mappingType}-${mappingId}`, mapping);
                             updatedYearMap.get(toYear).get(toSemester).delete(`${mappingType}-${mappingId}`);
                             mapping.season = fromSemester;
-                            mapping.yearOrder = fromYear;
+                            mapping.year = fromYear;
                             return;
                         }
                     }

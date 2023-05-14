@@ -44,17 +44,17 @@ const AnalyzeForm = () => {
                     completed: 0, remaining: 0, progress: 0, creditHours: 0, tuitionFees: 0,
                 }
                 studyPlan.courseMappings.forEach(courseMapping => {
-                    if (!yearMap.has(courseMapping.yearOrder))
-                        yearMap.set(courseMapping.yearOrder, new Map(SEASONS.map(s => [s, new Map()])),);
-                    yearMap.get(courseMapping.yearOrder).get(courseMapping.season).set(`course-${courseMapping.id}`, {
+                    if (!yearMap.has(courseMapping.year))
+                        yearMap.set(courseMapping.year, new Map(SEASONS.map(s => [s, new Map()])),);
+                    yearMap.get(courseMapping.year).get(courseMapping.season).set(`course-${courseMapping.id}`, {
                         ...courseMapping,
                         isElective: false
                     });
                 });
                 studyPlan.electiveMappings.forEach(electiveMapping => {
-                    if (!yearMap.has(electiveMapping.yearOrder))
-                        yearMap.set(electiveMapping.yearOrder, new Map(SEASONS.map(s => [s, new Map()])),);
-                    yearMap.get(electiveMapping.yearOrder).get(electiveMapping.season).set(`elective-${electiveMapping.id}`, {
+                    if (!yearMap.has(electiveMapping.year))
+                        yearMap.set(electiveMapping.year, new Map(SEASONS.map(s => [s, new Map()])),);
+                    yearMap.get(electiveMapping.year).get(electiveMapping.season).set(`elective-${electiveMapping.id}`, {
                         ...electiveMapping,
                         isElective: true
                     });

@@ -42,7 +42,7 @@ export default function Score({ studyPlan }) {
                     let numericCode = parseInt(numericPart);
                     let firstNumber = Math.floor(numericCode / 100);
 
-                    if (firstNumber > subValue.yearOrder) {
+                    if (firstNumber > subValue.year) {
                         courseCodeDifficulty++;
                     }
                 }

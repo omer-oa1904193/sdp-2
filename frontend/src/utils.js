@@ -28,7 +28,7 @@ export function compareSemesters(season1, year1, season2, year2) {
 }
 
 export function compareMappings(mapping1, mapping2) {
-    return compareSemesters(mapping1.season, mapping1.yearOrder, mapping2.season, mapping1.yearOrder);
+    return compareSemesters(mapping1.season, mapping1.year, mapping2.season, mapping1.year);
 }
 
 

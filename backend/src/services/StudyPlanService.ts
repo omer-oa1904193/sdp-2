@@ -61,12 +61,12 @@ class StudyPlanService {
             courseMappings: z.array(z.object({
                 course: z.number().min(0),
                 season: z.nativeEnum(Season),
-                yearOrder: z.number().min(1)
+                year: z.number().min(1)
             })),
             electivePackageMappings: z.array(z.object({
                 id: z.number().min(0),
                 season: z.nativeEnum(Season),
-                yearOrder: z.number().min(1),
+                year: z.number().min(1),
                 currentCourse: z.number().min(0).optional()
             }))
         })

@@ -100,7 +100,7 @@ export class StudyPlanRepo {
             }))).onConflict(["study_plan_id", "course_id"])
                 .merge({
                     season: qb.raw('excluded.season'),
-                    year: qb.raw('excluded.year_order'),
+                    year: qb.raw('excluded.year'),
                 }).execute();
         }
 
