@@ -1,5 +1,6 @@
+import {MESSAGE_TYPES} from "@/components/common/ui/BottomMessage/BottomMessage.jsx";
 import {ProgressBar} from "@/components/common/ui/ProgressBar/ProgressBar.jsx";
-import {StudyPlanCardList} from "@/components/study-plan-components/studyplan/StudyPlanCardList/StudyPlanCardList.jsx";
+import {StudyPlanCardList} from "@/components/study-plan-components/StudyPlanCardList/StudyPlanCardList.jsx";
 import {useUserStore} from "@/stores/userStore.js";
 import {compareSemesters} from "@/utils.js";
 import React, {useRef, useState} from "react";
@@ -48,7 +49,7 @@ export function StudyPlanEditor({
                 electivePackageMappings: electivePackageMappings,
             }),
         }).then(() => {
-            showMessage("Saved.");
+            showMessage({text: "Saved.", type: MESSAGE_TYPES.OK});
             setDirty(false)
         })
     }
@@ -71,7 +72,7 @@ export function StudyPlanEditor({
         if (fromSemester === toSemester)
             return;
         if (compareSemesters(toSemester, currentSemester) < 0) {
-            showMessage("Cannot drag to completed semester")
+            showMessage({text: "Cannot drag to completed semester", type: MESSAGE_TYPES.ERROR})
             return;
         }
         const updatedSemesters = new Map(studyPlan.yearMap)
@@ -88,7 +89,10 @@ export function StudyPlanEditor({
                 if (!m.isElective) {
                     const isValid = checkPrerequisites(m.course.prerequisites, coursesBefore, coursesSameSemester, userStore.user.admissionTestResults);
                     if (!isValid) {
-                        showMessage(`${m.course.code} prerequisite not met in ${toSemester}`)
+                        showMessage({
+                            text: `${m.course.code} prerequisite not met in ${toSemester}`,
+                            type: MESSAGE_TYPES.ERROR
+                        })
                         //undo
                         updatedSemesters.get(fromSemester).set(`${mappingType}-${mappingId}`, mapping);
                         updatedSemesters.get(toSemester).delete(`${mappingType}-${mappingId}`);

@@ -1,7 +1,7 @@
 import {SpinnerOverlay} from "@/components/common/ui/SpinnerOverlay/SpinnerOverlay.jsx";
 import {useUserStore} from "@/stores/userStore.js";
 import {useEffect, useState} from "react";
-import {Dialogue} from "../../../common/ui/Dialogue/Dialogue.jsx";
+import {Dialogue} from "../../common/ui/Dialogue/Dialogue.jsx";
 import styles from "./SelectElectiveDialogue.module.css"
 
 export function SelectElectiveDialogue({electiveMapping, setMapping, packageSelectedElectivesSet, onElectiveSelected}) {

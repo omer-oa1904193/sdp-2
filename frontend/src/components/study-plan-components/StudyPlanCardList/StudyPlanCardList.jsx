@@ -1,5 +1,5 @@
-import {CourseCard} from "@/components/study-plan-components/studyplan/CourseCard/CourseCard.jsx";
-import {ElectiveCard} from "@/components/study-plan-components/studyplan/ElectiveCard/ElectiveCard.jsx";
+import {CourseCard} from "@/components/study-plan-components/CourseCard/CourseCard.jsx";
+import {ElectiveCard} from "@/components/study-plan-components/ElectiveCard/ElectiveCard.jsx";
 import {compareSemesters} from "@/utils.js";
 import React, {useState} from "react";
 import styles from "./StudyPlanCardList.module.css"

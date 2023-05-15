@@ -4,7 +4,7 @@ import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 import {useEffect, useRef, useState} from "react";
 import styles from "./SummeryPane.module.css"
 
-export function SummeryPane({studyPlan}) {
+export function SummeryPane({studyPlan,currentSemester}) {
     const pane = useRef();
     const [isOpen, setOpen] = useState(true)
     useEffect(() => {
@@ -26,22 +26,26 @@ export function SummeryPane({studyPlan}) {
                         <h3 className={styles.statHeader}>Summery</h3>
                         <hr></hr>
                         <h5 className={styles.statHeader}>Credit Hours</h5>
-                        <p className={styles.statValue}>{studyPlan.stats.creditHours}</p>
+                        <p className={styles.statValue}>{studyPlan.stats.earnedCreditHours}/{studyPlan.stats.creditHours}</p>
                         <h5 className={styles.statHeader}>Number of Courses</h5>
                         <p className={styles.statValue}>{studyPlan.stats.courseCount}</p>
                         <h5 className={styles.statHeader}>Program Length</h5>
                         <p className={styles.statValue}>{Math.floor(studyPlan.yearMap.size / 2)} years</p>
                         <h5 className={styles.statHeader}>Total Tuition Fee</h5>
                         <p className={styles.statValue}>{currencyFormatter.format(studyPlan.stats.tuitionFees)}</p>
+                        <h5 className={styles.statHeader}>Current Semester</h5>
+                        <p className={styles.statValue}>{currentSemester}</p>
+                        <h5 className={styles.statHeader}>GPA</h5>
+                        <p className={styles.statValue}>{studyPlan.stats.gpa}</p>
                     </div>
                     <div className={styles.courseCounts}>
                         <span className={styles.courseCountSpan}>
                             <p>Completed Courses</p>
-                            <p>{studyPlan.stats.completed}</p>
+                            <p>{studyPlan.stats.completedCourses}</p>
                         </span>
                         <span className={styles.courseCountSpan}>
                             <p>Remaining Courses</p>
-                            <p>{studyPlan.stats.courseCount - studyPlan.stats.completed}</p>
+                            <p>{studyPlan.stats.courseCount - studyPlan.stats.completedCourses}</p>
                         </span>
                     </div>
                     <hr></hr>

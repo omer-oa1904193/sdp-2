@@ -1,4 +1,4 @@
-import {StudyPlanPage} from "@/components/study-plan-components/studyplan/StudyPlanPage/StudyPlanPage.jsx";
+import {StudyPlanPage} from "@/components/study-plan-components/StudyPlanPage/StudyPlanPage.jsx";
 import {useRouter} from "next/router";
 import React from "react";
 

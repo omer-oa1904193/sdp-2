@@ -3,10 +3,16 @@
     bottom: 2rem;
     left: 1rem;
     z-index: 3;
+    transition: transform 0.3s ease-in-out;
+    transform: translateX(-100%) translateX(-2rem);
 }
 
+.visible {
+    transform: none;
+}
+
+
 .message-box {
-    background-color: red;
     color: white;
     font-size: 0.85rem;
     font-weight: bold;
@@ -17,6 +23,22 @@
     column-gap: 0.2rem;
     border-radius: 4px;
     padding: 0.5rem 0.5rem;
+}
+
+.error-message {
+    background-color: red;
+}
+
+.warning-message {
+    background-color: yellow;
+}
+
+.ok-message {
+    background-color: green;
+}
+
+.info-message {
+    background-color: white;
 }
 
 .icon-button {

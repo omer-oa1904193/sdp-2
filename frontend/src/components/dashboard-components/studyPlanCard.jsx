@@ -1,30 +1,30 @@
-import React, { useState, useEffect } from "react";
+import React, {useState, useEffect} from "react";
 import Link from "next/link";
 import Paper from "@mui/material/Paper";
-import { Box, Grid, Stack } from "@mui/material";
+import {Box, Grid, Stack} from "@mui/material";
 import Typography from "@mui/material/Typography";
 import styles from "./StudyPlanCard.module.css";
 import clsx from "clsx";
 import CheckIconButton from "./activeCheckIcon";
-import DeleteIcon from '@mui/icons-material/Delete';
-import EditIcon from '@mui/icons-material/Edit';
-import IconButton from '@mui/material/IconButton';
-import { styled } from '@mui/material/styles';
+import DeleteIcon from "@mui/icons-material/Delete";
+import EditIcon from "@mui/icons-material/Edit";
+import IconButton from "@mui/material/IconButton";
+import {styled} from "@mui/material/styles";
 import EditStudyPlanCard from "./editStudyPlanCard";
 import RectangularButton from "../../components/dashboard-components/rectangularButton";
 
-export default function StudyPlanCard({ studyPlan, isActive }) {
+export default function StudyPlanCard({studyPlan, isActive}) {
 
-    const EditButton = styled(IconButton)(({ theme }) => ({
-        color: '#FFFFFF',
-        background: '#267BAA',
-        borderRadius: '50%',
-        '&:hover': {
-            background: '#267BAA',
-            color: '#FFFFFF',
+    const EditButton = styled(IconButton)(({theme}) => ({
+        color: "#FFFFFF",
+        background: "#267BAA",
+        borderRadius: "50%",
+        "&:hover": {
+            background: "#267BAA",
+            color: "#FFFFFF",
         },
-        width: '24px',
-        height: '24px',
+        width: "24px",
+        height: "24px",
     }));
 
     const [isEditDialogOpen, setIsEditDialogOpen] = useState(false);
@@ -35,40 +35,37 @@ export default function StudyPlanCard({ studyPlan, isActive }) {
     };
 
     return (
-   
-            <Box
+
+        <Box
+            sx={{
+                display: "flex",
+                flexWrap: "wrap",
+                "& > :not(style)": {
+                    m: 1,
+                },
+            }}
+        >
+            <Paper
+                className={clsx(styles.studyPlanCard, {
+                    [styles.active]: isActive,
+                })}
+                elevation={1}
                 sx={{
                     display: "flex",
-                    flexWrap: "wrap",
-                    "& > :not(style)": {
-                        m: 1,
-                        width: 200,
-                        height: 150,
-                    },
-                }}
-            >
-                <Paper
-                    className={clsx(styles["study-plan-card"], {
-                        [styles.active]: isActive,
-                    })}
-                    elevation={1}
-                    sx={{
-                        display: "flex",
-                        flexDirection: "column",
-                        justifyContent: "space-between"
-                    }}
-                >
-                    <Box className={styles["image-wrapper"]}>
-                        <img src="/images/study-plan.png" alt="Study Plan" />
+                    flexDirection: "column",
+                    justifyContent: "space-between"
+                }}>
+                <Link style={{height: "100%", textDecoration: "none"}} href={`study-plans/${studyPlan.id}`}>
+                    <Box className={styles.imageWrapper}>
+                        <img src="/study-plan.png" alt="Study Plan"/>
                     </Box>
                     <Box>
                         <Grid container spacing={2} justifyContent="space-between" alignItems="flex-end">
-                            <Grid item xs={8} sx={{ height: '100%', padding: '0px', margin: '0px' }}>
-                            <Link style={{height:"100%",textDecoration: "none" }} href={`study-plans/${studyPlan.id}`}>
+                            <Grid item xs={8} sx={{height: "100%", padding: "0px", margin: "0px"}}>
                                 <Box>
                                     <Typography
                                         color="#B1B1B1"
-                                        sx={{ lineHeight: "1.2em" }}
+                                        sx={{lineHeight: "1.2em"}}
                                         variant="h6"
                                         noWrap
                                     >
@@ -76,29 +73,32 @@ export default function StudyPlanCard({ studyPlan, isActive }) {
                                     </Typography>
                                     <Typography
                                         color="#B1B1B1"
-                                        sx={{ lineHeight: "1.2em" }}
+                                        sx={{lineHeight: "1.2em"}}
                                         variant="body2"
                                         noWrap
                                     >
                                         {studyPlan.program.name}
                                     </Typography>
                                 </Box>
-                                </Link>
                             </Grid>
-                            
-                            <Grid item xs={4} sx={{ display: "flex", justifyContent: "flex-end" }}>
+
+                            <Grid item xs={4} sx={{display: "flex", justifyContent: "flex-end"}}>
 
                                 {isActive ? <Stack direction="row">
-                                    <CheckIconButton />
-                                    <EditIcon />
-                                </Stack>
+                                        <CheckIconButton/>
+                                        <EditIcon/>
+                                    </Stack>
                                     :
                                     <>
-                                        <EditButton onClick={(event)=> {handleEditButtonClick(event)}} aria-label="settings">
-                                            <EditIcon sx={{ fontSize: '16px' }} />
+                                        <EditButton onClick={(event) => {
+                                            handleEditButtonClick(event)
+                                        }} aria-label="settings">
+                                            <EditIcon sx={{fontSize: "16px"}}/>
                                         </EditButton>
                                         {isEditDialogOpen && (
-                                            <EditStudyPlanCard isEditDialogOpen={isEditDialogOpen} setIsEditDialogOpen={setIsEditDialogOpen} studyPlan={studyPlan} />
+                                            <EditStudyPlanCard isEditDialogOpen={isEditDialogOpen}
+                                                               setIsEditDialogOpen={setIsEditDialogOpen}
+                                                               studyPlan={studyPlan}/>
                                         )}
                                     </>
                                 }
@@ -107,15 +107,16 @@ export default function StudyPlanCard({ studyPlan, isActive }) {
                             </Grid>
                         </Grid>
                     </Box>
+                </Link>
 
-                    <RectangularButton
-                        text="Analyze study plan"
-                        studyPlan={studyPlan}
-                        key={studyPlan.id}
-                        linkTo={`analyze/student/${studyPlan.id}`}
-                    />
-                    {/* <DeleteIcon></DeleteIcon> */}
-                </Paper>
-            </Box>
+                <RectangularButton
+                    text="Analyze study plan"
+                    studyPlan={studyPlan}
+                    key={studyPlan.id}
+                    linkTo={`analyze/student/${studyPlan.id}`}
+                />
+                {/* <DeleteIcon></DeleteIcon> */}
+            </Paper>
+        </Box>
     );
 }

@@ -1,4 +1,4 @@
-import express from "express";
+import express, {static} from "express";
 import morgan from "morgan";
 import {router} from "./router.js";
 import {MikroORM} from "@mikro-orm/core";
@@ -8,14 +8,14 @@ import cors from "cors";
 
 export const server = express();
 
-const corsOptions ={
-   origin:'*', 
-   credentials:true,
-   optionSuccessStatus:200,
+const corsOptions = {
+    origin: '*',
+    credentials: true,
+    optionSuccessStatus: 200,
 }
 
 server.use(cors(corsOptions))
-
+server.use(express.static('public'))
 server.use(express.json())
 server.use(morgan("tiny"));
 server.use("/api", attachOrmEntityManagerMiddleware, router);

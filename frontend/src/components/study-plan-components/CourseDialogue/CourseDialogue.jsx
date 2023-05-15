@@ -1,5 +1,5 @@
 import {currencyFormatter} from "@/utils.js";
-import {Dialogue} from "../../../common/ui/Dialogue/Dialogue.jsx";
+import {Dialogue} from "../../common/ui/Dialogue/Dialogue.jsx";
 import styles from "./CourseDialogue.module.css"
 
 export function CourseDialogue({course, setCourse}) {
