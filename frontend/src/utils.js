@@ -1,4 +1,4 @@
-import {SEASONS} from "@/constants.js";
+import {SEASONS, SEASONS_ORDER} from "@/constants.js";
 
 export function range(size, start = 0) {
     return [...Array(size).keys()].map(i => i + start);
@@ -23,7 +23,7 @@ export function compareSemesters(semester1, semester2) {
     let [season2, year2] = semester2.split(" ");
     year2 = Number(year2);
     // noinspection CommaExpressionJS
-    const seasonsOrder = SEASONS.reduce((obj, val, idx) => (obj[val] = idx, obj), {});
+    const seasonsOrder = SEASONS_ORDER.reduce((obj, val, idx) => (obj[val] = idx, obj), {});
     if (year1 === year2) {
         return seasonsOrder[season1] - seasonsOrder[season2];
     } else {
@@ -46,4 +46,21 @@ export function getEarliestMapping(mappings) {
     }
 
     return latest;
+}
+
+export function getNextMajorTerm(semester) {
+    let [season, year] = semester.split(" ");
+    year = Number(year);
+    let nextSeason;
+    let nextYear;
+
+    if (season === SEASONS.SPRING || season === SEASONS.SUMMER) {
+        nextYear = year;
+        nextSeason = SEASONS.FALL;
+    } else if (season === SEASONS.FALL || season === SEASONS.WINTER) {
+        nextSeason = SEASONS.SPRING;
+        nextYear = year + 1;
+    }
+
+    return `${nextSeason} ${nextYear}`;
 }

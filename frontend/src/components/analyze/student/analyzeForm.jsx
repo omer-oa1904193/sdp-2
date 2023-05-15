@@ -1,7 +1,7 @@
 import React, { useState,useEffect } from "react";
 import {useRouter} from "next/router";
 import {useUserStore} from "@/stores/userStore.js";
-import {SEASONS} from "@/constants.js";
+import {SEASONS_ORDER} from "@/constants.js";
 import {
     TextField,
     FormControl,
@@ -45,7 +45,7 @@ const AnalyzeForm = () => {
                 }
                 studyPlan.courseMappings.forEach(courseMapping => {
                     if (!yearMap.has(courseMapping.year))
-                        yearMap.set(courseMapping.year, new Map(SEASONS.map(s => [s, new Map()])),);
+                        yearMap.set(courseMapping.year, new Map(SEASONS_ORDER.map(s => [s, new Map()])),);
                     yearMap.get(courseMapping.year).get(courseMapping.season).set(`course-${courseMapping.id}`, {
                         ...courseMapping,
                         isElective: false
@@ -53,7 +53,7 @@ const AnalyzeForm = () => {
                 });
                 studyPlan.electiveMappings.forEach(electiveMapping => {
                     if (!yearMap.has(electiveMapping.year))
-                        yearMap.set(electiveMapping.year, new Map(SEASONS.map(s => [s, new Map()])),);
+                        yearMap.set(electiveMapping.year, new Map(SEASONS_ORDER.map(s => [s, new Map()])),);
                     yearMap.get(electiveMapping.year).get(electiveMapping.season).set(`elective-${electiveMapping.id}`, {
                         ...electiveMapping,
                         isElective: true

@@ -2,7 +2,7 @@ import {MESSAGE_TYPES} from "@/components/common/ui/BottomMessage/BottomMessage.
 import {ProgressBar} from "@/components/common/ui/ProgressBar/ProgressBar.jsx";
 import {StudyPlanCardList} from "@/components/study-plan-components/StudyPlanCardList/StudyPlanCardList.jsx";
 import {useUserStore} from "@/stores/userStore.js";
-import {compareSemesters} from "@/utils.js";
+import {compareSemesters, getNextMajorTerm} from "@/utils.js";
 import {faPlus} from "@fortawesome/free-solid-svg-icons";
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 import React, {useRef, useState} from "react";
@@ -111,6 +111,58 @@ export function StudyPlanEditor({
         setDirty(true);
     }
 
+    function onCardDroppedInNewSemester(event) {
+        event.target.closest(`.${styles.newSemesterDiv}`).classList.remove(styles.visible)
+        const toSemester = getNextMajorTerm(Array.from(studyPlan.yearMap).pop()[0]);
+        const mappingId = Number(event.dataTransfer.getData("mappingId"));
+        const fromSemester = event.dataTransfer.getData("fromSemester");
+        const isElective = event.dataTransfer.getData("isElective").toLowerCase() === "true";
+
+        const mappingType = isElective ? "elective" : "course";
+        const mapping = studyPlan.yearMap.get(fromSemester).get(`${mappingType}-${mappingId}`);
+        console.log(`${mappingType} (id: ${mappingId}) was dropped from ${fromSemester} to ${toSemester}`);
+
+        if (fromSemester === toSemester)
+            return;
+        if (compareSemesters(toSemester, currentSemester) < 0) {
+            showMessage({text: "Cannot drag to completed semester", type: MESSAGE_TYPES.ERROR})
+            return;
+        }
+        const updatedSemesters = new Map(studyPlan.yearMap)
+        updatedSemesters.set(toSemester, new Map());
+
+        updatedSemesters.get(toSemester).set(`${mappingType}-${mappingId}`, mapping);
+        updatedSemesters.get(fromSemester).delete(`${mappingType}-${mappingId}`);
+        [mapping.season, mapping.year] = toSemester.split(" ");
+        mapping.year = Number(mapping.year);
+
+        //check prerequisites are valid for every course in the plan
+        const coursesBefore = [];
+        for (const semester of updatedSemesters.values()) {
+            const coursesSameSemester = Array.from(semester.values()).filter(m => !m.isElective).map(m => m.course.id);
+            for (const m of semester.values()) {
+                if (!m.isElective) {
+                    const isValid = checkPrerequisites(m.course.prerequisites, coursesBefore, coursesSameSemester, userStore.user.admissionTestResults);
+                    if (!isValid) {
+                        showMessage({
+                            text: `${m.course.code} prerequisite not met in ${toSemester}`,
+                            type: MESSAGE_TYPES.ERROR
+                        })
+                        //undo
+                        updatedSemesters.get(fromSemester).set(`${mappingType}-${mappingId}`, mapping);
+                        updatedSemesters.get(toSemester).delete(`${mappingType}-${mappingId}`);
+                        [mapping.season, mapping.year] = fromSemester.split(" ");
+                        mapping.year = Number(mapping.year);
+                        return;
+                    }
+                }
+            }
+            coursesBefore.push(...coursesSameSemester)
+        }
+
+        setStudyPlan({...studyPlan, yearMap: updatedSemesters})
+        setDirty(true);
+    }
 
     return <div className={`${styles.spEditor} styled-scrollbars`}>
         {isEditable ?
@@ -174,7 +226,11 @@ export function StudyPlanEditor({
                      document.querySelectorAll(`.${styles.courseList}`).forEach(e => e.classList.remove(styles.courseDropzone))
                      e.target.closest(`.${styles.newSemesterDiv}`).classList.add(styles.visible);
                  }}
-                 onDragLeave={(e) => e.target.closest(`.${styles.newSemesterDiv}`).classList.remove(styles.visible)}>
+                 onDragOver={(e) => e.preventDefault()}
+                 onDragLeave={(e) => e.target.closest(`.${styles.newSemesterDiv}`).classList.remove(styles.visible)}
+                 onDrop={(e) => onCardDroppedInNewSemester(e)}
+            >
+
                 <h3 className={`${styles.newSemesterButton} ${styles.courseDropzone}`}>New Semester</h3>
                 <div className={`${styles.newSemesterPlaceholder} ${styles.courseDropzone}`}>
                     <FontAwesomeIcon icon={faPlus}></FontAwesomeIcon>

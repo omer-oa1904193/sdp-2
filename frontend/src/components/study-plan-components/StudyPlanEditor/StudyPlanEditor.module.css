@@ -71,7 +71,7 @@
 .sp-editor .course-list {
     display: flex;
     flex-direction: column;
-    height: 90%;
+    padding-bottom: 1rem;
     border: 3px solid transparent;
 }
 
