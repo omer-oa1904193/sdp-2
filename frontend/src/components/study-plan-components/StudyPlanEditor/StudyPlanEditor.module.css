@@ -53,19 +53,13 @@
 
 .sp-editor .main-plan {
     display: flex;
-}
-
-.sp-editor .year-div {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
+    column-gap: max(1rem,2vw);
 }
 
 .sp-editor .year-semesters {
     display: flex;
     height: 100%;
 }
-
 
 .sp-editor .semester-div {
     display: flex;
@@ -77,8 +71,6 @@
 .sp-editor .course-list {
     display: flex;
     flex-direction: column;
-    row-gap: 1rem;
-    padding: 0 0.5rem;
     height: 90%;
     border: 3px solid transparent;
 }
@@ -94,10 +86,10 @@
     border: 3px solid #B1B1B1;
     font-weight: 600;
     color: #888888;
-    padding: 0.5rem 1rem;
+    padding: 0.5rem 0.5rem;
     text-align: center;
     user-select: none;
-    margin: 0 0.4rem;
+    margin: 0;
 }
 
 .add-course-button {

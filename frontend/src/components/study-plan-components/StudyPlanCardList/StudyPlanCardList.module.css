@@ -1,8 +1,7 @@
 .semester-course-list {
     position: relative;
-
     display: flex;
-    row-gap: 1rem;
+    row-gap: 2rem;
     flex-direction: column;
     justify-content: space-between;
 }

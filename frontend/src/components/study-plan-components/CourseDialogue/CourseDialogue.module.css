@@ -37,14 +37,15 @@
     background-color: #EFEFEF;
     font-weight: bold;
 }
-.course-dialogue .side ul{
+
+.course-dialogue .side ul {
     display: flex;
     flex-direction: column;
     row-gap: 0.5rem;
     cursor: pointer;
 }
 
-.course-dialogue .side ul li:hover{
+.course-dialogue .side ul li:hover {
 
 }
 
@@ -81,6 +82,7 @@
     font-size: 0.85rem;
     font-weight: 400;
     line-height: 1.2rem;
+    max-height: 50vh;
 }
 
 .course-dialogue ul {
