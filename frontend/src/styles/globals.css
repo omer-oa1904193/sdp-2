@@ -57,16 +57,18 @@ form input, form select {
 .filled-button:hover {
     cursor: pointer;
 }
-.outlined-button{
+
+.outlined-button {
     padding: 1.25rem 1rem;
     background-color: transparent;
     color: var(--primary-color);
-    border:1px solid  var(--primary-color);
+    border: 1px solid var(--primary-color);
     border-radius: 8px;
     font-size: 1.5rem;
     font-weight: bold;
 }
-.outlined-button:hover{
+
+.outlined-button:hover {
     cursor: pointer;
 }
 
@@ -89,9 +91,6 @@ form input, form select {
 
 }
 
-.completed-course {
-opacity: 0.6;
-}
 
 .major-course {
     background-color: #62B4FA;
@@ -112,6 +111,11 @@ opacity: 0.6;
 
 .college-requirement {
     background-color: #C96161;
+}
+
+.completed-course {
+    opacity: 0.6;
+    background-color: #61C975;
 }
 
 .page-with-header {

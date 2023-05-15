@@ -3,6 +3,8 @@ import {ProgressBar} from "@/components/common/ui/ProgressBar/ProgressBar.jsx";
 import {StudyPlanCardList} from "@/components/study-plan-components/StudyPlanCardList/StudyPlanCardList.jsx";
 import {useUserStore} from "@/stores/userStore.js";
 import {compareSemesters} from "@/utils.js";
+import {faPlus} from "@fortawesome/free-solid-svg-icons";
+import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 import React, {useRef, useState} from "react";
 import styles from "./StudyPlanEditor.module.css"
 
@@ -144,12 +146,10 @@ export function StudyPlanEditor({
                     <ul className={styles.courseList}
                         onDragOver={(e) => {
                             e.preventDefault()
-                            document.querySelectorAll(`.${styles.courseDropzone}`).forEach(e => e.classList.remove(styles.courseDropzone))
+                            document.querySelectorAll(`.${styles.courseList}`).forEach(e => e.classList.remove(styles.courseDropzone))
                             e.target.closest(`.${styles.courseList}`).classList.add(styles.courseDropzone)
                         }}
-                        onDrop={(e) => {
-                            onCardDropped(e, semesterLabel)
-                        }}>
+                        onDrop={(e) => onCardDropped(e, semesterLabel)}>
                         <StudyPlanCardList mappings={semesterCourses}
                                            semester={semesterLabel}
                                            isEditable={isEditable}
@@ -157,7 +157,7 @@ export function StudyPlanEditor({
                                            onElectiveClicked={onElectiveClicked}
                                            setDirty={setDirty}
                                            currentSemester={currentSemester}
-                                           onDragEnd={() => document.querySelectorAll(`.${styles.courseDropzone}`).forEach(e => e.classList.remove(styles.courseDropzone))}
+                                           onDragEnd={() => document.querySelectorAll(`.${styles.courseList}`).forEach(e => e.classList.remove(styles.courseDropzone))}
                         />
                     </ul>
                     {/*{isEditable &&*/}
@@ -167,6 +167,20 @@ export function StudyPlanEditor({
                     {/*}*/}
                 </div>
             )}
+            <div className={styles.newSemesterDiv}
+                 onDragStart={(e) => e.preventDefault()}
+                 onDragEnter={(e) => {
+                     e.preventDefault();
+                     document.querySelectorAll(`.${styles.courseList}`).forEach(e => e.classList.remove(styles.courseDropzone))
+                     e.target.closest(`.${styles.newSemesterDiv}`).classList.add(styles.visible);
+                 }}
+                 onDragLeave={(e) => e.target.closest(`.${styles.newSemesterDiv}`).classList.remove(styles.visible)}>
+                <h3 className={`${styles.newSemesterButton} ${styles.courseDropzone}`}>New Semester</h3>
+                <div className={`${styles.newSemesterPlaceholder} ${styles.courseDropzone}`}>
+                    <FontAwesomeIcon icon={faPlus}></FontAwesomeIcon>
+                </div>
+            </div>
+
         </div>
     </div>
 }

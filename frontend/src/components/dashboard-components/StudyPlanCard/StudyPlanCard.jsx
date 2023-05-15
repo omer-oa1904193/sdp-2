@@ -1,17 +1,16 @@
-import React, {useState, useEffect} from "react";
-import Link from "next/link";
-import Paper from "@mui/material/Paper";
-import {Box, Grid, Stack} from "@mui/material";
-import Typography from "@mui/material/Typography";
-import styles from "./StudyPlanCard.module.css";
-import clsx from "clsx";
-import CheckIconButton from "./activeCheckIcon";
-import DeleteIcon from "@mui/icons-material/Delete";
 import EditIcon from "@mui/icons-material/Edit";
+import {Box, Grid, Stack} from "@mui/material";
 import IconButton from "@mui/material/IconButton";
+import Paper from "@mui/material/Paper";
 import {styled} from "@mui/material/styles";
-import EditStudyPlanCard from "./editStudyPlanCard";
-import RectangularButton from "../../components/dashboard-components/rectangularButton";
+import Typography from "@mui/material/Typography";
+import clsx from "clsx";
+import Link from "next/link";
+import React, {useState} from "react";
+import CheckIconButton from "../activeCheckIcon.jsx";
+import EditStudyPlanCard from "../editStudyPlanCard.jsx";
+import RectangularButton from "../rectangularButton.jsx";
+import styles from "./StudyPlanCard.module.css";
 
 export default function StudyPlanCard({studyPlan, isActive}) {
 
@@ -102,8 +101,6 @@ export default function StudyPlanCard({studyPlan, isActive}) {
                                         )}
                                     </>
                                 }
-
-
                             </Grid>
                         </Grid>
                     </Box>

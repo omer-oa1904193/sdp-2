@@ -4,10 +4,11 @@ import {useEffect, useState, useRef} from "react";
 import * as React from "react";
 import {Box, Grid, Paper, Typography, IconButton, Stack, Button} from "@mui/material";
 import styles from "@/pages/dashboard/DashBoardPage.module.css";
-import StudyPlanCard from "../../components/dashboard-components/studyPlanCard";
+import StudyPlanCard from "../../components/dashboard-components/StudyPlanCard/StudyPlanCard.jsx";
 import {ArrowUpward, ArrowDownward} from "@mui/icons-material";
-import AddIcon from '@mui/icons-material/Add';
-import CreateStudyPlanDialogue from "@/components/dashboard-components/CreateStudyPlanDialogue/CreateStudyPlanDialogue.jsx"
+import AddIcon from "@mui/icons-material/Add";
+import CreateStudyPlanDialogue
+    from "@/components/dashboard-components/CreateStudyPlanDialogue/CreateStudyPlanDialogue.jsx"
 
 export function DashboardPage() {
     const boxRef = useRef();
