@@ -5,11 +5,14 @@ import {CourseDialogue} from "@/components/study-plan-components/CourseDialogue/
 import {
     SelectElectiveDialogue
 } from "@/components/study-plan-components/ElectiveDialogue/SelectElectiveDialogue.jsx";
+import {
+    ShareStudyPlanDialogue
+} from "@/components/study-plan-components/ShareStudyPlanDialogue/ShareStudyPlanDialogue.jsx";
 import {StudyPlanEditor} from "@/components/study-plan-components/StudyPlanEditor/StudyPlanEditor.jsx";
 import {SummeryPane} from "@/components/study-plan-components/SummeryPane/SummeryPane.jsx";
 import {useUserStore} from "@/stores/userStore.js";
 import {compareSemesters} from "@/utils.js";
-import {faGear, faMessage, faPen} from "@fortawesome/free-solid-svg-icons";
+import {faGear, faMessage, faPen, faShare} from "@fortawesome/free-solid-svg-icons";
 import {useRouter} from "next/router";
 import React, {useEffect, useState} from "react";
 import Score from "../../score-study-plan/score.jsx"
@@ -21,6 +24,8 @@ export function StudyPlanPage({studyPlanId, isEditable, isDirty, setDirty}) {
     const [studyPlan, setStudyPlan] = useState(null);
     const [courseDialogueCourse, setCourseDialogueCourse] = useState(null);
     const [selectElectiveDialogMapping, setSelectElectiveDialogMapping] = useState(null);
+    const [shareDialogueIsOpen, setShareDialogueOpen] = useState(false);
+
     const [selectedElectives, setSelectedElectives] = useState({});
     const [currentSemester, setCurrentsemester] = useState();
     const [bottomMessage, setBottomMessage] = useState({isShown: false});
@@ -113,6 +118,7 @@ export function StudyPlanPage({studyPlanId, isEditable, isDirty, setDirty}) {
                     <Score studyPlan={studyPlan}></Score>
                     <CircularIconButton icon={faPen} link={`/study-plans/${router.query.studyPlanId}/edit`}/>
                     <CircularIconButton icon={faGear}/>
+                    <CircularIconButton icon={faShare} onClick={() => setShareDialogueOpen(true)}/>
                     <CircularIconButton icon={faMessage}/>
                 </div>
             }
@@ -142,6 +148,9 @@ export function StudyPlanPage({studyPlanId, isEditable, isDirty, setDirty}) {
                                         setDirty(true);
                                         setSelectElectiveDialogMapping(null);
                                     }}/>
+            <ShareStudyPlanDialogue isOpen={shareDialogueIsOpen}
+                                    setOpen={setShareDialogueOpen}
+                                    studyPlanId={studyPlan.id}/>
             <BottomMessage
                 message={bottomMessage}
                 hide={() => setBottomMessage({...bottomMessage, isShown: false})}

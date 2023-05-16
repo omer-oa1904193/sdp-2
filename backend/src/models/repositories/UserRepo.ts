@@ -8,8 +8,12 @@ export class UserRepo {
         this.em = em;
     }
 
-    async findUser(email: string) {
-        return this.em.findOne(User, {email: email}, {populate:["admissionTestResults"]});
+    async getUser(email: string) {
+        return this.em.findOne(User, {email: email}, {populate: ["admissionTestResults"]});
+    }
+
+    getUsers() {
+        return this.em.find(User, {});
     }
 
     async bulkUpsertUsers(usersData: EntityData<User>[]) {
@@ -24,4 +28,9 @@ export class UserRepo {
             enrollmentYear: u.enrollmentYear
         })));
     }
+
+    async findUser(userId: number) {
+        return this.em.findOne(User, {id: userId});
+    }
+
 }

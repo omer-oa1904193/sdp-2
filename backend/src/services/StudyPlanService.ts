@@ -3,6 +3,7 @@ import {Request, Response} from "express";
 import {z} from "zod";
 import {ProgramRepo} from "../models/repositories/ProgramRepo.js";
 import {Season} from "../models/enums/Season.js";
+import {UserRepo} from "../models/repositories/UserRepo.js";
 
 class StudyPlanService {
     async getStudyPlans(req: Request, res: Response) {
@@ -38,19 +39,46 @@ class StudyPlanService {
         res.json(newStudyPlan);
     }
 
+    async shareStudyPlan(req: Request, res: Response) {
+        const bodyValidator = z.object({
+            studyPlan: z.number().min(0),
+            userSharedWith: z.number().min(0),
+        });
+        const body = bodyValidator.parse(req.body);
+
+        const studyPlanRepo = new StudyPlanRepo(req.em)
+        const studyPlan = await studyPlanRepo.findStudyPlan(body.studyPlan);
+        const userRepo = new UserRepo(req.em)
+        const userSharedWith = await userRepo.findUser(body.userSharedWith);
+        if (!studyPlan || !userSharedWith) {
+            res.status(404).send();
+            return;
+        }
+        const existingSharedStudyPlanMapping = await studyPlanRepo.getUserSharedStudyPlanMapping(studyPlan, userSharedWith);
+        if (existingSharedStudyPlanMapping != null) {
+            //ignore duplicates
+            res.status(200).send(existingSharedStudyPlanMapping);
+            return;
+        }
+        const newSharedStudyPlanMapping = await studyPlanRepo.shareStudyPlan({
+            studyPlan: studyPlan,
+            userSharedWith: userSharedWith
+        })
+        res.status(201).json(newSharedStudyPlanMapping);
+    }
+
     async getStudyPlan(req: Request, res: Response) {
         const pathParamsValidator = z.object({studyPlanId: z.string().regex(/^\d+$/).transform(Number)})
         const pathParams = pathParamsValidator.parse(req.params);
 
         const studyPlanRepo = new StudyPlanRepo(req.em);
-        const studyPlan = await studyPlanRepo.getStudentStudyPlan(req.user!, pathParams.studyPlanId);
+        const studyPlan = await studyPlanRepo.getStudyPlan(req.user!, pathParams.studyPlanId);
         if (!studyPlan) {
             res.status(404).send();
             return;
         }
         res.json(studyPlan);
     }
-
 
     async updateStudentStudyPlan(req: Request, res: Response) {
         const pathParamsValidator = z.object({studyPlanId: z.string().regex(/^\d+$/).transform(Number)})
@@ -75,6 +103,7 @@ class StudyPlanService {
         const studyPlan = await studyPlanRepo.updateStudentStudyPlan(pathParams.studyPlanId, body);
         res.json(studyPlan);
     }
+
 }
 
 export const studyPlanService = new StudyPlanService();

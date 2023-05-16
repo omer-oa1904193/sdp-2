@@ -1442,6 +1442,87 @@
           "nullable": false,
           "mappedType": "integer"
         },
+        "study_plan_id": {
+          "name": "study_plan_id",
+          "type": "int",
+          "unsigned": false,
+          "autoincrement": false,
+          "primary": false,
+          "nullable": false,
+          "mappedType": "integer"
+        },
+        "user_shared_with_id": {
+          "name": "user_shared_with_id",
+          "type": "int",
+          "unsigned": false,
+          "autoincrement": false,
+          "primary": false,
+          "nullable": false,
+          "mappedType": "integer"
+        }
+      },
+      "name": "map_user_shared_study_plan",
+      "schema": "public",
+      "indexes": [
+        {
+          "keyName": "map_user_shared_study_plan_study_plan_id_user_shar_02297_unique",
+          "columnNames": [
+            "study_plan_id",
+            "user_shared_with_id"
+          ],
+          "composite": true,
+          "primary": false,
+          "unique": true
+        },
+        {
+          "keyName": "map_user_shared_study_plan_pkey",
+          "columnNames": [
+            "id"
+          ],
+          "composite": false,
+          "primary": true,
+          "unique": true
+        }
+      ],
+      "checks": [],
+      "foreignKeys": {
+        "map_user_shared_study_plan_study_plan_id_foreign": {
+          "constraintName": "map_user_shared_study_plan_study_plan_id_foreign",
+          "columnNames": [
+            "study_plan_id"
+          ],
+          "localTableName": "public.map_user_shared_study_plan",
+          "referencedColumnNames": [
+            "id"
+          ],
+          "referencedTableName": "public.study_plan",
+          "updateRule": "cascade"
+        },
+        "map_user_shared_study_plan_user_shared_with_id_foreign": {
+          "constraintName": "map_user_shared_study_plan_user_shared_with_id_foreign",
+          "columnNames": [
+            "user_shared_with_id"
+          ],
+          "localTableName": "public.map_user_shared_study_plan",
+          "referencedColumnNames": [
+            "id"
+          ],
+          "referencedTableName": "public.user",
+          "updateRule": "cascade"
+        }
+      }
+    },
+    {
+      "columns": {
+        "id": {
+          "name": "id",
+          "type": "int",
+          "unsigned": true,
+          "autoincrement": true,
+          "primary": true,
+          "nullable": false,
+          "mappedType": "integer"
+        },
         "student_id": {
           "name": "student_id",
           "type": "int",

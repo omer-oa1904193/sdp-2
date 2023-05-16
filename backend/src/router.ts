@@ -10,10 +10,12 @@ import {programService} from "./services/ProgramService.js";
 export const router = Router();
 
 router.post("/sessions/", UserService.login);
+router.get("/users/", authMiddleware, UserService.getUsers);
 router.get("/users/me/", authMiddleware, UserService.getUser);
 
 router.get("/study-plans/", authMiddleware, studyPlanService.getStudyPlans);
 router.post("/study-plans/", authMiddleware, studyPlanService.addStudyPlan);
+router.post("/study-plans/shared/", authMiddleware, studyPlanService.shareStudyPlan);
 router.get("/study-plans/:studyPlanId/", authMiddleware, studyPlanService.getStudyPlan);
 router.patch("/study-plans/:studyPlanId/", authMiddleware, studyPlanService.updateStudentStudyPlan);
 router.get("/colleges/", programService.getColleges);

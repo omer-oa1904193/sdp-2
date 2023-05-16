@@ -14,7 +14,7 @@ export function CircularIconButton({icon, onClick, link}) {
                     </button>
                 </Link>
                 :
-                <button className={`inv-button ${styles.circularIconButton}`}>
+                <button className={`inv-button ${styles.circularIconButton}`} onClick={onClick}>
                     <FontAwesomeIcon icon={icon}/>
                 </button>
             }

@@ -12,7 +12,7 @@ class UserService {
             return;
         }
         const userRepo = new UserRepo(req.em);
-        const user = await userRepo.findUser(body.email);
+        const user = await userRepo.getUser(body.email);
 
         if (user && await bcrypt.compare(body.password, user.password)) {
             const token = jwt.sign(user.toObject(), process.env.JWT_KEY!);
@@ -24,6 +24,12 @@ class UserService {
 
     async getUser(req: Request, res: Response) {
         res.json(req.user);
+    }
+
+    async getUsers(req: Request, res: Response) {
+        const userRepo = new UserRepo(req.em);
+        const users = await userRepo.getUsers();
+        res.json(users);
     }
 
 }

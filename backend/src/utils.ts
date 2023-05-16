@@ -10,7 +10,7 @@ export function getNextMajorTerm(season: Season, year: number): [Season, number]
     } else if (season == Season.FALL || season == Season.WINTER) {
         nextSeason = Season.SPRING;
         nextYear = year + 1;
-    }
+    } else throw new Error("Unexpected arguments");
 
     return [nextSeason, nextYear];
 }

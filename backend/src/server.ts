@@ -1,4 +1,4 @@
-import express, {static} from "express";
+import express from "express";
 import morgan from "morgan";
 import {router} from "./router.js";
 import {MikroORM} from "@mikro-orm/core";

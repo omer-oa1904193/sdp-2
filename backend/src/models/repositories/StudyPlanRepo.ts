@@ -10,6 +10,7 @@ import {Season} from "../enums/Season.js";
 import {CourseCategory} from "../enums/CourseCategory.js";
 import {QueryOrder, wrap} from "@mikro-orm/core";
 import {getNthNextMajorTerm} from "../../utils.js";
+import {MapUserSharedStudyPlan} from "../entities/MapUserSharedStudyPlan.js";
 
 export class StudyPlanRepo {
     em: EntityManager;
@@ -22,7 +23,7 @@ export class StudyPlanRepo {
         return this.em.find(StudyPlan, {author: student.id}, {populate: ["program"]});
     }
 
-    async getStudentStudyPlan(student: User, studyPlanId: number) {
+    async getStudyPlan(student: User, studyPlanId: number) {
         const studyPlan = await this.em.findOne(StudyPlan, {id: studyPlanId}, {
             orderBy: {courseMappings: {year: "asc"}, electiveMappings: {year: "asc"}},
             populate: ["program", "courseMappings", "courseMappings.course",
@@ -81,6 +82,14 @@ export class StudyPlanRepo {
         return newStudyPlan;
     }
 
+    async shareStudyPlan(sharedStudyPlan: { studyPlan: StudyPlan, userSharedWith: User }) {
+        const newSharedStudyPlan = this.em.create(MapUserSharedStudyPlan, {
+            studyPlan: sharedStudyPlan.studyPlan,
+            userSharedWith: sharedStudyPlan.userSharedWith
+        })
+        await this.em.flush()
+        return newSharedStudyPlan;
+    }
 
     async updateStudentStudyPlan(studyPlanId: number, updatedFields: {
         name?: string,
@@ -133,5 +142,16 @@ export class StudyPlanRepo {
             await this.em.flush()
         }
         return studyPlan;
+    }
+
+    async getUserSharedStudyPlanMapping(studyPlan: StudyPlan, userSharedWith: User) {
+        return this.em.findOne(MapUserSharedStudyPlan, {
+            studyPlan: studyPlan,
+            userSharedWith: userSharedWith
+        });
+    }
+
+    async findStudyPlan(studyPlanId: number) {
+        return this.em.findOne(StudyPlan, {id: studyPlanId});
     }
 }
