@@ -1,6 +1,7 @@
 import {BottomMessage, MESSAGE_TYPES} from "@/components/common/ui/BottomMessage/BottomMessage.jsx";
 import {CircularIconButton} from "@/components/common/ui/CircularIconButton/CircularIconButton.jsx";
 import {SpinnerOverlay} from "@/components/common/ui/SpinnerOverlay/SpinnerOverlay.jsx";
+import {CommentsPane} from "@/components/study-plan-components/CommentsPane/CommentsPane.jsx";
 import {CourseDialogue} from "@/components/study-plan-components/CourseDialogue/CourseDialogue.jsx";
 import {
     SelectElectiveDialogue
@@ -155,6 +156,10 @@ export function StudyPlanPage({studyPlanId, isEditable, isDirty, setDirty}) {
                 message={bottomMessage}
                 hide={() => setBottomMessage({...bottomMessage, isShown: false})}
             />
+            {!isEditable &&
+                <CommentsPane studyPlanId={studyPlan.id}/>
+            }
+
         </div>
     </>
 

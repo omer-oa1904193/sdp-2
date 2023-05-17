@@ -20,7 +20,7 @@
     border-radius: 10px;
 }
 
-.custom-dialogue .dialog-header {
+.dialog-header {
     border-radius: 10px 10px 0 0;
     background-color: #267BAA;
     color: #ffffff;
@@ -28,6 +28,6 @@
     padding: 0.8rem 0.75rem;
 }
 
-.custom-dialogue .dialogue-title {
+.dialogue-title {
     font-weight: 500;
 }

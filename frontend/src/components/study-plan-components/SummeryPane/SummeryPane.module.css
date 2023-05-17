@@ -20,7 +20,7 @@
     flex-direction: column;
     row-gap: 1rem;
     width: 13vw;
-    min-width: 250px;
+    min-width: 200px;
 }
 
 .summery-pane .stats-div {

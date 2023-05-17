@@ -1,0 +1,36 @@
+.container {
+    width: 50vw;
+    min-width: 250px;
+    max-width: 500px;
+    padding: 0.5rem;
+    display: flex;
+    flex-direction: column;
+    row-gap: 1rem;
+}
+
+.comments-list {
+    height: 30vh;
+    overflow: auto;
+    display: flex;
+    flex-direction: column;
+    row-gap: 1rem;
+}
+
+.new-comment-form {
+    display: flex;
+    flex-direction: column;
+    row-gap: 0.5rem;
+}
+
+.new-comment-form textarea {
+    resize: none;
+    flex-grow: 1;
+    border-radius: 3px;
+}
+
+.new-comment-form .send-button {
+    font-size: 1rem;
+    padding: 0.5rem 1rem;
+    border-radius: 5px;
+    align-self: end;
+}

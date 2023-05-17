@@ -104,6 +104,56 @@ class StudyPlanService {
         res.json(studyPlan);
     }
 
+    async getStudyPlanComments(req: Request, res: Response) {
+        const pathParamsValidator = z.object({studyPlanId: z.string().regex(/^\d+$/).transform(Number)})
+        const pathParams = pathParamsValidator.parse(req.params);
+
+        const studyPlanRepo = new StudyPlanRepo(req.em)
+        const studyPlan = await studyPlanRepo.findStudyPlan(pathParams.studyPlanId, [""]);
+        if (!studyPlan) {
+            res.status(404).send();
+            return
+        }
+
+        if (studyPlan.author.id !== req.user!.id) {
+            const sharedStudyPlanMapping = await studyPlanRepo.getUserSharedStudyPlanMapping(studyPlan, req.user!);
+            if (sharedStudyPlanMapping == null) {
+                //hide private study plans
+                res.status(404).send();
+                return
+            }
+        }
+        const comments = await studyPlanRepo.getStudyPlanComments(studyPlan);
+        res.json(comments);
+    }
+
+    async addCommentToStudyPlan(req: Request, res: Response) {
+        const pathParamsValidator = z.object({studyPlanId: z.string().regex(/^\d+$/).transform(Number)})
+        const pathParams = pathParamsValidator.parse(req.params);
+
+        const studyPlanRepo = new StudyPlanRepo(req.em)
+        const studyPlan = await studyPlanRepo.findStudyPlan(pathParams.studyPlanId, [""]);
+        if (!studyPlan) {
+            res.status(404).send();
+            return
+        }
+
+        if (studyPlan.author.id !== req.user!.id) {
+            const sharedStudyPlanMapping = await studyPlanRepo.getUserSharedStudyPlanMapping(studyPlan, req.user!);
+            if (sharedStudyPlanMapping == null) {
+                //hide private study plans
+                res.status(404).send();
+                return
+            }
+        }
+
+        const bodyValidator = z.object({
+            text: z.string().min(1).max(50000)
+        })
+        const body = bodyValidator.parse(req.body)
+        const comments = await studyPlanRepo.addCommentToStudyPlan(studyPlan, {text: body.text, author: req.user!});
+        res.json(comments);
+    }
 }
 
 export const studyPlanService = new StudyPlanService();

@@ -1,0 +1,38 @@
+.wrapper {
+    position: absolute;
+    bottom: 0;
+    right: 0;
+}
+
+.pane {
+
+}
+
+.pane-header {
+    border-radius: 10px 10px 0 0;
+    background-color: #267BAA;
+    color: #ffffff;
+    font-size: 16px;
+    padding: 0.8rem 0.75rem;
+}
+
+.pane-header:hover {
+    cursor: pointer;
+}
+
+.pane-title {
+    font-weight: 500;
+}
+
+.content {
+    background-color: white;
+    overflow: hidden;
+}
+
+.popped-up {
+    height: auto;
+}
+
+.ducked-down {
+    height: 0;
+}

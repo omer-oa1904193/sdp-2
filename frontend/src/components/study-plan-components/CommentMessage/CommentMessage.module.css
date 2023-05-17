@@ -1,0 +1,32 @@
+.comment-wrapper {
+    display: flex;
+    flex-direction: column;
+    row-gap: 0.5rem;
+}
+
+.author-Div {
+    display: flex;
+    flex-direction: row;
+    column-gap: 0.5rem;
+
+}
+
+.author-Div svg {
+    width: 25px;
+    height: 25px;
+    color: gray;
+}
+
+.author-role {
+    font-size: 0.75rem;
+    color: gray;
+}
+
+
+.comment-body {
+    background-color: #F6F8FA;
+    padding: 1rem;
+    border-radius: 8px;
+    line-height: 1.25;
+    margin-left: 1rem;
+}

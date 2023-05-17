@@ -11,6 +11,7 @@ import {CourseCategory} from "../enums/CourseCategory.js";
 import {QueryOrder, wrap} from "@mikro-orm/core";
 import {getNthNextMajorTerm} from "../../utils.js";
 import {MapUserSharedStudyPlan} from "../entities/MapUserSharedStudyPlan.js";
+import {Comment} from "../entities/Comment.js";
 
 export class StudyPlanRepo {
     em: EntityManager;
@@ -147,8 +148,24 @@ export class StudyPlanRepo {
     async getUserSharedStudyPlanMapping(studyPlan: StudyPlan, userSharedWith: User) {
         return this.em.findOne(MapUserSharedStudyPlan, {
             studyPlan: studyPlan,
-            userSharedWith: userSharedWith
+            userSharedWith: userSharedWith.id
         });
+    }
+
+    async addCommentToStudyPlan(studyPlan: StudyPlan, commentData: { author: User, text: string }) {
+        const newComment = this.em.create(Comment, {
+            studyPlan: studyPlan.id,
+            text: commentData.text,
+            author: commentData.author.id
+        });
+        await this.em.flush();
+        return newComment;
+    }
+
+    async getStudyPlanComments(studyPlan: StudyPlan) {
+        return this.em.find(Comment, {
+            studyPlan: studyPlan.id,
+        }, {populate: ["author"]});
     }
 
     async findStudyPlan(studyPlanId: number) {

@@ -1653,12 +1653,13 @@
         },
         "text": {
           "name": "text",
-          "type": "varchar(255)",
+          "type": "text",
           "unsigned": false,
           "autoincrement": false,
           "primary": false,
           "nullable": false,
-          "mappedType": "string"
+          "length": 50000,
+          "mappedType": "text"
         },
         "time_posted": {
           "name": "time_posted",
