@@ -2,13 +2,17 @@ import {compareMappings, getEarliestMapping} from "@/utils.js";
 import {create} from "zustand";
 import graphology from "graphology";
 
-export const useStudyPlanStore = create(() => ({
+export const useStudyPlanStore = create((set,get) => ({
 
     createGraph(studyPlan) {
         const prerequisiteGraph = new graphology.Graph();
         const courseIdToMappingId = {};
         for (const courseMapping of studyPlan.courseMappings) {
-            prerequisiteGraph.addNode(`course-${courseMapping.id}`);
+            prerequisiteGraph.addNode(`course-${courseMapping.id}`, {
+                title: courseMapping.course.title,
+                season: courseMapping.season,
+                creditHours: courseMapping.course.credithours
+            });
             courseIdToMappingId[courseMapping.course.id] = courseMapping.id;
         }
 
@@ -68,6 +72,5 @@ export const useStudyPlanStore = create(() => ({
         }
         return null;
     },
-
 
 }))

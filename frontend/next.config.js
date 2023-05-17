@@ -18,4 +18,8 @@ const nextConfig = {
   },
 }
 
-module.exports = nextConfig
+module.exports = {
+  transpilePackages: ['@react-sigma/core'],
+  nextConfig
+};
+//module.exports = nextConfig
