@@ -176,4 +176,9 @@ export class StudyPlanRepo {
     async findStudyPlan(studyPlanId: number) {
         return this.em.findOne(StudyPlan, {id: studyPlanId});
     }
+
+    async deleteStudyPlan(studyPlan: StudyPlan) {
+        return this.em.removeAndFlush(studyPlan);
+    }
+
 }

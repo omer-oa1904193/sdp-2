@@ -54,12 +54,13 @@ export default function StudyPlanCard({studyPlan, isActive}) {
                     flexDirection: "column",
                     justifyContent: "space-between"
                 }}>
-                <Link style={{height: "100%", textDecoration: "none"}} href={`study-plans/${studyPlan.id}`}>
-                    <Box className={styles.imageWrapper}>
-                        <img src="/study-plan.png" alt="Study Plan"/>
-                    </Box>
-                    <Box>
-                        <Grid container spacing={2} justifyContent="space-between" alignItems="flex-end">
+
+                <Box className={styles.imageWrapper}>
+                    <img src="/study-plan.png" alt="Study Plan"/>
+                </Box>
+                <Box>
+                    <Grid container spacing={2} justifyContent="space-between" alignItems="flex-end">
+                        <Link style={{height: "100%", textDecoration: "none"}} href={`study-plans/${studyPlan.id}`}>
                             <Grid item xs={8} sx={{height: "100%", padding: "0px", margin: "0px"}}>
                                 <Box>
                                     <Typography
@@ -80,31 +81,30 @@ export default function StudyPlanCard({studyPlan, isActive}) {
                                     </Typography>
                                 </Box>
                             </Grid>
+                        </Link>
+                        <Grid item xs={4} sx={{display: "flex", justifyContent: "flex-end"}}>
 
-                            <Grid item xs={4} sx={{display: "flex", justifyContent: "flex-end"}}>
-
-                                {isActive ? <Stack direction="row">
-                                        <CheckIconButton/>
-                                        <EditIcon/>
-                                    </Stack>
-                                    :
-                                    <>
-                                        <EditButton onClick={(event) => {
-                                            handleEditButtonClick(event)
-                                        }} aria-label="settings">
-                                            <EditIcon sx={{fontSize: "16px"}}/>
-                                        </EditButton>
-                                        {isEditDialogOpen && (
-                                            <EditStudyPlanCard isEditDialogOpen={isEditDialogOpen}
-                                                               setIsEditDialogOpen={setIsEditDialogOpen}
-                                                               studyPlan={studyPlan}/>
-                                        )}
-                                    </>
-                                }
-                            </Grid>
+                            {isActive ? <Stack direction="row">
+                                    <CheckIconButton/>
+                                    <EditIcon/>
+                                </Stack>
+                                :
+                                <>
+                                    <EditButton onClick={(event) => {
+                                        handleEditButtonClick(event)
+                                    }} aria-label="settings">
+                                        <EditIcon sx={{fontSize: "16px"}}/>
+                                    </EditButton>
+                                    {isEditDialogOpen && (
+                                        <EditStudyPlanCard isEditDialogOpen={isEditDialogOpen}
+                                                           setIsEditDialogOpen={setIsEditDialogOpen}
+                                                           studyPlan={studyPlan}/>
+                                    )}
+                                </>
+                            }
                         </Grid>
-                    </Box>
-                </Link>
+                    </Grid>
+                </Box>
 
                 <RectangularButton
                     text="Analyze study plan"
@@ -112,7 +112,6 @@ export default function StudyPlanCard({studyPlan, isActive}) {
                     key={studyPlan.id}
                     linkTo={`analyze/student/${studyPlan.id}`}
                 />
-                {/* <DeleteIcon></DeleteIcon> */}
             </Paper>
         </Box>
     );
