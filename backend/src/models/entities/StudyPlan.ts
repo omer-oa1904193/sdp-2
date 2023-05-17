@@ -1,6 +1,6 @@
 import {CustomBaseEntity} from "./CustomBaseEntity.js";
 import type {Rel} from "@mikro-orm/core";
-import {Collection, Entity, Enum, ManyToMany, ManyToOne, OneToMany, Property, types} from "@mikro-orm/core";
+import {Cascade, Collection, Entity, Enum, ManyToMany, ManyToOne, OneToMany, Property, types} from "@mikro-orm/core";
 import {User} from "./User.js";
 import {ElectivePackage} from "./ElectivePackage.js";
 import {Course} from "./Course.js";
@@ -47,7 +47,7 @@ export class StudyPlan extends CustomBaseEntity {
     @OneToMany({
         entity: () => MapElectivePackageStudyPlan,
         mappedBy: (m: MapElectivePackageStudyPlan) => m.studyPlan,
-        persist: false,
+        persist: false
     })
     electiveMappings: Collection<MapElectivePackageStudyPlan> = new Collection<MapElectivePackageStudyPlan>(this);
 

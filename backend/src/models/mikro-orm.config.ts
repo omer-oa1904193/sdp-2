@@ -19,5 +19,14 @@ const DEV_OPTIONS: Options = {
     persistOnCreate: true,
 };
 
-export const mikroOrmConfig = DEV_OPTIONS;
-export default DEV_OPTIONS;
+
+const TEST_OPTIONS: Options = {
+    ...DEV_OPTIONS,
+    clientUrl: process.env.TEST_DATABASE_URL,
+};
+let mikroOrmConfig: Options;
+if (process.env.NODE_ENV == "test")
+    mikroOrmConfig = TEST_OPTIONS;
+else// if (process.env.NODE_ENV == "dev")
+    mikroOrmConfig = DEV_OPTIONS;
+export default mikroOrmConfig

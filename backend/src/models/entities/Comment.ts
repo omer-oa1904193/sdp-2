@@ -1,5 +1,5 @@
 import type {Rel} from "@mikro-orm/core";
-import {Entity, Index, ManyToOne, OptionalProps, Property, types} from "@mikro-orm/core";
+import {Cascade, Entity, Index, ManyToOne, OptionalProps, Property, types} from "@mikro-orm/core";
 import {CustomBaseEntity} from "./CustomBaseEntity.js";
 import {User} from "./User.js";
 import {StudyPlan} from "./StudyPlan.js";
@@ -14,7 +14,7 @@ export class Comment extends CustomBaseEntity {
     @Property({type: types.datetime, defaultRaw: "now()"})
     timePosted!: Date;
 
-    @ManyToOne({entity: () => StudyPlan, inversedBy: (s: StudyPlan) => s.comments})
+    @ManyToOne({entity: () => StudyPlan, inversedBy: (s: StudyPlan) => s.comments, cascade: [Cascade.REMOVE]})
     studyPlan!: Rel<StudyPlan>;
 
     @ManyToOne({entity: () => User, inversedBy: (u: User) => u.comments})

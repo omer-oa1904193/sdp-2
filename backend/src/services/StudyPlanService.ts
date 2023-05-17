@@ -156,6 +156,25 @@ class StudyPlanService {
         res.json(comments);
     }
 
+    async deleteStudyPlan(req: Request, res: Response) {
+        const pathParamsValidator = z.object({studyPlanId: z.string().regex(/^\d+$/).transform(Number)})
+        const pathParams = pathParamsValidator.parse(req.params);
+
+        const studyPlanRepo = new StudyPlanRepo(req.em);
+        const studyPlan = await studyPlanRepo.findStudyPlan(pathParams.studyPlanId);
+        if (studyPlan == null) {
+            res.status(404).send();
+            return;
+        }
+        if (studyPlan.author.id !== req.user!.id) {
+            res.status(403).send();
+            return;
+        }
+        await studyPlanRepo.deleteStudyPlan(studyPlan)
+
+        res.status(204).send();
+    }
+
     async getSharedStudyPlans(req: Request, res: Response) {
         const studyPlanRepo = new StudyPlanRepo(req.em);
         const studyPlans = await studyPlanRepo.getSharedStudyPlans(req.user!);

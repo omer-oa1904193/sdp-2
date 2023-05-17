@@ -1,4 +1,4 @@
-import {Entity, EntityData, EntityDTO, Enum, Index, ManyToOne, OneToMany, Property, types, Unique} from "@mikro-orm/core";
+import {Cascade, Entity, EntityData, EntityDTO, Enum, Index, ManyToOne, OneToMany, Property, types, Unique} from "@mikro-orm/core";
 import {CustomBaseEntity} from "./CustomBaseEntity.js";
 import {ElectivePackage} from "./ElectivePackage.js";
 import {StudyPlan} from "./StudyPlan.js";
@@ -13,7 +13,7 @@ export class MapElectivePackageStudyPlan extends CustomBaseEntity {
     @ManyToOne({entity: () => ElectivePackage})
     electivePackage!: Rel<ElectivePackage>;
 
-    @ManyToOne({entity: () => StudyPlan})
+    @ManyToOne({entity: () => StudyPlan, cascade: [Cascade.REMOVE]})
     studyPlan!: Rel<StudyPlan>;
 
     @Enum({items: () => Season, type: types.enum})
