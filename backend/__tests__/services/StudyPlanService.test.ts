@@ -1,5 +1,6 @@
 import {describe} from "@jest/globals";
 
+/** @link StudyPlanService*/
 describe('StudyPlanService', () => {
     describe('getStudyPlans', () => {
     });

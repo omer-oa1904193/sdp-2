@@ -4,6 +4,7 @@ import {server} from "../../src/server.js";
 import {Season} from "../../src/models/enums/Season.js";
 
 
+/** @link AdminService*/
 describe('AdminService', () => {
     describe('importDataFromSIS', () => {
 
@@ -16,7 +17,7 @@ describe('AdminService', () => {
 
             expect(response.status).toBe(200);
             expect(response.body).toEqual({
-                season: Season.FALL,//expect.any([Season.SPRING, Season.FALL]),
+                season: Season.FALL,
                 year: 2021
             });
         })

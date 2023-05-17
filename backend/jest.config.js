@@ -5,5 +5,5 @@ export default {
     "moduleNameMapper": {
         "^(\\.\\.?\\/.+)\\.js$": "$1",
     },
-    globalSetup: "./__tests__/jest.global-setup.ts",
+    setupFilesAfterEnv: ["./__tests__/jest.setup.ts"]
 };
