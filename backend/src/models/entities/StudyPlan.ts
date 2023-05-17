@@ -9,6 +9,7 @@ import {MapCourseStudyPlan} from "./MapCourseStudyPlan.js";
 import {MapElectivePackageStudyPlan} from "./MapElectivePackageStudyPlan.js";
 import {Comment} from "./Comment.js";
 import {Season} from "../enums/Season.js";
+import {MapUserSharedStudyPlan} from "./MapUserSharedStudyPlan.js";
 
 @Entity()
 export class StudyPlan extends CustomBaseEntity {
@@ -54,4 +55,11 @@ export class StudyPlan extends CustomBaseEntity {
     @OneToMany({entity: () => Comment, mappedBy: (c: Comment) => c.studyPlan})
     comments: Collection<Comment> = new Collection<Comment>(this);
 
+    @ManyToMany({
+        entity: () => User,
+        mappedBy: (u: User) => u.sharedStudyPlans,
+        pivotEntity: () => MapUserSharedStudyPlan,
+        hidden: true
+    })
+    usersSharedWith: Collection<User> = new Collection<User>(this);
 }

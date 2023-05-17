@@ -7,11 +7,10 @@ import {User} from "./User.js";
 @Entity()
 @Unique({properties: ["studyPlan", "userSharedWith"]})
 export class MapUserSharedStudyPlan extends CustomBaseEntity {
+    @ManyToOne({entity: () => User})
+    userSharedWith!: Rel<User>;
 
     @ManyToOne({entity: () => StudyPlan})
     studyPlan!: Rel<StudyPlan>;
-
-    @ManyToOne({entity: () => User})
-    userSharedWith!: Rel<User>;
 
 }

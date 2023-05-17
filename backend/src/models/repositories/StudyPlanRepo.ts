@@ -24,6 +24,11 @@ export class StudyPlanRepo {
         return this.em.find(StudyPlan, {author: student.id}, {populate: ["program"]});
     }
 
+
+    async getSharedStudyPlans(user: User) {
+        return this.em.find(StudyPlan, {usersSharedWith: user.id}, {populate: ["program"]});
+    }
+
     async getStudyPlan(student: User, studyPlanId: number) {
         const studyPlan = await this.em.findOne(StudyPlan, {id: studyPlanId}, {
             orderBy: {courseMappings: {year: "asc"}, electiveMappings: {year: "asc"}},

@@ -14,6 +14,7 @@ export function DashboardPage() {
     const boxRef = useRef();
     const userStore = useUserStore();
     const [studyPlans, setStudyPlans] = useState([]);
+    const [sharedStudyPlans, setSharedStudyPlans] = useState([]);
     const [isAddDialogOpen, setAddDialog] = useState(false)
 
     useEffect(() => {
@@ -21,6 +22,14 @@ export function DashboardPage() {
             .then(r => r.json())
             .then(d => setStudyPlans(d))
     }, [isAddDialogOpen])
+
+    useEffect(() => {
+        userStore.fetchProtected("/study-plans/shared/")
+            .then(r => r.json())
+            .then(d => setSharedStudyPlans(d))
+    }, [isAddDialogOpen])
+
+    console.log(sharedStudyPlans)
 
 
     const handleAddDialogClose = () => {

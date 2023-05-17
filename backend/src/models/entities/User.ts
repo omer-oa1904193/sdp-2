@@ -8,6 +8,7 @@ import {AdmissionTest} from "./AdmissionTest.js";
 import {AdmissionTestResult} from "./AdmissionTestResult.js";
 import {Department} from "./Department.js";
 import {Enrollment} from "./Enrollment.js";
+import {MapUserSharedStudyPlan} from "./MapUserSharedStudyPlan.js";
 
 @Entity()
 export class User extends CustomBaseEntity {
@@ -48,4 +49,7 @@ export class User extends CustomBaseEntity {
 
     @OneToMany({entity: () => Enrollment, mappedBy: (a: Enrollment) => a.student})
     courseEnrollments: Collection<Enrollment> = new Collection<Enrollment>(this);
+
+    @ManyToMany({entity: () => StudyPlan, inversedBy: (s: StudyPlan) => s.usersSharedWith, pivotEntity: () => MapUserSharedStudyPlan, hidden: true, joinColumn:"userSharedWith"})
+    sharedStudyPlans: Collection<StudyPlan> = new Collection<StudyPlan>(this);
 }

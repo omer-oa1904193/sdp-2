@@ -4,6 +4,7 @@ import {z} from "zod";
 import {ProgramRepo} from "../models/repositories/ProgramRepo.js";
 import {Season} from "../models/enums/Season.js";
 import {UserRepo} from "../models/repositories/UserRepo.js";
+import {resolve} from "dns";
 
 class StudyPlanService {
     async getStudyPlans(req: Request, res: Response) {
@@ -153,6 +154,12 @@ class StudyPlanService {
         const body = bodyValidator.parse(req.body)
         const comments = await studyPlanRepo.addCommentToStudyPlan(studyPlan, {text: body.text, author: req.user!});
         res.json(comments);
+    }
+
+    async getSharedStudyPlans(req: Request, res: Response) {
+        const studyPlanRepo = new StudyPlanRepo(req.em);
+        const studyPlans = await studyPlanRepo.getSharedStudyPlans(req.user!);
+        res.json(studyPlans);
     }
 }
 
