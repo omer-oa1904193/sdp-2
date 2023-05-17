@@ -23,6 +23,7 @@ const DEV_OPTIONS: Options = {
 const TEST_OPTIONS: Options = {
     ...DEV_OPTIONS,
     clientUrl: process.env.TEST_DATABASE_URL,
+    debug: false,
 };
 let mikroOrmConfig: Options;
 if (process.env.NODE_ENV == "test")

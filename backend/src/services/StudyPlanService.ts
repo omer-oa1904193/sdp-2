@@ -4,7 +4,6 @@ import {z} from "zod";
 import {ProgramRepo} from "../models/repositories/ProgramRepo.js";
 import {Season} from "../models/enums/Season.js";
 import {UserRepo} from "../models/repositories/UserRepo.js";
-import {resolve} from "dns";
 
 class StudyPlanService {
     async getStudyPlans(req: Request, res: Response) {
@@ -110,7 +109,7 @@ class StudyPlanService {
         const pathParams = pathParamsValidator.parse(req.params);
 
         const studyPlanRepo = new StudyPlanRepo(req.em)
-        const studyPlan = await studyPlanRepo.findStudyPlan(pathParams.studyPlanId, [""]);
+        const studyPlan = await studyPlanRepo.findStudyPlan(pathParams.studyPlanId);
         if (!studyPlan) {
             res.status(404).send();
             return
@@ -133,7 +132,7 @@ class StudyPlanService {
         const pathParams = pathParamsValidator.parse(req.params);
 
         const studyPlanRepo = new StudyPlanRepo(req.em)
-        const studyPlan = await studyPlanRepo.findStudyPlan(pathParams.studyPlanId, [""]);
+        const studyPlan = await studyPlanRepo.findStudyPlan(pathParams.studyPlanId);
         if (!studyPlan) {
             res.status(404).send();
             return

@@ -26,8 +26,9 @@ router.get("/colleges/", programService.getColleges);
 router.get("/programs/", programService.getProgramStudyPlans);
 router.get("/elective-packages/:packageId", authMiddleware, programService.getElectivePackage);
 router.post("/sync-data/", adminService.importDataFromSIS)
-router.get("/semesters/current", adminService.getCurrentSemester)
+router.get("/semesters/current/", adminService.getCurrentSemester)
 
+//@ts-ignore
 router.use((err: Error, req: Request, res: Response, next: NextFunction) => {
     if (err instanceof ZodError) {
         res.status(400).send(err);
