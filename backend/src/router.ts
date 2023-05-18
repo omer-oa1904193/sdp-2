@@ -24,7 +24,7 @@ router.get("/study-plans/:studyPlanId/comments", authMiddleware, studyPlanServic
 router.post("/study-plans/:studyPlanId/comments", authMiddleware, studyPlanService.addCommentToStudyPlan);
 router.get("/colleges/", programService.getColleges);
 router.get("/programs/", programService.getProgramStudyPlans);
-router.get("/elective-packages/:packageId", authMiddleware, programService.getElectivePackage);
+router.get("/elective-packages/:packageId", programService.getElectivePackage);
 router.post("/sync-data/", adminService.importDataFromSIS)
 router.get("/semesters/current/", adminService.getCurrentSemester)
 

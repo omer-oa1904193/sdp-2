@@ -26,8 +26,6 @@ describe('ProgramService', () => {
             const colleges = await testContext.em.find(College, {});
             expect(response.body).toMatchObject(colleges.map(c => c.toPOJO()));
         })
-
-
     });
     describe('getProgramStudyPlans', () => {
         it("should return a list of all programs", async () => {
@@ -52,7 +50,10 @@ describe('ProgramService', () => {
     });
     describe('getElectivePackage', () => {
         it("should return an elective package with all its courses", async () => {
-
         });
+        it("should return 400 if the elective package id is invalid", async () => {
+        })
+        it("should return 404 if the elective package with the id is not found", async () => {
+        })
     });
 })

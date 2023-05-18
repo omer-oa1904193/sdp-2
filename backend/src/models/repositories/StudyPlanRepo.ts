@@ -170,7 +170,7 @@ export class StudyPlanRepo {
     async getStudyPlanComments(studyPlan: StudyPlan) {
         return this.em.find(Comment, {
             studyPlan: studyPlan.id,
-        }, {populate: ["author"]});
+        }, {populate: ["author"], orderBy: {timePosted: QueryOrder.DESC}});
     }
 
     async findStudyPlan(studyPlanId: number) {
