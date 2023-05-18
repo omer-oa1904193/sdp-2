@@ -1,17 +1,23 @@
-import {describe} from "@jest/globals";
+import {describe, it} from "@jest/globals";
 
 /** @link ProgramRepo*/
 describe('ProgramRepo', () => {
-    describe('getProgramStudyPlans', () => {
+    describe('getColleges', () => {
+        it("should return the list of all colleges", async () => {
+        });
 
+    })
+    describe('getProgramStudyPlans', () => {
+        it("should return a list of all programs", async () => {
+        })
     })
     describe('getProgramStudyPlan', () => {
-
+        it("should return a program study plan", async () => {
+        })
     })
     describe('getElectivePackage', () => {
-
-    })
-    describe('getColleges', () => {
+        it("should return na elective package", async () => {
+        })
 
     })
     describe('bulkUpsertColleges', () => {

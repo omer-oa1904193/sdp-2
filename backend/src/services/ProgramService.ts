@@ -1,7 +1,6 @@
 import {ProgramRepo} from "../models/repositories/ProgramRepo.js";
 import {Request, Response} from "express";
 import {z} from "zod";
-import {StudyPlanRepo} from "../models/repositories/StudyPlanRepo.js";
 
 class ProgramService {
     async getColleges(req: Request, res: Response) {

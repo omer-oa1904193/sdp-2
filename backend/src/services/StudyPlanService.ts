@@ -29,7 +29,7 @@ class StudyPlanService {
         }
 
         const studyPlanRepo = new StudyPlanRepo(req.em);
-        const newStudyPlan = await studyPlanRepo.addStudentStudyPlan({
+        const newStudyPlan = await studyPlanRepo.addStudyPlan({
             name: body.name,
             yearStarted: body.yearStarted,
             seasonStarted: body.seasonStarted,
@@ -60,7 +60,7 @@ class StudyPlanService {
             res.status(404).send();
             return;
         }
-        const existingSharedStudyPlanMapping = await studyPlanRepo.getUserSharedStudyPlanMapping(studyPlan, userSharedWith);
+        const existingSharedStudyPlanMapping = await studyPlanRepo.findUserSharedStudyPlanMapping(studyPlan, userSharedWith);
         if (existingSharedStudyPlanMapping != null) {
             //ignore duplicates
             res.status(200).send(existingSharedStudyPlanMapping);
@@ -84,7 +84,7 @@ class StudyPlanService {
             return;
         }
         if (studyPlan.author.id !== req.user!.id) {
-            const sharedStudyPlanMapping = await studyPlanRepo.getUserSharedStudyPlanMapping(studyPlan, req.user!);
+            const sharedStudyPlanMapping = await studyPlanRepo.findUserSharedStudyPlanMapping(studyPlan, req.user!);
             if (sharedStudyPlanMapping == null) {
                 //hide private study plans
                 res.status(403).send();
@@ -122,7 +122,7 @@ class StudyPlanService {
             return;
         }
         if (studyPlan.author.id !== req.user!.id) {
-            const sharedStudyPlanMapping = await studyPlanRepo.getUserSharedStudyPlanMapping(studyPlan, req.user!);
+            const sharedStudyPlanMapping = await studyPlanRepo.findUserSharedStudyPlanMapping(studyPlan, req.user!);
             if (sharedStudyPlanMapping == null) {
                 //hide private study plans
                 res.status(403).send();
@@ -130,7 +130,7 @@ class StudyPlanService {
             }
         }
 
-        studyPlan = await studyPlanRepo.updateStudentStudyPlan(pathParams.studyPlanId, body);
+        studyPlan = await studyPlanRepo.updateStudyPlan(pathParams.studyPlanId, body);
         res.json(studyPlan);
     }
 
@@ -146,7 +146,7 @@ class StudyPlanService {
         }
 
         if (studyPlan.author.id !== req.user!.id) {
-            const sharedStudyPlanMapping = await studyPlanRepo.getUserSharedStudyPlanMapping(studyPlan, req.user!);
+            const sharedStudyPlanMapping = await studyPlanRepo.findUserSharedStudyPlanMapping(studyPlan, req.user!);
             if (sharedStudyPlanMapping == null) {
                 //hide private study plans
                 res.status(403).send();
@@ -169,7 +169,7 @@ class StudyPlanService {
         }
 
         if (studyPlan.author.id !== req.user!.id) {
-            const sharedStudyPlanMapping = await studyPlanRepo.getUserSharedStudyPlanMapping(studyPlan, req.user!);
+            const sharedStudyPlanMapping = await studyPlanRepo.findUserSharedStudyPlanMapping(studyPlan, req.user!);
             if (sharedStudyPlanMapping == null) {
                 //hide private study plans
                 res.status(403).send();

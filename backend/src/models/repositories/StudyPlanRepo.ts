@@ -24,7 +24,6 @@ export class StudyPlanRepo {
         return this.em.find(StudyPlan, {author: student.id}, {populate: ["program"]});
     }
 
-
     async getSharedStudyPlans(user: User) {
         return this.em.find(StudyPlan, {usersSharedWith: user.id}, {populate: ["program"]});
     }
@@ -51,7 +50,7 @@ export class StudyPlanRepo {
         return studyPlan;
     }
 
-    async addStudentStudyPlan(studyPlanData: { name: string, seasonStarted: Season, yearStarted: number, program: Program, author: User }) {
+    async addStudyPlan(studyPlanData: { name: string, seasonStarted: Season, yearStarted: number, program: Program, author: User }) {
         const newStudyPlan = this.em.create(StudyPlan, {
             name: studyPlanData.name,
             program: studyPlanData.program,
@@ -97,7 +96,7 @@ export class StudyPlanRepo {
         return newSharedStudyPlan;
     }
 
-    async updateStudentStudyPlan(studyPlanId: number, updatedFields: {
+    async updateStudyPlan(studyPlanId: number, updatedFields: {
         name?: string,
         courseMappings?: { course: number, season: Season, year: number }[],
         electivePackageMappings?: { id: number, season: Season, year: number, currentCourse?: number }[]
@@ -150,13 +149,6 @@ export class StudyPlanRepo {
         return studyPlan;
     }
 
-    async getUserSharedStudyPlanMapping(studyPlan: StudyPlan, userSharedWith: User) {
-        return this.em.findOne(MapUserSharedStudyPlan, {
-            studyPlan: studyPlan,
-            userSharedWith: userSharedWith.id
-        });
-    }
-
     async addCommentToStudyPlan(studyPlan: StudyPlan, commentData: { author: User, text: string }) {
         const newComment = this.em.create(Comment, {
             studyPlan: studyPlan.id,
@@ -173,12 +165,19 @@ export class StudyPlanRepo {
         }, {populate: ["author"], orderBy: {timePosted: QueryOrder.DESC}});
     }
 
+    async deleteStudyPlan(studyPlan: StudyPlan) {
+        return this.em.removeAndFlush(studyPlan);
+    }
+
     async findStudyPlan(studyPlanId: number) {
         return this.em.findOne(StudyPlan, {id: studyPlanId});
     }
 
-    async deleteStudyPlan(studyPlan: StudyPlan) {
-        return this.em.removeAndFlush(studyPlan);
+    async findUserSharedStudyPlanMapping(studyPlan: StudyPlan, userSharedWith: User) {
+        return this.em.findOne(MapUserSharedStudyPlan, {
+            studyPlan: studyPlan,
+            userSharedWith: userSharedWith.id
+        });
     }
 
 }

@@ -6,7 +6,6 @@ import {Comment} from "./Comment.js";
 import {Season} from "../enums/Season.js";
 import {AdmissionTest} from "./AdmissionTest.js";
 import {AdmissionTestResult} from "./AdmissionTestResult.js";
-import {Department} from "./Department.js";
 import {Enrollment} from "./Enrollment.js";
 import {MapUserSharedStudyPlan} from "./MapUserSharedStudyPlan.js";
 
