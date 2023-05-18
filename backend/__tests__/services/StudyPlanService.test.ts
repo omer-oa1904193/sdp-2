@@ -50,7 +50,7 @@ describe('StudyPlanService', () => {
         it("should return 403 if the study plan with the id is not created by or shared with logged-in user", async () => {
         })
     });
-    describe('updateStudentStudyPlan', () => {
+    describe('updateStudyPlan', () => {
         it("should update a study plan: name, courses, and electives", async () => {
         });
         it("should return 401 if the user is not logged in", async () => {

@@ -18,7 +18,7 @@ router.post("/study-plans/", authMiddleware, studyPlanService.addStudyPlan);
 router.get("/study-plans/shared/", authMiddleware, studyPlanService.getSharedStudyPlans);
 router.post("/study-plans/shared/", authMiddleware, studyPlanService.shareStudyPlan);
 router.get("/study-plans/:studyPlanId/", authMiddleware, studyPlanService.getStudyPlan);
-router.patch("/study-plans/:studyPlanId/", authMiddleware, studyPlanService.updateStudentStudyPlan);
+router.patch("/study-plans/:studyPlanId/", authMiddleware, studyPlanService.updateStudyPlan);
 router.delete("/study-plans/:studyPlanId/", authMiddleware, studyPlanService.deleteStudyPlan);
 router.get("/study-plans/:studyPlanId/comments", authMiddleware, studyPlanService.getStudyPlanComments);
 router.post("/study-plans/:studyPlanId/comments", authMiddleware, studyPlanService.addCommentToStudyPlan);

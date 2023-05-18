@@ -12,13 +12,13 @@ describe('StudyPlanRepo', () => {
     describe('getStudyPlan', () => {
 
     })
-    describe('addStudentStudyPlan', () => {
+    describe('addStudyPlan', () => {
 
     })
     describe('shareStudyPlan', () => {
 
     })
-    describe('updateStudentStudyPlan', () => {
+    describe('updateStudyPlan', () => {
 
     })
     describe('getUserSharedStudyPlanMapping', () => {

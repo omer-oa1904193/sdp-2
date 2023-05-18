@@ -96,7 +96,7 @@ class StudyPlanService {
         res.json(studyPlan);
     }
 
-    async updateStudentStudyPlan(req: Request, res: Response) {
+    async updateStudyPlan(req: Request, res: Response) {
         const pathParamsValidator = z.object({studyPlanId: z.string().regex(/^\d+$/).transform(Number)})
         const pathParams = pathParamsValidator.parse(req.params);
 
