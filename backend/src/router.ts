@@ -20,12 +20,12 @@ router.post("/study-plans/shared/", authMiddleware, studyPlanService.shareStudyP
 router.get("/study-plans/:studyPlanId/", authMiddleware, studyPlanService.getStudyPlan);
 router.patch("/study-plans/:studyPlanId/", authMiddleware, studyPlanService.updateStudyPlan);
 router.delete("/study-plans/:studyPlanId/", authMiddleware, studyPlanService.deleteStudyPlan);
-router.get("/study-plans/:studyPlanId/comments", authMiddleware, studyPlanService.getStudyPlanComments);
-router.post("/study-plans/:studyPlanId/comments", authMiddleware, studyPlanService.addCommentToStudyPlan);
+router.get("/study-plans/:studyPlanId/comments/", authMiddleware, studyPlanService.getStudyPlanComments);
+router.post("/study-plans/:studyPlanId/comments/", authMiddleware, studyPlanService.addCommentToStudyPlan);
 
 router.get("/colleges/", programService.getColleges);
 router.get("/programs/", programService.getProgramStudyPlans);
-router.get("/elective-packages/:packageId", programService.getElectivePackage);
+router.get("/elective-packages/:packageId/", programService.getElectivePackage);
 
 router.post("/sync-data/", adminService.importDataFromSIS)
 router.get("/semesters/current/", adminService.getCurrentSemester)

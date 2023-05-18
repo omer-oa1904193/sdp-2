@@ -12,7 +12,7 @@ export function SelectElectiveDialogue({electiveMapping, setMapping, packageSele
             setElectivePackage(null);
             return;
         }
-        userStore.fetchProtected(`/elective-packages/${electiveMapping.electivePackage.id}`)
+        userStore.fetchProtected(`/elective-packages/${electiveMapping.electivePackage.id}/`)
             .then(r => r.json())
             .then(electivePackage => {
                 setElectivePackage(electivePackage)

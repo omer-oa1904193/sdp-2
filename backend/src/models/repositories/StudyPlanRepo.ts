@@ -162,7 +162,7 @@ export class StudyPlanRepo {
     async getStudyPlanComments(studyPlan: StudyPlan) {
         return this.em.find(Comment, {
             studyPlan: studyPlan.id,
-        }, {populate: ["author"], orderBy: {timePosted: QueryOrder.DESC}});
+        }, {populate: ["author"], orderBy: {timePosted: QueryOrder.ASC}});
     }
 
     async deleteStudyPlan(studyPlan: StudyPlan) {

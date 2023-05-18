@@ -13,7 +13,7 @@ export function CommentsPane({studyPlanId}) {
     const [refetch, setRefetch] = useState(true)
     useEffect(() => {
         if (refetch) {
-            userStore.fetchProtected(`/study-plans/${studyPlanId}/comments`)
+            userStore.fetchProtected(`/study-plans/${studyPlanId}/comments/`)
                 .then(r => r.json())
                 .then(d => setComments(d));
             setRefetch(false);
@@ -25,7 +25,7 @@ export function CommentsPane({studyPlanId}) {
         if (newCommentText === "")
             return;
 
-        userStore.fetchProtected(`/study-plans/${studyPlanId}/comments`, {
+        userStore.fetchProtected(`/study-plans/${studyPlanId}/comments/`, {
             method: "POST",
             body: JSON.stringify({
                 text: newCommentText

@@ -19,10 +19,10 @@ server.use(express.static('public'))
 server.use(express.json())
 server.use(morgan("tiny"));
 server.use("/api", attachOrmEntityManagerMiddleware, router);
-
-export async function initORM() {
-    return await MikroORM.init(mikroOrmConfig);
-}
+export const orm = await MikroORM.init(mikroOrmConfig);
+// export async function initORM() {
+//     return await MikroORM.init(mikroOrmConfig);
+// }
 
 
 
