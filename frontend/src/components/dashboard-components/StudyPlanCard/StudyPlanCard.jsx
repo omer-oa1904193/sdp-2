@@ -106,12 +106,12 @@ export default function StudyPlanCard({studyPlan, isActive}) {
                     </Grid>
                 </Box>
 
-                <RectangularButton
-                    text="Analyze study plan"
-                    studyPlan={studyPlan}
-                    key={studyPlan.id}
-                    linkTo={`analyze/student/${studyPlan.id}`}
-                />
+                {/*<RectangularButton*/}
+                {/*    text="Analyze study plan"*/}
+                {/*    studyPlan={studyPlan}*/}
+                {/*    key={studyPlan.id}*/}
+                {/*    linkTo={`analyze/student/${studyPlan.id}`}*/}
+                {/*/>*/}
             </Paper>
         </Box>
     );

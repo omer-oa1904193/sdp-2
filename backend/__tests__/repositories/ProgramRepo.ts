@@ -20,28 +20,28 @@ describe('ProgramRepo', () => {
         })
 
     })
-    describe('bulkUpsertColleges', () => {
-
-    })
-    describe('bulkUpsertDepartments', () => {
-
-    })
-    describe('bulkUpsertCourses', () => {
-
-    })
-    describe('bulkUpsertElectivePackages', () => {
-
-    })
-    describe('bulkUpsertPrograms', () => {
-
-    })
-    describe('bulkUpsertAdmissionTests', () => {
-
-    })
-    describe('bulkUpsertGradeScales', () => {
-
-    })
-    describe('bulkUpsertEnrollments', () => {
-
-    })
+    // describe('bulkUpsertColleges', () => {
+    //
+    // })
+    // describe('bulkUpsertDepartments', () => {
+    //
+    // })
+    // describe('bulkUpsertCourses', () => {
+    //
+    // })
+    // describe('bulkUpsertElectivePackages', () => {
+    //
+    // })
+    // describe('bulkUpsertPrograms', () => {
+    //
+    // })
+    // describe('bulkUpsertAdmissionTests', () => {
+    //
+    // })
+    // describe('bulkUpsertGradeScales', () => {
+    //
+    // })
+    // describe('bulkUpsertEnrollments', () => {
+    //
+    // })
 });
