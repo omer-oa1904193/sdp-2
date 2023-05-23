@@ -1,0 +1,33 @@
+
+.wrapper {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    row-gap: 0.75rem;
+    --low-color: #e33800;
+    --mid-color: #e0c400;
+    --high-color: #4CBB17;
+}
+
+.svg-path {
+    stroke-linecap: round;
+    stroke-width: 6;
+}
+
+.empty {
+    stroke: #e5e5e5;
+}
+
+.filled {
+    stroke-dasharray: 250;
+}
+
+.gpa-text {
+    font-weight: bold;
+}
+
+.gpa-label {
+    font-weight: bold;
+    font-size: 1.25rem;
+    color: var(--primary-color);
+}
