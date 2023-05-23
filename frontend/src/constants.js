@@ -16,3 +16,12 @@ export const SEASONS = {
 export const SEASONS_ORDER = [
     SEASONS.SPRING, SEASONS.SUMMER, SEASONS.FALL, SEASONS.WINTER,
 ]
+export const MAIN_SEASONS = [
+    SEASONS.SPRING, SEASONS.FALL
+]
+
+export const USER_ROLES = {
+    STUDENT: "Student",
+    ACADEMIC_ADVISOR: "Academic Advisor",
+    PROGRAM_COORDINATOR: "Program Coordinator"
+}

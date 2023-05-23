@@ -33,6 +33,9 @@ export default function StudyPlanEditPage(pageProps) {
         };
     }, [isDirty, router.events]);
 
+    useEffect(() => {
+        document.body.style.overflow = "hidden";
+    }, []);
     return <>
         <StudyPlanPage
             studyPlanId={router.query.studyPlanId}

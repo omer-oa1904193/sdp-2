@@ -118,9 +118,7 @@ export function StudyPlanPage({studyPlanId, isEditable, isDirty, setDirty}) {
                 <div className={styles.buttonsPane}>
                     <Score studyPlan={studyPlan}></Score>
                     <CircularIconButton icon={faPen} link={`/study-plans/${router.query.studyPlanId}/edit`}/>
-                    <CircularIconButton icon={faGear}/>
                     <CircularIconButton icon={faShare} onClick={() => setShareDialogueOpen(true)}/>
-                    <CircularIconButton icon={faMessage}/>
                 </div>
             }
             <StudyPlanEditor studyPlan={studyPlan}

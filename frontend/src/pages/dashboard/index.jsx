@@ -4,6 +4,7 @@ import CreateStudyPlanDialogue
 import {GPACard} from "@/components/dashboard-components/GPACard/GPACard.jsx";
 import {RecentUpdatesCard} from "@/components/dashboard-components/RecentUpdatesCard/RecentUpdatesCard.jsx";
 import StudyPlanCard from "@/components/dashboard-components/StudyPlanCard/StudyPlanCard.jsx";
+import {USER_ROLES} from "@/constants.js";
 import {useUserStore} from "@/stores/userStore.js";
 import AddIcon from "@mui/icons-material/Add";
 import * as React from "react";
@@ -27,7 +28,7 @@ export default function DashboardPage() {
                     setRefetchStudyPlans(false);
                 })
         }
-    }, [isAddDialogOpen, refetchStudyPlans, userStore])
+    }, [refetchStudyPlans, userStore])
     useEffect(() => {
         if (refetchSharedPlans) {
             userStore.fetchProtected("/study-plans/shared/")
@@ -37,7 +38,7 @@ export default function DashboardPage() {
                     setRefetchSharedPlans(false);
                 })
         }
-    }, [isAddDialogOpen, refetchSharedPlans, userStore])
+    }, [refetchSharedPlans, userStore])
 
     return <div className={styles.dashboardPage}>
         <h2>Welcome</h2>
@@ -84,14 +85,17 @@ export default function DashboardPage() {
             </div>
 
             <aside className={`${styles.dashboardAside}`}>
-                <GPACard/>
+                {userStore.user.role === USER_ROLES.STUDENT && <GPACard/>}
                 <RecentUpdatesCard/>
             </aside>
         </div>
         <CreateStudyPlanDialogue
             isOpen={isAddDialogOpen}
             setOpen={setIsAddDialogOpen}
-            closeDialogue={() => setIsAddDialogOpen(false)}>
+            closeDialogue={() => {
+                setIsAddDialogOpen(false);
+                setRefetchStudyPlans(true);
+            }}>
         </CreateStudyPlanDialogue>
     </div>
 }

@@ -1,5 +1,5 @@
 import {Dialogue} from "@/components/common/ui/Dialogue/Dialogue.jsx";
-import {SEASONS_ORDER} from "@/constants.js";
+import {MAIN_SEASONS, SEASONS_ORDER} from "@/constants.js";
 import {useUserStore} from "@/stores/userStore.js";
 import React, {useEffect, useState} from "react";
 import styles from "./CreateStudyPlanDialogue.module.css";
@@ -65,7 +65,7 @@ export default function CreateStudyPlanDialogue({isOpen, setOpen, closeDialogue}
                                        placeholder="Starting year" required></input>
                                 <select required defaultValue="" onChange={(e) => setSeasonStarted(e.target.value)}>
                                     <option value="" disabled>Starting Season</option>
-                                    {SEASONS_ORDER.map(s =>
+                                    {MAIN_SEASONS.map(s =>
                                         <option key={s} value={s}>{s}</option>
                                     )}
                                 </select>
