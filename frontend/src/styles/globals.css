@@ -13,6 +13,7 @@ body {
     --on-secondary-color: white;
     --page-gradient: linear-gradient(120deg, var(--primary-color) 0%, var(--secondary-color) 100%);
     --header-gradient: linear-gradient(90deg, var(--primary-color) 0%, #D7CB9E 100%);
+    --heading-gray: #808080;
 }
 
 .inv-button {
@@ -45,12 +46,11 @@ form input, form select {
 }
 
 .filled-button {
-    padding: 1.25rem 1rem;
+    padding: 1rem 1rem;
     background-color: var(--primary-color);
     border-radius: 8px;
     border: none;
     color: var(--on-primary-color);
-    font-size: 1.5rem;
     font-weight: bold;
 }
 
@@ -59,7 +59,7 @@ form input, form select {
 }
 
 .outlined-button {
-    padding: 1.25rem 1rem;
+    padding: 1rem 1rem;
     background-color: transparent;
     color: var(--primary-color);
     border: 1px solid var(--primary-color);
@@ -168,4 +168,8 @@ input::-webkit-inner-spin-button {
 /* Firefox */
 input[type=number] {
     -moz-appearance: textfield;
+}
+
+.error {
+    color: red;
 }

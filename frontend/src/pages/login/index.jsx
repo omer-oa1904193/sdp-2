@@ -70,7 +70,7 @@ export default function LoginPage() {
                 </div>
                 <div className={styles.buttonDiv}>
                     <p className="error">{state.error}</p>
-                    <button type="submit" className="filled-button">Login</button>
+                    <button type="submit" className={`filled-button ${styles.loginButton}`}>Login</button>
                 </div>
             </form>
         </div>
