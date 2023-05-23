@@ -1,4 +1,5 @@
 import {User} from "../entities/User.js";
+import {Comment} from "../entities/Comment.js";
 import {EntityData, EntityManager} from "@mikro-orm/core";
 
 export class UserRepo {
@@ -31,6 +32,11 @@ export class UserRepo {
 
     async findUser(userId: number) {
         return this.em.findOne(User, {id: userId});
+    }
+
+
+    async getUserComments(user: User) {
+        return this.em.find(Comment, {author: {$ne: user.id}, studyPlan: {author: user.id}}, {populate: ["author", "studyPlan"]});
     }
 
 }

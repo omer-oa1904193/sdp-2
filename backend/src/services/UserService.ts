@@ -2,6 +2,7 @@ import bcrypt from "bcrypt";
 import jwt from "jsonwebtoken";
 import {Request, Response} from "express";
 import {UserRepo} from "../models/repositories/UserRepo.js";
+import {StudyPlanRepo} from "../models/repositories/StudyPlanRepo.js";
 
 class UserService {
     async login(req: Request, res: Response) {
@@ -30,6 +31,17 @@ class UserService {
         const userRepo = new UserRepo(req.em);
         const users = await userRepo.getUsers();
         res.json(users);
+    }
+
+    async getNotifications(req: Request, res: Response) {
+        const userRepo = new UserRepo(req.em);
+        const comments = await userRepo.getUserComments(req.user!);
+
+        res.json(comments.map(c => ({
+            title: `${c.author.id == req.user!.id ? "You" : c.author.name} commented on ${c.studyPlan.name}`,
+            text: c.text,
+            timestamp: c.timePosted
+        })));
     }
 
 }

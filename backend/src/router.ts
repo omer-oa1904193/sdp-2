@@ -12,6 +12,7 @@ export const router = Router();
 router.post("/sessions/", UserService.login);
 router.get("/users/", authMiddleware, UserService.getUsers);
 router.get("/users/me/", authMiddleware, UserService.getUser);
+router.get("/notifications/", authMiddleware, UserService.getNotifications);
 
 router.get("/study-plans/", authMiddleware, studyPlanService.getStudyPlans);
 router.post("/study-plans/", authMiddleware, studyPlanService.addStudyPlan);

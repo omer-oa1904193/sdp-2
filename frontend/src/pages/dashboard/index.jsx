@@ -12,9 +12,10 @@ export default function DashboardPage() {
     const userStore = useUserStore();
     const [studyPlans, setStudyPlans] = useState([]);
     const [sharedStudyPlans, setSharedStudyPlans] = useState([]);
+    const [recentUpdates, setRecentUpdates] = useState([]);
     const [isAddDialogOpen, setIsAddDialogOpen] = useState(false)
     const [currentSemester, setCurrentSemester] = useState();
-
+    console.log(recentUpdates)
     useEffect(() => {
         userStore.fetchProtected("/study-plans/")
             .then(r => r.json())
@@ -29,6 +30,9 @@ export default function DashboardPage() {
 
     useEffect(() => {
         userStore.fetchProtected(`/semesters/current`).then(r => r.json()).then(d => setCurrentSemester(`${d.season} ${d.year}`))
+    }, [userStore])
+    useEffect(() => {
+        userStore.fetchProtected(`/notifications/`).then(r => r.json()).then(d => setRecentUpdates(d))
     }, [userStore])
 
 
@@ -85,8 +89,12 @@ export default function DashboardPage() {
                 </div>
                 <div className={`${styles.sectionCard}`}>
                     <h3>Recent Updates</h3>
-                    {sharedStudyPlans.length !== 0 ?
-                        <ol></ol>
+                    {recentUpdates.length !== 0 ?
+                        <ol>
+                            {recentUpdates.map((update, i) => <li key={i}>
+                                {update.title}
+                            </li>)}
+                        </ol>
                         :
                         <div className={styles.emptyDiv}>
                             <p>No recent updates.</p>
