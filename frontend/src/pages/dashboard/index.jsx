@@ -1,46 +1,49 @@
+import {Spinner} from "@/components/common/ui/Spinner/Spinner.jsx";
 import CreateStudyPlanDialogue
     from "@/components/dashboard-components/CreateStudyPlanDialogue/CreateStudyPlanDialogue.jsx";
-import {GPAVisualizer} from "@/components/dashboard-components/GPAVisualizer/GPAVisualizer.jsx";
+import {GPACard} from "@/components/dashboard-components/GPACard/GPACard.jsx";
+import {RecentUpdatesCard} from "@/components/dashboard-components/RecentUpdatesCard/RecentUpdatesCard.jsx";
 import StudyPlanCard from "@/components/dashboard-components/StudyPlanCard/StudyPlanCard.jsx";
 import {useUserStore} from "@/stores/userStore.js";
 import AddIcon from "@mui/icons-material/Add";
 import * as React from "react";
-import {useEffect, useRef, useState} from "react";
+import {useEffect, useState} from "react";
 import styles from "./DashBoardPage.module.css"
 
 export default function DashboardPage() {
     const userStore = useUserStore();
     const [studyPlans, setStudyPlans] = useState([]);
     const [sharedStudyPlans, setSharedStudyPlans] = useState([]);
-    const [recentUpdates, setRecentUpdates] = useState([]);
     const [isAddDialogOpen, setIsAddDialogOpen] = useState(false)
-    const [currentSemester, setCurrentSemester] = useState();
-    console.log(recentUpdates)
-    useEffect(() => {
-        userStore.fetchProtected("/study-plans/")
-            .then(r => r.json())
-            .then(d => setStudyPlans(d))
-    }, [isAddDialogOpen])
+    const [refetchStudyPlans, setRefetchStudyPlans] = useState(true);
+    const [refetchSharedPlans, setRefetchSharedPlans] = useState(true);
 
     useEffect(() => {
-        userStore.fetchProtected("/study-plans/shared/")
-            .then(r => r.json())
-            .then(d => setSharedStudyPlans(d))
-    }, [isAddDialogOpen])
-
+        if (refetchStudyPlans) {
+            userStore.fetchProtected("/study-plans/")
+                .then(r => r.json())
+                .then(d => {
+                    setStudyPlans(d);
+                    setRefetchStudyPlans(false);
+                })
+        }
+    }, [isAddDialogOpen, refetchStudyPlans, userStore])
     useEffect(() => {
-        userStore.fetchProtected(`/semesters/current`).then(r => r.json()).then(d => setCurrentSemester(`${d.season} ${d.year}`))
-    }, [userStore])
-    useEffect(() => {
-        userStore.fetchProtected(`/notifications/`).then(r => r.json()).then(d => setRecentUpdates(d))
-    }, [userStore])
-
+        if (refetchSharedPlans) {
+            userStore.fetchProtected("/study-plans/shared/")
+                .then(r => r.json())
+                .then(d => {
+                    setSharedStudyPlans(d)
+                    setRefetchSharedPlans(false);
+                })
+        }
+    }, [isAddDialogOpen, refetchSharedPlans, userStore])
 
     return <div className={styles.dashboardPage}>
         <h2>Welcome</h2>
         <div className={styles.mainDashboard}>
             <div className={styles.studyPlansWrapper}>
-                <section className={styles.sectionCard}>
+                <section className={`section-card`}>
                     <div className={styles.studyPlansTopDiv}>
                         <h3>Your Study Plans</h3>
                         <button className={`filled-button ${styles.addStudyPlanButton}`}
@@ -49,58 +52,40 @@ export default function DashboardPage() {
                             Add
                         </button>
                     </div>
-                    {studyPlans.length !== 0 ?
-                        <ul className={`styled-scrollbars ${styles.studyPlanList}`}>
-                            {studyPlans.map(studyPlan => <li key={studyPlan.id}><StudyPlanCard studyPlan={studyPlan}/>
-                            </li>)}
-                        </ul> :
-                        <div className={styles.emptyDiv}>
-                            <p>No Study Plans.</p>
-                        </div>
+                    {refetchStudyPlans ? <div className={styles.loadingWrapper}><Spinner/></div> :
+                        (studyPlans.length !== 0 ?
+                            <ul className={`styled-scrollbars ${styles.studyPlanList}`}>
+                                {studyPlans.map(studyPlan => <li key={studyPlan.id}>
+                                    <StudyPlanCard studyPlan={studyPlan}
+                                                   refetchStudyPlans={() => setRefetchStudyPlans(true)}/>
+                                </li>)}
+                            </ul> :
+                            <div className={styles.emptyDiv}>
+                                <p>No Study Plans.</p>
+                            </div>)
                     }
                 </section>
-                <section className={styles.sectionCard}>
+                <section className={`section-card`}>
                     <h3>Shared Plans</h3>
-                    {sharedStudyPlans.length !== 0 ?
-                        <ul>
-                            {sharedStudyPlans.map(studyPlan => <li key={studyPlan.id}><StudyPlanCard
-                                studyPlan={studyPlan}/>
-                            </li>)}
-                        </ul>
-                        :
-                        <div className={styles.emptyDiv}>
-                            <p>No Shared Study Plans.</p>
-                        </div>
+
+                    {refetchSharedPlans ? <div className={styles.loadingWrapper}><Spinner/></div> :
+                        (sharedStudyPlans.length !== 0 ?
+                            <ul>
+                                {sharedStudyPlans.map(studyPlan => <li key={studyPlan.id}>
+                                    <StudyPlanCard studyPlan={studyPlan}/>
+                                </li>)}
+                            </ul>
+                            :
+                            <div className={styles.emptyDiv}>
+                                <p>No Shared Study Plans.</p>
+                            </div>)
                     }
                 </section>
             </div>
 
             <aside className={`${styles.dashboardAside}`}>
-                <div className={`${styles.sectionCard} ${styles.summeryCard}`}>
-                    <GPAVisualizer gpa={3.72}></GPAVisualizer>
-                    <div className={styles.detailDiv}>
-                        <h6>Current Semester</h6>
-                        <p>{currentSemester}</p>
-                    </div>
-                    <div className={styles.detailDiv}>
-                        <h6>Semester GPA</h6>
-                        <p>3.72</p>
-                    </div>
-                </div>
-                <div className={`${styles.sectionCard}`}>
-                    <h3>Recent Updates</h3>
-                    {recentUpdates.length !== 0 ?
-                        <ol>
-                            {recentUpdates.map((update, i) => <li key={i}>
-                                {update.title}
-                            </li>)}
-                        </ol>
-                        :
-                        <div className={styles.emptyDiv}>
-                            <p>No recent updates.</p>
-                        </div>
-                    }
-                </div>
+                <GPACard/>
+                <RecentUpdatesCard/>
             </aside>
         </div>
         <CreateStudyPlanDialogue

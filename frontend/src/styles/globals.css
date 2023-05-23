@@ -173,3 +173,16 @@ input[type=number] {
 .error {
     color: red;
 }
+
+.section-card {
+    background-color: white;
+    border-radius: 10px;
+    padding: 1rem;
+    box-shadow: rgba(0, 0, 0, 0.15) 2px 2px 3px;
+}
+
+.section-card h3 {
+    font-size: 1.5rem;
+    font-weight: 500;
+    color: var(--heading-gray);
+}

@@ -49,18 +49,7 @@
     color: var(--heading-gray);
 }
 
-.section-card {
-    background-color: white;
-    border-radius: 10px;
-    padding: 1rem;
-    box-shadow: rgba(0, 0, 0, 0.15) 2px 2px 3px;
-}
 
-.section-card h3 {
-    font-size: 1.5rem;
-    font-weight: 500;
-    color: var(--heading-gray);
-}
 
 .study-plans-top-div {
     display: flex;
@@ -82,22 +71,7 @@
     flex-grow: 0.25;
 }
 
-.summery-card {
-    align-self: flex-start;
+.loading-wrapper {
     display: flex;
-    flex-direction: column;
-    row-gap: 0.75rem;
-    font-size: 1.05rem;
-    margin-bottom: 1rem;
-}
-
-.detail-div {
-    display: flex;
-    flex-direction: column;
-    row-gap: 0.2rem;
-}
-
-.detail-div h6 {
-    color: var(--primary-color);
-    font-weight: bold;
+    justify-content: center;
 }

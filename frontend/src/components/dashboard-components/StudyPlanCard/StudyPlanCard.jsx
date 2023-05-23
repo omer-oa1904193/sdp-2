@@ -6,18 +6,14 @@ import Link from "next/link";
 import React from "react";
 import styles from "./StudyPlanCard.module.css";
 
-export default function StudyPlanCard({studyPlan}) {
+export default function StudyPlanCard({studyPlan, refetchStudyPlans}) {
     const userStore = useUserStore();
     const handleDelete = async () => {
         const confirmed = window.confirm("Are you sure you want to delete this study plan?");
         if (confirmed) {
-            try {
-                await userStore.fetchProtected(`/study-plans/${studyPlan.id}`, {
-                    method: "DELETE"
-                });
-            } catch (error) {
-                console.error(error);
-            }
+            userStore.fetchProtected(`/study-plans/${studyPlan.id}`, {
+                method: "DELETE"
+            }).then(refetchStudyPlans);
         }
     };
 
@@ -47,7 +43,7 @@ export default function StudyPlanCard({studyPlan}) {
                         </Typography>
                     </Box>
                 </Link>
-                {studyPlan.author == userStore.user.id &&
+                {studyPlan.author === userStore.user.id &&
                     <button className={`inv-button ${styles.deleteButton}`} onClick={handleDelete}>
                         <DeleteIcon/>
                     </button>
