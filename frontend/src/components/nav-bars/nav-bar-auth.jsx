@@ -71,7 +71,7 @@ export default function NavBarPrivate() {
 
                         <button
                             className={styles["home-button"] + " " + styles["inv-button"] + " " + styles["link-button"]}>
-                            <Link href="/">
+                            <Link href="/dashboard">
                                 <FontAwesomeIcon icon={faHouse}/>
                             </Link>
                         </button>
@@ -79,21 +79,7 @@ export default function NavBarPrivate() {
                         <nav>
                             <ul>
                                 <li>
-                                    <Link href="/study-plans/study-plan">
-                                        <UnderlinedTypography variant="h6" className={isActive ? "active" : ""}>
-                                            Study Plan
-                                        </UnderlinedTypography>
-                                    </Link>
-
                                 </li>
-                                {/* <li>
-                                    <Link href="analyze/student">
-                                        <UnderlinedTypography variant="h6" className={isActive ? "active" : ""}>
-                                            Analyze
-                                        </UnderlinedTypography>
-                                    </Link>
-
-                                </li> */}
                             </ul>
                         </nav>
                     </div>

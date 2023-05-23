@@ -102,12 +102,7 @@ export default function NavBarPrivate() {
                         </button>
 
                         <button
-                            className={`${styles["nav-icon-button"]} ${styles["inv-button"]}`}
-                            // onClick={() => {
-                            //     delete localStorage.authToken;
-                            //     userStore.setUser(null)
-                            // }}
-                            >
+                            className={`${styles["nav-icon-button"]} ${styles["inv-button"]}`}>
                             <FontAwesomeIcon icon={faRightFromBracket}/>
                         </button>
                     </div>

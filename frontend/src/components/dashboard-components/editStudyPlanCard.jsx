@@ -41,19 +41,6 @@ export default function EditStudyPlanCard({setIsEditDialogOpen, studyPlan, isEdi
         handleDialogClose();
     };
 
-    const handleDelete = async () => {
-        const confirmed = window.confirm("Are you sure you want to delete this study plan?");
-        if (confirmed) {
-            try {
-                await userStore.fetchProtected(`/study-plans/${studyPlan.id}`, {
-                    method: "DELETE"
-                });
-                handleDialogClose();
-            } catch (error) {
-                console.error(error);
-            }
-        }
-    };
 
 
     return (
