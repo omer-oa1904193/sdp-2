@@ -42,7 +42,6 @@ export function StudyPlanPage({studyPlanId, isEditable, isDirty, setDirty}) {
                     courseCount: studyPlan.courseMappings.length + studyPlan.electiveMappings.length,
                     completedCourses: 0,
                     earnedCreditHours: 0,
-                    progress: 0,
                     creditHours: 0,
                     tuitionFees: 0,
                     gpa: 0

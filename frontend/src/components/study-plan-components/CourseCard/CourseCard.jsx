@@ -4,9 +4,18 @@ import {useEffect, useRef} from "react";
 import styles from "./CourseCard.module.css";
 
 
-export function CourseCard({courseMapping, isPastSemester, onCourseClicked, errorHighlighted, clearErrorHighlighted}) {
+export function CourseCard({
+                               courseMapping,
+                               isPastSemester,
+                               isHidden,
+                               onCourseClicked,
+                               errorHighlighted,
+                               clearErrorHighlighted
+                           }) {
     const courseCard = useRef(null);
     useEffect(() => courseCard.current?.addEventListener("animationend", () => clearErrorHighlighted()), [courseCard])
+    if (isHidden)
+        return;
     return <div onClick={onCourseClicked}
                 ref={courseCard}
                 id={`course-${courseMapping.id}`}

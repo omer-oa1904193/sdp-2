@@ -7,6 +7,7 @@ import styles from "./ElectiveCard.module.css"
 
 export function ElectiveCard({
                                  electivePackageMapping,
+                                 isHidden,
                                  onElectiveClicked,
                                  onCourseClicked,
                                  errorHighlighted,
@@ -14,6 +15,8 @@ export function ElectiveCard({
                              }) {
     const courseCard = useRef(null);
     useEffect(() => courseCard.current?.addEventListener("animationend", () => clearErrorHighlighted()), [courseCard])
+    if (isHidden)
+        return;
     if (electivePackageMapping.currentCourse) {
         const electiveCourse = {
             ...electivePackageMapping.currentCourse,

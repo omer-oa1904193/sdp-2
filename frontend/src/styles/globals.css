@@ -115,7 +115,7 @@ form input, form select {
 
 .completed-course {
     opacity: 0.6;
-    background-color: #61C975;
+    box-shadow: 0 0 2px 2px #355e3b !important;
 }
 
 .page-with-header {

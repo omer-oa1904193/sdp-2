@@ -18,7 +18,7 @@ export function StudyPlanCardList({
     const [errorCourseId, setErrorCourseId] = useState(null)
     const [season, year] = semester.split(" ");
     const isPastSemester = compareSemesters(semester, currentSemester) < 0;
-    return <div className={`${styles.semesterCourseList} ${isPastSemester && styles.completedSemester}`}>
+    return <ul className={`${styles.semesterCourseList} ${isPastSemester && styles.completedSemester}`}>
         {Array.from(mappings).map(([_, mapping], cardIndex) =>
             <li key={mapping.id}
                 data-x={columnIndex}
@@ -51,6 +51,6 @@ export function StudyPlanCardList({
                 }
             </li>
         )}
-    </div>
+    </ul>
 }
 

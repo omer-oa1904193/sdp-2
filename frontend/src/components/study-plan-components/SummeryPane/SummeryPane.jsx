@@ -4,7 +4,7 @@ import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 import {useEffect, useRef, useState} from "react";
 import styles from "./SummeryPane.module.css"
 
-export function SummeryPane({studyPlan,currentSemester}) {
+export function SummeryPane({studyPlan, currentSemester}) {
     const pane = useRef();
     const [isOpen, setOpen] = useState(true)
     useEffect(() => {
@@ -51,10 +51,6 @@ export function SummeryPane({studyPlan,currentSemester}) {
                     <hr></hr>
                     <div className={styles.categoryKeys}>
                         <div className={styles.categoryKey}>
-                            <div className={`completed-course ${styles.categoryKeyColor}`}></div>
-                            <p className={styles.categoryKeyText}>Completed Courses</p>
-                        </div>
-                        <div className={styles.categoryKey}>
                             <div className={`major-course ${styles.categoryKeyColor}`}></div>
                             <p className={styles.categoryKeyText}>Major Courses</p>
                         </div>
@@ -75,19 +71,23 @@ export function SummeryPane({studyPlan,currentSemester}) {
                             <p className={styles.categoryKeyText}>College Requirements</p>
                         </div>
                         <div className={styles.categoryKey}>
-                            <div className={`${styles.hasPrerequisites} ${styles.categoryKeyColor}`}>
-                                <FontAwesomeIcon icon={faExclamationCircle}/>
-                            </div>
-                            <p className={styles.categoryKeyText}>Has Prerequisite</p>
+                            <div className={`completed-course ${styles.categoryKeyColor}`}></div>
+                            <p className={styles.categoryKeyText}>Completed Courses</p>
                         </div>
-                        <div className={styles.categoryKey}>
-                            <div className={`${styles.categoryKeyColor}`}></div>
-                            <p className={styles.categoryKeyText}>Co-requisite</p>
-                        </div>
-                        <div className={styles.categoryKey}>
-                            <div className={`${styles.categoryKeyColor}`}></div>
-                            <p className={styles.categoryKeyText}>Prerequisite</p>
-                        </div>
+                        {/*<div className={styles.categoryKey}>*/}
+                        {/*    <div className={`${styles.hasPrerequisites} ${styles.categoryKeyColor}`}>*/}
+                        {/*        <FontAwesomeIcon icon={faExclamationCircle}/>*/}
+                        {/*    </div>*/}
+                        {/*    <p className={styles.categoryKeyText}>Has Prerequisite</p>*/}
+                        {/*</div>*/}
+                        {/*<div className={styles.categoryKey}>*/}
+                        {/*    <div className={`${styles.categoryKeyColor}`}></div>*/}
+                        {/*    <p className={styles.categoryKeyText}>Co-requisite</p>*/}
+                        {/*</div>*/}
+                        {/*<div className={styles.categoryKey}>*/}
+                        {/*    <div className={`${styles.categoryKeyColor}`}></div>*/}
+                        {/*    <p className={styles.categoryKeyText}>Prerequisite</p>*/}
+                        {/*</div>*/}
                     </div>
                 </div>
             </aside>

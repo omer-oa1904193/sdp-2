@@ -73,13 +73,15 @@
     flex-direction: column;
     padding-bottom: 1rem;
     border: 3px solid transparent;
+    flex-grow: 1;
 }
 
 .sp-editor .course-dropzone {
     border: 3px dashed lightgray;
 }
 
-.sp-editor .semester-button {
+.semester-button {
+    white-space: nowrap;
     background-color: white;
     border-radius: 7px;
     font-size: 0.9rem;

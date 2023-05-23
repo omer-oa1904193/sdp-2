@@ -1,6 +1,7 @@
 import {currencyFormatter} from "@/utils.js";
 import {TreeItem} from "@mui/lab";
 import {useState} from "react";
+import {JSONTree} from "react-json-tree";
 import {Dialogue} from "../../common/ui/Dialogue/Dialogue.jsx";
 import styles from "./CourseDialogue.module.css"
 import TreeView from "@mui/lab/TreeView";
@@ -58,9 +59,30 @@ export function CourseDialogue({course, setCourse}) {
                         </p>
                     </> : <>
                         <div className={`styled-scrollbars ${styles.prereqTreeWrapper}`}>
-                            <TreeView>
-                                {renderTree(course.prerequisites)}
-                            </TreeView>
+                            <JSONTree data={course.prerequisites} theme={{
+                                scheme: "default",
+                                author: "chris kempson (http://chriskempson.com)",
+                                base00: "#181818",
+                                base01: "#282828",
+                                base02: "#383838",
+                                base03: "#585858",
+                                base04: "#b8b8b8",
+                                base05: "#d8d8d8",
+                                base06: "#e8e8e8",
+                                base07: "#f8f8f8",
+                                base08: "#ab4642",
+                                base09: "#dc9656",
+                                base0A: "#f7ca88",
+                                base0B: "#a1b56c",
+                                base0C: "#86c1b9",
+                                base0D: "#7cafc2",
+                                base0E: "#ba8baf",
+                                base0F: "#a16946"
+                            }}
+                                      invertTheme={true}
+                                      hideRoot={true}
+                                      getItemString={(_1, _2, _3, itemString, keyPath) => <span>{itemString}</span>}
+                            />;
                         </div>
                     </>
                     }
@@ -69,33 +91,4 @@ export function CourseDialogue({course, setCourse}) {
         </div>
     </Dialogue>
 }
-
-
-const renderTree = (node) => {
-    if (Array.isArray(node))
-        node.map((child) => renderTree(child))
-    else if (typeof node === "object") {
-        if (["course", "test", "and", "or"].some(k => k in node)) {
-            const [key, value] = Object.entries(node)[0]
-            return <TreeItem
-                key={`${key}-${value.id}`}
-                nodeId={`${key}-${value.id}`}
-                label={key}
-            >
-                {Array.isArray(value)
-                    ? value.map((child) => renderTree(child))
-                    : renderTree(value)}
-            </TreeItem>
-        } else {
-
-            return Object.entries(node).map(([k, v]) => <TreeItem
-                key={`node-${node.id}-${k}-${v}`}
-                nodeId={`node-${node.id}-${k}-${v}`}
-                label={`${k}: ${v}`}>
-
-            </TreeItem>)
-        }
-    }
-
-};
 

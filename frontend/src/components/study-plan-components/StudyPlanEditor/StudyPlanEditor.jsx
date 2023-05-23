@@ -185,7 +185,7 @@ export function StudyPlanEditor({
                 </div>
                 <div className={styles.progressDiv}>
                     <p>Enrollment</p>
-                    <ProgressBar progress={studyPlan.stats.progress}/>
+                    <ProgressBar progress={(studyPlan.stats.completedCourses / studyPlan.stats.courseCount) * 100}/>
                     <p>Graduation</p>
                 </div>
             </>
@@ -195,7 +195,7 @@ export function StudyPlanEditor({
             {Array.from(studyPlan.yearMap).map(([semesterLabel, semesterCourses]) =>
                 <div key={semesterLabel} className={styles.semesterDiv}>
                     <h3 className={styles.semesterButton}>{semesterLabel} ({Array.from(semesterCourses.values()).reduce((t, c) => t + c.offering.creditHours, 0)})</h3>
-                    <ul className={styles.courseList}
+                    <div className={styles.courseList}
                         onDragOver={(e) => {
                             e.preventDefault()
                             document.querySelectorAll(`.${styles.courseList}`).forEach(e => e.classList.remove(styles.courseDropzone))
@@ -211,7 +211,7 @@ export function StudyPlanEditor({
                                            currentSemester={currentSemester}
                                            onDragEnd={() => document.querySelectorAll(`.${styles.courseList}`).forEach(e => e.classList.remove(styles.courseDropzone))}
                         />
-                    </ul>
+                    </div>
                     {/*{isEditable &&*/}
                     {/*    <button className="add-course-button inv-button">*/}
                     {/*        <FontAwesomeIcon icon={faPlus}/>*/}
