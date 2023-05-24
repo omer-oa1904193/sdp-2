@@ -1,8 +1,6 @@
-import {useUserStore} from "@/stores/userStore.js";
 import React from "react";
-import {AppBar, Box, IconButton, MenuItem, Toolbar, Typography} from "@mui/material";
-import MenuIcon from "@mui/icons-material/Menu";
-import {faBell, faCircleUser, faHouse, faRightFromBracket} from "@fortawesome/free-solid-svg-icons";
+import {Typography} from "@mui/material";
+import {faCircleUser, faHouse, faRightFromBracket} from "@fortawesome/free-solid-svg-icons";
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 import styles from "./AuthNavBar.module.css";
 import {styled} from "@mui/system";

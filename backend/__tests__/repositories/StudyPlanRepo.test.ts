@@ -30,9 +30,6 @@ describe('StudyPlanRepo', () => {
 
     })
     // describe('getUserSharedStudyPlanMapping', () => {
-    //     it("should update a study plan", async () => {
-    //     });
-    //
     // })
     describe('addCommentToStudyPlan', () => {
 
