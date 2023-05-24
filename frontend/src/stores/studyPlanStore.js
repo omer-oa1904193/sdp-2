@@ -8,7 +8,12 @@ export const useStudyPlanStore = create((set,get) => ({
         const prerequisiteGraph = new graphology.Graph();
         const courseIdToMappingId = {};
         for (const courseMapping of studyPlan.courseMappings) {
+            if('code' in courseMapping){
+                console.log("CONCURRENT")
+                console.log(courseMapping.course.title)
+            }
             prerequisiteGraph.addNode(`course-${courseMapping.id}`, {
+                id: courseMapping.id,
                 title: courseMapping.course.title,
                 season: courseMapping.season,
                 creditHours: courseMapping.course.credithours
