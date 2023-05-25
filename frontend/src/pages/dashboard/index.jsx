@@ -71,7 +71,7 @@ export default function DashboardPage() {
 
                     {refetchSharedPlans ? <div className={styles.loadingWrapper}><Spinner/></div> :
                         (sharedStudyPlans.length !== 0 ?
-                            <ul>
+                            <ul  className={`styled-scrollbars ${styles.studyPlanList}`}>
                                 {sharedStudyPlans.map(studyPlan => <li key={studyPlan.id}>
                                     <StudyPlanCard studyPlan={studyPlan}/>
                                 </li>)}
