@@ -16,11 +16,11 @@ import {compareSemesters} from "@/utils.js";
 import {faGear, faMessage, faPen, faShare} from "@fortawesome/free-solid-svg-icons";
 import {useRouter} from "next/router";
 import React, {useEffect, useState} from "react";
-import Score from "../../score-study-plan/score.jsx"
-import styles from "./StudyPlanPage.module.css"
+import Score from "../../score-study-plan/score.jsx";
+import styles from "./StudyPlanPage.module.css";
 
 export function StudyPlanPage({studyPlanId, isEditable, isDirty, setDirty}) {
-    const router = useRouter()
+    const router = useRouter();
     const userStore = useUserStore();
     const [studyPlan, setStudyPlan] = useState(null);
     const [courseDialogueCourse, setCourseDialogueCourse] = useState(null);
@@ -31,8 +31,8 @@ export function StudyPlanPage({studyPlanId, isEditable, isDirty, setDirty}) {
     const [currentSemester, setCurrentsemester] = useState();
     const [bottomMessage, setBottomMessage] = useState({isShown: false});
     useEffect(() => {
-        userStore.fetchProtected(`/semesters/current`).then(r => r.json()).then(d => setCurrentsemester(`${d.season} ${d.year}`))
-    }, [userStore])
+        userStore.fetchProtected(`/semesters/current`).then(r => r.json()).then(d => setCurrentsemester(`${d.season} ${d.year}`));
+    }, [userStore]);
     useEffect(() => {
         userStore.fetchProtected(`/study-plans/${studyPlanId}`)
             .then(r => r.json())
@@ -45,7 +45,7 @@ export function StudyPlanPage({studyPlanId, isEditable, isDirty, setDirty}) {
                     creditHours: 0,
                     tuitionFees: 0,
                     gpa: 0
-                }
+                };
                 studyPlan.courseMappings.forEach(courseMapping => {
                     if (!semesters.has(`${courseMapping.season} ${courseMapping.year}`))
                         semesters.set(`${courseMapping.season} ${courseMapping.year}`, new Map());
@@ -53,12 +53,12 @@ export function StudyPlanPage({studyPlanId, isEditable, isDirty, setDirty}) {
                         ...courseMapping,
                         isElective: false,
                         get offering() {
-                            return this.course
+                            return this.course;
                         },
                         get isCompleted() {
                             return this.course.enrollments.filter(e => e.grade.numericalValue > 1.0).length > 0;
                         }
-                    }
+                    };
                     semesters.get(`${courseMapping.season} ${courseMapping.year}`).set(`course-${courseMapping.id}`, courseMapping);
                     stats.creditHours += courseMapping.course.creditHours;
                     stats.tuitionFees += courseMapping.course.cost;
@@ -75,18 +75,18 @@ export function StudyPlanPage({studyPlanId, isEditable, isDirty, setDirty}) {
                     if (electiveMapping.currentCourse) {
                         if (!(electiveMapping.electivePackage.id in selectedElectives))
                             selectedElectives[electiveMapping.electivePackage.id] = new Set();
-                        selectedElectives[electiveMapping.electivePackage.id].add(electiveMapping.currentCourse.id)
+                        selectedElectives[electiveMapping.electivePackage.id].add(electiveMapping.currentCourse.id);
                     }
                     electiveMapping = {
                         ...electiveMapping,
                         isElective: true,
                         get offering() {
-                            return this.electivePackage
+                            return this.electivePackage;
                         },
                         get isCompleted() {
                             return this.electivePackage.currentCourse && this.electivePackage.currentCourse.enrollments.filter(e => e.grade.numericalValue > 1.0).length > 0;
                         }
-                    }
+                    };
                     semesters.get(`${electiveMapping.season} ${electiveMapping.year}`).set(`elective-${electiveMapping.id}`, electiveMapping);
                     // stats.tuitionFees += electiveMapping.electivePackage.averageCost;
                     stats.creditHours += electiveMapping.electivePackage.creditHours;
@@ -99,16 +99,16 @@ export function StudyPlanPage({studyPlanId, isEditable, isDirty, setDirty}) {
                 });
             }).catch(e => {
             if (e.status === 404) {
-                router.push("/404")
+                router.push("/404");
                 return;
             }
             throw e;
-        })
-    }, [studyPlanId])
+        });
+    }, [studyPlanId]);
 
 
     if (!studyPlan || !currentSemester)
-        return <SpinnerOverlay/>
+        return <SpinnerOverlay/>;
 
     return <>
         <div className={styles.studyPlanPage}
@@ -116,8 +116,12 @@ export function StudyPlanPage({studyPlanId, isEditable, isDirty, setDirty}) {
             {!isEditable &&
                 <div className={styles.buttonsPane}>
                     <Score studyPlan={studyPlan}></Score>
-                    <CircularIconButton icon={faPen} link={`/study-plans/${router.query.studyPlanId}/edit`}/>
-                    <CircularIconButton icon={faShare} onClick={() => setShareDialogueOpen(true)}/>
+                    {studyPlan.author === userStore.user.id &&
+                        <>
+                            <CircularIconButton icon={faPen} link={`/study-plans/${router.query.studyPlanId}/edit`}/>
+                            <CircularIconButton icon={faShare} onClick={() => setShareDialogueOpen(true)}/>
+                        </>
+                    }
                 </div>
             }
             <StudyPlanEditor studyPlan={studyPlan}
@@ -140,9 +144,9 @@ export function StudyPlanPage({studyPlanId, isEditable, isDirty, setDirty}) {
                                         if (!(m.electivePackage.id in selectedElectives))
                                             selectedElectives[m.electivePackage.id] = new Set();
                                         if (m.currentCourse)
-                                            selectedElectives[m.electivePackage.id].delete(m.currentCourse.id)
+                                            selectedElectives[m.electivePackage.id].delete(m.currentCourse.id);
                                         m.currentCourse = electiveCourse;
-                                        selectedElectives[m.electivePackage.id].add(electiveCourse.id)
+                                        selectedElectives[m.electivePackage.id].add(electiveCourse.id);
                                         setDirty(true);
                                         setSelectElectiveDialogMapping(null);
                                     }}/>
@@ -158,6 +162,6 @@ export function StudyPlanPage({studyPlanId, isEditable, isDirty, setDirty}) {
             }
 
         </div>
-    </>
+    </>;
 
 }
