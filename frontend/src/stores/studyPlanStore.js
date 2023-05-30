@@ -8,17 +8,25 @@ export const useStudyPlanStore = create((set,get) => ({
         const prerequisiteGraph = new graphology.Graph();
         const courseIdToMappingId = {};
         for (const courseMapping of studyPlan.courseMappings) {
-            if('code' in courseMapping){
-                console.log("CONCURRENT")
-                console.log(courseMapping.course.title)
-            }
             prerequisiteGraph.addNode(`course-${courseMapping.id}`, {
-                id: courseMapping.id,
+                id: courseMapping.course.id,
                 title: courseMapping.course.title,
                 season: courseMapping.season,
-                creditHours: courseMapping.course.credithours
+                creditHours: courseMapping.course.credithours,
+                enrollment: courseMapping.course.enrollments.length > 0 ? true : false
             });
             courseIdToMappingId[courseMapping.course.id] = courseMapping.id;
+        }
+        for (const electiveMapping of studyPlan.electiveMappings) {
+            prerequisiteGraph.addNode(`package-${electiveMapping.id}`, {
+                id: electiveMapping.electivePackage.id,
+                title: electiveMapping.electivePackage.title,
+                season: electiveMapping.season,
+                creditHours: electiveMapping.electivePackage.credithours,
+                currentCourse: electiveMapping.currentCourse,
+                enrollment: electiveMapping.currentCourse != null ? (electiveMapping.currentCourse.enrollments.length > 0 ? true : false) : false
+                 
+            });
         }
 
         for (const courseMapping of studyPlan.courseMappings) {
@@ -27,9 +35,12 @@ export const useStudyPlanStore = create((set,get) => ({
             if (simplifiedPrerequisites !== null) {
                 const edges = this.calculatePrereqEdges(simplifiedPrerequisites, courseMapping.course.id, courseIdToMappingId);
                 for (const edge of edges)
+                    // prerequisiteGraph.addDirectedEdge(
+                    //     `course-${courseIdToMappingId[edge[0]]}`,
+                    //     `course-${courseIdToMappingId[edge[1]]}`, {weight: 1});
                     prerequisiteGraph.addDirectedEdge(
-                        `course-${courseIdToMappingId[edge[0]]}`,
-                        `course-${courseIdToMappingId[edge[1]]}`, {weight: 1});
+                        `course-${courseIdToMappingId[edge.from]}`,
+                        `course-${courseIdToMappingId[edge.to]}`, {weight: 1, allowConcurrent: edge.allowConcurrent});
             }
         }
 
@@ -38,7 +49,14 @@ export const useStudyPlanStore = create((set,get) => ({
 
     calculatePrereqEdges(expression, toCourseId, courseMappingsByCourseId, edges = []) {
         if ("course" in expression)
-            return [...edges, [expression["course"]["id"], toCourseId]];
+            // return [...edges, [expression["course"]["id"], toCourseId]];
+            return [...edges, {
+                from: [expression["course"]["id"]],
+                to: toCourseId,
+                allowConcurrent: expression.course.allowConcurrent ?? false
+            }
+        
+        ];
         else if ("and" in expression) {
             const subEdges = [];
             for (let subexpression of expression["and"])
@@ -49,7 +67,7 @@ export const useStudyPlanStore = create((set,get) => ({
             let latestGroup = null;
             for (let subexpression of expression["or"]) {
                 let subEdgeGroup = this.calculatePrereqEdges(subexpression, toCourseId, courseMappingsByCourseId, edges);
-                let earliestInGroup = getEarliestMapping(subEdgeGroup.map(se => courseMappingsByCourseId[se[0]]));
+                let earliestInGroup = getEarliestMapping(subEdgeGroup.map(se => courseMappingsByCourseId[se.from]));
                 if (latestMember === null || compareMappings(earliestInGroup, latestMember) > 0) {
                     latestMember = earliestInGroup;
                     latestGroup = subEdgeGroup;

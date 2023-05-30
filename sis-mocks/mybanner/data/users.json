@@ -34,5 +34,16 @@
     "enrollmentSeason": "Fall",
     "enrollmentYear": 2019,
     "advisor": 2
+  },
+  {
+    "id": 5,
+    "email": "ma1904161@qu.edu.qa",
+    "password": "$2b$12$bhEYyDMqHEyiFvn3y2IjHeq7RwvPRb4p1urUi2QxaJRDSe/9Pqyhy",
+    "name": "Mohamed Ahmed",
+    "role": "Student",
+    "universityId": "201904161",
+    "enrollmentSeason": "Fall",
+    "enrollmentYear": 2019,
+    "advisor": 2
   }
 ]

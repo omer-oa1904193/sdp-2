@@ -194,12 +194,6 @@
             "id": 9,
             "minScore": 5.5
           }
-        },
-        {
-          "course": {
-            "id": 2,
-            "minGrade": "D"
-          }
         }
       ]
     }
@@ -318,12 +312,6 @@
               "test": {
                 "id": 9,
                 "minScore": 5.5
-              }
-            },
-            {
-              "course": {
-                "id": 2,
-                "minGrade": "D"
               }
             }
           ]
@@ -733,12 +721,19 @@
         {
           "course": {
             "id": 23,
-            "minGrade": "D"
+            "minGrade": "D",
+            "allowConcurrent" : true
           }
         },
         {
           "course": {
             "id": 21,
+            "minGrade": "D"
+          }
+        },
+        {
+          "course": {
+            "id": 13,
             "minGrade": "D"
           }
         }

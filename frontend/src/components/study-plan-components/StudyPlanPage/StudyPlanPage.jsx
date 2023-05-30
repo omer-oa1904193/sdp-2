@@ -13,7 +13,7 @@ import {StudyPlanEditor} from "@/components/study-plan-components/StudyPlanEdito
 import {SummeryPane} from "@/components/study-plan-components/SummeryPane/SummeryPane.jsx";
 import {useUserStore} from "@/stores/userStore.js";
 import {compareSemesters} from "@/utils.js";
-import {faGear, faMessage, faPen, faShare} from "@fortawesome/free-solid-svg-icons";
+import {faGear, faMessage, faPen, faShare, faSearch} from "@fortawesome/free-solid-svg-icons";
 import {useRouter} from "next/router";
 import React, {useEffect, useState} from "react";
 import Score from "../../score-study-plan/score.jsx";
@@ -120,6 +120,7 @@ export function StudyPlanPage({studyPlanId, isEditable, isDirty, setDirty}) {
                         <>
                             <CircularIconButton icon={faPen} link={`/study-plans/${router.query.studyPlanId}/edit`}/>
                             <CircularIconButton icon={faShare} onClick={() => setShareDialogueOpen(true)}/>
+                            <CircularIconButton icon={faSearch} link={`/explore/${router.query.studyPlanId}`}/>
                         </>
                     }
                 </div>
